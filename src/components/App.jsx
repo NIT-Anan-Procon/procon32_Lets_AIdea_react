@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "../image/logo.svg";
+import "../css/App.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,15 +23,17 @@ function App() {
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             Learn React
           </a>
-          {' | '}
+          {" | "}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             Vite Docs
           </a>
         </p>
