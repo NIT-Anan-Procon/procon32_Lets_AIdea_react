@@ -9,15 +9,16 @@ npm run dev
 ```
 
 ## コマンドについて
+
 - `npm run dev`
   - 開発サーバーを起動します。
 - `npm run fix`
-  - `format` と `lint` を1つのコマンドで行います
+  - `format` と `lint` を 1 つのコマンドで行います
 - `npm run format`
-  - Prettierを適用します。
+  - Prettier を適用します。
 - `npm run lint`
-  - ES Lintを適用します。
+  - ES Lint を適用します。
 - `npm run build`
   - ビルドファイルを作成します。
 - `npm run serve`
-  - serveを使ってサーバーを起動します。
+  - serve を使ってサーバーを起動します。
