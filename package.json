@@ -5,16 +5,18 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "format": "prettier --write .",
+    "format": "prettier --loglevel warn --write ./**/*.{js,jsx,html,css,scss,md,json}",
     "lint": "eslint . --ext .js, .jsx --fix",
     "fix": "npm run format && npm run lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "eslint --fix .",
-      "prettier --write ."
+    "*.{js,jsx,json,html,css,scss,md,json}": [
+      "prettier --loglevel warn --write ."
+    ],
+    ".{js,jsx}": [
+      "eslint --fix ."
     ]
   },
   "dependencies": {
