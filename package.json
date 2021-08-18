@@ -5,15 +5,15 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "format": "prettier --loglevel warn --write ./**/*.{js,jsx,html,css,scss,md,json}",
-    "lint": "eslint . --ext .js, .jsx --fix",
+    "format": "prettier --write ./**/*.{js,jsx,html,css,scss,md,json}",
+    "lint": "eslint --fix ./src --ext .js,.jsx",
     "fix": "npm run format && npm run lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,json,html,css,scss,md,json}": [
-      "prettier --loglevel warn --write ."
+      "prettier --write ."
     ],
     ".{js,jsx}": [
       "eslint --fix ."
@@ -29,6 +29,10 @@
     "axios": "^0.21.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.9.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.0",
