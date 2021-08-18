@@ -1,0 +1,58 @@
+#title{
+    position: absolute;
+    width: 640px;
+    height: 75px;
+    left: 400px;
+    top: 74px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 75px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+img{
+    position: absolute;
+    width: 720px;
+    height: 480px;
+    left: 139px;
+    top: 222px;
+}
+
+#ai_explanation{
+    position: absolute;
+    width: 390px;
+    height: 330px;
+    left: 899px;
+    top: 222px;
+}
+
+#ng_word{
+    position: absolute;
+    width: 390px;
+    height: 130px;
+    left: 899px;
+    top: 572px;
+}
+
+input{
+    position: absolute;
+    width: 920px;
+    height: 150px;
+    left: 139px;
+    top: 766px;
+    box-sizing: border-box;
+    font-size: 50px;
+}
+
+button{
+    position: absolute;
+    width: 210px;
+    height: 150px;
+    left: 1079px;
+    top: 766px;
+}
