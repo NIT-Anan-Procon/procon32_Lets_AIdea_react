@@ -1,13 +1,7 @@
 import React from "react";
 import "./css/style.css";
-import { Link } from 'react-router-dom';
+import "./css/Result.css";
 
 export default function Result() {
-    return (
-        <>
-            <button type={"button"}>
-                <Link to={"/voting"}>voting</Link>
-            </button>
-        </>
-    );
+  return <></>;
 }
