@@ -41,5 +41,6 @@ jobs:
           proxy_host: ${{ secrets.PROXY_HOST }}
           proxy_username: ${{ secrets.USERNAME }}
           proxy_password: ${{ secrets.PASSWORD }}
+          overwrite: ture
           source: "dist/index.html,dist/assets/*"
           target: "/var/www/html/"
