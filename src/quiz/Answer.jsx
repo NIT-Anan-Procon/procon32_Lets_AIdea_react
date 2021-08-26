@@ -100,7 +100,7 @@ export default function Answer() {
           <img src={imageUrl} />
         </label>
       </form>
-      <Timer time={time - Math.floor((time - 1) / 10) * 10}></Timer>
+      <Timer time={time - Math.floor((time - 1) / 10) * 10} />
     </div>
   );
 }
