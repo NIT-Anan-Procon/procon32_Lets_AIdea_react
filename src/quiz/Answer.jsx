@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import "./css/Answer.css";
 import Timer from "../common/Timer";
 
@@ -27,7 +29,6 @@ export default function Answer() {
 
   const handleChange = (event) => {
     myChoice = event.target.value;
-    console.log(myChoice);
   };
 
   useEffect(() => {
