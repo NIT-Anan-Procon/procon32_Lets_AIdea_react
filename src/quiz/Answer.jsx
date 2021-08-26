@@ -5,27 +5,43 @@ import "./css/Answer.css";
 import Timer from "../common/Timer";
 
 export default function Answer() {
-  const otherDescriptionOption = [
-    "百獣の王は静かに微笑みを湛えている",
-    "幾重の鳥居が私たちを待っている",
-    "偶像崇拝",
-    "自然",
-  ];
-  const [otherDescription, setOtherDescription] = useState("読み込み中...");
+  const [data, setData] = useState({
+    playerId: [
+      {
+        playerDescription: "百獣の王は静かに微笑みを湛えている",
+        aiDescription: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+      },
+      {
+        playerDescription: "幾重の鳥居が私たちを待っている",
+        aiDescription: "草に囲まれた赤い建物に光が当たっています",
+        ngWord: ["草", "赤い", "光"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+    ],
+  });
+  const [otherDescription, setOtherDescription] = useState("");
   let myChoice = 1;
   const urlOption = ["lion", "torii", "idol", "nature"];
   const [imageUrl, setImageUrl] = useState("");
   const history = useHistory();
   const [time, setTime] = useState(40);
 
-  // useEffect(() => {
-  //     axios.get("url")
-  //         .then(res => {
-  //             setOtherDescription(res.data);
-  //         })
-  // }, []);
-
-  if (!otherDescription) return null;
+  useEffect(() => {
+    //     axios.get("url")
+    //         .then(res => {
+    //             setOtherDescription(res.data);
+    //         })
+  }, []);
 
   const handleChange = (event) => {
     myChoice = event.target.value;
@@ -41,7 +57,7 @@ export default function Answer() {
   useEffect(() => {
     if (time % 10 == 0) {
       if (time == 0) history.push("/result");
-      setOtherDescription(otherDescriptionOption[4 - time / 10]);
+      setOtherDescription(data.playerId[4 - time / 10].playerDescription);
       setImageUrl(
         "https://source.unsplash.com/featured/?" + urlOption[4 - time / 10]
       );
