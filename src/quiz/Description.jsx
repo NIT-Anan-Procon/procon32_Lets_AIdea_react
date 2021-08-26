@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/style.css";
 import "./css/Description.css";
+import Timer from "../common/Timer";
 
 export default function Description() {
   const [data, setData] = useState({
@@ -96,7 +97,7 @@ export default function Description() {
         />
         <input type="submit" value="送信" />
       </form>
-      <div className="timer">{time}</div>
+      <Timer time={time} />
     </div>
   );
 }
