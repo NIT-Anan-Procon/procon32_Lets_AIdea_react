@@ -62,7 +62,6 @@ export default function Answer() {
           type="radio"
           name="selectImage"
           value={1}
-          checked="checked"
           onChange={handleChange}
           id="myChoice1"
         />
