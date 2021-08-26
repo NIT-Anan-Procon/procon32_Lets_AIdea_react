@@ -5,9 +5,9 @@ import "./css/style.css";
 import "./css/Description.css";
 
 export default function Description() {
-  const [aiDescription, setAiDescription] = useState({
-    description: "草原でライオンが座っている。",
-    ngWord: "ライオン,草原",
+  const [data, setData] = useState({
+    aiDescription: "草原でライオンが座っている。",
+    ngWord: ["ライオン", "草原"],
   });
   const [ngWord, setNgWord] = useState("");
   const [attentionMessage, setAttentionMessage] = useState("");
@@ -18,12 +18,15 @@ export default function Description() {
   useEffect(() => {
     // axios.get("url")
     //     .then(res => {
-    //         setAiDescription(res.data);
+    //         setData(res.data);
     //     })
-    setNgWord(aiDescription.ngWord.split(","));
+    for (let i = 0; i < data.ngWord.length; i++) {
+      setNgWord((ngWord) => ngWord + data.ngWord[i]);
+      if (i != data.ngWord.length - 1) setNgWord((ngWord) => ngWord + ", ");
+    }
   }, []);
 
-  if (!aiDescription) return null;
+  if (!data) return null;
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
@@ -45,9 +48,9 @@ export default function Description() {
   };
 
   useEffect(() => {
-    // setInterval(() => {
-    //     setTime(time => time - 1);
-    // }, 1000);
+    setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
   }, []);
 
   if (time == 0) history.push("/answer");
@@ -58,11 +61,11 @@ export default function Description() {
       <img src="https://source.unsplash.com/featured/?lion" />
       <div className="textBox otherDescription">
         AIの説明文
-        <p>{aiDescription.description}</p>
+        <p>{data.aiDescription}</p>
       </div>
       <div className="textBox ngWord">
         NGワード
-        <p>{aiDescription.ngWord}</p>
+        <p>{ngWord}</p>
       </div>
       <form onSubmit={handleSubmit} id="descriptionForm">
         <p className="attentionMessage">{attentionMessage}</p>
