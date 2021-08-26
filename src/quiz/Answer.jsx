@@ -2,15 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Answer.css";
+import Timer from "../common/Timer";
 
 export default function Answer() {
-  const [otherDescription, setOtherDescription] =
-    useState("百獣の王は静かに微笑みを湛えている");
-  const [attentionMessage, setAttentionMessage] =
-    useState("写真をクリックしてください");
-  const [myChoice, setMyChoice] = useState(0);
+  const otherDescriptionOption = [
+    "百獣の王は静かに微笑みを湛えている",
+    "幾重の鳥居が私たちを待っている",
+    "偶像崇拝",
+    "自然",
+  ];
+  const [otherDescription, setOtherDescription] = useState("読み込み中...");
+  let myChoice = 1;
+  const urlOption = ["lion", "torii", "idol", "nature"];
+  const [imageUrl, setImageUrl] = useState("");
   const history = useHistory();
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(40);
 
   // useEffect(() => {
   //     axios.get("url")
@@ -22,25 +28,26 @@ export default function Answer() {
   if (!otherDescription) return null;
 
   const handleChange = (event) => {
-    setMyChoice(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    if (myChoice == 0) {
-      event.preventDefault();
-      setAttentionMessage("1つの写真を選んでクリックしてください");
-      return 0;
-    }
-    history.push("/result");
+    myChoice = event.target.value;
+    console.log(myChoice);
   };
 
   useEffect(() => {
-    // setInterval(() => {
-    //     setTime(time => time - 1);
-    // }, 1000);
+    setInterval(() => {
+      setTime((time) => time - 1);
+      if (time == 0) return 0;
+    }, 1000);
   }, []);
 
-  if (time == 0) history.push("/result");
+  useEffect(() => {
+    if (time % 10 == 0) {
+      if (time == 0) history.push("/result");
+      setOtherDescription(otherDescriptionOption[4 - time / 10]);
+      setImageUrl(
+        "https://source.unsplash.com/featured/?" + urlOption[4 - time / 10]
+      );
+    }
+  }, [time]);
 
   return (
     <div id="answer">
@@ -49,16 +56,18 @@ export default function Answer() {
         Togo
         <p>{otherDescription}</p>
       </div>
-      <form onSubmit={handleSubmit} id="answerForm">
+      <p className="attentionMessage">写真をクリックしてください</p>
+      <form id="answerForm">
         <input
           type="radio"
           name="selectImage"
           value={1}
+          checked="checked"
           onChange={handleChange}
           id="myChoice1"
         />
         <label htmlFor="myChoice1" id="image1">
-          <img src="https://source.unsplash.com/featured/?lion" />
+          <img src={imageUrl} />
         </label>
         <input
           type="radio"
@@ -68,7 +77,7 @@ export default function Answer() {
           id="myChoice2"
         />
         <label htmlFor="myChoice2" id="image2">
-          <img src="https://source.unsplash.com/featured/?lion" />
+          <img src={imageUrl} />
         </label>
         <input
           type="radio"
@@ -78,7 +87,7 @@ export default function Answer() {
           id="myChoice3"
         />
         <label htmlFor="myChoice3" id="image3">
-          <img src="https://source.unsplash.com/featured/?lion" />
+          <img src={imageUrl} />
         </label>
         <input
           type="radio"
@@ -88,12 +97,10 @@ export default function Answer() {
           id="myChoice4"
         />
         <label htmlFor="myChoice4" id="image4">
-          <img src="https://source.unsplash.com/featured/?lion" />
+          <img src={imageUrl} />
         </label>
-        <p className="attentionMessage">{attentionMessage}</p>
-        <input type="submit" value="投票する" />
       </form>
-      <div className="timer">{time}</div>
+      <Timer time={time - Math.floor((time - 1) / 10) * 10}></Timer>
     </div>
   );
 }
