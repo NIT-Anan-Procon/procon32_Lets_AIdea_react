@@ -1,0 +1,14 @@
+.timer {
+  grid-area: timer;
+  position: absolute;
+  top: 4%;
+  right: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16vh;
+  height: 16vh;
+  border-radius: 50%;
+  background-color: #8bd6f5;
+  font-size: 9vh;
+}
