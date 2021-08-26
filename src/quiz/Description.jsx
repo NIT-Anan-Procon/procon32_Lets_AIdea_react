@@ -6,8 +6,28 @@ import "./css/Description.css";
 
 export default function Description() {
   const [data, setData] = useState({
-    aiDescription: "草原でライオンが座っている。",
-    ngWord: ["ライオン", "草原"],
+    playerId: [
+      {
+        playerDescription: "百獣の王は静かに微笑みを湛えている",
+        aiDescription: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+      },
+      {
+        playerDescription: "幾重の鳥居が私たちを待っている",
+        aiDescription: "草に囲まれた赤い建物に光が当たっています",
+        ngWord: ["草", "赤い", "光"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+    ],
   });
   const [ngWord, setNgWord] = useState("");
   const [attentionMessage, setAttentionMessage] = useState("");
@@ -20,13 +40,12 @@ export default function Description() {
     //     .then(res => {
     //         setData(res.data);
     //     })
-    for (let i = 0; i < data.ngWord.length; i++) {
-      setNgWord((ngWord) => ngWord + data.ngWord[i]);
-      if (i != data.ngWord.length - 1) setNgWord((ngWord) => ngWord + ", ");
+    for (let i = 0; i < data.playerId[0].ngWord.length; i++) {
+      setNgWord((ngWord) => ngWord + data.playerId[0].ngWord[i]);
+      if (i != data.playerId[0].ngWord.length - 1)
+        setNgWord((ngWord) => ngWord + ", ");
     }
   }, []);
-
-  if (!data) return null;
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
@@ -61,7 +80,7 @@ export default function Description() {
       <img src="https://source.unsplash.com/featured/?lion" />
       <div className="textBox otherDescription">
         AIの説明文
-        <p>{data.aiDescription}</p>
+        <p>{data.playerId[0].aiDescription}</p>
       </div>
       <div className="textBox ngWord">
         NGワード
