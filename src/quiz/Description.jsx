@@ -37,10 +37,7 @@ export default function Description() {
   const [time, setTime] = useState(30);
 
   useEffect(() => {
-    // axios.get("url")
-    //     .then(res => {
-    //         setData(res.data);
-    //     })
+    // TODO: APIとの通信
     for (let i = 0; i < data.playerId[0].ngWord.length; i++) {
       setNgWord((ngWord) => ngWord + data.playerId[0].ngWord[i]);
       if (i != data.playerId[0].ngWord.length - 1)
