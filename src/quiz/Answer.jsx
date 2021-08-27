@@ -36,10 +36,7 @@ export default function Answer() {
   const [time, setTime] = useState(40);
 
   useEffect(() => {
-    //     axios.get("url")
-    //         .then(res => {
-    //             setOtherDescription(res.data);
-    //         })
+    // TODO: APIとの通信
   }, []);
 
   const handleChange = (event) => {
