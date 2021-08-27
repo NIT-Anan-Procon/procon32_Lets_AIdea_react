@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import "./css/style.css";
 import "./css/Description.css";
 import Timer from "../common/Timer";
