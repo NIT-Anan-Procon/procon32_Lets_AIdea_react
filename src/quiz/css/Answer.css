@@ -28,6 +28,7 @@
 
 #image1 {
   grid-area: image1;
+  position: relative;
 }
 
 #myChoice2 {
@@ -36,6 +37,7 @@
 
 #image2 {
   grid-area: image2;
+  position: relative;
 }
 
 #myChoice3 {
@@ -44,6 +46,7 @@
 
 #image3 {
   grid-area: image3;
+  position: relative;
 }
 
 #myChoice4 {
@@ -52,4 +55,12 @@
 
 #image4 {
   grid-area: image4;
+  position: relative;
+}
+
+.mark {
+  position: absolute;
+  object-fit: contain;
+  top: 0;
+  left: 0;
 }
