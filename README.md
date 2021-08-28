@@ -35,5 +35,5 @@ npm run dev
   - 例. `HogeHoge.jsx` , `FugaFugaFuga.css`
 
 - それ以外のファイル名や変数名、id 名などはローワーキャメルケース
-
+ローワーキャメルケースとは先頭の文字を小文字にするキャメルケースである。
   - 例. `hogeHoge.jpg` , `let fugaFuga;` , `<div id=piyoPiyo>`
