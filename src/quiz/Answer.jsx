@@ -125,8 +125,8 @@ export default function Answer() {
           id="myChoice1"
         />
         <label htmlFor="myChoice1" id="image1">
-          <img src={imageUrl} />
-          <img src={mark[0]} className="mark" id="mark1" />
+          <img src={imageUrl} alt="" />
+          <img src={mark[0]} alt="" className="mark" id="mark1" />
         </label>
         <input
           type="radio"
@@ -136,8 +136,8 @@ export default function Answer() {
           id="myChoice2"
         />
         <label htmlFor="myChoice2" id="image2">
-          <img src={imageUrl} />
-          <img src={mark[1]} className="mark" id="mark2" />
+          <img src={imageUrl} alt="" />
+          <img src={mark[1]} alt="" className="mark" id="mark2" />
         </label>
         <input
           type="radio"
@@ -147,8 +147,8 @@ export default function Answer() {
           id="myChoice3"
         />
         <label htmlFor="myChoice3" id="image3">
-          <img src={imageUrl} />
-          <img src={mark[2]} className="mark" id="mark3" />
+          <img src={imageUrl} alt="" />
+          <img src={mark[2]} alt="" className="mark" id="mark3" />
         </label>
         <input
           type="radio"
@@ -158,8 +158,8 @@ export default function Answer() {
           id="myChoice4"
         />
         <label htmlFor="myChoice4" id="image4">
-          <img src={imageUrl} />
-          <img src={mark[3]} className="mark" id="mark4" />
+          <img src={imageUrl} alt="" />
+          <img src={mark[3]} alt="" className="mark" id="mark4" />
         </label>
       </form>
       <Timer
