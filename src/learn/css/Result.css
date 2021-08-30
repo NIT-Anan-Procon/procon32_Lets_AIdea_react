@@ -1,3 +1,69 @@
 body {
+  margin: 0;
+}
+
+#result {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template:
+    "... ............... ............... ................ ..." 3vh
+    "... title           title           title            ..." 10vh
+    "... ............... ............... ................ ..." 2vh
+    "... ............... image           ................ ..." 60vh
+    "... ............... ............... ................ ..." 3vh
+    "... player          player          player           ..." auto
+    "... ............... ............... ................ ..." 3vh
+    "... player          player          player           ..." 20vh
+    "... ............... ............... ................ ..." 3vh
+    "... player          player          player           ..." 20vh
+    "... ............... ............... ................ ..." 3vh
+    "... player          player          player           ..." 20vh
+    "... ............... ............... ................ ..." 3vh
+    "... player          player          player           ..." 20vh
+    "... ............... ............... ................ ..." 3vh
+    /20vh auto 84vh auto 20vh;
+}
+
+.title {
+  grid-area: title;
+  font-size: 8vh;
   text-align: center;
+}
+
+.explanationImg {
+  grid-area: image;
+}
+
+.explanationImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textBox {
+  box-sizing: border-box;
+  border: solid 0.5vh black;
+  padding: 2vh;
+  font-size: 4vh;
+}
+
+.player {
+  grid-area: player;
+  display: flex;
+  flex-direction: row;
+}
+
+.playerImg {
+  flex-basis: 20%;
+}
+
+.playerImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playerExplanation {
+  flex-basis: 80%;
 }

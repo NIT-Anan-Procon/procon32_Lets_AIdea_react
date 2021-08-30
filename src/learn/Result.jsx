@@ -4,6 +4,7 @@ import axios from "axios";
 import "./css/Result.css";
 
 function Result() {
+  const [ai, setAI] = useState("");
   const [explanation, setExplanation] = useState({
     player1: "",
     player2: "",
@@ -23,9 +24,12 @@ function Result() {
   useEffect(() => {
     // axios.get("url")
     //     .then(res => {
+    //        setAI(res.data);
     //        setExplanation(res.data);
     //        setIcon(res.data);
     //     })
+    setAI("草原でライオンが座っている。");
+
     setExplanation({ ...explanation, player1: "ライオンが歩いている" });
     setExplanation({ ...explanation, player2: "ライオンがたたずんでいる" });
     setExplanation({ ...explanation, player3: "獅子の雄たけび" });
@@ -54,44 +58,46 @@ function Result() {
     }, 1000);
   }, []);
 
-  if (time === 0) {
-    history.push("/vote");
-  }
+  //if (time === 0) {history.push("/vote");}
 
   return (
-    <div>
+    <div id="result">
       <div className="title">リザルト</div>
-      <img
-        src="https://source.unsplash.com/featured/?lion"
-        alt="explanationImg"
-      />
-      <div>
-        <div>
-          <div className="player">
-            <div>
-              <img src={icon.player1} alt="player1Img" />
-            </div>
-            <div>{explanation.player1}</div>
-          </div>
-          <div className="player">
-            <div>
-              <img src={icon.player2} alt="player2Img" />
-            </div>
-            <div>{explanation.player2}</div>
-          </div>
-          <div className="player">
-            <div>
-              <img src={icon.player3} alt="player3Img" />
-            </div>
-            <div>{explanation.player3}</div>
-          </div>
-          <div className="player">
-            <div>
-              <img src={icon.player4} alt="player4Img" />
-            </div>
-            <div>{explanation.player4}</div>
-          </div>
+      <div className="explanationImg">
+        <img
+          src="https://source.unsplash.com/featured/?lion"
+          alt="explanationImg"
+        />
+      </div>
+      <div className="player">
+        <div className="playerImg">
+          <img src="https://source.unsplash.com/featured/?AI" alt="ai1Img" />
         </div>
+        <div className="textBox playerExplanation">{ai}</div>
+      </div>
+      <div className="player">
+        <div className="playerImg">
+          <img src={icon.player1} alt="player1Img" />
+        </div>
+        <div className="textBox playerExplanation">{explanation.player1}</div>
+      </div>
+      <div className="player">
+        <div className="playerImg">
+          <img src={icon.player2} alt="player2Img" />
+        </div>
+        <div className="textBox playerExplanation">{explanation.player2}</div>
+      </div>
+      <div className="player">
+        <div className="playerImg">
+          <img src={icon.player3} alt="player3Img" />
+        </div>
+        <div className="textBox playerExplanation">{explanation.player3}</div>
+      </div>
+      <div className="player">
+        <div className="playerImg">
+          <img src={icon.player4} alt="player4Img" />
+        </div>
+        <div className="textBox playerExplanation">{explanation.player4}</div>
       </div>
     </div>
   );
