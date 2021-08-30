@@ -74,7 +74,7 @@ export default function Description() {
   return (
     <div id="description">
       <div className="title">この画像を説明しよう</div>
-      <img src="https://source.unsplash.com/featured/?lion" />
+      <img src="https://source.unsplash.com/featured/?lion" alt="" />
       <div className="textBox otherDescription">
         AIの説明文
         <p>{data.playerId[0].aiDescription}</p>
