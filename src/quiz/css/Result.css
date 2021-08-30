@@ -1,0 +1,105 @@
+#result {
+  grid-template:
+    "... .......... .......... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .......... .......... .......... ..." 3vh
+    "... pointTable pointTable pointTable ..." auto
+    "... .......... .......... .......... ..." 3vh
+    "... .......... buttonForm .......... ..." 10vh
+    "... .......... .......... .......... ..." 3vh
+    /20vh 40vh auto 40vh 20vh;
+  position: fixed;
+}
+
+#pointTable {
+  grid-area: pointTable;
+  display: grid;
+  grid-template:
+    "firstPlayer firstPlayer  firstPlayer" 40%
+    "........... ............ ..........." 4%
+    "........... secondPlayer ..........." 26%
+    "........... ............ ..........." 4%
+    "........... thirdPlayer  ..........." 26%
+    /10% 80% 10%;
+}
+
+#firstPlayer {
+  grid-area: firstPlayer;
+}
+
+#secondPlayer {
+  grid-area: secondPlayer;
+}
+
+#thirdPlayer {
+  grid-area: thirdPlayer;
+}
+
+#firstPlayer,
+#secondPlayer,
+#thirdPlayer {
+  display: grid;
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox" 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox" 20%
+    /12% 1% 18% 1% 22% 1% 22% 1% 22%;
+}
+
+.rank {
+  grid-area: rank;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vh;
+}
+
+#firstPlayer .rank {
+  font-size: 7vh;
+}
+
+.descriptionPointBox,
+.answerPointBox,
+.totalPointBox {
+  position: relative;
+  padding: 1vh;
+  font-size: 2vh;
+}
+
+#firstPlayer .descriptionPointBox,
+#firstPlayer .answerPointBox,
+#firstPlayer .totalPointBox {
+  position: relative;
+  padding: 2vh;
+  font-size: 3vh;
+}
+
+.descriptionPointBox {
+  grid-area: descriptionPointBox;
+  background-color: #8bd6f5;
+}
+
+.answerPointBox {
+  grid-area: answerPointBox;
+  background-color: #8bd6f5;
+}
+
+.totalPointBox {
+  grid-area: totalPointBox;
+  background-color: #ff6347;
+  color: white;
+}
+
+.descriptionPointBox p,
+.answerPointBox p,
+.totalPointBox p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-size: 6vh;
+}
+
+#firstPlayer p {
+  font-weight: bold;
+}
