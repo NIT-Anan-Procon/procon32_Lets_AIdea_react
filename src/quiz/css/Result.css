@@ -7,7 +7,7 @@
     "... .......... .......... .......... ..." 3vh
     "... .......... buttonForm .......... ..." 10vh
     "... .......... .......... .......... ..." 5vh
-    /30vh auto 60vh auto 30vh;
+    /30vh auto 80vh auto 30vh;
   position: fixed;
 }
 
@@ -15,12 +15,12 @@
   grid-area: pointTable;
   display: grid;
   grid-template:
-    "firstPlayer firstPlayer  firstPlayer" 40%
-    "........... ............ ..........." 4%
-    "........... secondPlayer ..........." 26%
-    "........... ............ ..........." 4%
-    "........... thirdPlayer  ..........." 26%
-    /10% 80% 10%;
+    "firstPlayer " 36%
+    "............" 6%
+    "secondPlayer" 26%
+    "............" 6%
+    "thirdPlayer" 26%
+    /100%;
 }
 
 #firstPlayer {
@@ -45,6 +45,14 @@
     /12% 1% 18% 1% 22% 1% 22% 1% 22%;
 }
 
+#secondPlayer,
+#thirdPlayer {
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 20%
+    /12% 1% 18% 1% 18% 1% 18% 1% 18% 12%;
+}
+
 .rank {
   grid-area: rank;
   display: flex;
@@ -58,14 +66,14 @@
 }
 
 #firstPlayer .icon {
-  width: 20vh;
-  height: 20vh;
+  width: 19vh;
+  height: 19vh;
 }
 
 #secondPlayer .icon,
 #thirdPlayer .icon {
-  width: 12vh;
-  height: 12vh;
+  width: 13vh;
+  height: 13vh;
 }
 
 #firstPlayer .name {
