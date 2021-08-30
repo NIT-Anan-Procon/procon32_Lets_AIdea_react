@@ -63,6 +63,10 @@ export default function Answer() {
           document.getElementById("myChoice2").disabled = true;
           document.getElementById("myChoice3").disabled = true;
           document.getElementById("myChoice4").disabled = true;
+          document.getElementById("mark1").style.display = "";
+          document.getElementById("mark2").style.display = "";
+          document.getElementById("mark3").style.display = "";
+          document.getElementById("mark4").style.display = "";
           let markArray = [cross, cross, cross, cross];
           markArray[correct[3 - timeCopy / 10] - 1] = circle;
           setMark(markArray.slice());
@@ -71,7 +75,10 @@ export default function Answer() {
             if (timeCopy == 0) history.push("/result");
             startTimer();
             setTime(40);
-            setMark(["", "", "", ""]);
+            document.getElementById("mark1").style.display = "none";
+            document.getElementById("mark2").style.display = "none";
+            document.getElementById("mark3").style.display = "none";
+            document.getElementById("mark4").style.display = "none";
             document.getElementById("myChoice1").checked = false;
             document.getElementById("myChoice2").checked = false;
             document.getElementById("myChoice3").checked = false;
@@ -119,7 +126,7 @@ export default function Answer() {
         />
         <label htmlFor="myChoice1" id="image1">
           <img src={imageUrl} />
-          <img src={mark[0]} className="mark" />
+          <img src={mark[0]} className="mark" id="mark1" />
         </label>
         <input
           type="radio"
@@ -130,7 +137,7 @@ export default function Answer() {
         />
         <label htmlFor="myChoice2" id="image2">
           <img src={imageUrl} />
-          <img src={mark[1]} className="mark" />
+          <img src={mark[1]} className="mark" id="mark2" />
         </label>
         <input
           type="radio"
@@ -141,7 +148,7 @@ export default function Answer() {
         />
         <label htmlFor="myChoice3" id="image3">
           <img src={imageUrl} />
-          <img src={mark[2]} className="mark" />
+          <img src={mark[2]} className="mark" id="mark3" />
         </label>
         <input
           type="radio"
@@ -152,7 +159,7 @@ export default function Answer() {
         />
         <label htmlFor="myChoice4" id="image4">
           <img src={imageUrl} />
-          <img src={mark[3]} className="mark" />
+          <img src={mark[3]} className="mark" id="mark4" />
         </label>
       </form>
       <Timer
