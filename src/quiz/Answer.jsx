@@ -57,7 +57,7 @@ export default function Answer() {
       const timer = setInterval(() => {
         setTime((time) => time - 1);
         timeCopy--;
-        if (timeCopy % 10 == 0) {
+        if (timeCopy % 10 === 0) {
           // TODO: APIとの通信
           document.getElementById("myChoice1").disabled = true;
           document.getElementById("myChoice2").disabled = true;
@@ -72,7 +72,7 @@ export default function Answer() {
           setMark(markArray.slice());
           clearInterval(timer);
           setTimeout(() => {
-            if (timeCopy == 0) history.push("/result");
+            if (timeCopy === 0) history.push("/result");
             startTimer();
             setTime(40);
             document.getElementById("mark1").style.display = "none";
@@ -98,7 +98,7 @@ export default function Answer() {
   }, []);
 
   useEffect(() => {
-    if (time % 10 == 0 && time != 40) {
+    if (time % 10 === 0 && time !== 40) {
       setTimeout(() => {
         setOtherDescription(data.playerId[4 - time / 10].playerDescription);
         setImageUrl(
