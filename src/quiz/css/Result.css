@@ -3,11 +3,11 @@
     "... .......... .......... .......... ..." 3vh
     "... title      title      title      ..." 10vh
     "... .......... .......... .......... ..." 3vh
-    "... pointTable pointTable pointTable ..." auto
+    "... pointTable pointTable pointTable ..." 66vh
     "... .......... .......... .......... ..." 3vh
     "... .......... buttonForm .......... ..." 10vh
-    "... .......... .......... .......... ..." 3vh
-    /20vh 40vh auto 40vh 20vh;
+    "... .......... .......... .......... ..." 5vh
+    /30vh auto 60vh auto 30vh;
   position: fixed;
 }
 
@@ -57,6 +57,26 @@
   font-size: 7vh;
 }
 
+#firstPlayer .icon {
+  width: 20vh;
+  height: 20vh;
+}
+
+#secondPlayer .icon,
+#thirdPlayer .icon {
+  width: 12vh;
+  height: 12vh;
+}
+
+#firstPlayer .name {
+  font-size: 4vh;
+}
+
+#secondPlayer .name,
+#thirdPlayer .name {
+  font-size: 3vh;
+}
+
 .descriptionPointBox,
 .answerPointBox,
 .totalPointBox {
@@ -97,9 +117,10 @@
   left: 50%;
   margin: 0;
   transform: translate(-50%, -50%);
-  font-size: 6vh;
+  font-size: 5vh;
 }
 
 #firstPlayer p {
+  font-size: 7vh;
   font-weight: bold;
 }
