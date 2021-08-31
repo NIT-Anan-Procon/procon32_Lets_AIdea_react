@@ -30,7 +30,7 @@ export default function Description() {
     ],
   });
   const [ngWord, setNgWord] = useState("");
-  const [attentionMessage, setAttentionMessage] = useState();
+  const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
   const [time, setTime] = useState(30);
@@ -39,7 +39,7 @@ export default function Description() {
     // TODO: APIとの通信
     for (let i = 0; i < data.playerId[0].ngWord.length; i++) {
       setNgWord((ngWord) => ngWord + data.playerId[0].ngWord[i]);
-      if (i != data.playerId[0].ngWord.length - 1)
+      if (i !== data.playerId[0].ngWord.length - 1)
         setNgWord((ngWord) => ngWord + ", ");
     }
   }, []);
@@ -49,13 +49,13 @@ export default function Description() {
   };
 
   const handleSubmit = (event) => {
-    if (myDescription.length == 0) {
+    if (myDescription.length === 0) {
       event.preventDefault();
       setAttentionMessage("説明文を記入して下さい");
       return 0;
     }
     for (let i = 0; i < ngWord.length; i++)
-      if (myDescription.indexOf(ngWord[i]) != -1) {
+      if (myDescription.indexOf(ngWord[i]) !== -1) {
         event.preventDefault();
         setAttentionMessage("NGワードが含まれています");
         return 0;
@@ -69,12 +69,12 @@ export default function Description() {
     }, 1000);
   }, []);
 
-  if (time == 0) history.push("/answer");
+  if (time === 0) history.push("/answer");
 
   return (
     <div id="description">
       <div className="title">この画像を説明しよう</div>
-      <img src="https://source.unsplash.com/featured/?lion" />
+      <img src="https://source.unsplash.com/featured/?lion" alt="問題の画像" />
       <div className="textBox otherDescription">
         AIの説明文
         <p>{data.playerId[0].aiDescription}</p>
