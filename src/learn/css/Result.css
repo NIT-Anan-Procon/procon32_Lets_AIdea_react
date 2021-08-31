@@ -3,8 +3,6 @@ body {
 }
 
 #result {
-  width: 100%;
-  height: 100%;
   display: grid;
   grid-template:
     "... ............... ............... ................ ..." 3vh
@@ -12,7 +10,7 @@ body {
     "... ............... ............... ................ ..." 2vh
     "... ............... image           ................ ..." 60vh
     "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." auto
+    "... player          player          player           ..." 20vh
     "... ............... ............... ................ ..." 3vh
     "... player          player          player           ..." 20vh
     "... ............... ............... ................ ..." 3vh
@@ -23,11 +21,13 @@ body {
     "... player          player          player           ..." 20vh
     "... ............... ............... ................ ..." 3vh
     /20vh auto 84vh auto 20vh;
+  height: 100%;
+  width: 100%;
 }
 
 .title {
-  grid-area: title;
   font-size: 8vh;
+  grid-area: title;
   text-align: center;
 }
 
@@ -36,22 +36,22 @@ body {
 }
 
 .explanationImg img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .textBox {
-  box-sizing: border-box;
   border: solid 0.5vh black;
-  padding: 2vh;
+  box-sizing: border-box;
   font-size: 4vh;
+  padding: 2vh;
 }
 
 .player {
-  grid-area: player;
   display: flex;
   flex-direction: row;
+  grid-area: player;
 }
 
 .playerImg {
@@ -59,9 +59,9 @@ body {
 }
 
 .playerImg img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .playerExplanation {
