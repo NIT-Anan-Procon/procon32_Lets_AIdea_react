@@ -20,6 +20,9 @@
     ],
     ".{js,jsx}": [
       "eslint --fix ."
+    ],
+    "**/*.{css,scss,sass}": [
+      "stylelint --fix ."
     ]
   },
   "dependencies": {
