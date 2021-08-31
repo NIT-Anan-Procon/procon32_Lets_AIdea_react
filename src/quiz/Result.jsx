@@ -113,7 +113,7 @@ export default function Result() {
         </div>
       </div>
       <form onSubmit={handleSubmit} className="buttonForm">
-        <input type="submit" value="送信" />
+        <input type="submit" value="投票へ" />
       </form>
     </div>
   );

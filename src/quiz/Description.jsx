@@ -91,7 +91,7 @@ export default function Description() {
           onChange={handleChange}
           className="textBox"
         />
-        <input type="submit" value="投票へ" />
+        <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
     </div>
