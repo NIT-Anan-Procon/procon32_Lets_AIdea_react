@@ -30,7 +30,7 @@ export default function Description() {
     ],
   });
   const [ngWord, setNgWord] = useState("");
-  const [attentionMessage, setAttentionMessage] = useState();
+  const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
   const [time, setTime] = useState(30);
