@@ -54,8 +54,8 @@ export default function Description() {
       setAttentionMessage("説明文を記入して下さい");
       return 0;
     }
-    for (let i = 0; i < ngWord.length; i++)
-      if (myDescription.indexOf(ngWord[i]) != -1) {
+    for (let i = 0; i < data.playerId[0].ngWord.length; i++)
+      if (myDescription.indexOf(data.playerId[0].ngWord[i]) != -1) {
         event.preventDefault();
         setAttentionMessage("NGワードが含まれています");
         return 0;
