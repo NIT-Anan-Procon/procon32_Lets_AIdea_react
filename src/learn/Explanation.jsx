@@ -4,6 +4,7 @@ import "./css/Explanation.css";
 import Timer from "../common/Timer";
 
 function Explanation() {
+  //　TODO data:仮のAPI
   const [data, setData] = useState({
     playerId: [
       {
