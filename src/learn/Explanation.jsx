@@ -1,14 +1,41 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import "./css/Explanation.css";
+import Timer from "../common/Timer";
 
 function Explanation() {
-  const [ai, setAi] = useState({
-    word: "...,ライオン,草原,空,ステップ,百獣の王,林,ネコ,キバ,餓狼,動物",
-    explanation: "草原でライオンが座っている。",
+  const [data, setData] = useState({
+    playerId: [
+      {
+        playerExplanation: "百獣の王は静かに微笑みを湛えている",
+        aiExplanation: "草原でライオンが座っています",
+        Word: [
+          "草原",
+          "ライオン",
+          "黄色い",
+          "ステップ",
+          "草",
+          "獅子",
+          "黄土色",
+        ],
+      },
+      {
+        playerExplanation: "プレイヤー説明文",
+        aiExplanation: "AI説明文",
+        Word: ["1", "2", "3"],
+      },
+      {
+        playerExplanation: "プレイヤー説明文",
+        aiExplanation: "AI説明文",
+        Word: ["1", "2", "3"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiExplanation: "AI説明文",
+        Word: ["1", "2", "3"],
+      },
+    ],
   });
-  const [words, setWords] = useState("");
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
@@ -19,22 +46,12 @@ function Explanation() {
   const [signal, setSignal] = useState("");
   const timer = useRef(null);
 
-  useEffect(() => {
-    // axios.get("url")
-    //     .then(res => {
-    //         setAi(res.data);
-    //     })
-    setWords(ai.word.split(","));
-  }, []);
-
-  if (!ai) return null;
-
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    if (myExplanation.length == 0) {
+    if (myExplanation.length === 0) {
       event.preventDefault();
       setAttentionMessage("説明文を記入して下さい");
       return 0;
@@ -48,14 +65,18 @@ function Explanation() {
   }, []);
 
   useEffect(() => {
-    if (time % 3 == 0 && time < 30) {
+    if (time % 3 === 0 && time < 30) {
       setWord2(word1);
-      setWord1(words[(30 - time) / 3]);
+      if (data.playerId[0].Word[(30 - time - 3) / 3] != null) {
+        setWord1(data.playerId[0].Word[(30 - time - 3) / 3]);
+      } else {
+        setWord1("...");
+      }
     }
-    if (time == 15) {
-      setAiExplanation(ai.explanation);
+    if (time === 15) {
+      setAiExplanation(data.playerId[0].aiExplanation);
     }
-    if (time == 0) {
+    if (time === 0) {
       setSignal("Time Up");
       clearInterval(timer.current);
       setTimeout(() => {
@@ -67,10 +88,13 @@ function Explanation() {
   return (
     <div id="explanation">
       <div className="title">この画像を説明しよう</div>
-      <img src="https://source.unsplash.com/featured/?lion" />
+      <img
+        src="https://source.unsplash.com/featured/?lion"
+        alt="explanationImg"
+      />
       <div className="learn">AIのアイディアを盗もう</div>
       <div className="ai">
-        <div className="aiImg"></div>
+        <div className="aiImg">AI</div>
         <div className="textBox word">
           <p>{word1}</p>
           <p>{word2}</p>
@@ -90,7 +114,7 @@ function Explanation() {
         />
         <input type="submit" value="送信" />
       </form>
-      <div className="timer">{time}</div>
+      <Timer time={time} />
       <div className="signal">{signal}</div>
     </div>
   );
