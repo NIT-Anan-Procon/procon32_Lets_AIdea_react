@@ -45,6 +45,7 @@ export default function Result() {
           <div className="rank">1st</div>
           <img
             src="https://source.unsplash.com/featured/?random"
+            alt="アイコン"
             className="icon"
           />
           <div className="name">Togo</div>
@@ -68,6 +69,7 @@ export default function Result() {
           <div className="rank">2nd</div>
           <img
             src="https://source.unsplash.com/featured/?random"
+            alt="アイコン"
             className="icon"
           />
           <div className="name">Taiki</div>
@@ -91,6 +93,7 @@ export default function Result() {
           <div className="rank">3rd</div>
           <img
             src="https://source.unsplash.com/featured/?random"
+            alt="アイコン"
             className="icon"
           />
           <div className="name">Ibuki</div>
