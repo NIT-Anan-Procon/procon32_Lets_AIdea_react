@@ -11,8 +11,8 @@
 }
 
 #answerForm {
-  grid-area: answerForm;
   display: grid;
+  grid-area: answerForm;
   grid-template:
     "......... ...... ......... ......" 2%
     "myChoice1 image1 myChoice2 image2" 43%
@@ -59,8 +59,8 @@
 }
 
 .mark {
-  position: absolute;
-  object-fit: contain;
-  top: 0;
   left: 0;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
 }
