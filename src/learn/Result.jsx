@@ -7,24 +7,28 @@ function Result() {
   const [wordData, setWordData] = useState({
     playerId: [
       {
-        playerDescription: "百獣の王は静かに微笑みを湛えている",
-        aiDescription: "草原でライオンが座っています",
+        explanation: "百獣の王は静かに微笑みを湛えている",
+        ai: "草原でライオンが座っています",
         ngWord: ["草原", "ライオン"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
-        playerDescription: "幾重の鳥居が私たちを待っている",
-        aiDescription: "草に囲まれた赤い建物に光が当たっています",
+        explanation: "狙った獲物は逃がさない",
+        ai: "草原でライオンが座っています",
         ngWord: ["草", "赤い", "光"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
+        explanation: "プレイヤー説明文",
+        ai: "草原でライオンが座っています",
+        ngWord: ["草", "赤い", "光"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
+        explanation: "プレイヤー説明文",
+        ai: "草原でライオンが座っています",
+        ngWord: ["草", "赤い", "光"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
     ],
   });
@@ -34,28 +38,28 @@ function Result() {
         userID: 1111,
         flag: 1,
         name: "Togo",
-        image_icon: "https://source.unsplash.com/featured/?dog",
+        imageIcon: "https://source.unsplash.com/featured/?dog",
         badge: null,
       },
       {
         userID: 1112,
         flag: 0,
         name: "Taiki",
-        image_icon: "https://source.unsplash.com/featured/?food",
+        imageIcon: "https://source.unsplash.com/featured/?food",
         badge: null,
       },
       {
         userID: 1113,
         flag: 0,
         name: "Ibuki",
-        image_icon: "https://source.unsplash.com/featured/?bard",
+        imageIcon: "https://source.unsplash.com/featured/?bard",
         badge: null,
       },
       {
         userID: 1114,
         flag: 0,
         name: "Maoki",
-        image_icon: "https://source.unsplash.com/featured/?king",
+        imageIcon: "https://source.unsplash.com/featured/?king",
         badge: null,
       },
     ],
@@ -92,43 +96,43 @@ function Result() {
             <div className="playerName">AI</div>
           </div>
           <div className="textBox playerExplanation">
-            {wordData.playerId[0].aiDescription}
+            {wordData.playerId[0].ai}
           </div>
         </div>
         <div className="player">
           <div className="playerImg">
-            <img src={userData.playerId[0].image_icon} alt="player1Img" />
+            <img src={userData.playerId[0].imageIcon} alt="player1Img" />
             <div className="playerName">{userData.playerId[0].name}</div>
           </div>
           <div className="textBox playerExplanation">
-            {wordData.playerId[0].playerDescription}
+            {wordData.playerId[0].explanation}
           </div>
         </div>
         <div className="player">
           <div className="playerImg">
-            <img src={userData.playerId[1].image_icon} alt="player2Img" />
+            <img src={userData.playerId[1].imageIcon} alt="player2Img" />
             <div className="playerName">{userData.playerId[1].name}</div>
           </div>
           <div className="textBox playerExplanation">
-            {wordData.playerId[1].playerDescription}
+            {wordData.playerId[1].explanation}
           </div>
         </div>
         <div className="player">
           <div className="playerImg">
-            <img src={userData.playerId[2].image_icon} alt="player3Img" />
+            <img src={userData.playerId[2].imageIcon} alt="player3Img" />
             <div className="playerName">{userData.playerId[2].name}</div>
           </div>
           <div className="textBox playerExplanation">
-            {wordData.playerId[2].playerDescription}
+            {wordData.playerId[2].explanation}
           </div>
         </div>
         <div className="player">
           <div className="playerImg">
-            <img src={userData.playerId[3].image_icon} alt="player4Img" />
+            <img src={userData.playerId[3].imageIcon} alt="player4Img" />
             <div className="playerName">{userData.playerId[3].name}</div>
           </div>
           <div className="textBox playerExplanation">
-            {wordData.playerId[3].playerDescription}
+            {wordData.playerId[3].explanation}
           </div>
         </div>
       </div>
