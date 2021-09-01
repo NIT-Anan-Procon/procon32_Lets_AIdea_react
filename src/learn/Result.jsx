@@ -1,56 +1,70 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import "./css/Result.css";
+import Timer from "../common/Timer";
 
 function Result() {
-  const [ai, setAI] = useState("");
-  const [explanation, setExplanation] = useState({
-    player1: "",
-    player2: "",
-    player3: "",
-    player4: "",
+  const [wordData, setWordData] = useState({
+    playerId: [
+      {
+        playerDescription: "百獣の王は静かに微笑みを湛えている",
+        aiDescription: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+      },
+      {
+        playerDescription: "幾重の鳥居が私たちを待っている",
+        aiDescription: "草に囲まれた赤い建物に光が当たっています",
+        ngWord: ["草", "赤い", "光"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+      {
+        playerDescription: "プレイヤー説明文",
+        aiDescription: "AI説明文",
+        ngWord: ["NG1", "NG2", "NG3"],
+      },
+    ],
   });
-  const [icon, setIcon] = useState({
-    player1: "",
-    player2: "",
-    player3: "",
-    player4: "",
+  const [userData, setUserData] = useState({
+    playerId: [
+      {
+        userID: 1111,
+        flag: 1,
+        name: "Togo",
+        image_icon: "https://source.unsplash.com/featured/?dog",
+        badge: null,
+      },
+      {
+        userID: 1112,
+        flag: 0,
+        name: "Taiki",
+        image_icon: "https://source.unsplash.com/featured/?food",
+        badge: null,
+      },
+      {
+        userID: 1113,
+        flag: 0,
+        name: "Ibuki",
+        image_icon: "https://source.unsplash.com/featured/?bard",
+        badge: null,
+      },
+      {
+        userID: 1114,
+        flag: 0,
+        name: "Maoki",
+        image_icon: "https://source.unsplash.com/featured/?king",
+        badge: null,
+      },
+    ],
   });
   const history = useHistory();
   const [time, setTime] = useState(10);
   const timer = useRef(null);
 
-  useEffect(() => {
-    // axios.get("url")
-    //     .then(res => {
-    //        setAI(res.data);
-    //        setExplanation(res.data);
-    //        setIcon(res.data);
-    //     })
-    setAI("草原でライオンが座っている。");
-
-    setExplanation({ ...explanation, player1: "ライオンが歩いている" });
-    setExplanation({ ...explanation, player2: "ライオンがたたずんでいる" });
-    setExplanation({ ...explanation, player3: "獅子の雄たけび" });
-    setExplanation({ ...explanation, player4: "人がライオンと認識するもの" });
-    setIcon({
-      ...explanation,
-      player1: "https://source.unsplash.com/featured/?dog",
-    });
-    setIcon({
-      ...explanation,
-      player2: "https://source.unsplash.com/featured/?town",
-    });
-    setIcon({
-      ...explanation,
-      player3: "https://source.unsplash.com/featured/?sea",
-    });
-    setIcon({
-      ...explanation,
-      player4: "https://source.unsplash.com/featured/?food",
-    });
-  });
+  useEffect(() => {}, []);
 
   useEffect(() => {
     timer.current = setInterval(() => {
@@ -58,7 +72,9 @@ function Result() {
     }, 1000);
   }, []);
 
-  //if (time === 0) {history.push("/vote");}
+  if (time === 0) {
+    history.push("/vote");
+  }
 
   return (
     <div id="result">
@@ -69,36 +85,54 @@ function Result() {
           alt="explanationImg"
         />
       </div>
-      <div className="player">
-        <div className="playerImg">
-          <img src="https://source.unsplash.com/featured/?AI" alt="ai1Img" />
+      <div className="players">
+        <div className="player">
+          <div className="playerImg">
+            <img src="https://source.unsplash.com/featured/?ai" alt="ai1Img" />
+            <div className="playerName">AI</div>
+          </div>
+          <div className="textBox playerExplanation">
+            {wordData.playerId[0].aiDescription}
+          </div>
         </div>
-        <div className="textBox playerExplanation">{ai}</div>
-      </div>
-      <div className="player">
-        <div className="playerImg">
-          <img src={icon.player1} alt="player1Img" />
+        <div className="player">
+          <div className="playerImg">
+            <img src={userData.playerId[0].image_icon} alt="player1Img" />
+            <div className="playerName">{userData.playerId[0].name}</div>
+          </div>
+          <div className="textBox playerExplanation">
+            {wordData.playerId[0].playerDescription}
+          </div>
         </div>
-        <div className="textBox playerExplanation">{explanation.player1}</div>
-      </div>
-      <div className="player">
-        <div className="playerImg">
-          <img src={icon.player2} alt="player2Img" />
+        <div className="player">
+          <div className="playerImg">
+            <img src={userData.playerId[1].image_icon} alt="player2Img" />
+            <div className="playerName">{userData.playerId[1].name}</div>
+          </div>
+          <div className="textBox playerExplanation">
+            {wordData.playerId[1].playerDescription}
+          </div>
         </div>
-        <div className="textBox playerExplanation">{explanation.player2}</div>
-      </div>
-      <div className="player">
-        <div className="playerImg">
-          <img src={icon.player3} alt="player3Img" />
+        <div className="player">
+          <div className="playerImg">
+            <img src={userData.playerId[2].image_icon} alt="player3Img" />
+            <div className="playerName">{userData.playerId[2].name}</div>
+          </div>
+          <div className="textBox playerExplanation">
+            {wordData.playerId[2].playerDescription}
+          </div>
         </div>
-        <div className="textBox playerExplanation">{explanation.player3}</div>
-      </div>
-      <div className="player">
-        <div className="playerImg">
-          <img src={icon.player4} alt="player4Img" />
+        <div className="player">
+          <div className="playerImg">
+            <img src={userData.playerId[3].image_icon} alt="player4Img" />
+            <div className="playerName">{userData.playerId[3].name}</div>
+          </div>
+          <div className="textBox playerExplanation">
+            {wordData.playerId[3].playerDescription}
+          </div>
         </div>
-        <div className="textBox playerExplanation">{explanation.player4}</div>
       </div>
+      <Timer time={time} />
     </div>
   );
 }

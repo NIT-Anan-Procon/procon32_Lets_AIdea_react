@@ -6,21 +6,13 @@ body {
   display: grid;
   grid-template:
     "... ............... ............... ................ ..." 3vh
-    "... title           title           title            ..." 10vh
+    "... ............... title           ................ ..." 10vh
     "... ............... ............... ................ ..." 2vh
-    "... ............... image           ................ ..." 60vh
+    "... ............... image           ................ ..." 64vh
     "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." 20vh
+    "... players         players         players          ..." 100vh
     "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." 20vh
-    "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." 20vh
-    "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." 20vh
-    "... ............... ............... ................ ..." 3vh
-    "... player          player          player           ..." 20vh
-    "... ............... ............... ................ ..." 3vh
-    /20vh auto 84vh auto 20vh;
+    /20vh auto 80vh auto 20vh;
   height: 100%;
   width: 100%;
 }
@@ -31,14 +23,14 @@ body {
   text-align: center;
 }
 
-.explanationImg {
-  grid-area: image;
-}
-
-.explanationImg img {
+img {
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+.explanationImg {
+  grid-area: image;
 }
 
 .textBox {
@@ -48,20 +40,35 @@ body {
   padding: 2vh;
 }
 
+.players {
+  display: flex;
+  flex-direction: column;
+  grid-area: players;
+  justify-content: space-between;
+}
+
 .player {
   display: flex;
   flex-direction: row;
-  grid-area: player;
+  margin-top: 3vh;
 }
 
 .playerImg {
+  display: flex;
   flex-basis: 20%;
+  flex-direction: column;
 }
 
 .playerImg img {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
+  border-radius: 50%;
+  height: 20vh;
+  margin: auto;
+  width: 20vh;
+}
+
+.playerName {
+  flex-basis: 10%;
+  text-align: center;
 }
 
 .playerExplanation {
