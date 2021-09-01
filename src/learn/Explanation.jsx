@@ -9,27 +9,27 @@ function Explanation() {
     playerId: [
       {
         explanation: "百獣の王は静かに微笑みを湛えている",
-        AI: "草原でライオンが座っています",
-        NGword: ["草原", "ライオン"],
+        ai: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
         synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
         explanation: "プレイヤー説明文",
-        AI: "AI説明文",
-        NGword: ["1", "2", "3"],
-        synonyms: ["1", "2", "3"],
+        ai: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
         explanation: "プレイヤー説明文",
-        AI: "AI説明文",
-        NGword: ["1", "2", "3"],
-        synonyms: ["1", "2", "3"],
+        ai: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
         explanation: "プレイヤー説明文",
-        AI: "AI説明文",
-        NGword: ["1", "2", "3"],
-        synonyms: ["1", "2", "3"],
+        ai: "草原でライオンが座っています",
+        ngWord: ["草原", "ライオン"],
+        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
     ],
   });
@@ -64,16 +64,16 @@ function Explanation() {
   useEffect(() => {
     if (time % 3 === 0 && time < 30) {
       setWord2(word1);
-      if (data.playerId[0].NGword[(30 - time - 3) / 3] != null) {
-        setWord1(data.playerId[0].NGword[(30 - time - 3) / 3]);
+      if (data.playerId[0].ngWord[(30 - time - 3) / 3] != null) {
+        setWord1(data.playerId[0].ngWord[(30 - time - 3) / 3]);
       } else if (
         data.playerId[0].synonyms[
-          (30 - time - 3) / 3 - data.playerId[0].NGword.length
+          (30 - time - 3) / 3 - data.playerId[0].ngWord.length
         ] != null
       ) {
         setWord1(
           data.playerId[0].synonyms[
-            (30 - time - 3) / 3 - data.playerId[0].NGword.length
+            (30 - time - 3) / 3 - data.playerId[0].ngWord.length
           ]
         );
       } else {
@@ -81,7 +81,7 @@ function Explanation() {
       }
     }
     if (time === 15) {
-      setAiExplanation(data.playerId[0].AI);
+      setAiExplanation(data.playerId[0].ai);
     }
     if (time === 0) {
       setSignal("Time Up");
