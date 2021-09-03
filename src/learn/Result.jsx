@@ -68,17 +68,18 @@ function Result() {
   const [time, setTime] = useState(10);
   const timer = useRef(null);
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     timer.current = setInterval(() => {
       setTime((time) => time - 1);
     }, 1000);
   }, []);
 
-  if (time === 0) {
-    history.push("/vote");
-  }
+  useEffect(() => {
+    if (time === 0) {
+      clearInterval(timer.current);
+      history.push("/vote");
+    }
+  }, [time]);
 
   return (
     <div id="result">
