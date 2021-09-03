@@ -90,13 +90,13 @@ function Explanation() {
     if (time === timeFirst / 2) {
       setAiExplanation(data.playerId[0].ai);
     }
-    //if (time === 0) {
-    //  setSignal("Time Up");
-    //clearInterval(timer.current);
-    //setTimeout(() => {
-    //  history.push("/result");
-    //}, 5000);
-    //}
+    if (time === 0) {
+      setSignal("Time Up");
+      clearInterval(timer.current);
+      setTimeout(() => {
+        history.push("/result");
+      }, 5000);
+    }
   }, [time]);
 
   return (
