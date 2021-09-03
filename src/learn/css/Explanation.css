@@ -9,9 +9,9 @@ body {
     "... title           title           title            ..." 10vh
     "... ............... ............... ................ ..." 2vh
     "... image           ............... learn            ..." 5vh
-    "... image           ............... ................ ..." 3vh
+    "... image           ............... ................ ..." 5vh
     "... image           ............... ai               ..." 26vh
-    "... image           ............... ................ ..." 2vh
+    "... image           ............... ................ ..." 1vh
     "... image           ............... aiExplanation    ..." 20vh
     "... ............... ............... ................ ..." 1vh
     "... explanationForm explanationForm explanationForm  ..." auto
@@ -52,28 +52,51 @@ img {
   display: flex;
   flex-direction: row;
   grid-area: ai;
+  margin-left: 15vh;
 }
 
 .aiImg {
-  background: #000;
-  border-radius: 50%;
   height: 15vh;
   width: 15vh;
 }
 
 .word {
+  border: solid 0.5vh black;
+  border-radius: 2vh;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 4vh;
+  height: 22vh;
   margin-left: 5vh;
-  width: 50vh;
+  position: relative;
+  width: 30vh;
+}
+
+.word::before {
+  border: 12px solid transparent;
+  border-right: 12px solid #fff;
+  content: "";
+  left: -23px;
+  margin-top: -6px;
+  position: absolute;
+  top: 25%;
+  z-index: 2;
+}
+
+.word::after {
+  border: 12px solid transparent;
+  border-right: 14px solid #555;
+  content: "";
+  left: -29px;
+  margin-top: -6px;
+  position: absolute;
+  top: 25%;
+  z-index: 1;
 }
 
 .aiExplanation {
   border: solid 0.5vh #000;
   grid-area: aiExplanation;
-}
-
-p {
-  font-size: 5vh;
-  margin: 2vh 0 0 4vh;
 }
 
 .attentionMessage {

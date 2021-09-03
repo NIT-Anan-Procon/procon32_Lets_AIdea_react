@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
 import Timer from "../common/Timer";
+import aiImg from "../image/aiImg.svg";
+import aiImgSmile from "../image/aiImgSmile.svg";
 
 function Explanation() {
   //　TODO data:仮のAPI
@@ -36,10 +38,12 @@ function Explanation() {
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
+  const [aiFace, setAiFace] = useState(aiImg);
   const [attentionMessage, setAttentionMessage] = useState("");
   const [myExplanation, setMyExplanation] = useState("");
   const history = useHistory();
-  const [time, setTime] = useState(30);
+  const timeFirst = 30;
+  const [time, setTime] = useState(timeFirst);
   const [signal, setSignal] = useState("");
   const timer = useRef(null);
 
@@ -80,16 +84,19 @@ function Explanation() {
         setWord1("...");
       }
     }
-    if (time === 15) {
+    if (time === timeFirst / 2 + 1) {
+      setAiFace(aiImgSmile);
+    }
+    if (time === timeFirst / 2) {
       setAiExplanation(data.playerId[0].ai);
     }
-    if (time === 0) {
-      setSignal("Time Up");
-      clearInterval(timer.current);
-      setTimeout(() => {
-        history.push("/result");
-      }, 5000);
-    }
+    //if (time === 0) {
+    //  setSignal("Time Up");
+    //clearInterval(timer.current);
+    //setTimeout(() => {
+    //  history.push("/result");
+    //}, 5000);
+    //}
   }, [time]);
 
   return (
@@ -101,8 +108,10 @@ function Explanation() {
       />
       <div className="learn">AIのアイディアを盗もう</div>
       <div className="ai">
-        <div className="aiImg">AI</div>
-        <div className="textBox word">
+        <div className="aiImg">
+          <img src={aiFace} alt="aiImg" />
+        </div>
+        <div className="word">
           <p>{word1}</p>
           <p>{word2}</p>
         </div>
