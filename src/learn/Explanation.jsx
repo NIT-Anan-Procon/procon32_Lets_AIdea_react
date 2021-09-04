@@ -6,8 +6,7 @@ import aiImg from "../image/aiImg.svg";
 import aiImgSmile from "../image/aiImgSmile.svg";
 
 function Explanation() {
-  //　TODO data:仮のAPI
-  const [data, setData] = useState({
+  const data = {
     playerId: [
       {
         explanation: "百獣の王は静かに微笑みを湛えている",
@@ -34,7 +33,7 @@ function Explanation() {
         synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
     ],
-  });
+  };
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
