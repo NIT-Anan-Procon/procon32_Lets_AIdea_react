@@ -96,8 +96,8 @@ function Result() {
             <img src="https://source.unsplash.com/featured/?ai" alt="ai1Img" />
             <div className="playerName">AI</div>
           </div>
-          <div className="textBox playerExplanation">
-            {wordData.playerId[0].ai}
+          <div className="balloon playerExplanation">
+            <p>{wordData.playerId[0].ai}</p>
           </div>
         </div>
         <div className="player">
@@ -105,8 +105,8 @@ function Result() {
             <img src={userData.playerId[0].imageIcon} alt="player1Img" />
             <div className="playerName">{userData.playerId[0].name}</div>
           </div>
-          <div className="textBox playerExplanation">
-            {wordData.playerId[0].explanation}
+          <div className="balloon playerExplanation">
+            <p>{wordData.playerId[0].explanation}</p>
           </div>
         </div>
         <div className="player">
@@ -114,8 +114,8 @@ function Result() {
             <img src={userData.playerId[1].imageIcon} alt="player2Img" />
             <div className="playerName">{userData.playerId[1].name}</div>
           </div>
-          <div className="textBox playerExplanation">
-            {wordData.playerId[1].explanation}
+          <div className="balloon playerExplanation">
+            <p>{wordData.playerId[1].explanation}</p>
           </div>
         </div>
         <div className="player">
@@ -123,8 +123,8 @@ function Result() {
             <img src={userData.playerId[2].imageIcon} alt="player3Img" />
             <div className="playerName">{userData.playerId[2].name}</div>
           </div>
-          <div className="textBox playerExplanation">
-            {wordData.playerId[2].explanation}
+          <div className="balloon playerExplanation">
+            <p>{wordData.playerId[2].explanation}</p>
           </div>
         </div>
         <div className="player">
@@ -132,8 +132,8 @@ function Result() {
             <img src={userData.playerId[3].imageIcon} alt="player4Img" />
             <div className="playerName">{userData.playerId[3].name}</div>
           </div>
-          <div className="textBox playerExplanation">
-            {wordData.playerId[3].explanation}
+          <div className="balloon playerExplanation">
+            <p>{wordData.playerId[3].explanation}</p>
           </div>
         </div>
       </div>

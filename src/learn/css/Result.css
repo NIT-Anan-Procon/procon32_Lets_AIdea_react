@@ -36,13 +36,6 @@ img {
   object-fit: contain;
 }
 
-.textBox {
-  border: solid 0.5vh black;
-  box-sizing: border-box;
-  font-size: 4vh;
-  padding: 2vh;
-}
-
 .players {
   display: flex;
   flex-direction: column;
@@ -76,4 +69,46 @@ img {
 
 .playerExplanation {
   flex-basis: 80%;
+  position: relative;
+}
+
+.playerExplanation p {
+  margin: 0 0 0 2vh;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.balloon {
+  border: solid 0.5vh black;
+  border-radius: 2vh;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 4vh;
+  height: 22vh;
+  margin-left: 5vh;
+  position: relative;
+  width: 30vh;
+}
+
+.balloon::before {
+  border: 12px solid transparent;
+  border-right: 12px solid #fff;
+  content: "";
+  left: -24px;
+  margin-top: -12px;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+.balloon::after {
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  content: "";
+  left: -30px;
+  margin-top: -14px;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
 }
