@@ -69,7 +69,7 @@ img {
   height: 22vh;
   margin-left: 5vh;
   position: relative;
-  width: 30vh;
+  width: 40vh;
 }
 
 .word::before {
@@ -97,6 +97,7 @@ img {
 .aiExplanation {
   border-color: #4f84d3;
   grid-area: aiExplanation;
+  overflow-y: scroll;
 }
 
 .aiExplanation p {

@@ -12,7 +12,7 @@ function Explanation() {
         explanation: "百獣の王は静かに微笑みを湛えている",
         ai: "草原でライオンが座っています",
         ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
+        synonyms: ["黄色", "ステップ", "草", "獅子", "黄土色"],
       },
       {
         explanation: "プレイヤー説明文",
