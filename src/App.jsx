@@ -4,11 +4,11 @@ import "./common/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Explanation from "./learn/Explanation";
 import LearnResult from "./learn/Result";
-import Description from "./quiz/Description";
-import Answer from "./quiz/Answer";
+import QuizDescription from "./quiz/Description";
+import QuizAnswer from "./quiz/Answer";
 import QuizResult from "./quiz/Result";
-import Voting from "./quiz/Voting";
-import Award from "./quiz/Award";
+import QuizVoting from "./quiz/Voting";
+import QuizAward from "./quiz/Award";
 
 export default function App() {
   return (
@@ -16,11 +16,11 @@ export default function App() {
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
       <Route path="/explanation" exact component={Explanation} />
       <Route path="/result" exact component={LearnResult} />
-      <Route path="/description" exact component={Description} />
-      <Route path="/answer" exact component={Answer} />
-      <Route path="/result" exact component={QuizResult} />
-      <Route path="/voting" exact component={Voting} />
-      <Route path="/award" exact component={Award} />
+      <Route path="/quiz/description" exact component={QuizDescription} />
+      <Route path="/quiz/answer" exact component={QuizAnswer} />
+      <Route path="/quiz/result" exact component={QuizResult} />
+      <Route path="/quiz/voting" exact component={QuizVoting} />
+      <Route path="/quiz/award" exact component={QuizAward} />
     </BrowserRouter>
   );
 }
