@@ -34,11 +34,6 @@ img {
   grid-area: otherDescription;
 }
 
-.ngWord {
-  border: solid 0.5vh #f22424;
-  grid-area: ngWord;
-}
-
 p {
   font-size: 5vh;
   margin: 2vh 0 0 4vh;
