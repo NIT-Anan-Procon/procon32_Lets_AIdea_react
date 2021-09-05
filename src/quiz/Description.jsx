@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
 import Title from "../common/Title";
+import OtherDescription from "../common/OtherDescription";
 import AttentionMessage from "../common/AttentionMessage";
 import Timer from "../common/Timer";
 import NgWord from "../common/NgWord";
@@ -78,10 +79,10 @@ export default function Description() {
     <div id="description">
       <Title text="この画像を説明しよう" />
       <img src="https://source.unsplash.com/featured/?lion" alt="問題の画像" />
-      <div className="textBox otherDescription">
-        AIの説明文
-        <p>{data.playerId[0].aiDescription}</p>
-      </div>
+      <OtherDescription
+        title="AIの説明文"
+        text={data.playerId[0].aiDescription}
+      />
       <NgWord text={ngWord} />
       <form onSubmit={handleSubmit} id="descriptionForm">
         <AttentionMessage text={attentionMessage} />
