@@ -9,12 +9,6 @@ body {
   width: 100%;
 }
 
-.title {
-  font-size: 8vh;
-  grid-area: title;
-  text-align: center;
-}
-
 img {
   grid-area: image;
   height: 100%;
