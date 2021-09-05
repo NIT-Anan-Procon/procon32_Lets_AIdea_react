@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 export default function Test() {
   return (
     <>
+      <Link to="/Explanation">
+        <p>learn/Explanation</p>
+      </Link>
       <Link to="/result">
         <p>learn/result</p>
       </Link>
