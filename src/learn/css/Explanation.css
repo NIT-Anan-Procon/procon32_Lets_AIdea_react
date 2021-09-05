@@ -74,22 +74,22 @@ img {
 }
 
 .word::before {
-  border: 12px solid transparent;
-  border-right: 12px solid #fff;
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid white;
   content: "";
-  left: -23px;
-  margin-top: -6px;
+  left: -6.5vh;
+  margin-top: -3vh;
   position: absolute;
   top: 25%;
   z-index: 2;
 }
 
 .word::after {
-  border: 12px solid transparent;
-  border-right: 14px solid #555;
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid black;
   content: "";
-  left: -29px;
-  margin-top: -6px;
+  left: -7.5vh;
+  margin-top: -3vh;
   position: absolute;
   top: 25%;
   z-index: 1;
