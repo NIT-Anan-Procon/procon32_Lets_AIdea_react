@@ -1,0 +1,13 @@
+.Timeup {
+  align-items: center;
+  border-color: rgba(252, 252, 252, 0.7);
+  color: #f00;
+  display: flex;
+  font-size: 30vh;
+  font-style: normal;
+  font-weight: normal;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
