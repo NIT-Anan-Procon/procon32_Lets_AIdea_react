@@ -12,8 +12,8 @@
 }
 
 #pointTable {
-  grid-area: pointTable;
   display: grid;
+  grid-area: pointTable;
   grid-template:
     "firstPlayer " 36%
     "............" 6%
@@ -54,11 +54,11 @@
 }
 
 .rank {
-  grid-area: rank;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   font-size: 4vh;
+  grid-area: rank;
+  justify-content: center;
 }
 
 #firstPlayer .rank {
@@ -66,14 +66,14 @@
 }
 
 #firstPlayer .icon {
-  width: 19vh;
   height: 19vh;
+  width: 19vh;
 }
 
 #secondPlayer .icon,
 #thirdPlayer .icon {
-  width: 13vh;
   height: 13vh;
+  width: 13vh;
 }
 
 #firstPlayer .name {
@@ -88,44 +88,44 @@
 .descriptionPointBox,
 .answerPointBox,
 .totalPointBox {
-  position: relative;
-  padding: 1vh;
   font-size: 2vh;
+  padding: 1vh;
+  position: relative;
+}
+
+.descriptionPointBox {
+  background-color: #8bd6f5;
+  grid-area: descriptionPointBox;
+}
+
+.answerPointBox {
+  background-color: #8bd6f5;
+  grid-area: answerPointBox;
+}
+
+.totalPointBox {
+  background-color: #ff6347;
+  color: white;
+  grid-area: totalPointBox;
 }
 
 #firstPlayer .descriptionPointBox,
 #firstPlayer .answerPointBox,
 #firstPlayer .totalPointBox {
-  position: relative;
-  padding: 2vh;
   font-size: 3vh;
-}
-
-.descriptionPointBox {
-  grid-area: descriptionPointBox;
-  background-color: #8bd6f5;
-}
-
-.answerPointBox {
-  grid-area: answerPointBox;
-  background-color: #8bd6f5;
-}
-
-.totalPointBox {
-  grid-area: totalPointBox;
-  background-color: #ff6347;
-  color: white;
+  padding: 2vh;
+  position: relative;
 }
 
 .descriptionPointBox p,
 .answerPointBox p,
 .totalPointBox p {
-  position: absolute;
-  top: 50%;
+  font-size: 5vh;
   left: 50%;
   margin: 0;
+  position: absolute;
+  top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 5vh;
 }
 
 #firstPlayer p {
