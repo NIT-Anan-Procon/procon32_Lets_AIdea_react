@@ -9,13 +9,6 @@ body {
   width: 100%;
 }
 
-img {
-  grid-area: image;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
 .textBox {
   border: solid 0.5vh black;
   box-sizing: border-box;
