@@ -44,17 +44,6 @@ p {
   margin: 2vh 0 0 4vh;
 }
 
-.attentionMessage {
-  align-items: center;
-  color: #f22424;
-  display: flex;
-  font-size: 4vh;
-  grid-area: attentionMessage;
-  justify-content: center;
-  line-height: 4vh;
-  margin: 0;
-}
-
 input[type="radio"] {
   height: 5vh;
   transform: translate(30%, 350%);
