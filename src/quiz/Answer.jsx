@@ -72,7 +72,7 @@ export default function Answer() {
           setMark(markArray.slice());
           clearInterval(timer);
           setTimeout(() => {
-            if (timeCopy === 0) history.push("/result");
+            if (timeCopy === 0) history.push("/quiz/result");
             startTimer();
             setTime(40);
             document.getElementById("mark1").style.display = "none";
