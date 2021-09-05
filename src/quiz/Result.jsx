@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
+import Icon from "../common/Icon";
 
 export default function Result() {
   const [data, setData] = useState({
@@ -43,11 +44,7 @@ export default function Result() {
       <div id="pointTable">
         <div id="firstPlayer">
           <div className="rank">1st</div>
-          <img
-            src="https://source.unsplash.com/featured/?random"
-            alt="アイコン"
-            className="icon"
-          />
+          <Icon src="https://source.unsplash.com/featured/?random" />
           <div className="name">Togo</div>
           <div className="descriptionPointBox">
             説明

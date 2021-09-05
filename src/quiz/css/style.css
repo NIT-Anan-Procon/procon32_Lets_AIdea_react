@@ -78,13 +78,6 @@ input[type="submit"] {
   background-color: #ff6347;
 }
 
-.icon {
-  grid-area: icon;
-  object-fit: cover;
-  margin: auto;
-  border-radius: 50%;
-}
-
 .name {
   grid-area: name;
   display: flex;
