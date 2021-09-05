@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
 import Title from "../common/Title";
+import AttentionMessage from "../common/AttentionMessage";
 import Timer from "../common/Timer";
+import NgWord from "../common/NgWord";
 
 export default function Description() {
   const [data, setData] = useState({
@@ -80,12 +82,9 @@ export default function Description() {
         AIの説明文
         <p>{data.playerId[0].aiDescription}</p>
       </div>
-      <div className="textBox ngWord">
-        NGワード
-        <p>{ngWord}</p>
-      </div>
+      <NgWord text={ngWord} />
       <form onSubmit={handleSubmit} id="descriptionForm">
-        <p className="attentionMessage">{attentionMessage}</p>
+        <AttentionMessage text={attentionMessage} />
         <input
           type="text"
           value={myDescription}
