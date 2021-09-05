@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
+import AttentionMessage from "../common/AttentionMessage";
 import Timer from "../common/Timer";
 
 export default function Description() {
@@ -84,7 +85,7 @@ export default function Description() {
         <p>{ngWord}</p>
       </div>
       <form onSubmit={handleSubmit} id="descriptionForm">
-        <p className="attentionMessage">{attentionMessage}</p>
+        <AttentionMessage text={attentionMessage} />
         <input
           type="text"
           value={myDescription}
