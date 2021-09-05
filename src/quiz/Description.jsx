@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
+import Image from "../common/Image";
 import Timer from "../common/Timer";
 
 export default function Description() {
@@ -74,7 +75,10 @@ export default function Description() {
   return (
     <div id="description">
       <div className="title">この画像を説明しよう</div>
-      <img src="https://source.unsplash.com/featured/?lion" alt="問題の画像" />
+      <Image
+        src="https://source.unsplash.com/featured/?lion"
+        alt="問題の画像"
+      />
       <div className="textBox otherDescription">
         AIの説明文
         <p>{data.playerId[0].aiDescription}</p>
