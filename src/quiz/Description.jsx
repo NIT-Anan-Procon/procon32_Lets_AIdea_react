@@ -78,7 +78,7 @@ export default function Description() {
 
   return (
     <div id="description">
-      <div className="title">この画像を説明しよう</div>
+      <Title text="この画像を説明しよう" />
       <Image
         src="https://source.unsplash.com/featured/?lion"
         alt="問題の画像"
