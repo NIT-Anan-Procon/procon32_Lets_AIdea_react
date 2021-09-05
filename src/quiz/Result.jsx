@@ -35,7 +35,7 @@ export default function Result() {
   }, []);
 
   const handleSubmit = () => {
-    history.push("/voting");
+    history.push("/quiz/voting");
   };
 
   return (

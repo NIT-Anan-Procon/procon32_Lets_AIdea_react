@@ -38,8 +38,10 @@ input[type="submit"] {
   display: flex;
   font-size: 6vh;
   grid-area: inputSubmit;
+  height: 100%;
   justify-content: center;
   padding: 0;
+  width: 100%;
 }
 
 .name {
