@@ -34,7 +34,6 @@ function Explanation() {
       },
     ],
   };
-  const [words, setWords] = useState();
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
@@ -60,12 +59,6 @@ function Explanation() {
   };
 
   useEffect(() => {
-    for (
-      let i = 0;
-      i < data.playerId[0].ngWord.length + data.playerId[0].synonyms.length;
-      i++
-    ) {}
-
     timer.current = setInterval(() => {
       setTime((time) => time - 1);
     }, 1000);
