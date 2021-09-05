@@ -12,19 +12,6 @@ body {
   width: 100%;
 }
 
-.title {
-  font-size: 8vh;
-  grid-area: title;
-  text-align: center;
-}
-
-img {
-  grid-area: image;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
 .textBox {
   border: solid 0.5vh black;
   box-sizing: border-box;
@@ -32,30 +19,9 @@ img {
   padding: 2vh;
 }
 
-.otherDescription {
-  border: solid 0.5vh #4f84d3;
-  grid-area: otherDescription;
-}
-
-.ngWord {
-  border: solid 0.5vh #f22424;
-  grid-area: ngWord;
-}
-
 p {
   font-size: 5vh;
   margin: 2vh 0 0 4vh;
-}
-
-.attentionMessage {
-  align-items: center;
-  color: #f22424;
-  display: flex;
-  font-size: 4vh;
-  grid-area: attentionMessage;
-  justify-content: center;
-  line-height: 4vh;
-  margin: 0;
 }
 
 input[type="radio"] {

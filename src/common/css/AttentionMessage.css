@@ -1,0 +1,10 @@
+.attentionMessage {
+  align-items: center;
+  color: #f22424;
+  display: flex;
+  font-size: 4vh;
+  grid-area: attentionMessage;
+  justify-content: center;
+  line-height: 4vh;
+  margin: 0;
+}
