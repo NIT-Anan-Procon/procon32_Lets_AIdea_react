@@ -29,11 +29,6 @@ img {
   padding: 2vh;
 }
 
-.otherDescription {
-  border: solid 0.5vh #4f84d3;
-  grid-area: otherDescription;
-}
-
 .ngWord {
   border: solid 0.5vh #f22424;
   grid-area: ngWord;

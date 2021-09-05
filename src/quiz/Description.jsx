@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/style.css";
 import "./css/Description.css";
+import OtherDescription from "../common/OtherDescription";
 import Timer from "../common/Timer";
 
 export default function Description() {
@@ -75,10 +76,10 @@ export default function Description() {
     <div id="description">
       <div className="title">この画像を説明しよう</div>
       <img src="https://source.unsplash.com/featured/?lion" alt="問題の画像" />
-      <div className="textBox otherDescription">
-        AIの説明文
-        <p>{data.playerId[0].aiDescription}</p>
-      </div>
+      <OtherDescription
+        title="AIの説明文"
+        text={data.playerId[0].aiDescription}
+      />
       <div className="textBox ngWord">
         NGワード
         <p>{ngWord}</p>
