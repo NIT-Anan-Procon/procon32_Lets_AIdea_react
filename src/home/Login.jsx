@@ -40,20 +40,20 @@ export default function Login() {
           value={userName}
           placeholder="ユーザー名"
           onChange={userNameChange}
-          className="textBox"
+          id="inputUserName"
         />
         <input
           type="text"
           value={password}
           placeholder="パスワード"
           onChange={passwordChange}
-          className="textBox"
+          id="inputPassword"
         />
-        <input type="submit" value="ログイン" />
-        <input type="submit" value="新規登録" />
+        <input type="submit" id="loginButton" value="ログイン" />
+        <input type="submit" id="registerButton" value="新規登録" />
       </form>
-      <p className="attentionMessage">{attentionMessageToUserName}</p>
-      <p className="attentionMessage">{attentionMessageToPassword}</p>
+      <p className="attentionMessageU">{attentionMessageToUserName}</p>
+      <p className="attentionMessageP">{attentionMessageToPassword}</p>
     </div>
   );
 }

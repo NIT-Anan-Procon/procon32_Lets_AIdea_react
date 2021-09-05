@@ -1,5 +1,62 @@
 #login {
+  display: grid;
+  grid-template:
+    "... ................. ..." 3vh
+    "... logo              ..." 5vh
+    "... ................. ..." 5vh
+    "... loginForm........ ..." auto
+    "... ................. ..." 5vh
+    "... attentionMessageU ..." 5vh
+    "... ................. ..." 5vh
+    "... attentionMessageP ..." 5vh
+    "... ................. ..." 3vh
+    /20vh auto 20vh;
+  justify-content: center;
+}
+
+.logo {
+  grid-area: logo;
+  font-size: 5vh;
+  background-color: #4f84d3;
 }
 
 #loginForm {
+  display: grid;
+  grid-area: loginForm;
+  grid-template:
+    "... userName...... ..." 5vh
+    "... password...... ..." 5vh
+    "... loginButton... ..." 5vh
+    "... registerButton ..." 5vh
+    /20vh auto 20vh;
+}
+
+#inputUserName {
+  grid-area: userName;
+  background-color: #282c34;
+}
+
+#inputPassword {
+  grid-area: password;
+  background-color: #f22424;
+}
+
+#loginButton {
+  grid-area: loginButton;
+  background-color: antiquewhite;
+}
+
+#registerButton {
+  grid-area: registerButton;
+  background-color: aqua;
+}
+
+.attentionMessageU {
+  grid-area: attentionMessageU;
+  background-color: teal;
+}
+
+.attentionMessageP {
+  grid-area: attentionMessageP;
+  background-color: coral;
 }
