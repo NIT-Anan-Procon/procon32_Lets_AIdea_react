@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./css/style.css";
+import "./css/quiz.css";
 import "./css/Description.css";
 import Timer from "../common/Timer";
 
