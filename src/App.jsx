@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import "./common/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Explanation from "./learn/Explanation";
 import LearnResult from "./learn/Result";
