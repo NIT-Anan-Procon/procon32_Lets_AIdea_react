@@ -95,7 +95,7 @@ img {
 }
 
 .aiExplanation {
-  border: solid 0.5vh #000;
+  border-color: #4f84d3;
   grid-area: aiExplanation;
 }
 
