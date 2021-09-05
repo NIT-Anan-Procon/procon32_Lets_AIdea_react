@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
+import Title from "../common/Title";
+import Image from "../common/Image";
 import OtherDescription from "../common/OtherDescription";
+import NgWord from "../common/NgWord";
 import AttentionMessage from "../common/AttentionMessage";
 import Timer from "../common/Timer";
-import NgWord from "../common/NgWord";
 
 export default function Description() {
   const [data, setData] = useState({
@@ -77,7 +79,10 @@ export default function Description() {
   return (
     <div id="description">
       <div className="title">この画像を説明しよう</div>
-      <img src="https://source.unsplash.com/featured/?lion" alt="問題の画像" />
+      <Image
+        src="https://source.unsplash.com/featured/?lion"
+        alt="問題の画像"
+      />
       <OtherDescription
         title="AIの説明文"
         text={data.playerId[0].aiDescription}
