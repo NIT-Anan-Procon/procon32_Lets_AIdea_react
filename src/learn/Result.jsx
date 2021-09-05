@@ -4,7 +4,7 @@ import "./css/Result.css";
 import Timer from "../common/Timer";
 
 function Result() {
-  const [wordData, setWordData] = useState({
+  const wordData = {
     playerId: [
       {
         explanation: "百獣の王は静かに微笑みを湛えている",
@@ -31,8 +31,8 @@ function Result() {
         synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
     ],
-  });
-  const [userData, setUserData] = useState({
+  };
+  const userData = {
     playerId: [
       {
         userID: 1111,
@@ -63,7 +63,7 @@ function Result() {
         badge: null,
       },
     ],
-  });
+  };
   const history = useHistory();
   const [time, setTime] = useState(10);
   const timer = useRef(null);
