@@ -34,6 +34,7 @@ function Explanation() {
       },
     ],
   };
+  const [words, setWords] = useState();
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
@@ -59,6 +60,12 @@ function Explanation() {
   };
 
   useEffect(() => {
+    for (
+      let i = 0;
+      i < data.playerId[0].ngWord.length + data.playerId[0].synonyms.length;
+      i++
+    ) {}
+
     timer.current = setInterval(() => {
       setTime((time) => time - 1);
     }, 1000);
@@ -83,18 +90,20 @@ function Explanation() {
         setWord1("...");
       }
     }
-    if (time === timeFirst / 2 + 1) {
-      setAiFace(aiImgSmile);
-    }
-    if (time === timeFirst / 2) {
-      setAiExplanation(data.playerId[0].ai);
-    }
-    if (time === 0) {
-      setSignal("Time Up");
-      clearInterval(timer.current);
-      setTimeout(() => {
-        history.push("/result");
-      }, 5000);
+    switch (time) {
+      case timeFirst / 2 + 1:
+        setAiFace(aiImgSmile);
+        break;
+      case timeFirst / 2:
+        setAiExplanation(data.playerId[0].ai);
+        break;
+      case 0:
+        setSignal("Time Up");
+        clearInterval(timer.current);
+        setTimeout(() => {
+          history.push("/result");
+        }, 5000);
+        break;
     }
   }, [time]);
 

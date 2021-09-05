@@ -99,6 +99,10 @@ img {
   grid-area: aiExplanation;
 }
 
+.aiExplanation p {
+  font-size: 4vh;
+}
+
 .attentionMessage {
   align-items: center;
   color: #f22424;
