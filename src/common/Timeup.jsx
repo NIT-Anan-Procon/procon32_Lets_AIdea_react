@@ -1,10 +1,10 @@
 import React from "react";
-import "./css/Timeup.css";
+import "./css/TimeUp.css";
 
-export default function Timeup(props) {
+export default function TimeUp(props) {
   switch (props.time) {
     case 0:
-      return <div className="Timeup">Time Up</div>;
+      return <div className="TimeUp">Time Up</div>;
     default:
       return null;
   }

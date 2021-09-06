@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
 import Timer from "../common/Timer";
-import Timeup from "../common/Timeup";
+import TimeUp from "../common/Timeup";
 import aiImg from "../image/aiImg.svg";
 import aiImgSmile from "../image/aiImgSmile.svg";
 
@@ -131,7 +131,7 @@ function Explanation() {
         <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
-      <Timeup time={time} />
+      <TimeUp time={time} />
     </div>
   );
 }
