@@ -45,6 +45,7 @@ function Explanation() {
   const timeFirst = 30;
   const [time, setTime] = useState(timeFirst);
   const timer = useRef(null);
+  const [sign, setSign] = useState();
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
@@ -91,6 +92,7 @@ function Explanation() {
         setAiExplanation(data.playerId[0].ai);
         break;
       case 0:
+        setSign("Time Up");
         clearInterval(timer.current);
         setTimeout(() => {
           history.push("/result");
@@ -131,7 +133,7 @@ function Explanation() {
         <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
-      <TimeUp time={time} />
+      <TimeUp sign={sign} />
     </div>
   );
 }
