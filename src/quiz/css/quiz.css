@@ -44,13 +44,6 @@ input[type="submit"] {
   width: 100%;
 }
 
-.name {
-  align-items: center;
-  display: flex;
-  grid-area: name;
-  justify-content: center;
-}
-
 .buttonForm {
   grid-area: buttonForm;
 }
