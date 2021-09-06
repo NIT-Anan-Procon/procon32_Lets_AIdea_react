@@ -44,13 +44,6 @@ input[type="submit"] {
   width: 100%;
 }
 
-.icon {
-  border-radius: 50%;
-  grid-area: icon;
-  margin: auto;
-  object-fit: cover;
-}
-
 .name {
   align-items: center;
   display: flex;
