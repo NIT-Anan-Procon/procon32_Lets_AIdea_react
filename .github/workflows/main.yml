@@ -30,7 +30,21 @@ jobs:
       - run: npm install
       - run: npm run build
       #
-      - name: copy file via ssh password
+      - name: copy file via ssh password 1
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.USERNAME }}
+          proxy_password: ${{ secrets.PASSWORD }}
+          strip_components: 2
+          source: "dist/assets"
+          target: "/var/www/html/assets/"
+          rm: true
+          
+      - name: copy file via ssh password 2
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -40,5 +54,5 @@ jobs:
           proxy_username: ${{ secrets.USERNAME }}
           proxy_password: ${{ secrets.PASSWORD }}
           strip_components: 1
-          source: "dist/"
+          source: "dist/index.html"
           target: "/var/www/html/"
