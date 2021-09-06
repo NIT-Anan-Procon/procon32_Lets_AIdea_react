@@ -1,7 +1,7 @@
 #login {
   display: grid;
   grid-template:
-    "... ........................ ..." 3vh
+    "... ........................ ..." 20vh
     "... logo                     ..." 5vh
     "... ........................ ..." 3vh
     "... loginForm                ..." auto
@@ -9,14 +9,13 @@
     "... attentionMessageUserName ..." 3vh
     "... ........................ ..." 3vh
     "... attentionMessagePassword ..." 3vh
-    "... ........................ ..." 3vh
-    /20vh 30vh 20vh;
+    "... ........................ ..." 20vh
+    /20vh 40vh 20vh;
   justify-content: center;
   text-align: center;
 }
 
 .logo {
-  background-color: #4f84d3;
   font-size: 5vh;
   font-weight: bold;
   grid-area: logo;
@@ -26,14 +25,15 @@
   display: grid;
   grid-area: loginForm;
   grid-template:
-    "... userName       ..." 8vh
-    "... .............. ..." 3vh
-    "... password       ..." 8vh
-    "... .............. ..." 3vh
-    "... loginButton    ..." 8vh
-    "... .............. ..." 3vh
-    "... registerButton ..." 8vh
-    /20vh auto 20vh;
+    "userName      " 8vh
+    ".............." 3vh
+    "password      " 8vh
+    ".............." 3vh
+    "loginButton   " 8vh
+    ".............." 3vh
+    "registerButton" 8vh
+    / auto;
+  justify-content: center;
 }
 
 #inputUserName {
@@ -59,21 +59,24 @@
   font-size: 3vh;
   font-weight: bold;
   grid-area: loginButton;
+  margin: 0 auto;
   width: 20vh;
 }
 
 #registerButton {
   background-color: #fff;
-  font-size: 5vh;
+  color: #000;
+  font-size: 3vh;
   font-weight: bold;
   grid-area: registerButton;
+  margin: 0 auto;
   width: 20vh;
 }
 
 .attentionMessageUserName {
   color: #ffa500;
   font-size: 2vh;
-  grid-area: attentionMessageUsername;
+  grid-area: attentionMessageUserName;
 }
 
 .attentionMessagePassword {
