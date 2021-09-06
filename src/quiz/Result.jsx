@@ -44,21 +44,24 @@ export default function Result() {
       <Title text="結果発表" />
       <div id="pointTable">
         <PointRow
-          number={1}
+          id="firstPlayer"
+          rank="1st"
           icon="https://source.unsplash.com/featured/?random"
           name="Togo"
           descriptionPoint={data.playerId[0].descriptionPoint}
           answerPoint={data.playerId[0].answerPoint}
         />
         <PointRow
-          number={2}
+          id="secondPlayer"
+          rank="2nd"
           icon="https://source.unsplash.com/featured/?random"
           name="Taiki"
           descriptionPoint={data.playerId[1].descriptionPoint}
           answerPoint={data.playerId[1].answerPoint}
         />
         <PointRow
-          number={3}
+          id="thirdPlayer"
+          rank="3rd"
           icon="https://source.unsplash.com/featured/?random"
           name="Ibuki"
           descriptionPoint={data.playerId[2].descriptionPoint}
