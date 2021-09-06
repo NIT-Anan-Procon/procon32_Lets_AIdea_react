@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Login.css";
+import axios from "axios";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -18,23 +19,45 @@ export default function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const registerHandleSubmit = (event) => {
     if (userName.length === 0) {
       event.preventDefault();
-      setAttentionMessageToUserName("ユーザー名を入力してください");
+      setAttentionMessageToUserName("新規登録ユーザー名を入力してください");
       return 0;
-    }
-    if (password.length === 0) {
+    } else if (password.length === 0) {
       event.preventDefault();
-      setAttentionMessageToPassword("パスワードを入力してください");
+      setAttentionMessageToPassword("新規登録パスワードを入力してください");
+      return 0;
+    } else {
+      axios({
+        method: "post",
+        url: "API/User/CreateUser.php",
+        data: {
+          name: { userName },
+          password: { password },
+          // icon:
+        },
+      });
+    }
+  };
+
+  const loginHandleSubmit = (event) => {
+    if (userName.length === 0) {
+      event.preventDefault();
+      setAttentionMessageToUserName("ログインユーザー名を入力してください");
+      return 0;
+    } else if (password.length === 0) {
+      event.preventDefault();
+      setAttentionMessageToPassword("ログインパスワードを入力してください");
       return 0;
     }
+    // history.push("/");
   };
 
   return (
     <div id="login">
       <div className="logo">Let&apos;s AIdea !</div>
-      <form onSubmit={handleSubmit} id="loginForm">
+      <form id="loginForm">
         <input
           type="text"
           value={userName}
@@ -49,8 +72,18 @@ export default function Login() {
           onChange={passwordChange}
           id="inputPassword"
         />
-        <input type="submit" id="loginButton" value="ログイン" />
-        <input type="submit" id="registerButton" value="新規登録" />
+        <input
+          type="submit"
+          id="loginButton"
+          value="ログイン"
+          onClick={loginHandleSubmit}
+        />
+        <input
+          type="submit"
+          id="registerButton"
+          value="新規登録"
+          onClick={registerHandleSubmit}
+        />
       </form>
       <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
       <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
