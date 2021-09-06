@@ -5,9 +5,12 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "format": "prettier --write ./**/*.{js,jsx,html,css,scss,md,json}",
-    "lint": "eslint --fix ./src --ext .js,.jsx",
-    "fix": "npm run format && npm run lint",
+    "format": "prettier --write --ignore-path .gitignore ./**/*.{js,jsx,html,css,scss,md,json}",
+    "lint": "eslint --ignore-path .gitignore ./src --ext .js,.jsx",
+    "lint:fix": "eslint --fix --ignore-path .gitignore  ./src --ext .js,.jsx",
+    "lint:style": "stylelint --ignore-path .gitignore '**/*.{css,scss,sass}'",
+    "lint:style:fix": "stylelint --fix --ignore-path .gitignore '**/*.{css,scss,sass}'",
+    "fix": "npm run format && npm run lint:fix && npm run lint:style:fix",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -17,27 +20,33 @@
     ],
     ".{js,jsx}": [
       "eslint --fix ."
+    ],
+    "**/*.{css,scss,sass}": [
+      "stylelint --fix ."
     ]
   },
   "dependencies": {
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react-refresh": "^1.3.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-flowtype": "^5.9.0",
-    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-flowtype": "^5.9.2",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^7.0.1",
+    "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
-    "vite": "^2.4.4"
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "vite": "^2.5.3"
   }
 }

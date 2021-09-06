@@ -1,62 +1,83 @@
 #login {
   display: grid;
   grid-template:
-    "... ................. ..." 3vh
-    "... logo              ..." 5vh
-    "... ................. ..." 5vh
-    "... loginForm         ..." auto
-    "... ................. ..." 5vh
-    "... attentionMessageU ..." 5vh
-    "... ................. ..." 5vh
-    "... attentionMessageP ..." 5vh
-    "... ................. ..." 3vh
-    /20vh auto 20vh;
+    "... ........................ ..." 3vh
+    "... logo                     ..." 5vh
+    "... ........................ ..." 3vh
+    "... loginForm                ..." auto
+    "... ........................ ..." 3vh
+    "... attentionMessageUserName ..." 3vh
+    "... ........................ ..." 3vh
+    "... attentionMessagePassword ..." 3vh
+    "... ........................ ..." 3vh
+    /20vh 30vh 20vh;
   justify-content: center;
+  text-align: center;
 }
 
 .logo {
-  grid-area: logo;
-  font-size: 5vh;
   background-color: #4f84d3;
+  font-size: 5vh;
+  font-weight: bold;
+  grid-area: logo;
 }
 
 #loginForm {
   display: grid;
   grid-area: loginForm;
   grid-template:
-    "... userName       ..." 5vh
-    "... password       ..." 5vh
-    "... loginButton    ..." 5vh
-    "... registerButton ..." 5vh
+    "... userName       ..." 8vh
+    "... .............. ..." 3vh
+    "... password       ..." 8vh
+    "... .............. ..." 3vh
+    "... loginButton    ..." 8vh
+    "... .............. ..." 3vh
+    "... registerButton ..." 8vh
     /20vh auto 20vh;
 }
 
 #inputUserName {
+  background-color: #fff;
+  border-color: #000;
+  border-radius: 100vh;
+  font-size: 3vh;
   grid-area: userName;
-  background-color: #282c34;
 }
 
 #inputPassword {
+  background-color: #fff;
+  border-color: #000;
+  border-radius: 100vh;
+  font-size: 3vh;
   grid-area: password;
-  background-color: #f22424;
 }
 
 #loginButton {
+  background-color: #ff6347;
+  border-radius: 100vh;
+  color: #fff;
+  font-size: 3vh;
+  font-weight: bold;
   grid-area: loginButton;
-  background-color: antiquewhite;
+  width: 20vh;
 }
 
 #registerButton {
+  background-color: #fff;
+  font-size: 5vh;
+  font-weight: bold;
   grid-area: registerButton;
-  background-color: aqua;
+  width: 20vh;
 }
 
-.attentionMessageU {
-  grid-area: attentionMessageU;
-  background-color: teal;
+.attentionMessageUserName {
+  color: #ffa500;
+  font-size: 2vh;
+  grid-area: attentionMessageUsername;
 }
 
-.attentionMessageP {
-  grid-area: attentionMessageP;
-  background-color: coral;
+.attentionMessagePassword {
+  color: #ffa500;
+  font-size: 2vh;
+  grid-area: attentionMessagePassword;
 }

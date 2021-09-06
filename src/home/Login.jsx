@@ -33,7 +33,7 @@ export default function Login() {
 
   return (
     <div id="login">
-      <div className="logo">Let's AIdea !!</div>
+      <div className="logo">Let&apos;s AIdea !!</div>
       <form onSubmit={handleSubmit} id="loginForm">
         <input
           type="text"
@@ -52,8 +52,8 @@ export default function Login() {
         <input type="submit" id="loginButton" value="ログイン" />
         <input type="submit" id="registerButton" value="新規登録" />
       </form>
-      <p className="attentionMessageU">{attentionMessageToUserName}</p>
-      <p className="attentionMessageP">{attentionMessageToPassword}</p>
+      <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
+      <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
     </div>
   );
 }
