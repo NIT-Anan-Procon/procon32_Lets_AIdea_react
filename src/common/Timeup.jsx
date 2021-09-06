@@ -2,8 +2,8 @@ import React from "react";
 import "./css/TimeUp.css";
 
 export default function TimeUp(props) {
-  if (props.sign != null) {
-    return <div className="TimeUp">{props.sign}</div>;
+  if (props.time === 0) {
+    return <div className="TimeUp">Time Up</div>;
   } else {
     return null;
   }
