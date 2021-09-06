@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
 import Icon from "../common/Icon";
+import Name from "../common/Name";
 
 export default function Result() {
   const [data, setData] = useState({
@@ -45,7 +46,7 @@ export default function Result() {
         <div id="firstPlayer">
           <div className="rank">1st</div>
           <Icon src="https://source.unsplash.com/featured/?random" />
-          <div className="name">Togo</div>
+          <Name text="Togo" />
           <div className="descriptionPointBox">
             説明
             <p>{data.playerId[0].descriptionPoint}[pt]</p>
@@ -65,7 +66,7 @@ export default function Result() {
         <div id="secondPlayer">
           <div className="rank">2nd</div>
           <Icon src="https://source.unsplash.com/featured/?random" />
-          <div className="name">Taiki</div>
+          <Name text="Taiki" />
           <div className="descriptionPointBox">
             説明
             <p>{data.playerId[1].descriptionPoint}[pt]</p>
@@ -85,7 +86,7 @@ export default function Result() {
         <div id="thirdPlayer">
           <div className="rank">3rd</div>
           <Icon src="https://source.unsplash.com/featured/?random" />
-          <div className="name">Ibuki</div>
+          <Name text="Ibuki" />
           <div className="descriptionPointBox">
             説明
             <p>{data.playerId[2].descriptionPoint}[pt]</p>
