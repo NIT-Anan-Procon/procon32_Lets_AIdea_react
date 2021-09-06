@@ -4,7 +4,7 @@
     "... ................. ..." 3vh
     "... logo              ..." 5vh
     "... ................. ..." 5vh
-    "... loginForm........ ..." auto
+    "... loginForm         ..." auto
     "... ................. ..." 5vh
     "... attentionMessageU ..." 5vh
     "... ................. ..." 5vh
@@ -24,9 +24,9 @@
   display: grid;
   grid-area: loginForm;
   grid-template:
-    "... userName...... ..." 5vh
-    "... password...... ..." 5vh
-    "... loginButton... ..." 5vh
+    "... userName       ..." 5vh
+    "... password       ..." 5vh
+    "... loginButton    ..." 5vh
     "... registerButton ..." 5vh
     /20vh auto 20vh;
 }
