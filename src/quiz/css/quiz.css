@@ -15,6 +15,7 @@ body {
 .textBox {
   border: solid 0.5vh black;
   box-sizing: border-box;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 4vh;
   padding: 2vh;
 }
@@ -36,6 +37,7 @@ input[type="submit"] {
   border: none;
   color: white;
   display: flex;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 6vh;
   grid-area: inputSubmit;
   height: 100%;

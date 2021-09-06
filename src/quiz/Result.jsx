@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./css/Result.css";
 import Icon from "../common/Icon";
 import Name from "../common/Name";
+import Title from "../common/Title";
 
 export default function Result() {
   const [data, setData] = useState({
@@ -41,7 +42,7 @@ export default function Result() {
 
   return (
     <div id="result">
-      <div className="title">結果発表</div>
+      <Title text="結果発表" />
       <div id="pointTable">
         <div id="firstPlayer">
           <div className="rank">1st</div>
