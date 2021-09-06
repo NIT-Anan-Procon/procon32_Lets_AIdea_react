@@ -1,3 +1,4 @@
+import React from "react";
 import "./css/Timeup.css";
 
 export default function Timeup(props) {
