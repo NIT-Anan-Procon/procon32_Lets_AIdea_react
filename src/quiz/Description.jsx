@@ -74,7 +74,7 @@ export default function Description() {
     }, 1000);
   }, []);
 
-  if (time === 0) history.push("/answer");
+  if (time === 0) history.push("/quiz/answer");
 
   return (
     <div id="description">
