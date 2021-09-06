@@ -50,6 +50,15 @@ export default function Login() {
       event.preventDefault();
       setAttentionMessageToPassword("ログインパスワードを入力してください");
       return 0;
+    } else {
+      axios({
+        method: "post",
+        url: "API/User/Login.php",
+        data: {
+          name: { userName },
+          password: { password },
+        },
+      });
     }
     // history.push("/");
   };
