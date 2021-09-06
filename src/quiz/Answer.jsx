@@ -4,6 +4,10 @@ import "./css/Answer.css";
 import Timer from "../common/Timer";
 import circle from "../image/circle.svg";
 import cross from "../image/cross.svg";
+import Title from "../common/Title";
+import OtherDescription from "../common/OtherDescription";
+import AttentionMessage from "../common/AttentionMessage";
+import Image from "../common/Image";
 
 export default function Answer() {
   const [data, setData] = useState({
@@ -119,12 +123,9 @@ export default function Answer() {
 
   return (
     <div id="answer">
-      <div className="title">元画像を当てよう</div>
-      <div className="textBox otherDescription">
-        プレイヤー名
-        <p>{otherDescription}</p>
-      </div>
-      <p className="attentionMessage">写真をクリックしてください</p>
+      <Title text="元画像を当てよう" />
+      <OtherDescription title="プレイヤー名" text={otherDescription} />
+      <AttentionMessage text="写真をクリックしてください" />
       <form id="answerForm">
         <input
           type="radio"
@@ -134,8 +135,8 @@ export default function Answer() {
           id="myChoice1"
         />
         <label htmlFor="myChoice1" id="image1">
-          <img src={imageUrl} alt="" />
-          <img src={mark[0]} alt="" className="mark" id="mark1" />
+          <Image src={imageUrl} alt="選択肢の画像" />
+          <Image src={mark[0]} alt="マーク" class="mark" id="mark1" />
         </label>
         <input
           type="radio"
@@ -145,8 +146,8 @@ export default function Answer() {
           id="myChoice2"
         />
         <label htmlFor="myChoice2" id="image2">
-          <img src={imageUrl} alt="" />
-          <img src={mark[1]} alt="" className="mark" id="mark2" />
+          <Image src={imageUrl} alt="選択肢の画像" />
+          <Image src={mark[1]} alt="マーク" class="mark" id="mark2" />
         </label>
         <input
           type="radio"
@@ -156,8 +157,8 @@ export default function Answer() {
           id="myChoice3"
         />
         <label htmlFor="myChoice3" id="image3">
-          <img src={imageUrl} alt="" />
-          <img src={mark[2]} alt="" className="mark" id="mark3" />
+          <Image src={imageUrl} alt="選択肢の画像" />
+          <Image src={mark[2]} alt="マーク" class="mark" id="mark3" />
         </label>
         <input
           type="radio"
@@ -167,8 +168,8 @@ export default function Answer() {
           id="myChoice4"
         />
         <label htmlFor="myChoice4" id="image4">
-          <img src={imageUrl} alt="" />
-          <img src={mark[3]} alt="" className="mark" id="mark4" />
+          <Image src={imageUrl} alt="選択肢の画像" />
+          <Image src={mark[3]} alt="マーク" class="mark" id="mark4" />
         </label>
       </form>
       <Timer
