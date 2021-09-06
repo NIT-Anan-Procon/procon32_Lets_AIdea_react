@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
-import Icon from "../common/Icon";
-import Name from "../common/Name";
 import Title from "../common/Title";
+import PointRow from "./PointRow";
 
 export default function Result() {
   const [data, setData] = useState({
@@ -44,66 +43,27 @@ export default function Result() {
     <div id="result">
       <Title text="結果発表" />
       <div id="pointTable">
-        <div id="firstPlayer">
-          <div className="rank">1st</div>
-          <Icon src="https://source.unsplash.com/featured/?random" />
-          <Name text="Togo" />
-          <div className="descriptionPointBox">
-            説明
-            <p>{data.playerId[0].descriptionPoint}[pt]</p>
-          </div>
-          <div className="answerPointBox">
-            回答
-            <p>{data.playerId[0].answerPoint}[pt]</p>
-          </div>
-          <div className="totalPointBox">
-            合計
-            <p>
-              {data.playerId[0].descriptionPoint + data.playerId[0].answerPoint}
-              [pt]
-            </p>
-          </div>
-        </div>
-        <div id="secondPlayer">
-          <div className="rank">2nd</div>
-          <Icon src="https://source.unsplash.com/featured/?random" />
-          <Name text="Taiki" />
-          <div className="descriptionPointBox">
-            説明
-            <p>{data.playerId[1].descriptionPoint}[pt]</p>
-          </div>
-          <div className="answerPointBox">
-            回答
-            <p>{data.playerId[1].answerPoint}[pt]</p>
-          </div>
-          <div className="totalPointBox">
-            合計
-            <p>
-              {data.playerId[1].descriptionPoint + data.playerId[1].answerPoint}
-              [pt]
-            </p>
-          </div>
-        </div>
-        <div id="thirdPlayer">
-          <div className="rank">3rd</div>
-          <Icon src="https://source.unsplash.com/featured/?random" />
-          <Name text="Ibuki" />
-          <div className="descriptionPointBox">
-            説明
-            <p>{data.playerId[2].descriptionPoint}[pt]</p>
-          </div>
-          <div className="answerPointBox">
-            回答
-            <p>{data.playerId[2].answerPoint}[pt]</p>
-          </div>
-          <div className="totalPointBox">
-            合計
-            <p>
-              {data.playerId[2].descriptionPoint + data.playerId[2].answerPoint}
-              [pt]
-            </p>
-          </div>
-        </div>
+        <PointRow
+          number={1}
+          icon="https://source.unsplash.com/featured/?random"
+          name="Togo"
+          descriptionPoint={data.playerId[0].descriptionPoint}
+          answerPoint={data.playerId[0].answerPoint}
+        />
+        <PointRow
+          number={2}
+          icon="https://source.unsplash.com/featured/?random"
+          name="Taiki"
+          descriptionPoint={data.playerId[1].descriptionPoint}
+          answerPoint={data.playerId[1].answerPoint}
+        />
+        <PointRow
+          number={3}
+          icon="https://source.unsplash.com/featured/?random"
+          name="Ibuki"
+          descriptionPoint={data.playerId[2].descriptionPoint}
+          answerPoint={data.playerId[2].answerPoint}
+        />
       </div>
       <form onSubmit={handleSubmit} className="buttonForm">
         <input type="submit" value="投票へ" />

@@ -1,0 +1,109 @@
+#firstPlayer {
+  grid-area: firstPlayer;
+}
+
+#secondPlayer {
+  grid-area: secondPlayer;
+}
+
+#thirdPlayer {
+  grid-area: thirdPlayer;
+}
+
+#firstPlayer,
+#secondPlayer,
+#thirdPlayer {
+  display: grid;
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox" 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox" 20%
+    /12% 1% 18% 1% 22% 1% 22% 1% 22%;
+}
+
+#secondPlayer,
+#thirdPlayer {
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 20%
+    /12% 1% 18% 1% 18% 1% 18% 1% 18% 12%;
+}
+
+.rank {
+  align-items: center;
+  display: flex;
+  font-size: 4vh;
+  grid-area: rank;
+  justify-content: center;
+}
+
+#firstPlayer .rank {
+  font-size: 7vh;
+}
+
+#firstPlayer .icon {
+  height: 19vh;
+  width: 19vh;
+}
+
+#secondPlayer .icon,
+#thirdPlayer .icon {
+  height: 13vh;
+  width: 13vh;
+}
+
+#firstPlayer .name {
+  font-size: 4vh;
+}
+
+#secondPlayer .name,
+#thirdPlayer .name {
+  font-size: 3vh;
+}
+
+.descriptionPointBox,
+.answerPointBox,
+.totalPointBox {
+  font-size: 2vh;
+  padding: 1vh;
+  position: relative;
+}
+
+.descriptionPointBox {
+  background-color: #8bd6f5;
+  grid-area: descriptionPointBox;
+}
+
+.answerPointBox {
+  background-color: #8bd6f5;
+  grid-area: answerPointBox;
+}
+
+.totalPointBox {
+  background-color: #ff6347;
+  color: white;
+  grid-area: totalPointBox;
+}
+
+#firstPlayer .descriptionPointBox,
+#firstPlayer .answerPointBox,
+#firstPlayer .totalPointBox {
+  font-size: 3vh;
+  padding: 2vh;
+  position: relative;
+}
+
+.descriptionPointBox p,
+.answerPointBox p,
+.totalPointBox p {
+  font-size: 5vh;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#firstPlayer p {
+  font-size: 7vh;
+  font-weight: bold;
+}
