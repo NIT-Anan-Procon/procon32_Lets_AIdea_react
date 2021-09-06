@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Answer.css";
 import Timer from "../common/Timer";
-import circle from "../image/circle.png";
-import cross from "../image/cross.png";
+import circle from "../image/circle.svg";
+import cross from "../image/cross.svg";
 
 export default function Answer() {
   const [data, setData] = useState({
@@ -42,6 +42,7 @@ export default function Answer() {
 
   useEffect(() => {
     // TODO: APIとの通信
+    deleteMark();
   }, []);
 
   const handleChange = (event) => {
@@ -59,34 +60,13 @@ export default function Answer() {
         timeCopy--;
         if (timeCopy % 10 === 0) {
           // TODO: APIとの通信
-          document.getElementById("myChoice1").disabled = true;
-          document.getElementById("myChoice2").disabled = true;
-          document.getElementById("myChoice3").disabled = true;
-          document.getElementById("myChoice4").disabled = true;
-          document.getElementById("mark1").style.display = "";
-          document.getElementById("mark2").style.display = "";
-          document.getElementById("mark3").style.display = "";
-          document.getElementById("mark4").style.display = "";
-          let markArray = [cross, cross, cross, cross];
-          markArray[correct[3 - timeCopy / 10] - 1] = circle;
-          setMark(markArray.slice());
+          addMark();
           clearInterval(timer);
           setTimeout(() => {
             if (timeCopy === 0) history.push("/quiz/result");
             startTimer();
             setTime(40);
-            document.getElementById("mark1").style.display = "none";
-            document.getElementById("mark2").style.display = "none";
-            document.getElementById("mark3").style.display = "none";
-            document.getElementById("mark4").style.display = "none";
-            document.getElementById("myChoice1").checked = false;
-            document.getElementById("myChoice2").checked = false;
-            document.getElementById("myChoice3").checked = false;
-            document.getElementById("myChoice4").checked = false;
-            document.getElementById("myChoice1").disabled = false;
-            document.getElementById("myChoice2").disabled = false;
-            document.getElementById("myChoice3").disabled = false;
-            document.getElementById("myChoice4").disabled = false;
+            deleteMark();
           }, 4000);
           setTimeout(() => {
             setTime(timeCopy);
@@ -96,6 +76,35 @@ export default function Answer() {
     }
     startTimer();
   }, []);
+
+  function addMark() {
+    document.getElementById("mark1").style.display = "";
+    document.getElementById("mark2").style.display = "";
+    document.getElementById("mark3").style.display = "";
+    document.getElementById("mark4").style.display = "";
+    document.getElementById("myChoice1").disabled = true;
+    document.getElementById("myChoice2").disabled = true;
+    document.getElementById("myChoice3").disabled = true;
+    document.getElementById("myChoice4").disabled = true;
+    let markArray = [cross, cross, cross, cross];
+    markArray[correct[3 - timeCopy / 10] - 1] = circle;
+    setMark(markArray.slice());
+  }
+
+  function deleteMark() {
+    document.getElementById("mark1").style.display = "none";
+    document.getElementById("mark2").style.display = "none";
+    document.getElementById("mark3").style.display = "none";
+    document.getElementById("mark4").style.display = "none";
+    document.getElementById("myChoice1").checked = false;
+    document.getElementById("myChoice2").checked = false;
+    document.getElementById("myChoice3").checked = false;
+    document.getElementById("myChoice4").checked = false;
+    document.getElementById("myChoice1").disabled = false;
+    document.getElementById("myChoice2").disabled = false;
+    document.getElementById("myChoice3").disabled = false;
+    document.getElementById("myChoice4").disabled = false;
+  }
 
   useEffect(() => {
     if (time % 10 === 0 && time !== 40) {

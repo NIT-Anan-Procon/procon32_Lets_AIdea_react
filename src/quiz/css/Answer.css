@@ -59,8 +59,11 @@
 }
 
 .mark {
-  left: 0;
+  height: 80%;
+  left: 50%;
   object-fit: contain;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
 }
