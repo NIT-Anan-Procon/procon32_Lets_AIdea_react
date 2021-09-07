@@ -4,5 +4,14 @@ import "./css/waiting.css";
 import axios from "axios";
 
 export default function waiting() {
-  return <div>待機画面</div>;
+  const copyText = () => {
+    navigator.clipboard.writeText("copy");
+  };
+
+  return (
+    <div id="waiting">
+      <text>部屋ID</text>
+      <button id="copyButton" onClick={copyText} value="コピー" />
+    </div>
+  );
 }
