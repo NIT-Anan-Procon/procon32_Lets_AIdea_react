@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
 import Timer from "../common/Timer";
+import TimeUp from "../common/TimeUp";
 import aiImg from "../image/aiImg.svg";
 import aiImgSmile from "../image/aiImgSmile.svg";
 
@@ -43,7 +44,6 @@ function Explanation() {
   const history = useHistory();
   const timeFirst = 30;
   const [time, setTime] = useState(timeFirst);
-  const [signal, setSignal] = useState("");
   const timer = useRef(null);
 
   const handleChange = (event) => {
@@ -91,7 +91,6 @@ function Explanation() {
         setAiExplanation(data.playerId[0].ai);
         break;
       case 0:
-        setSignal("Time Up");
         clearInterval(timer.current);
         setTimeout(() => {
           history.push("/result");
@@ -132,7 +131,7 @@ function Explanation() {
         <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
-      <div className="signal">{signal}</div>
+      <TimeUp time={time} />
     </div>
   );
 }

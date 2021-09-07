@@ -65,7 +65,7 @@ export default function Description() {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
-    history.push("/answer");
+    history.push("/quiz/answer");
   };
 
   useEffect(() => {
