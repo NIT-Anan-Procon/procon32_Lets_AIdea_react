@@ -143,17 +143,3 @@ input[type="submit"] {
   justify-content: center;
   padding: 0;
 }
-
-.signal {
-  align-items: center;
-  color: #f00;
-  display: flex;
-  font-size: 30vh;
-  font-style: normal;
-  font-weight: normal;
-  height: 60vh;
-  left: 20%;
-  position: absolute;
-  text-align: center;
-  top: 15%;
-}
