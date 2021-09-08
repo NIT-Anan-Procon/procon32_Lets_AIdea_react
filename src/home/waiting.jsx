@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function waiting() {
   const copyText = () => {
-    navigator.clipboard.writeText("copy");
+    navigator.clipboard.writeText("Copy success!").then((r) => "Copy failed.");
   };
 
   return (
