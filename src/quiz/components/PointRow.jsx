@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/PointRow.css";
-import Icon from "../common/Icon";
-import Name from "../common/Name";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
 import PointCell from "./PointCell";
 
 export default function PointRow(props) {
