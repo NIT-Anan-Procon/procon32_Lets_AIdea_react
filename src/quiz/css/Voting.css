@@ -1,3 +1,56 @@
 #voting {
-  grid-template: "...";
+  grid-template:
+    "... .......... ..." 3vh
+    "... title      ..." 10vh
+    "... .......... ..." 3vh
+    "... votingForm ..." auto
+    "... .......... ..." 3vh
+    /15vh auto 15vh;
+  position: fixed;
+}
+
+#votingForm {
+  display: grid;
+  grid-area: votingForm;
+  grid-template:
+    "descriptionTable descriptionTable descriptionTable" auto
+    "................ ................ ................" 3vh
+    "attentionMessage attentionMessage attentionMessage" 5vh
+    "................ ................ ................" 3vh
+    "................ inputSubmit      ................" 12vh
+    /20% 60% 20%;
+}
+
+#descriptionTable {
+  grid-area: descriptionTable;
+}
+
+.descriptionRow {
+  display: grid;
+  grid-template:
+    "myChoice ... description" 100%
+    /5% 2% 93%;
+  height: 30vh;
+}
+
+#myChoice1,
+#myChoice2,
+#myChoice3,
+#myChoice4 {
+  grid-area: myChoice;
+}
+
+#description1,
+#description2,
+#description3,
+#description4 {
+  display: grid;
+  grid-area: description;
+  grid-template:
+    "icon ... image ...otherDescription" 90%
+    "name ... image ...otherDescription" 10%;
+}
+
+.image {
+  grid-area: image;
 }
