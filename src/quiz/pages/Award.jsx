@@ -43,7 +43,7 @@ export default function Award() {
         <Icon src={data.icon} />
         <Name text={data.name} />
         <NgWord text={ngWord} />
-        <OtherDescription title="" text={data.explanation} />
+        <OtherDescription title="説明文" text={data.explanation} />
       </div>
       <form className="buttonForm">
         <input

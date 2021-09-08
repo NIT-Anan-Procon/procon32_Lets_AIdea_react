@@ -7,7 +7,7 @@
     "... .......... .......... .......... ..." 15vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
-    /auto 72vh 4vh 96vh auto;
+    / auto 72vh 4vh 96vh auto;
   position: fixed;
 }
 
@@ -15,10 +15,10 @@
   display: grid;
   grid-area: player;
   grid-template:
-    "icon             ................ ngWord          " 30%
-    "name             ................ ngWord          " 10%
+    "icon             ................ ngWord          " 33%
+    "name             ................ ngWord          " 12%
     "................ ................ ................" 10%
-    "otherDescription otherDescription otherDescription" 40%
+    "otherDescription otherDescription otherDescription" 45%
     /25% 5% 70%;
 }
 
