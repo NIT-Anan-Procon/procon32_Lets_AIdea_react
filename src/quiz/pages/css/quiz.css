@@ -3,7 +3,10 @@ body {
 }
 
 #description,
-#answer {
+#answer,
+#result,
+#voting,
+#award {
   display: grid;
   height: 100%;
   width: 100%;
@@ -37,6 +40,12 @@ input[type="submit"] {
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 6vh;
   grid-area: inputSubmit;
+  height: 100%;
   justify-content: center;
   padding: 0;
+  width: 100%;
+}
+
+.buttonForm {
+  grid-area: buttonForm;
 }
