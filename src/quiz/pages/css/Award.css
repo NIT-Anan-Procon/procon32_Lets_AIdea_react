@@ -1,0 +1,36 @@
+#award {
+  grid-template:
+    "... ......... ........... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .........  .......... .......... ..." 2vh
+    "... image      .......... player     ..." 32vh
+    "... .......... .......... .......... ..." 1vh
+    "... buttonForm buttonForm buttonForm ..." 30vh
+    "... .......... .......... .......... ..." 3vh
+    /20vh 64vh 4vh 84vh 20vh;
+  position: fixed;
+}
+
+.player {
+  display: grid;
+  grid-area: player;
+  grid-template:
+    "................ ................ ................" 1%
+    "icon             ................ ngword          " 30%
+    "name             ................ ................" 5%
+    "otherDescription otherDescription otherDescription" 30%
+    "................ ................ ................" 1%
+    /30% 10% 60%;
+}
+
+.buttonForm {
+  display: flex;
+}
+
+.again {
+  flex-basis: 50%;
+}
+
+.leave {
+  flex-basis: 50%;
+}
