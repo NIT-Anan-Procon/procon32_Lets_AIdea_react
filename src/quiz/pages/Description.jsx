@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
-import Title from "../common/Title";
-import Image from "../common/Image";
-import OtherDescription from "../common/OtherDescription";
-import NgWord from "../common/NgWord";
-import AttentionMessage from "../common/AttentionMessage";
-import Timer from "../common/Timer";
+import Title from "../../common/components/Title";
+import Image from "../../common/components/Image";
+import OtherDescription from "../../common/components/OtherDescription";
+import NgWord from "../../common/components/NgWord";
+import AttentionMessage from "../../common/components/AttentionMessage";
+import Timer from "../../common/components/Timer";
 
 export default function Description() {
   const [data, setData] = useState({
