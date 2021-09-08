@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
-import Title from "../common/Title";
-import Icon from "../common/Icon";
-import Name from "../common/Name";
-import Image from "../common/Image";
-import OtherDescription from "../common/OtherDescription";
-import AttentionMessage from "../common/AttentionMessage";
+import Title from "../../common/components/Title";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
+import Image from "../../common/components/Image";
+import OtherDescription from "../../common/components/OtherDescription";
+import AttentionMessage from "../../common/components/AttentionMessage";
 
 export default function Voting() {
   const [data, setData] = useState({
