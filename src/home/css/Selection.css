@@ -1,0 +1,31 @@
+#selection {
+  display: grid;
+  grid-template:
+    "... ............... ..." 10vh
+    "... firstOption     ..." 30vh
+    "... ............... ..." 15vh
+    "... secondOption    ..." 30vh
+    "... ............... ..." 10vh
+    / 20vh 80vh 20vh;
+  justify-content: center;
+}
+
+#firstOption {
+  grid-area: firstOption;
+}
+
+#secondOption {
+  grid-area: secondOption;
+}
+
+input {
+  background: #ff6347;
+  color: white;
+  font-size: 8vh;
+  font-weight: bold;
+}
+
+input:active {
+  border-width: 1vh;
+  border-color: aqua;
+}
