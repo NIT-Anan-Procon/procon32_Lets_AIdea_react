@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
+import "./css/Balloon.css";
 import Timer from "../common/components/Timer";
 import TimeUp from "../common/TimeUp";
 import aiImg from "../image/aiImg.svg";
