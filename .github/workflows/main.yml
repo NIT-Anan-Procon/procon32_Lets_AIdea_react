@@ -43,7 +43,7 @@ jobs:
           source: "dist/assets"
           target: "/var/www/html/assets/"
           rm: true
-          
+
       - name: copy file via ssh password 2
         uses: appleboy/scp-action@master
         with:
