@@ -1,0 +1,32 @@
+.balloon {
+  border-radius: 2vh;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 4vh;
+  height: 22vh;
+  margin-left: 5vh;
+  position: relative;
+  width: 40vh;
+}
+
+.balloon::before {
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid white;
+  content: "";
+  left: -6.5vh;
+  margin-top: -3vh;
+  position: absolute;
+  top: 25%;
+  z-index: 2;
+}
+
+.balloon::after {
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid black;
+  content: "";
+  left: -7.5vh;
+  margin-top: -3vh;
+  position: absolute;
+  top: 25%;
+  z-index: 1;
+}
