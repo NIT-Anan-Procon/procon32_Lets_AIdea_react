@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
-import Title from "../common/Title";
-import PointRow from "./PointRow";
+import Title from "../../common/components/Title";
+import PointRow from "../components/PointRow";
 
 export default function Result() {
   const [data, setData] = useState({
