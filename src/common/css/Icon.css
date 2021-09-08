@@ -1,0 +1,6 @@
+.icon {
+  border-radius: 50%;
+  grid-area: icon;
+  margin: auto;
+  object-fit: cover;
+}
