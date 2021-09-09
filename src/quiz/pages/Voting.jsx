@@ -87,6 +87,72 @@ export default function Voting() {
               />
             </label>
           </div>
+          <div className="descriptionRow">
+            <input
+              type="radio"
+              name="selectDescription"
+              value={2}
+              onChange={handleChange}
+              id="myChoice2"
+            />
+            <label htmlFor="myChoice2" id="description2">
+              <Icon src="https://source.unsplash.com/featured/?random" />
+              <Name text="Taiki" />
+              <Image
+                src="https://source.unsplash.com/featured/?lion"
+                alt="各プレイヤーのお題画像"
+                class="image"
+              />
+              <OtherDescription
+                title={"NGワード：" + ngWord}
+                text={data.playerId[1].playerDescription}
+              />
+            </label>
+          </div>
+          <div className="descriptionRow">
+            <input
+              type="radio"
+              name="selectDescription"
+              value={3}
+              onChange={handleChange}
+              id="myChoice3"
+            />
+            <label htmlFor="myChoice3" id="description3">
+              <Icon src="https://source.unsplash.com/featured/?random" />
+              <Name text="Ibuki" />
+              <Image
+                src="https://source.unsplash.com/featured/?lion"
+                alt="各プレイヤーのお題画像"
+                class="image"
+              />
+              <OtherDescription
+                title={"NGワード：" + ngWord}
+                text={data.playerId[2].playerDescription}
+              />
+            </label>
+          </div>
+          <div className="descriptionRow">
+            <input
+              type="radio"
+              name="selectDescription"
+              value={4}
+              onChange={handleChange}
+              id="myChoice4"
+            />
+            <label htmlFor="myChoice4" id="description4">
+              <Icon src="https://source.unsplash.com/featured/?random" />
+              <Name text="Maoki" />
+              <Image
+                src="https://source.unsplash.com/featured/?lion"
+                alt="各プレイヤーのお題画像"
+                class="image"
+              />
+              <OtherDescription
+                title={"NGワード：" + ngWord}
+                text={data.playerId[3].playerDescription}
+              />
+            </label>
+          </div>
         </div>
         <AttentionMessage text={attentionMessage} />
         <input type="submit" value="投票する" />

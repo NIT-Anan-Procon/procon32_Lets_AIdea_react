@@ -13,16 +13,18 @@
   display: grid;
   grid-area: votingForm;
   grid-template:
-    "descriptionTable descriptionTable descriptionTable" auto
-    "................ ................ ................" 3vh
-    "attentionMessage attentionMessage attentionMessage" 5vh
-    "................ ................ ................" 3vh
-    "................ inputSubmit      ................" 12vh
-    /20% 60% 20%;
+    "descriptionTable descriptionTable descriptionTable" 62vh
+    "................ ................ ................" 2vh
+    "attentionMessage attentionMessage attentionMessage" 4vh
+    "................ ................ ................" 2vh
+    "................ inputSubmit      ................" 10vh
+    /auto 50% auto;
 }
 
 #descriptionTable {
+  border: solid 0.5vh black;
   grid-area: descriptionTable;
+  overflow-y: scroll;
 }
 
 .descriptionRow {
@@ -30,7 +32,9 @@
   grid-template:
     "myChoice ... description" 100%
     /5% 2% 93%;
-  height: 30vh;
+  height: 25vh;
+  margin: 4vh;
+  position: relative;
 }
 
 #myChoice1,
@@ -47,8 +51,18 @@
   display: grid;
   grid-area: description;
   grid-template:
-    "icon ... image ...otherDescription" 90%
-    "name ... image ...otherDescription" 10%;
+    "icon ... image ... otherDescription" 80%
+    "name ... image ... otherDescription" 20%
+    /20vh 3vh 37.5vh 3vh auto;
+}
+
+.icon {
+  height: 18vh;
+  width: 18vh;
+}
+
+.name {
+  font-size: 5vh;
 }
 
 .image {
