@@ -27,12 +27,12 @@ export default function Award() {
   }, []);
 
   const againHandleSubmit = () => {
-    //待機画面に戻る
+    // TODO 待機画面に戻るパスを追加
     history.push("");
   };
 
   const leaveHandleSubmit = () => {
-    //モード選択画面に戻る
+    // TODO モード選択画面に戻るパスを追加
     history.push("");
   };
 
