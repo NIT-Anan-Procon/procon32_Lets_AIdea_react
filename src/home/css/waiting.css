@@ -2,25 +2,27 @@
   display: grid;
   font-size: 2vh;
   grid-template:
-    "... ...... ........... ........... .......... ..." 15vh
-    "... room   ........... ........... .......... ..." 4vh
-    "... roomId roomId      ........... copyButton ..." 7vh
-    "... ...... ........... ........... .......... ..." auto
-    "... ...... user        user        user       ..." 10vh
-    "... ...... ........... ........... .......... ..." auto
-    "... ...... startButton startButton .......... ..." 10vh
-    "... ...... ........... ........... .......... ..." 15vh
-    /auto 20vh 20vh 10vh 20vh auto;
+    "... ........... ........... ........... ........... ..." 15vh
+    "... room        ........... ........... ........... ..." 7vh
+    "... roomId      roomId      ........... copyButton  ..." 7vh
+    "... ........... ........... ........... ........... ..." auto
+    "... user        user        user        user        ..." 10vh
+    "... ........... ........... ........... ........... ..." auto
+    "... startButton startButton startButton startButton ..." 10vh
+    "... ........... ........... ........... ........... ..." 15vh
+    /auto 30vh 30vh 5vh 20vh auto;
 }
 
 #room {
-  /* font-size: 4vh; */
+  font-size: 4vh;
   grid-area: room;
 }
 
 #roomId {
   border: solid 2px #000;
+  font-size: 5vh;
   grid-area: roomId;
+  text-align: center;
 }
 
 button {
@@ -43,11 +45,11 @@ button {
 
 #user {
   display: grid;
-  font-size: 2vh;
+  font-size: 3vh;
   grid-area: user;
   grid-template:
-    "icon  message" 10vh
-    /10vh 20vh;
+    "... icon message ..." 10vh
+    /auto 20vh 40vh auto;
 }
 
 #icon {
