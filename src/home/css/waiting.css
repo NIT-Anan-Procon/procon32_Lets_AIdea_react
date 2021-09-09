@@ -1,28 +1,59 @@
 #waiting {
-  /* 待機画面 */
+  display: grid;
+  font-size: 2vh;
+  grid-template:
+    "... ...... ........... ........... .......... ..." 15vh
+    "... room   ........... ........... .......... ..." 4vh
+    "... roomId roomId      ........... copyButton ..." 7vh
+    "... ...... ........... ........... .......... ..." auto
+    "... ...... user        user        user       ..." 10vh
+    "... ...... ........... ........... .......... ..." auto
+    "... ...... startButton startButton .......... ..." 10vh
+    "... ...... ........... ........... .......... ..." 15vh
+    /auto 20vh 20vh 10vh 20vh auto;
 }
 
 #room {
-  font-size: 4vh;
+  /* font-size: 4vh; */
+  grid-area: room;
 }
 
 #roomId {
   border: solid 2px #000;
+  grid-area: roomId;
 }
 
 button {
   background-color: #ff6347;
   border: none;
   color: #fff;
-  font-size: 3vh;
+
+  /* font-size: 3vh; */
   font-weight: bold;
   text-align: center;
 }
 
+#copyButton {
+  grid-area: copyButton;
+}
+
+#startButton {
+  grid-area: startButton;
+}
+
+#user {
+  display: grid;
+  font-size: 2vh;
+  grid-area: user;
+  grid-template:
+    "icon  message" 10vh
+    /10vh 20vh;
+}
+
 #icon {
-  /* icon */
+  grid-area: icon;
 }
 
 #message {
-  /* message */
+  grid-area: message;
 }
