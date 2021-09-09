@@ -27,6 +27,10 @@
   width: 15vh;
 }
 
+.name {
+  font-size: 5vh;
+}
+
 .buttonForm {
   display: flex;
 }
