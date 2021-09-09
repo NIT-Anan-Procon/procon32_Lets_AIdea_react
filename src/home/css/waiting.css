@@ -2,16 +2,27 @@
   /* 待機画面 */
 }
 
-text {
-  font-size: 5vh;
+#room {
+  font-size: 4vh;
 }
 
-#copyButton {
+#roomId {
+  border: solid 2px #000;
+}
+
+button {
   background-color: #ff6347;
   border: none;
   color: #fff;
   font-size: 3vh;
-  height: 5vh;
+  font-weight: bold;
   text-align: center;
-  width: 20vh;
+}
+
+#icon {
+  /* icon */
+}
+
+#message {
+  /* message */
 }
