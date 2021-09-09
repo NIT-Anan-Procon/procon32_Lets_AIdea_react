@@ -22,7 +22,15 @@
     /7% 43% 7% 43%;
 }
 
-#myChoice1 {
+input[type="radio"] {
+  height: 5vh;
+  left: 2vh;
+  position: relative;
+  top: 16vh;
+  width: 5vh;
+}
+
+#answer #myChoice1 {
   grid-area: myChoice1;
 }
 
@@ -31,7 +39,7 @@
   position: relative;
 }
 
-#myChoice2 {
+#answer #myChoice2 {
   grid-area: myChoice2;
 }
 
@@ -40,7 +48,7 @@
   position: relative;
 }
 
-#myChoice3 {
+#answer #myChoice3 {
   grid-area: myChoice3;
 }
 
@@ -49,7 +57,7 @@
   position: relative;
 }
 
-#myChoice4 {
+#answer #myChoice4 {
   grid-area: myChoice4;
 }
 
