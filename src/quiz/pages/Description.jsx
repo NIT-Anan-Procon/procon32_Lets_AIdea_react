@@ -56,6 +56,7 @@ export default function Description() {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (myDescription.length === 0) {
       event.preventDefault();
       setAttentionMessage("説明文を記入して下さい");
