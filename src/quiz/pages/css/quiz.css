@@ -26,8 +26,12 @@ p {
 }
 
 input[type="radio"] {
+  display: block;
   height: 5vh;
-  transform: translate(30%, 340%);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 5vh;
 }
 
