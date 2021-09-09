@@ -32,6 +32,9 @@
 }
 
 .leave {
-  border-color: #4f64d3;
   margin-left: 20vh;
+}
+
+input[type="submit"].leave {
+  background-color: #4f64d3;
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./css/quiz.css";
 import "./css/Award.css";
 import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
