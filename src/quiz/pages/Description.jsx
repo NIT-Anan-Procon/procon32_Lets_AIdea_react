@@ -8,6 +8,7 @@ import OtherDescription from "../../common/components/OtherDescription";
 import NgWord from "../../common/components/NgWord";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/TimeUp";
 
 export default function Description() {
   const [data, setData] = useState({
@@ -74,7 +75,11 @@ export default function Description() {
     }, 1000);
   }, []);
 
-  if (time === 0) history.push("/quiz/answer");
+  if (time === 0) {
+    setTimeout(() => {
+      history.push("/quiz/answer");
+    }, 5000);
+  }
 
   return (
     <div id="description">
@@ -99,6 +104,7 @@ export default function Description() {
         <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
+      <TimeUp time={time} />
     </div>
   );
 }
