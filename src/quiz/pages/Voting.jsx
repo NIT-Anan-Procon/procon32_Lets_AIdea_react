@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import "./css/Voting.css";
 import Title from "../../common/components/Title";
 import Icon from "../../common/components/Icon";
@@ -9,43 +10,31 @@ import OtherDescription from "../../common/components/OtherDescription";
 import AttentionMessage from "../../common/components/AttentionMessage";
 
 export default function Voting() {
-  const [data, setData] = useState({
-    playerId: [
-      {
-        playerDescription: "百獣の王は静かに微笑みを湛えている",
-        aiDescription: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-      },
-      {
-        playerDescription: "幾重の鳥居が私たちを待っている",
-        aiDescription: "草に囲まれた赤い建物に光が当たっています",
-        ngWord: ["草", "赤い", "光"],
-      },
-      {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
-      },
-      {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
-      },
-    ],
-  });
-  const [ngWord, setNgWord] = useState("");
+  const [data, setData] = useState();
   let myChoice = 0;
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
 
   useEffect(() => {
-    // TODO: APIとの通信
-    for (let i = 0; i < data.playerId[0].ngWord.length; i++) {
-      setNgWord((ngWord) => ngWord + data.playerId[0].ngWord[i]);
-      if (i !== data.playerId[0].ngWord.length - 1)
-        setNgWord((ngWord) => ngWord + ", ");
-    }
+    axios
+      .get("http://localhost/API/Quiz/GetVoteInfo.php")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
   }, []);
+
+  const getNgWord = (number) => {
+    let ngWord = "";
+    for (let i = 0; i < data.player[number].ng.length; i++) {
+      ngWord += data.player[number].ng[i];
+      if (i !== data.player[number].ng.length - 1) ngWord += ", ";
+    }
+    return ngWord;
+  };
 
   const handleChange = (event) => {
     myChoice = event.target.value;
@@ -60,103 +49,106 @@ export default function Voting() {
     history.push("/quiz/award");
   };
 
-  return (
-    <div id="voting">
-      <Title text="優秀な作品を決めよう" />
-      <form onSubmit={handleSubmit} id="votingForm">
-        <div id="descriptionTable">
-          <div className="descriptionRow">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={1}
-              onChange={handleChange}
-              id="myChoice1"
-            />
-            <label htmlFor="myChoice1" id="description1">
-              <Icon src="https://source.unsplash.com/featured/?random" />
-              <Name text="Togo" />
-              <Image
-                src="https://source.unsplash.com/featured/?lion"
-                alt="各プレイヤーのお題画像"
-                class="image"
+  if (!data) return <div>読み込み中</div>;
+  else {
+    return (
+      <div id="voting">
+        <Title text="優秀な作品を決めよう" />
+        <form onSubmit={handleSubmit} id="votingForm">
+          <div id="descriptionTable">
+            <div className="descriptionRow">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={1}
+                onChange={handleChange}
+                id="myChoice1"
               />
-              <OtherDescription
-                title={"NGワード：" + ngWord}
-                text={data.playerId[0].playerDescription}
+              <label htmlFor="myChoice1" id="description1">
+                <Icon src={data.player[1].icon} />
+                <Name text={data.player[1].name} />
+                <Image
+                  src={data.player[1].pictureURL}
+                  alt="各プレイヤーのお題画像"
+                  class="image"
+                />
+                <OtherDescription
+                  title={"NGワード：" + getNgWord(1)}
+                  text={data.player[1].explanation}
+                />
+              </label>
+            </div>
+            <div className="descriptionRow">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={2}
+                onChange={handleChange}
+                id="myChoice2"
               />
-            </label>
+              <label htmlFor="myChoice2" id="description2">
+                <Icon src={data.player[2].icon} />
+                <Name text={data.player[2].name} />
+                <Image
+                  src={data.player[2].pictureURL}
+                  alt="各プレイヤーのお題画像"
+                  class="image"
+                />
+                <OtherDescription
+                  title={"NGワード：" + getNgWord(2)}
+                  text={data.player[2].explanation}
+                />
+              </label>
+            </div>
+            <div className="descriptionRow">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={3}
+                onChange={handleChange}
+                id="myChoice3"
+              />
+              <label htmlFor="myChoice3" id="description3">
+                <Icon src={data.player[3].icon} />
+                <Name text={data.player[3].name} />
+                <Image
+                  src={data.player[3].pictureURL}
+                  alt="各プレイヤーのお題画像"
+                  class="image"
+                />
+                <OtherDescription
+                  title={"NGワード：" + getNgWord(3)}
+                  text={data.player[3].explanation}
+                />
+              </label>
+            </div>
+            <div className="descriptionRow">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={4}
+                onChange={handleChange}
+                id="myChoice4"
+              />
+              <label htmlFor="myChoice4" id="description4">
+                <Icon src={data.player[4].icon} />
+                <Name text={data.player[4].name} />
+                <Image
+                  src={data.player[4].pictureURL}
+                  alt="各プレイヤーのお題画像"
+                  class="image"
+                />
+                <OtherDescription
+                  title={"NGワード：" + getNgWord(4)}
+                  text={data.player[4].explanation}
+                />
+              </label>
+            </div>
           </div>
-          <div className="descriptionRow">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={2}
-              onChange={handleChange}
-              id="myChoice2"
-            />
-            <label htmlFor="myChoice2" id="description2">
-              <Icon src="https://source.unsplash.com/featured/?random" />
-              <Name text="Taiki" />
-              <Image
-                src="https://source.unsplash.com/featured/?lion"
-                alt="各プレイヤーのお題画像"
-                class="image"
-              />
-              <OtherDescription
-                title={"NGワード：" + ngWord}
-                text={data.playerId[1].playerDescription}
-              />
-            </label>
-          </div>
-          <div className="descriptionRow">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={3}
-              onChange={handleChange}
-              id="myChoice3"
-            />
-            <label htmlFor="myChoice3" id="description3">
-              <Icon src="https://source.unsplash.com/featured/?random" />
-              <Name text="Ibuki" />
-              <Image
-                src="https://source.unsplash.com/featured/?lion"
-                alt="各プレイヤーのお題画像"
-                class="image"
-              />
-              <OtherDescription
-                title={"NGワード：" + ngWord}
-                text={data.playerId[2].playerDescription}
-              />
-            </label>
-          </div>
-          <div className="descriptionRow">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={4}
-              onChange={handleChange}
-              id="myChoice4"
-            />
-            <label htmlFor="myChoice4" id="description4">
-              <Icon src="https://source.unsplash.com/featured/?random" />
-              <Name text="Maoki" />
-              <Image
-                src="https://source.unsplash.com/featured/?lion"
-                alt="各プレイヤーのお題画像"
-                class="image"
-              />
-              <OtherDescription
-                title={"NGワード：" + ngWord}
-                text={data.playerId[3].playerDescription}
-              />
-            </label>
-          </div>
-        </div>
-        <AttentionMessage text={attentionMessage} />
-        <input type="submit" value="投票する" />
-      </form>
-    </div>
-  );
+          <AttentionMessage text={attentionMessage} />
+          <input type="submit" value="投票する" />
+        </form>
+      </div>
+    );
+  }
 }
