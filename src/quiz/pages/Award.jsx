@@ -28,7 +28,6 @@ export default function Award() {
   }, []);
 
   const getNgWord = (data) => {
-    console.log(data.ng.length);
     for (let i = 0; i < data.ng.length; i++) {
       setNgWord((ngWord) => ngWord + data.ng[i]);
       if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
