@@ -45,30 +45,32 @@ export default function Award() {
   };
 
   if (!data) return <div>読み込み中</div>;
-  return (
-    <div id="award">
-      <Title text="優秀作品" />
-      <Image src={data.pictureURL} alt="picture" />
-      <div className="player">
-        <Icon src={data.icon} />
-        <Name text={data.name} />
-        <NgWord text={ngWord} />
-        <OtherDescription title="説明文" text={data.explanation} />
+  else {
+    return (
+      <div id="award">
+        <Title text="優秀作品" />
+        <Image src={data.pictureURL} alt="picture" />
+        <div className="player">
+          <Icon src={data.icon} />
+          <Name text={data.name} />
+          <NgWord text={ngWord} />
+          <OtherDescription title="説明文" text={data.explanation} />
+        </div>
+        <form className="buttonForm">
+          <input
+            type="submit"
+            className="again"
+            value="もう一度遊ぶ"
+            onClick={againHandleSubmit}
+          />
+          <input
+            type="submit"
+            className="leave"
+            value="部屋を抜ける"
+            onClick={leaveHandleSubmit}
+          />
+        </form>
       </div>
-      <form className="buttonForm">
-        <input
-          type="submit"
-          className="again"
-          value="もう一度遊ぶ"
-          onClick={againHandleSubmit}
-        />
-        <input
-          type="submit"
-          className="leave"
-          value="部屋を抜ける"
-          onClick={leaveHandleSubmit}
-        />
-      </form>
-    </div>
-  );
+    );
+  }
 }
