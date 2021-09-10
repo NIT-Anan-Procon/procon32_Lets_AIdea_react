@@ -21,6 +21,7 @@ export default function Result() {
   };
 
   if (!data) return null;
+
   return (
     <div id="result">
       <Title text="結果発表" />
