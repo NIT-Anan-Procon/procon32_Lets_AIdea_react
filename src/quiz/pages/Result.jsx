@@ -20,6 +20,11 @@ export default function Result() {
     history.push("/quiz/voting");
   };
 
+  window.history.pushState(null, null, location.href);
+  window.addEventListener("popstate", (e) => {
+    history.go(1);
+  });
+
   if (!data) return <div>読み込み中...</div>;
   else
     return (
