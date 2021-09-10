@@ -73,7 +73,7 @@ export default function Description() {
     }, 5000);
   }
 
-  if (!data) return null;
+  if (!data) return <div>読み込み中</div>;
   return (
     <div id="description">
       <Title text="この画像を説明しよう" />
