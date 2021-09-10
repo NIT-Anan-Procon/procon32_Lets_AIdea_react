@@ -8,7 +8,7 @@ export default function waiting() {
 
   const copyText = () => {
     navigator.clipboard.writeText("123456789").then((r) => "Copy failed.");
-    alert("Copied !!");
+    console.log("Copied!");
   };
 
   return (
