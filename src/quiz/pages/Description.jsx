@@ -52,8 +52,8 @@ export default function Description() {
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
-    for (let i = 0; i < data.playerId[0].ngWord.length; i++)
-      if (myDescription.indexOf(data.playerId[0].ngWord[i]) !== -1) {
+    for (let i = 0; i < data.data.ng.length; i++)
+      if (myDescription.indexOf(data.data.ng[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
