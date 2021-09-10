@@ -27,6 +27,12 @@ export default function Voting() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!data) return 0;
+    console.log(data.playerID);
+    document.getElementById("myChoice" + data.playerID).disabled = true;
+  }, [data]);
+
   const getNgWord = (number) => {
     let ngWord = "";
     for (let i = 0; i < data.player[number].ng.length; i++) {
