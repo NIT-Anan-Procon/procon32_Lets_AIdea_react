@@ -98,92 +98,93 @@ export default function Answer() {
   }
 
   if (!data) return <div>読み込み中...</div>;
-  return (
-    <div id="answer">
-      <Title text="元画像を当てよう" />
-      <OtherDescription
-        title={
-          data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)].name
-        }
-        text={
-          data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-            .explanation
-        }
-      />
-      <AttentionMessage text="写真をクリックしてください" />
-      <form id="answerForm">
-        <input
-          type="radio"
-          name="selectImage"
-          value={1}
-          onChange={handleChange}
-          id="myChoice1"
+  else
+    return (
+      <div id="answer">
+        <Title text="元画像を当てよう" />
+        <OtherDescription
+          title={
+            data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)].name
+          }
+          text={
+            data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
+              .explanation
+          }
         />
-        <label htmlFor="myChoice1" id="image1">
-          <Image
-            src={
-              data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                .picture[0].pictureURL
-            }
-            alt="選択肢の画像"
+        <AttentionMessage text="写真をクリックしてください" />
+        <form id="answerForm">
+          <input
+            type="radio"
+            name="selectImage"
+            value={1}
+            onChange={handleChange}
+            id="myChoice1"
           />
-          <Image src={mark[0]} alt="マーク" class="mark" id="mark1" />
-        </label>
-        <input
-          type="radio"
-          name="selectImage"
-          value={2}
-          onChange={handleChange}
-          id="myChoice2"
+          <label htmlFor="myChoice1" id="image1">
+            <Image
+              src={
+                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
+                  .picture[0].pictureURL
+              }
+              alt="選択肢の画像"
+            />
+            <Image src={mark[0]} alt="マーク" class="mark" id="mark1" />
+          </label>
+          <input
+            type="radio"
+            name="selectImage"
+            value={2}
+            onChange={handleChange}
+            id="myChoice2"
+          />
+          <label htmlFor="myChoice2" id="image2">
+            <Image
+              src={
+                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
+                  .picture[1].pictureURL
+              }
+              alt="選択肢の画像"
+            />
+            <Image src={mark[1]} alt="マーク" class="mark" id="mark2" />
+          </label>
+          <input
+            type="radio"
+            name="selectImage"
+            value={3}
+            onChange={handleChange}
+            id="myChoice3"
+          />
+          <label htmlFor="myChoice3" id="image3">
+            <Image
+              src={
+                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
+                  .picture[2].pictureURL
+              }
+              alt="選択肢の画像"
+            />
+            <Image src={mark[2]} alt="マーク" class="mark" id="mark3" />
+          </label>
+          <input
+            type="radio"
+            name="selectImage"
+            value={4}
+            onChange={handleChange}
+            id="myChoice4"
+          />
+          <label htmlFor="myChoice4" id="image4">
+            <Image
+              src={
+                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
+                  .picture[3].pictureURL
+              }
+              alt="選択肢の画像"
+            />
+            <Image src={mark[3]} alt="マーク" class="mark" id="mark4" />
+          </label>
+        </form>
+        <Timer
+          time={time - Math.floor(time / 10) * 10 + Math.floor(time / 40) * 10}
         />
-        <label htmlFor="myChoice2" id="image2">
-          <Image
-            src={
-              data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                .picture[1].pictureURL
-            }
-            alt="選択肢の画像"
-          />
-          <Image src={mark[1]} alt="マーク" class="mark" id="mark2" />
-        </label>
-        <input
-          type="radio"
-          name="selectImage"
-          value={3}
-          onChange={handleChange}
-          id="myChoice3"
-        />
-        <label htmlFor="myChoice3" id="image3">
-          <Image
-            src={
-              data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                .picture[2].pictureURL
-            }
-            alt="選択肢の画像"
-          />
-          <Image src={mark[2]} alt="マーク" class="mark" id="mark3" />
-        </label>
-        <input
-          type="radio"
-          name="selectImage"
-          value={4}
-          onChange={handleChange}
-          id="myChoice4"
-        />
-        <label htmlFor="myChoice4" id="image4">
-          <Image
-            src={
-              data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                .picture[3].pictureURL
-            }
-            alt="選択肢の画像"
-          />
-          <Image src={mark[3]} alt="マーク" class="mark" id="mark4" />
-        </label>
-      </form>
-      <Timer
-        time={time - Math.floor(time / 10) * 10 + Math.floor(time / 40) * 10}
-      />
-    </div>
-  );
+      </div>
+    );
 }
