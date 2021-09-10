@@ -62,13 +62,6 @@ export default function Description() {
   };
 
   const handleSubmit = (event) => {
-    // for (let i = 0; i < ngWord.length; i++)
-    //   if (myDescription.indexOf(ngWord[i]) !== -1) {
-    //     event.preventDefault();
-    //     setAttentionMessage("NGワードが含まれています");
-    //     return 0;
-    //   }
-    // if (myDescription.length === 0) {
     event.preventDefault();
     //   setAttentionMessage("説明文を記入して下さい");
     //   return 0;
