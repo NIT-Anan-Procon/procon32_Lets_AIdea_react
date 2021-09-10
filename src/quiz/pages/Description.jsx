@@ -59,6 +59,7 @@ export default function Description() {
 
   if (time === 0) {
     clearInterval(timer.current);
+    document.getElementById("myDescription").disabled = true;
     setTimeout(() => {
       history.push("/quiz/answer");
     }, 5000);
@@ -78,7 +79,9 @@ export default function Description() {
             type="text"
             value={myDescription}
             onChange={handleChange}
+            placeholder="説明文を記入してね"
             className="textBox"
+            id="myDescription"
           />
         </form>
         <Timer time={time} />
