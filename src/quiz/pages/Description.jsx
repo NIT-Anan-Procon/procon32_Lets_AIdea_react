@@ -22,7 +22,7 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Start.php", {})
+      .get("http://localhost/API/Start.php")
       .then((res) => {
         console.log(res);
         setData(res.data);
@@ -43,8 +43,8 @@ export default function Description() {
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
-    for (let i = 0; i < data.data.ng.length; i++)
-      if (myDescription.indexOf(data.data.ng[i]) !== -1) {
+    for (let i = 0; i < data.ng.length; i++)
+      if (myDescription.indexOf(data.ng[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
