@@ -21,39 +21,39 @@ export default function Result() {
   };
 
   if (!data) return null;
-
-  return (
-    <div id="result">
-      <Title text="結果発表" />
-      <div id="pointTable">
-        <PointRow
-          id="firstPlayer"
-          rank="1st"
-          icon={data[0].icon}
-          name={data[0].name}
-          descriptionPoint={data[0].exp}
-          answerPoint={data[0].ans}
-        />
-        <PointRow
-          id="secondPlayer"
-          rank="2nd"
-          icon={data[1].icon}
-          name={data[1].name}
-          descriptionPoint={data[1].exp}
-          answerPoint={data[1].ans}
-        />
-        <PointRow
-          id="thirdPlayer"
-          rank="3rd"
-          icon={data[2].icon}
-          name={data[2].name}
-          descriptionPoint={data[2].exp}
-          answerPoint={data[2].ans}
-        />
+  else
+    return (
+      <div id="result">
+        <Title text="結果発表" />
+        <div id="pointTable">
+          <PointRow
+            id="firstPlayer"
+            rank="1st"
+            icon={data[0].icon}
+            name={data[0].name}
+            descriptionPoint={data[0].exp}
+            answerPoint={data[0].ans}
+          />
+          <PointRow
+            id="secondPlayer"
+            rank="2nd"
+            icon={data[1].icon}
+            name={data[1].name}
+            descriptionPoint={data[1].exp}
+            answerPoint={data[1].ans}
+          />
+          <PointRow
+            id="thirdPlayer"
+            rank="3rd"
+            icon={data[2].icon}
+            name={data[2].name}
+            descriptionPoint={data[2].exp}
+            answerPoint={data[2].ans}
+          />
+        </div>
+        <form onSubmit={handleSubmit} className="buttonForm">
+          <input type="submit" value="投票へ" />
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="buttonForm">
-        <input type="submit" value="投票へ" />
-      </form>
-    </div>
-  );
+    );
 }
