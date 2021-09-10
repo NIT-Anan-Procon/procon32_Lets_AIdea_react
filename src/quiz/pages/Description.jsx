@@ -41,15 +41,6 @@ export default function Description() {
     }
   };
 
-  // useEffect(() => {
-  //     // TODO: APIとの通信
-  //     for (let i = 0; i < data.ng.length; i++) {
-  //         setNgWord((ngWord) => ngWord + data.ng[i]);
-  //         if (i !== data.ng.length - 1)
-  //             setNgWord((ngWord) => ngWord + ", ");
-  //     }
-  // }, []);
-
   const handleChange = (event) => {
     setMyDescription(event.target.value);
     for (let i = 0; i < data.data.ng.length; i++)
