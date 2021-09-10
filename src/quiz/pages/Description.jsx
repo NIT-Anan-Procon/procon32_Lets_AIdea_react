@@ -51,21 +51,27 @@ export default function Description() {
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    if (myDescription.length === 0) {
-      event.preventDefault();
-      setAttentionMessage("説明文を記入して下さい");
-      return 0;
-    }
-    for (let i = 0; i < ngWord.length; i++)
-      if (myDescription.indexOf(ngWord[i]) !== -1) {
-        event.preventDefault();
+    for (let i = 0; i < data.playerId[0].ngWord.length; i++)
+      if (myDescription.indexOf(data.playerId[0].ngWord[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
-    history.push("/quiz/answer");
+    setAttentionMessage("");
+  };
+
+  const handleSubmit = (event) => {
+    // for (let i = 0; i < ngWord.length; i++)
+    //   if (myDescription.indexOf(ngWord[i]) !== -1) {
+    //     event.preventDefault();
+    //     setAttentionMessage("NGワードが含まれています");
+    //     return 0;
+    //   }
+    // if (myDescription.length === 0) {
+    event.preventDefault();
+    //   setAttentionMessage("説明文を記入して下さい");
+    //   return 0;
+    // }
+    // history.push("/quiz/answer");
   };
 
   useEffect(() => {
@@ -96,7 +102,7 @@ export default function Description() {
           onChange={handleChange}
           className="textBox"
         />
-        <input type="submit" value="送信" />
+        <input type="submit" value="決定" />
       </form>
       <Timer time={time} />
     </div>
