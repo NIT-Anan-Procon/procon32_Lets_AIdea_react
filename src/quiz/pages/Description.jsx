@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import "./css/quiz.css";
 import "./css/Description.css";
 import Title from "../../common/components/Title";
@@ -11,30 +12,7 @@ import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/TimeUp";
 
 export default function Description() {
-  const [data, setData] = useState({
-    playerId: [
-      {
-        playerDescription: "百獣の王は静かに微笑みを湛えている",
-        aiDescription: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-      },
-      {
-        playerDescription: "幾重の鳥居が私たちを待っている",
-        aiDescription: "草に囲まれた赤い建物に光が当たっています",
-        ngWord: ["草", "赤い", "光"],
-      },
-      {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
-      },
-      {
-        playerDescription: "プレイヤー説明文",
-        aiDescription: "AI説明文",
-        ngWord: ["NG1", "NG2", "NG3"],
-      },
-    ],
-  });
+  const [data, setData] = useState();
   const [ngWord, setNgWord] = useState("");
   const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState("");
@@ -43,18 +21,30 @@ export default function Description() {
   const timer = useRef(null);
 
   useEffect(() => {
-    // TODO: APIとの通信
-    for (let i = 0; i < data.playerId[0].ngWord.length; i++) {
-      setNgWord((ngWord) => ngWord + data.playerId[0].ngWord[i]);
-      if (i !== data.playerId[0].ngWord.length - 1)
-        setNgWord((ngWord) => ngWord + ", ");
-    }
+    axios
+      .get("http://localhost/API/Start.php")
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        getNgWord(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
   }, []);
+
+  const getNgWord = (data) => {
+    console.log(data.ng.length);
+    for (let i = 0; i < data.ng.length; i++) {
+      setNgWord((ngWord) => ngWord + data.ng[i]);
+      if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
+    }
+  };
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
-    for (let i = 0; i < data.playerId[0].ngWord.length; i++)
-      if (myDescription.indexOf(data.playerId[0].ngWord[i]) !== -1) {
+    for (let i = 0; i < data.ng.length; i++)
+      if (myDescription.indexOf(data.ng[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
@@ -74,29 +64,26 @@ export default function Description() {
     }, 5000);
   }
 
-  return (
-    <div id="description">
-      <Title text="この画像を説明しよう" />
-      <Image
-        src="https://source.unsplash.com/featured/?lion"
-        alt="問題の画像"
-      />
-      <OtherDescription
-        title="AIの説明文"
-        text={data.playerId[0].aiDescription}
-      />
-      <NgWord text={ngWord} />
-      <form id="descriptionForm">
-        <AttentionMessage text={attentionMessage} />
-        <input
-          type="text"
-          value={myDescription}
-          onChange={handleChange}
-          className="textBox"
-        />
-      </form>
-      <Timer time={time} />
-      <TimeUp time={time} />
-    </div>
-  );
+  if (!data) return <div>読み込み中</div>;
+  else {
+    return (
+      <div id="description">
+        <Title text="この画像を説明しよう" />
+        <Image src={data.pictureURL} alt="問題の画像" />
+        <OtherDescription title="AIの説明文" text={data.AI} />
+        <NgWord text={ngWord} />
+        <form id="descriptionForm">
+          <AttentionMessage text={attentionMessage} />
+          <input
+            type="text"
+            value={myDescription}
+            onChange={handleChange}
+            className="textBox"
+          />
+        </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
+      </div>
+    );
+  }
 }
