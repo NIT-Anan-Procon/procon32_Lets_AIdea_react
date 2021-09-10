@@ -61,10 +61,6 @@ export default function Description() {
     setAttentionMessage("");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   useEffect(() => {
     timer.current = setInterval(() => {
       setTime((time) => time - 1);
@@ -90,7 +86,7 @@ export default function Description() {
         text={data.playerId[0].aiDescription}
       />
       <NgWord text={ngWord} />
-      <form onSubmit={handleSubmit} id="descriptionForm">
+      <form id="descriptionForm">
         <AttentionMessage text={attentionMessage} />
         <input
           type="text"
@@ -98,7 +94,6 @@ export default function Description() {
           onChange={handleChange}
           className="textBox"
         />
-        <input type="submit" value="決定" />
       </form>
       <Timer time={time} />
       <TimeUp time={time} />
