@@ -63,10 +63,6 @@ export default function Description() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //   setAttentionMessage("説明文を記入して下さい");
-    //   return 0;
-    // }
-    // history.push("/quiz/answer");
   };
 
   useEffect(() => {
