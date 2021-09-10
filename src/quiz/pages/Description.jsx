@@ -25,8 +25,8 @@ export default function Description() {
       .get("http://localhost/API/Start.php", {})
       .then((res) => {
         console.log(res);
-        setData(res);
-        getNgWord(res);
+        setData(res.data);
+        getNgWord(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
@@ -34,10 +34,10 @@ export default function Description() {
   }, []);
 
   const getNgWord = (data) => {
-    console.log(data.data.ng.length);
-    for (let i = 0; i < data.data.ng.length; i++) {
-      setNgWord((ngWord) => ngWord + data.data.ng[i]);
-      if (i !== data.data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
+    console.log(data.ng.length);
+    for (let i = 0; i < data.ng.length; i++) {
+      setNgWord((ngWord) => ngWord + data.ng[i]);
+      if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
     }
   };
 
@@ -68,8 +68,8 @@ export default function Description() {
   return (
     <div id="description">
       <Title text="この画像を説明しよう" />
-      <Image src={data.data.pictureURL} alt="問題の画像" />
-      <OtherDescription title="AIの説明文" text={data.data.AI} />
+      <Image src={data.pictureURL} alt="問題の画像" />
+      <OtherDescription title="AIの説明文" text={data.AI} />
       <NgWord text={ngWord} />
       <form id="descriptionForm">
         <AttentionMessage text={attentionMessage} />
