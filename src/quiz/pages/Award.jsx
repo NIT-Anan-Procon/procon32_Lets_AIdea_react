@@ -16,11 +16,11 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/End.php", {})
+      .get("http://localhost/API/End.php")
       .then((res) => {
-        console.log(res);
-        setData(res);
-        getNgWord(res);
+        console.log(res.data);
+        setData(res.data);
+        getNgWord(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
@@ -28,10 +28,10 @@ export default function Award() {
   }, []);
 
   const getNgWord = (data) => {
-    console.log(data.data.ng.length);
-    for (let i = 0; i < data.data.ng.length; i++) {
-      setNgWord((ngWord) => ngWord + data.data.ng[i]);
-      if (i !== data.data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
+    console.log(data.ng.length);
+    for (let i = 0; i < data.ng.length; i++) {
+      setNgWord((ngWord) => ngWord + data.ng[i]);
+      if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
     }
   };
 
@@ -45,16 +45,16 @@ export default function Award() {
     history.push("");
   };
 
-  console.log(data);
+  if (!data) return <div>読み込み中</div>;
   return (
     <div id="award">
       <Title text="優秀作品" />
-      <Image src={data.data.pictureURL} alt="picture" />
+      <Image src={data.pictureURL} alt="picture" />
       <div className="player">
-        <Icon src={data.data.icon} />
-        <Name text={data.data.name} />
+        <Icon src={data.icon} />
+        <Name text={data.name} />
         <NgWord text={ngWord} />
-        <OtherDescription title="説明文" text={data.data.explanation} />
+        <OtherDescription title="説明文" text={data.explanation} />
       </div>
       <form className="buttonForm">
         <input
