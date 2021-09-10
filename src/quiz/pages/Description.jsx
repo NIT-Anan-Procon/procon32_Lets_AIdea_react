@@ -65,23 +65,25 @@ export default function Description() {
   }
 
   if (!data) return <div>読み込み中</div>;
-  return (
-    <div id="description">
-      <Title text="この画像を説明しよう" />
-      <Image src={data.pictureURL} alt="問題の画像" />
-      <OtherDescription title="AIの説明文" text={data.AI} />
-      <NgWord text={ngWord} />
-      <form id="descriptionForm">
-        <AttentionMessage text={attentionMessage} />
-        <input
-          type="text"
-          value={myDescription}
-          onChange={handleChange}
-          className="textBox"
-        />
-      </form>
-      <Timer time={time} />
-      <TimeUp time={time} />
-    </div>
-  );
+  else {
+    return (
+      <div id="description">
+        <Title text="この画像を説明しよう" />
+        <Image src={data.pictureURL} alt="問題の画像" />
+        <OtherDescription title="AIの説明文" text={data.AI} />
+        <NgWord text={ngWord} />
+        <form id="descriptionForm">
+          <AttentionMessage text={attentionMessage} />
+          <input
+            type="text"
+            value={myDescription}
+            onChange={handleChange}
+            className="textBox"
+          />
+        </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
+      </div>
+    );
+  }
 }
