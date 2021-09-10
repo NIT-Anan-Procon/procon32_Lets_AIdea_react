@@ -53,21 +53,12 @@ export default function Description() {
 
   const handleChange = (event) => {
     setMyDescription(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (myDescription.length === 0) {
-      event.preventDefault();
-      setAttentionMessage("説明文を記入して下さい");
-      return 0;
-    }
-    for (let i = 0; i < ngWord.length; i++)
-      if (myDescription.indexOf(ngWord[i]) !== -1) {
-        event.preventDefault();
+    for (let i = 0; i < data.playerId[0].ngWord.length; i++)
+      if (myDescription.indexOf(data.playerId[0].ngWord[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }
+    setAttentionMessage("");
   };
 
   useEffect(() => {
@@ -95,7 +86,7 @@ export default function Description() {
         text={data.playerId[0].aiDescription}
       />
       <NgWord text={ngWord} />
-      <form onSubmit={handleSubmit} id="descriptionForm">
+      <form id="descriptionForm">
         <AttentionMessage text={attentionMessage} />
         <input
           type="text"
@@ -103,7 +94,6 @@ export default function Description() {
           onChange={handleChange}
           className="textBox"
         />
-        <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
       <TimeUp time={time} />
