@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
@@ -8,6 +8,7 @@ import OtherDescription from "../../common/components/OtherDescription";
 import NgWord from "../../common/components/NgWord";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/TimeUp";
 
 export default function Description() {
   const [data, setData] = useState({
@@ -39,6 +40,7 @@ export default function Description() {
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
   const [time, setTime] = useState(30);
+  const timer = useRef(null);
 
   useEffect(() => {
     // TODO: APIとの通信
@@ -75,12 +77,17 @@ export default function Description() {
   };
 
   useEffect(() => {
-    setInterval(() => {
+    timer.current = setInterval(() => {
       setTime((time) => time - 1);
     }, 1000);
   }, []);
 
-  if (time === 0) history.push("/quiz/answer");
+  if (time === 0) {
+    clearInterval(timer.current);
+    setTimeout(() => {
+      history.push("/quiz/answer");
+    }, 5000);
+  }
 
   return (
     <div id="description">
@@ -105,6 +112,7 @@ export default function Description() {
         <input type="submit" value="決定" />
       </form>
       <Timer time={time} />
+      <TimeUp time={time} />
     </div>
   );
 }
