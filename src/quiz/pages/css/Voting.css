@@ -37,11 +37,15 @@
   position: relative;
 }
 
-#myChoice1,
-#myChoice2,
-#myChoice3,
-#myChoice4 {
+#voting input[type="radio"] {
+  display: block;
   grid-area: myChoice;
+  height: 5vh;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5vh;
 }
 
 #description1,
