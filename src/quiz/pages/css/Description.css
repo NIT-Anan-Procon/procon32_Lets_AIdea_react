@@ -17,10 +17,10 @@
   display: grid;
   grid-area: descriptionForm;
   grid-template:
-    "attentionMessage ... ..........." 20%
-    "................ ... ..........." 1vh
-    "inputText        ... inputSubmit" auto
-    / 83% 4vh auto;
+    "attentionMessage" 20%
+    "................" 1vh
+    "inputText       " auto
+    / 100%;
 }
 
 input[type="text"] {

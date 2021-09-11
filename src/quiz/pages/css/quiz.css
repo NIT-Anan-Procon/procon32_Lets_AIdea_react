@@ -25,12 +25,6 @@ p {
   margin: 2vh 0 0 4vh;
 }
 
-input[type="radio"] {
-  height: 5vh;
-  transform: translate(30%, 340%);
-  width: 5vh;
-}
-
 input[type="submit"] {
   align-items: center;
   background-color: #ff6347;
