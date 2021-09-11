@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-#result {
+#learnResult {
   display: grid;
   grid-template:
     "... ....... ....... ....... ..." 3vh

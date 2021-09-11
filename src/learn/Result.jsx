@@ -86,7 +86,7 @@ function Result() {
   }, [time]);
 
   return (
-    <div id="result">
+    <div id="learnResult">
       <Title text="リザルト" />
       <Image
         src="https://source.unsplash.com/featured/?lion"
