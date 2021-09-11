@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./css/Player.css";
 
 export default function Player(props) {
   return (

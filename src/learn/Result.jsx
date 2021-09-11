@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
 import Player from "./Player";
+import Title from "../common/components/Title";
+import Image from "../common/components/Image";
 import Timer from "../common/components/Timer";
+import aiImg from "../image/aiImg.svg";
 
 function Result() {
   const wordData = {
@@ -78,61 +81,39 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/vote");
+      //history.push("/vote");
     }
   }, [time]);
 
   return (
     <div id="result">
-      <div className="title">リザルト</div>
-      <div className="explanationImg">
-        <img
-          src="https://source.unsplash.com/featured/?lion"
-          alt="explanationImg"
-        />
-      </div>
+      <Title text="リザルト" />
+      <Image
+        src="https://source.unsplash.com/featured/?lion"
+        alt="explanationImg"
+      />
       <div className="players">
+        <Player src={aiImg} name="AI" explanation={wordData.playerId[0].ai} />
         <Player
-          src="https://source.unsplash.com/featured/?ai"
-          name="AI"
-          explanation={wordData.playerId[0].ai}
+          src={userData.playerId[0].imageIcon}
+          name={userData.playerId[0].name}
+          explanation={wordData.playerId[0].explanation}
         />
-        <div className="player">
-          <div className="playerImg">
-            <img src={userData.playerId[0].imageIcon} alt="player1Img" />
-            <div className="playerName">{userData.playerId[0].name}</div>
-          </div>
-          <div className="balloon playerExplanation">
-            <p>{wordData.playerId[0].explanation}</p>
-          </div>
-        </div>
-        <div className="player">
-          <div className="playerImg">
-            <img src={userData.playerId[1].imageIcon} alt="player2Img" />
-            <div className="playerName">{userData.playerId[1].name}</div>
-          </div>
-          <div className="balloon playerExplanation">
-            <p>{wordData.playerId[1].explanation}</p>
-          </div>
-        </div>
-        <div className="player">
-          <div className="playerImg">
-            <img src={userData.playerId[2].imageIcon} alt="player3Img" />
-            <div className="playerName">{userData.playerId[2].name}</div>
-          </div>
-          <div className="balloon playerExplanation">
-            <p>{wordData.playerId[2].explanation}</p>
-          </div>
-        </div>
-        <div className="player">
-          <div className="playerImg">
-            <img src={userData.playerId[3].imageIcon} alt="player4Img" />
-            <div className="playerName">{userData.playerId[3].name}</div>
-          </div>
-          <div className="balloon playerExplanation">
-            <p>{wordData.playerId[3].explanation}</p>
-          </div>
-        </div>
+        <Player
+          src={userData.playerId[1].imageIcon}
+          name={userData.playerId[1].name}
+          explanation={wordData.playerId[1].explanation}
+        />
+        <Player
+          src={userData.playerId[2].imageIcon}
+          name={userData.playerId[2].name}
+          explanation={wordData.playerId[2].explanation}
+        />
+        <Player
+          src={userData.playerId[3].imageIcon}
+          name={userData.playerId[3].name}
+          explanation={wordData.playerId[3].explanation}
+        />
       </div>
       <Timer time={time} />
     </div>
