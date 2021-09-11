@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
-import Timer from "../common/Timer";
+import Player from "./Player";
+import Timer from "../common/components/Timer";
 
 function Result() {
   const wordData = {
@@ -91,15 +92,11 @@ function Result() {
         />
       </div>
       <div className="players">
-        <div className="player">
-          <div className="playerImg">
-            <img src="https://source.unsplash.com/featured/?ai" alt="ai1Img" />
-            <div className="playerName">AI</div>
-          </div>
-          <div className="balloon playerExplanation">
-            <p>{wordData.playerId[0].ai}</p>
-          </div>
-        </div>
+        <Player
+          src="https://source.unsplash.com/featured/?ai"
+          name="AI"
+          explanation={wordData.playerId[0].ai}
+        />
         <div className="player">
           <div className="playerImg">
             <img src={userData.playerId[0].imageIcon} alt="player1Img" />
