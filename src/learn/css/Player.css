@@ -1,9 +1,10 @@
 .player {
   display: grid;
   grid-template:
-    "icon ... ballon" 80%
-    "name ... ballon" 20%
-    /20% 5% 75%;
+    "icon ... ballon" 75%
+    "name ... ballon" 15%
+    ".... ... ......" 5%
+    /15% 5% 80%;
 }
 
 .balloon {
@@ -13,30 +14,32 @@
   display: inline-block;
   font-size: 4vh;
   grid-area: ballon;
-  height: 22vh;
-  margin-left: 5vh;
   position: relative;
-  width: 30vh;
 }
 
 .balloon::before {
-  border: 12px solid transparent;
-  border-right: 12px solid #fff;
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid white;
   content: "";
-  left: -24px;
-  margin-top: -12px;
+  left: -6.5vh;
+  margin-top: -3vh;
   position: absolute;
   top: 50%;
   z-index: 2;
 }
 
 .balloon::after {
-  border: 14px solid transparent;
-  border-right: 14px solid #555;
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid black;
   content: "";
-  left: -30px;
-  margin-top: -14px;
+  left: -7.5vh;
+  margin-top: -3vh;
   position: absolute;
   top: 50%;
   z-index: 1;
+}
+
+.balloon p {
+  position: absolute;
+  top: 20%;
 }
