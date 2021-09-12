@@ -81,7 +81,7 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      //history.push("/vote");
+      history.push("/vote");
     }
   }, [time]);
 
