@@ -1,37 +1,9 @@
 .player {
-  display: flex;
-  flex-direction: row;
-  margin-top: 3vh;
-}
-
-.playerImg {
-  display: flex;
-  flex-basis: 20%;
-  flex-direction: column;
-}
-
-.playerImg img {
-  border-radius: 50%;
-  height: 20vh;
-  margin: auto;
-  width: 20vh;
-}
-
-.playerName {
-  flex-basis: 10%;
-  text-align: center;
-}
-
-.playerExplanation {
-  flex-basis: 80%;
-  position: relative;
-}
-
-.playerExplanation p {
-  margin: 0 0 0 2vh;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+  display: grid;
+  grid-template:
+    "icon ... ballon" 80%
+    "name ... ballon" 20%
+    /20% 5% 75%;
 }
 
 .balloon {
@@ -40,6 +12,7 @@
   box-sizing: border-box;
   display: inline-block;
   font-size: 4vh;
+  grid-area: ballon;
   height: 22vh;
   margin-left: 5vh;
   position: relative;

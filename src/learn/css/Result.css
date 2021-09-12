@@ -12,7 +12,7 @@ body {
     "... ....... ....... ....... ..." 3vh
     "... players players players ..." 80vh
     "... ....... ....... ....... ..." 3vh
-    /20vh auto 90vh auto 20vh;
+    /20vh 30vh 90vh 30vh 20vh;
   height: 100%;
   width: 100%;
 }
