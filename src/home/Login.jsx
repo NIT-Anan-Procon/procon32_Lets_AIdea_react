@@ -10,13 +10,16 @@ export default function Login() {
     useState("");
   const [attentionMessageToPassword, setAttentionMessageToPassword] =
     useState("");
+  const params = new FormData();
 
   const userNameChange = (event) => {
     setUserName(event.target.value);
+    params.append("name", userName);
   };
 
   const passwordChange = (event) => {
     setPassword(event.target.value);
+    params.append("password", password);
   };
 
   const registerHandleSubmit = (event) => {
@@ -29,15 +32,19 @@ export default function Login() {
       setAttentionMessageToPassword("新規登録パスワードを入力してください");
       return 0;
     } else {
-      axios({
-        method: "post",
-        url: "API/User/CreateUser.php",
-        data: {
-          name: { userName },
-          password: { password },
-          // icon:
-        },
-      });
+      event.preventDefault();
+      axios
+        .post("http://localhost/API/User/CreateUser.php", params, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then((result) => {
+          console.log(result.status);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
     }
   };
 
@@ -51,14 +58,19 @@ export default function Login() {
       setAttentionMessageToPassword("ログインパスワードを入力してください");
       return 0;
     } else {
-      axios({
-        method: "post",
-        url: "API/User/Login.php",
-        data: {
-          name: { userName },
-          password: { password },
-        },
-      });
+      event.preventDefault();
+      axios
+        .post("http://localhost/API/User/Login.php", params, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then((result) => {
+          console.log(result.status);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
     }
     // history.push("/");
   };
