@@ -1,10 +1,11 @@
 .player {
   display: grid;
   grid-template:
-    "icon ... ballon" 75%
-    "name ... ballon" 15%
-    ".... ... ......" 5%
+    "icon ... ballon" 60%
+    "name ... ballon" 10%
+    ".... ... ......" 30%
     /15% 5% 80%;
+  height: 30vh;
 }
 
 .balloon {
