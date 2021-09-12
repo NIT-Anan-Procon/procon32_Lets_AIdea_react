@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 export default function Test() {
   return (
     <>
-      <Link to="/Explanation">
+      <Link to="/learn/Explanation">
         <p>learn/Explanation</p>
       </Link>
-      <Link to="/result">
+      <Link to="/learn/result">
         <p>learn/result</p>
       </Link>
       <Link to="/quiz/description">

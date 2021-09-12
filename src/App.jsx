@@ -14,8 +14,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
-      <Route path="/explanation" exact component={Explanation} />
-      <Route path="/result" exact component={LearnResult} />
+      <Route path="/learn/explanation" exact component={Explanation} />
+      <Route path="/learn/result" exact component={LearnResult} />
       <Route path="/quiz/description" exact component={QuizDescription} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />
