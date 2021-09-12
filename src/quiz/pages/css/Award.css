@@ -3,7 +3,7 @@
     "... ......... ........... .......... ..." 3vh
     "... title      title      title      ..." 10vh
     "... .........  .......... .......... ..." 5vh
-    "... image      .......... player     ..." 48vh
+    "... image      .......... winner     ..." 48vh
     "... .......... .......... .......... ..." 15vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
@@ -11,9 +11,9 @@
   position: fixed;
 }
 
-.player {
+.winner {
   display: grid;
-  grid-area: player;
+  grid-area: winner;
   grid-template:
     "icon             ................ ngWord          " 33%
     "name             ................ ngWord          " 12%

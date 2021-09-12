@@ -55,7 +55,7 @@ export default function Award() {
       <div id="award">
         <Title text="優秀作品" />
         <Image src={data.pictureURL} alt="picture" />
-        <div className="player">
+        <div className="winner">
           <Icon src={data.icon} />
           <Name text={data.name} />
           <NgWord text={ngWord} />

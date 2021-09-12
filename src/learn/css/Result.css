@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+}
+
+#learnResult {
+  display: grid;
+  grid-template:
+    "... ....... ....... ....... ..." 3vh
+    "... ....... title   ....... ..." 10vh
+    "... ....... ....... ....... ..." 2vh
+    "... ....... image   ....... ..." 60vh
+    "... ....... ....... ....... ..." 10vh
+    "... players players players ..." auto
+    "... ....... ....... ....... ..." 3vh
+    /20vh auto 90vh auto 20vh;
+  height: 100%;
+  width: 100%;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  grid-area: players;
+  justify-content: space-between;
+}
