@@ -1,12 +1,12 @@
-body {
+.quiz body {
   margin: 0;
 }
 
-#description,
-#answer,
-#result,
-#voting,
-#award {
+#quizDescription,
+#quizAnswer,
+#quizResult,
+#quizVoting,
+#quizAward {
   display: grid;
   height: 100%;
   width: 100%;
@@ -20,12 +20,12 @@ body {
   padding: 2vh;
 }
 
-p {
+.quiz p {
   font-size: 5vh;
   margin: 2vh 0 0 4vh;
 }
 
-input[type="submit"] {
+.quiz input[type="submit"] {
   align-items: center;
   background-color: #ff6347;
   border: none;
@@ -40,6 +40,6 @@ input[type="submit"] {
   width: 100%;
 }
 
-.buttonForm {
+.quiz .buttonForm {
   grid-area: buttonForm;
 }

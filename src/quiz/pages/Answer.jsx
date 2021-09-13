@@ -105,7 +105,7 @@ export default function Answer() {
   if (!data) return <div>読み込み中...</div>;
   else
     return (
-      <div id="answer">
+      <div className="quiz" id="quizAnswer">
         <Title text="元画像を当てよう" />
         <OtherDescription
           title={

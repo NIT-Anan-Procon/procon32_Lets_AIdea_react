@@ -52,7 +52,7 @@ export default function Award() {
   if (!data) return <div>読み込み中</div>;
   else {
     return (
-      <div id="award">
+      <div className="quiz" id="quizAward">
         <Title text="優秀作品" />
         <Image src={data.pictureURL} alt="picture" />
         <div className="winner">
