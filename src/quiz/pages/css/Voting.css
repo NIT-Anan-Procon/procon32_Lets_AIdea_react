@@ -1,4 +1,4 @@
-#voting {
+#quizVoting {
   grid-template:
     "... .......... ..." 3vh
     "... title      ..." 10vh
@@ -9,7 +9,7 @@
   position: fixed;
 }
 
-#votingForm {
+#quizVoting #votingForm {
   display: grid;
   grid-area: votingForm;
   grid-template:
@@ -21,13 +21,13 @@
     / auto 50% auto;
 }
 
-#descriptionTable {
+#quizVoting #descriptionTable {
   border: solid 0.5vh black;
   grid-area: descriptionTable;
   overflow-y: scroll;
 }
 
-.descriptionRow {
+#quizVoting .descriptionRow {
   display: grid;
   grid-template:
     "myChoice ... description" 100%
@@ -37,7 +37,7 @@
   position: relative;
 }
 
-#voting input[type="radio"] {
+#quizVoting input[type="radio"] {
   display: block;
   grid-area: myChoice;
   height: 5vh;
@@ -48,10 +48,10 @@
   width: 5vh;
 }
 
-#description1,
-#description2,
-#description3,
-#description4 {
+#quizVoting #description1,
+#quizVoting #description2,
+#quizVoting #description3,
+#quizVoting #description4 {
   display: grid;
   grid-area: description;
   grid-template:
@@ -60,15 +60,15 @@
     /20vh 3vh 37.5vh 3vh auto;
 }
 
-.icon {
+#quizVoting .icon {
   height: 18vh;
   width: 18vh;
 }
 
-.name {
+#quizVoting .name {
   font-size: 5vh;
 }
 
-.image {
+#quizVoting .image {
   grid-area: image;
 }

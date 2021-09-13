@@ -1,4 +1,4 @@
-#result {
+#quizResult {
   grid-template:
     "... .......... .......... .......... ..." 3vh
     "... title      title      title      ..." 10vh
@@ -11,7 +11,7 @@
   position: fixed;
 }
 
-#pointTable {
+#quizResult #pointTable {
   display: grid;
   grid-area: pointTable;
   grid-template:

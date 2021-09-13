@@ -28,7 +28,7 @@ export default function Result() {
   if (!data) return <div>読み込み中...</div>;
   else
     return (
-      <div id="result">
+      <div className="quiz" id="quizResult">
         <Title text="結果発表" />
         <div id="pointTable">
           <PointRow

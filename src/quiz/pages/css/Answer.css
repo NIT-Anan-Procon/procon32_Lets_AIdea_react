@@ -1,4 +1,4 @@
-#answer {
+#quizAnswer {
   grid-template:
     "... ................ ..." 3vh
     "... title            ..." 10vh
@@ -10,7 +10,7 @@
     / auto 135vh auto;
 }
 
-#answerForm {
+#quizAnswer #answerForm {
   display: grid;
   grid-area: answerForm;
   grid-template:
@@ -22,7 +22,7 @@
     /7% 43% 7% 43%;
 }
 
-input[type="radio"] {
+#quizAnswer input[type="radio"] {
   height: 5vh;
   left: 2vh;
   position: relative;
@@ -30,43 +30,43 @@ input[type="radio"] {
   width: 5vh;
 }
 
-#answer #myChoice1 {
+#quizAnswer #myChoice1 {
   grid-area: myChoice1;
 }
 
-#image1 {
+#quizAnswer #image1 {
   grid-area: image1;
   position: relative;
 }
 
-#answer #myChoice2 {
+#quizAnswer #myChoice2 {
   grid-area: myChoice2;
 }
 
-#image2 {
+#quizAnswer #image2 {
   grid-area: image2;
   position: relative;
 }
 
-#answer #myChoice3 {
+#quizAnswer #myChoice3 {
   grid-area: myChoice3;
 }
 
-#image3 {
+#quizAnswer #image3 {
   grid-area: image3;
   position: relative;
 }
 
-#answer #myChoice4 {
+#quizAnswer #myChoice4 {
   grid-area: myChoice4;
 }
 
-#image4 {
+#quizAnswer #image4 {
   grid-area: image4;
   position: relative;
 }
 
-.mark {
+#quizAnswer .mark {
   height: 80%;
   left: 50%;
   object-fit: contain;

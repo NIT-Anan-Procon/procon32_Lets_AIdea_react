@@ -29,7 +29,8 @@ function Result() {
         synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
       },
       {
-        explanation: "プレイヤー説明文",
+        explanation:
+          "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ",
         ai: "草原でライオンが座っています",
         ngWord: ["草", "赤い", "光"],
         synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
@@ -81,7 +82,7 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/vote");
+      //history.push("/learn/vote");
     }
   }, [time]);
 
