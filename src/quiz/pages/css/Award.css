@@ -1,0 +1,44 @@
+#award {
+  grid-template:
+    "... ......... ........... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .........  .......... .......... ..." 5vh
+    "... image      .......... winner     ..." 48vh
+    "... .......... .......... .......... ..." 15vh
+    "... buttonForm buttonForm buttonForm ..." 15vh
+    "... .......... .......... .......... ..." 3vh
+    / auto 72vh 4vh 96vh auto;
+  position: fixed;
+}
+
+.winner {
+  display: grid;
+  grid-area: winner;
+  grid-template:
+    "icon             ................ ngWord          " 33%
+    "name             ................ ngWord          " 12%
+    "................ ................ ................" 10%
+    "otherDescription otherDescription otherDescription" 45%
+    /25% 5% 70%;
+}
+
+.icon {
+  height: 15vh;
+  width: 15vh;
+}
+
+.name {
+  font-size: 5vh;
+}
+
+.buttonForm {
+  display: flex;
+}
+
+.leave {
+  margin-left: 20vh;
+}
+
+input[type="submit"].leave {
+  background-color: #4f64d3;
+}
