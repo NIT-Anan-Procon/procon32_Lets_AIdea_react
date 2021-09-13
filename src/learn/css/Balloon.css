@@ -4,10 +4,9 @@
   box-sizing: border-box;
   display: inline-block;
   font-size: 4vh;
-  height: 22vh;
-  margin-left: 5vh;
+  grid-area: ballon;
   position: relative;
-  width: 40vh;
+  white-space: nowrap;
 }
 
 .balloon::before {
@@ -17,7 +16,7 @@
   left: -6.5vh;
   margin-top: -3vh;
   position: absolute;
-  top: 25%;
+  top: 50%;
   z-index: 2;
 }
 
@@ -28,6 +27,13 @@
   left: -7.5vh;
   margin-top: -3vh;
   position: absolute;
-  top: 25%;
+  top: 50%;
   z-index: 1;
+}
+
+.scroll {
+  overflow-x: scroll;
+  position: absolute;
+  top: 20%;
+  width: 100%;
 }
