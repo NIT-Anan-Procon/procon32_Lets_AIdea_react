@@ -4,6 +4,7 @@ import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Explanation from "./learn/Explanation";
 import LearnResult from "./learn/Result";
+import LearnAward from "./learn/Award";
 import QuizDescription from "./quiz/pages/Description";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
@@ -35,6 +36,7 @@ export default function App() {
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
+      <Route path="/learn/award" exact component={LearnAward} />
       <Route path="/quiz/description" exact component={QuizDescription} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />
