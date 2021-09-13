@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./css/Player.css";
-import Icon from "../common/components/Icon";
-import Name from "../common/components/Name";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
 
 export default function Player(props) {
   if (props.src == null) return null;
