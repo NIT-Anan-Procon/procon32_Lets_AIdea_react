@@ -93,7 +93,7 @@ function Explanation() {
       case 0:
         clearInterval(timer.current);
         setTimeout(() => {
-          history.push("/result");
+          history.push("/learn/result");
         }, 5000);
         break;
     }
