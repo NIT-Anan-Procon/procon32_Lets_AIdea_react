@@ -63,7 +63,7 @@ export default function Voting() {
   if (!data) return <div>読み込み中</div>;
   else {
     return (
-      <div id="voting">
+      <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
         <form onSubmit={handleSubmit} id="votingForm">
           <div id="descriptionTable">

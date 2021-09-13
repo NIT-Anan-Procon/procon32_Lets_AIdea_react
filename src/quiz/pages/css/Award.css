@@ -1,4 +1,4 @@
-#award {
+#quizAward {
   grid-template:
     "... ......... ........... .......... ..." 3vh
     "... title      title      title      ..." 10vh
@@ -11,7 +11,7 @@
   position: fixed;
 }
 
-.winner {
+#quizAward .winner {
   display: grid;
   grid-area: winner;
   grid-template:
@@ -22,23 +22,23 @@
     /25% 5% 70%;
 }
 
-.icon {
+#quizAward .icon {
   height: 15vh;
   width: 15vh;
 }
 
-.name {
+#quizAward .name {
   font-size: 5vh;
 }
 
-.buttonForm {
+#quizAward .buttonForm {
   display: flex;
 }
 
-.leave {
+#quizAward .leave {
   margin-left: 20vh;
 }
 
-input[type="submit"].leave {
+#quizAward input[type="submit"].leave {
   background-color: #4f64d3;
 }

@@ -73,7 +73,7 @@ export default function Description() {
   if (!data) return <div>読み込み中</div>;
   else {
     return (
-      <div id="description">
+      <div className="quiz" id="quizDescription">
         <Title text="この画像を説明しよう" />
         <Image src={data.pictureURL} alt="問題の画像" />
         <OtherDescription title="AIの説明文" text={data.AI} />
