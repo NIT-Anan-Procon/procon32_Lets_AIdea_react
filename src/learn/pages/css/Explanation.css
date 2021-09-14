@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 5vh;
+  margin: 2vh 0 0 4vh;
+}
+
 #explanation {
   display: grid;
   grid-template:

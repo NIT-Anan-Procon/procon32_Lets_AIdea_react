@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/Player.css";
-import Icon from "../common/components/Icon";
-import Name from "../common/components/Name";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
 import Balloon from "./Balloon";
 
 export default function Player(props) {
