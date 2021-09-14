@@ -12,6 +12,18 @@ export default function Login() {
     useState("");
   const params = new FormData();
 
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost/API/CheckLogin.php")
+  //     .then((res) => {
+  //       console.log(res);
+  //       history.push("/");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.request.status);
+  //     });
+  // }, []);
+
   const userNameChange = (event) => {
     console.log(userName);
     setUserName(event.target.value);
