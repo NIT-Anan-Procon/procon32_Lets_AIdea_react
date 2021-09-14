@@ -16,8 +16,10 @@ export default function Answer() {
   let correct = [0, 0, 0, 0];
   const [mark, setMark] = useState([]);
   const history = useHistory();
-  const [time, setTime] = useState(40);
+  const [time, setTime] = useState(20);
+  const [timeCount, setTimeCount] = useState(1);
   let timeCopy = time;
+  let timeCountCopy = timeCount;
 
   useEffect(() => {
     axios.get("http://localhost/API/Quiz/GetPicture.php").then((result) => {
@@ -33,7 +35,7 @@ export default function Answer() {
   useEffect(() => {
     if (!data) return 0;
     deleteMark();
-    if (data.playerID == 4 - Math.floor(time / 10) + Math.floor(time / 40)) {
+    if (data.playerID == timeCount) {
       document.getElementById("myChoice1").disabled = true;
       document.getElementById("myChoice2").disabled = true;
       document.getElementById("myChoice3").disabled = true;
@@ -49,17 +51,18 @@ export default function Answer() {
       const timer = setInterval(() => {
         setTime((time) => time - 1);
         timeCopy--;
-        if (timeCopy % 10 === 0) {
+        if (timeCopy === 0) {
           addMark();
           clearInterval(timer);
           setTimeout(() => {
-            if (timeCopy === 0) history.push("/quiz/result");
+            if (timeCountCopy === 4) history.push("/quiz/result");
             startTimer();
             deleteMark();
+            setTimeCount((timeCount) => timeCount + 1);
+            timeCountCopy++;
+            setTime(20);
+            timeCopy = time;
           }, 4000);
-          setTimeout(() => {
-            setTime(timeCopy);
-          }, 5000);
         }
       }, 1000);
     }
@@ -77,7 +80,7 @@ export default function Answer() {
     document.getElementById("myChoice3").disabled = true;
     document.getElementById("myChoice4").disabled = true;
     let markArray = [cross, cross, cross, cross];
-    markArray[correct[3 - timeCopy / 10] - 1] = circle;
+    markArray[correct[timeCount - 1] - 1] = circle;
     setMark(markArray.slice());
   }
 
@@ -108,13 +111,8 @@ export default function Answer() {
       <div className="quiz" id="quizAnswer">
         <Title text="元画像を当てよう" />
         <OtherDescription
-          title={
-            data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)].name
-          }
-          text={
-            data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-              .explanation
-          }
+          title={data.player[timeCount].name}
+          text={data.player[timeCount].explanation}
         />
         <AttentionMessage text="写真をクリックしてください" />
         <form id="answerForm">
@@ -127,10 +125,7 @@ export default function Answer() {
           />
           <label htmlFor="myChoice1" id="image1">
             <Image
-              src={
-                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                  .picture[0].pictureURL
-              }
+              src={data.player[timeCount].picture[0].pictureURL}
               alt="選択肢の画像"
             />
             <Image src={mark[0]} alt="マーク" class="mark" id="mark1" />
@@ -144,10 +139,7 @@ export default function Answer() {
           />
           <label htmlFor="myChoice2" id="image2">
             <Image
-              src={
-                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                  .picture[1].pictureURL
-              }
+              src={data.player[timeCount].picture[1].pictureURL}
               alt="選択肢の画像"
             />
             <Image src={mark[1]} alt="マーク" class="mark" id="mark2" />
@@ -161,10 +153,7 @@ export default function Answer() {
           />
           <label htmlFor="myChoice3" id="image3">
             <Image
-              src={
-                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                  .picture[2].pictureURL
-              }
+              src={data.player[timeCount].picture[2].pictureURL}
               alt="選択肢の画像"
             />
             <Image src={mark[2]} alt="マーク" class="mark" id="mark3" />
@@ -178,18 +167,13 @@ export default function Answer() {
           />
           <label htmlFor="myChoice4" id="image4">
             <Image
-              src={
-                data.player[4 - Math.floor(time / 10) + Math.floor(time / 40)]
-                  .picture[3].pictureURL
-              }
+              src={data.player[timeCount].picture[3].pictureURL}
               alt="選択肢の画像"
             />
             <Image src={mark[3]} alt="マーク" class="mark" id="mark4" />
           </label>
         </form>
-        <Timer
-          time={time - Math.floor(time / 10) * 10 + Math.floor(time / 40) * 10}
-        />
+        <Timer time={time} />
       </div>
     );
 }
