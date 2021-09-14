@@ -7,11 +7,9 @@ import Image from "../common/components/Image";
 import Icon from "../common/components/Icon";
 import Name from "../common/components/Name";
 import OtherDescription from "../common/components/OtherDescription";
-import NgWord from "../common/components/NgWord";
 
 export default function Award() {
   const [data, setData] = useState();
-  const [ngWord, setNgWord] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -20,19 +18,12 @@ export default function Award() {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
-        // getNgWord(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
+        return <div>error.request.status</div>;
       });
   }, []);
-
-  const getNgWord = (data) => {
-    for (let i = 0; i < data.ng.length; i++) {
-      setNgWord((ngWord) => ngWord + data.ng[i]);
-      if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
-    }
-  };
 
   const againHandleSubmit = () => {
     // TODO 待機画面に戻るパスを追加

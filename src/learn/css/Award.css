@@ -8,7 +8,7 @@
     "... .......... .......... .......... ..." 10vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
-    / 30vh 72vh 4vh auto 30vh;
+    / 10vh 72vh 4vh auto 10vh;
   height: 100%;
   position: fixed;
   width: 100%;
@@ -32,7 +32,7 @@
     "name             ................" 14%
     "................ ................" 1%
     "otherDescription otherDescription" auto
-    /25% 75%;
+    / 20vh auto;
 }
 
 #learnAward .icon {
@@ -62,4 +62,8 @@
 
 #learnAward input[type="submit"].leave {
   background-color: #4f64d3;
+}
+
+#learnAward input[type="submit"] {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
 }
