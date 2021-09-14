@@ -2,12 +2,12 @@
   grid-template:
     "... ......... ........... .......... ..." 3vh
     "... title      title      title      ..." 10vh
-    "... .........  .......... .......... ..." 5vh
-    "... image      .......... winner     ..." 40vh
-    "... .......... .......... .......... ..." 12vh
+    "... .........  .......... .......... ..." 7vh
+    "... image      .......... winner     ..." 46vh
+    "... .......... .......... .......... ..." 10vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
-    / 15vh 60vh 4vh auto 15vh;
+    / 15vh 69vh 3vh auto 15vh;
   position: fixed;
 }
 
@@ -17,9 +17,9 @@
   grid-template:
     "icon             ................ ngWord          " 38%
     "name             ................ ngWord          " 10%
-    "................ ................ ................" 5%
+    "................ ................ ................" 2vh
     "otherDescription otherDescription otherDescription" auto
-    / 20vh 5vh auto;
+    / 20vh 2vh auto;
 }
 
 #quizAward .icon {
