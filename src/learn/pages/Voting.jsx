@@ -55,8 +55,9 @@ export default function Voting() {
                 name="selectDescription"
                 value={1}
                 onChange={handleChange}
+                id="choiceAI"
               />
-              <label>
+              <label htmlFor="choiceAI">
                 <Icon src={aiImg} />
                 <Name text="AI" />
                 <OtherDescription text={data.AI} />
@@ -68,8 +69,9 @@ export default function Voting() {
                 name="selectDescription"
                 value={2}
                 onChange={handleChange}
+                id="choice1"
               />
-              <label>
+              <label htmlFor="choice1">
                 <Icon src={data.player[1].icon} />
                 <Name text={data.player[1].name} />
                 <OtherDescription text={data.player[1].explanation} />
@@ -81,8 +83,9 @@ export default function Voting() {
                 name="selectDescription"
                 value={3}
                 onChange={handleChange}
+                id="choice2"
               />
-              <label>
+              <label htmlFor="choice2">
                 <Icon src={data.player[2].icon} />
                 <Name text={data.player[2].name} />
                 <OtherDescription text={data.player[2].explanation} />
@@ -94,8 +97,9 @@ export default function Voting() {
                 name="selectDescription"
                 value={4}
                 onChange={handleChange}
+                id="choice3"
               />
-              <label>
+              <label htmlFor="choice3">
                 <Icon src={data.player[3].icon} />
                 <Name text={data.player[3].name} />
                 <OtherDescription text={data.player[3].explanation} />
@@ -107,8 +111,9 @@ export default function Voting() {
                 name="selectDescription"
                 value={5}
                 onChange={handleChange}
+                id="choice4"
               />
-              <label>
+              <label htmlFor="choice4">
                 <Icon src={data.player[4].icon} />
                 <Name text={data.player[4].name} />
                 <OtherDescription text={data.player[4].explanation} />

@@ -48,25 +48,25 @@ body {
   display: grid;
   grid-area: player;
   grid-template:
-    "icon ... otherDescription" 80%
-    "name ... otherDescription" 20%
-    /15% 5% 80%;
+    "icon otherDescription" 80%
+    "name otherDescription" 20%
+    /20% 80%;
 }
 
 #learnVoting input[type="radio"] {
   display: block;
   grid-area: myChoice;
-  height: 3vh;
-  left: 40%;
+  height: 3.5vh;
+  left: 60%;
   position: absolute;
-  top: 35%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  width: 3vh;
+  width: 3.5vh;
 }
 
 #learnVoting .icon {
-  height: 8vh;
-  width: 8vh;
+  height: 10vh;
+  width: 10vh;
 }
 
 #learnVoting .name {
