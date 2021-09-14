@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
-import "./css/Balloon.css";
-import Timer from "../common/components/Timer";
-import TimeUp from "../common/TimeUp";
-import aiImg from "../image/aiImg.svg";
-import aiImgSmile from "../image/aiImgSmile.svg";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/TimeUp";
+import aiImg from "../../image/aiImg.svg";
+import aiImgSmile from "../../image/aiImgSmile.svg";
 
 function Explanation() {
   const data = {
@@ -94,7 +93,7 @@ function Explanation() {
       case 0:
         clearInterval(timer.current);
         setTimeout(() => {
-          history.push("/result");
+          history.push("/learn/result");
         }, 5000);
         break;
     }

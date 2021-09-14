@@ -6,12 +6,10 @@ import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
 import Name from "../../common/components/Name";
-import NgWord from "../../common/components/NgWord";
 import OtherDescription from "../../common/components/OtherDescription";
 
 export default function Award() {
   const [data, setData] = useState();
-  const [ngWord, setNgWord] = useState("");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
@@ -21,20 +19,12 @@ export default function Award() {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
-        getNgWord(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
-
-  const getNgWord = (data) => {
-    for (let i = 0; i < data.ng.length; i++) {
-      setNgWord((ngWord) => ngWord + data.ng[i]);
-      if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
-    }
-  };
 
   const againHandleSubmit = () => {
     // TODO 待機画面に戻るパスを追加
@@ -54,13 +44,12 @@ export default function Award() {
   if (!data) return <div>{errorMessage}</div>;
   else {
     return (
-      <div className="quiz" id="quizAward">
+      <div id="learnAward">
         <Title text="優秀作品" />
-        <Image src={data.pictureURL} alt="picture" />
+        <Image src={data.pictureURL} alt="優秀作品の画像" />
         <div className="winner">
           <Icon src={data.icon} />
           <Name text={data.name} />
-          <NgWord text={ngWord} />
           <OtherDescription title="説明文" text={data.explanation} />
         </div>
         <form className="buttonForm">

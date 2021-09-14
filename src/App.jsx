@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
-import Selection from "./home/Selection";
-import Waiting from "./home/Waiting";
-import Explanation from "./learn/Explanation";
-import LearnResult from "./learn/Result";
+import Selection from "./common/pages/Selection";
+import Waiting from "./common/pages/Waiting";
+import Explanation from "./learn/pages/Explanation";
+import LearnResult from "./learn/pages/Result";
+import LearnAward from "./learn/pages/Award";
 import QuizDescription from "./quiz/pages/Description";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
@@ -39,6 +40,7 @@ export default function App() {
       <Route path="/waiting" exact component={Waiting} />
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
+      <Route path="/learn/award" exact component={LearnAward} />
       <Route path="/quiz/description" exact component={QuizDescription} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />

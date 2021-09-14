@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
-import Player from "./Player";
-import Title from "../common/components/Title";
-import Image from "../common/components/Image";
-import Timer from "../common/components/Timer";
-import aiImg from "../image/aiImg.svg";
+import Player from "../components/Player";
+import Title from "../../common/components/Title";
+import Image from "../../common/components/Image";
+import Timer from "../../common/components/Timer";
+import aiImg from "../../image/aiImg.svg";
 
 function Result() {
   const wordData = {
@@ -82,7 +82,7 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/learn/vote");
+      //history.push("/learn/vote");
     }
   }, [time]);
 
