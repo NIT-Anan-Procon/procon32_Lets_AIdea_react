@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Award.css";
-import Title from "../common/components/Title";
-import Image from "../common/components/Image";
-import Icon from "../common/components/Icon";
-import Name from "../common/components/Name";
-import OtherDescription from "../common/components/OtherDescription";
+import Title from "../../common/components/Title";
+import Image from "../../common/components/Image";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
+import OtherDescription from "../../common/components/OtherDescription";
 
 export default function Award() {
   const [data, setData] = useState();
