@@ -5,13 +5,14 @@ body {
 #learnVoting {
   display: grid;
   grid-template:
-    "... title      title      title      ..." 6vh
-    "... .......... .......    .......... ..." 2vh
-    "... .......... image      .......... ..." 40vh
-    "... .......... .......... .......... ..." 1vh
-    "... votingForm votingForm votingForm ..." auto
-    "... .......... .......... .......... ..." 1vh
-    /40vh auto 60vh auto 40vh;
+    "... ..... .......... ..." 3vh
+    "... title title      ..." 10vh
+    "... ..... .......... ..." 3vh
+    "... ..... votingForm ..." 5vh
+    "... image votingForm ..." 60vh
+    "... ..... votingForm ..." auto
+    "... ..... .......... ..." 3vh
+    /20vh 90vh auto 20vh;
   height: 100%;
   position: fixed;
   width: 100%;
@@ -21,8 +22,10 @@ body {
   display: grid;
   grid-area: votingForm;
   grid-template:
-    "selections       selections       selections      " 42vh
-    "attentionMessage attentionMessage attentionMessage" 2vh
+    "selections       selections       selections      " 70vh
+    "................ ................ ................" 1vh
+    "attentionMessage attentionMessage attentionMessage" 3vh
+    "................ ................ ................" 1vh
     "................ inputSubmit      ................" 6vh
     / auto 50% auto;
 }
@@ -36,8 +39,7 @@ body {
   grid-template:
     "myChoice ... player" 100%
     /5% 2% 93%;
-  height: 8vh;
-  margin: 0.3vh 0;
+  margin: 1vh 0;
   position: relative;
 }
 
@@ -47,35 +49,31 @@ body {
   grid-template:
     "icon otherDescription" 80%
     "name otherDescription" 20%
-    /10% 90%;
+    /15% 85%;
 }
 
 #learnVoting input[type="radio"] {
   display: block;
   grid-area: myChoice;
   height: 3vh;
-  left: 100%;
+  left: 80%;
   position: absolute;
   top: 35%;
   transform: translate(-50%, -50%);
   width: 3vh;
 }
 
-#learnVoting .title {
-  font-size: 6vh;
-}
-
 #learnVoting .icon {
-  height: 6vh;
-  width: 6vh;
+  height: 8vh;
+  width: 8vh;
 }
 
 #learnVoting .name {
-  font-size: 2vh;
+  font-size: 4vh;
 }
 
 #learnVoting .textBox {
-  border: solid 0.3vh #4f84d3;
+  border: solid 0.5vh #4f84d3;
 }
 
 #learnVoting .otherDescription p {
@@ -83,7 +81,7 @@ body {
 }
 
 #learnVoting .attentionMessage {
-  font-size: 2vh;
+  font-size: 3vh;
 }
 
 #learnVoting input[type="submit"] {
