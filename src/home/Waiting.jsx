@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./css/waiting.css";
+import "./css/Waiting.css";
 import axios from "axios";
 
 export default function Waiting() {
