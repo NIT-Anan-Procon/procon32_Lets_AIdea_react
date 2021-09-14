@@ -17,7 +17,7 @@ export default function Description() {
   const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(60);
   const timer = useRef(null);
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
