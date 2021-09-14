@@ -20,12 +20,19 @@ export default function Answer() {
   const [timeCount, setTimeCount] = useState(1);
   let timeCopy = time;
   let timeCountCopy = timeCount;
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
-    axios.get("http://localhost/API/Quiz/GetPicture.php").then((result) => {
-      console.log(result.data);
-      setData(result.data);
-    });
+    axios
+      .get("http://localhost/API/Quiz/GetPicture.php")
+      .then((result) => {
+        console.log(result.data);
+        setData(result.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
   }, []);
 
   const handleChange = (event) => {
@@ -105,7 +112,7 @@ export default function Answer() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中...</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else
     return (
       <div className="quiz" id="quizAnswer">
