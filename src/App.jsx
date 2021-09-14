@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
-import Explanation from "./learn/Explanation";
-import LearnResult from "./learn/Result";
+import Explanation from "./learn/pages/Explanation";
+import LearnResult from "./learn/pages/Result";
 import QuizDescription from "./quiz/pages/Description";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
