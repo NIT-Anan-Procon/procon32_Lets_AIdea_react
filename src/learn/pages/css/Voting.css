@@ -37,25 +37,16 @@ body {
 #learnVoting .selection {
   display: grid;
   grid-template:
-    "myChoice ... player" 100%
+    "choice ... label" 100%
     /5% 2% 93%;
   height: 13vh;
   margin: 1vh 0;
   position: relative;
 }
 
-#learnVoting label {
-  display: grid;
-  grid-area: player;
-  grid-template:
-    "icon otherDescription" 80%
-    "name otherDescription" 20%
-    /20% 80%;
-}
-
 #learnVoting input[type="radio"] {
   display: block;
-  grid-area: myChoice;
+  grid-area: choice;
   height: 3.5vh;
   left: 60%;
   position: absolute;
@@ -64,21 +55,8 @@ body {
   width: 3.5vh;
 }
 
-#learnVoting .icon {
-  height: 10vh;
-  width: 10vh;
-}
-
-#learnVoting .name {
-  font-size: 3vh;
-}
-
-#learnVoting .textBox {
-  border: solid 0.5vh #4f84d3;
-}
-
-#learnVoting .otherDescription p {
-  font-size: 3vh;
+#learnVoting label {
+  grid-area: label;
 }
 
 #learnVoting .attentionMessage {

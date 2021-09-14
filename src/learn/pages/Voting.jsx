@@ -6,9 +6,7 @@ import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
-import Icon from "../../common/components/Icon";
-import Name from "../../common/components/Name";
-import OtherDescription from "../../common/components/OtherDescription";
+import SelectionLabel from "../components/SelectionLabel";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -58,9 +56,7 @@ export default function Voting() {
                 id="choiceAI"
               />
               <label htmlFor="choiceAI">
-                <Icon src={aiImg} />
-                <Name text="AI" />
-                <OtherDescription text={data.AI} />
+                <SelectionLabel icon={aiImg} name="AI" explanation={data.AI} />
               </label>
             </div>
             <div className="selection">
@@ -72,9 +68,11 @@ export default function Voting() {
                 id="choice1"
               />
               <label htmlFor="choice1">
-                <Icon src={data.player[1].icon} />
-                <Name text={data.player[1].name} />
-                <OtherDescription text={data.player[1].explanation} />
+                <SelectionLabel
+                  icon={data.player[1].icon}
+                  name={data.player[1].name}
+                  explanation={data.player[1].explanation}
+                />
               </label>
             </div>
             <div className="selection">
@@ -86,9 +84,11 @@ export default function Voting() {
                 id="choice2"
               />
               <label htmlFor="choice2">
-                <Icon src={data.player[2].icon} />
-                <Name text={data.player[2].name} />
-                <OtherDescription text={data.player[2].explanation} />
+                <SelectionLabel
+                  icon={data.player[2].icon}
+                  name={data.player[2].name}
+                  explanation={data.player[2].explanation}
+                />
               </label>
             </div>
             <div className="selection">
@@ -100,9 +100,11 @@ export default function Voting() {
                 id="choice3"
               />
               <label htmlFor="choice3">
-                <Icon src={data.player[3].icon} />
-                <Name text={data.player[3].name} />
-                <OtherDescription text={data.player[3].explanation} />
+                <SelectionLabel
+                  icon={data.player[3].icon}
+                  name={data.player[3].name}
+                  explanation={data.player[3].explanation}
+                />
               </label>
             </div>
             <div className="selection">
@@ -114,9 +116,11 @@ export default function Voting() {
                 id="choice4"
               />
               <label htmlFor="choice4">
-                <Icon src={data.player[4].icon} />
-                <Name text={data.player[4].name} />
-                <OtherDescription text={data.player[4].explanation} />
+                <SelectionLabel
+                  icon={data.player[4].icon}
+                  name={data.player[4].name}
+                  explanation={data.player[4].explanation}
+                />
               </label>
             </div>
           </div>

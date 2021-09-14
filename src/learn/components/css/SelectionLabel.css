@@ -1,0 +1,21 @@
+.selectionLabel {
+  display: grid;
+  grid-area: player;
+  grid-template:
+    "icon otherDescription" 80%
+    "name otherDescription" 20%
+    /20% 80%;
+}
+
+#learnVoting .icon {
+  height: 10vh;
+  width: 10vh;
+}
+
+#learnVoting .name {
+  font-size: 3vh;
+}
+
+#learnVoting .otherDescription p {
+  font-size: 3vh;
+}
