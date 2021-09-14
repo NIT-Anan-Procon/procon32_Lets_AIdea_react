@@ -10,6 +10,7 @@ export default function Login() {
     useState("");
   const [attentionMessageToPassword, setAttentionMessageToPassword] =
     useState("");
+  const history = useHistory();
   const params = new FormData();
 
   // useEffect(() => {
@@ -80,7 +81,7 @@ export default function Login() {
         .post("http://localhost/API/User/Login.php", params, {
           headers: {
             "content-type": "multipart/form-data",
-            withCredentials: true,
+            // withCredentials: true,
           },
         })
         .then((result) => {
@@ -102,7 +103,7 @@ export default function Login() {
           console.log(error.request.status);
         });
     }
-    // history.push("/");
+    history.push("/selection");
   };
 
   return (

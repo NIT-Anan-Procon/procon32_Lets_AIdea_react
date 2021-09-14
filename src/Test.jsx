@@ -25,6 +25,9 @@ export default function Test() {
       <Link to="/login">
         <p>home/login</p>
       </Link>
+      <Link to="/selection">
+        <p>home/selection</p>
+      </Link>
     </>
   );
 }

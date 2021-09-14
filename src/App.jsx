@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "./common/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Login from "./home/Login";
+import Selection from "./home/Selection";
 import Explanation from "./learn/Explanation";
 import LearnResult from "./learn/Result";
 import QuizDescription from "./quiz/Description";
@@ -16,6 +17,7 @@ export default function App() {
     <BrowserRouter>
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
       <Route path="/login" exact component={Login} />
+      <Route path="/selection" exact component={Selection} />
       <Route path="/explanation" exact component={Explanation} />
       <Route path="/result" exact component={LearnResult} />
       <Route path="/quiz/description" exact component={QuizDescription} />
