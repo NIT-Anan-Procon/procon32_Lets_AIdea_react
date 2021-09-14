@@ -6,14 +6,15 @@ body {
   display: grid;
   grid-template:
     "... .......... .......... .......... ..." 3vh
-    "... .......... title      .......... ..." 10vh
+    "... title      title      title      ..." 10vh
     "... .......... .......    .......... ..." 2vh
     "... .......... image      .......... ..." 40vh
-    "... .......... .......... .......... ..." 10vh
+    "... .......... .......... .......... ..." 5vh
     "... votingForm votingForm votingForm ..." auto
-    "... .......... .......... .......... ..." 3vh
-    /20vh auto 90vh auto 20vh;
+    "... .......... .......... .......... ..." 2vh
+    /20vh auto 60vh auto 20vh;
   height: 100%;
+  position: fixed;
   width: 100%;
 }
 
@@ -21,7 +22,7 @@ body {
   display: grid;
   grid-area: votingForm;
   grid-template:
-    "selections       selections       selections      " 62vh
+    "selections       selections       selections      " 20vh
     "................ ................ ................" 2vh
     "attentionMessage attentionMessage attentionMessage" 4vh
     "................ ................ ................" 2vh
@@ -40,8 +41,8 @@ body {
   grid-template:
     "myChoice ... player" 100%
     /5% 2% 93%;
-  height: 25vh;
-  margin: 4vh;
+  height: 20vh;
+  margin: 5vh;
   position: relative;
 }
 
