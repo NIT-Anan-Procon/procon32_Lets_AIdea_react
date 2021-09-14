@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
-import Player from "../components/Player";
 import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
+import Icon from "../../common/components/Icon";
+import Name from "../../common/components/Name";
+import OtherDescription from "../../common/components/OtherDescription";
 
 function Voting() {
   const [data, setData] = useState({
@@ -72,49 +74,68 @@ function Voting() {
       <form onSubmit={handleSubmit} className="votingForm">
         <div className="selections">
           <div className="selection">
-            <input type="radio" value={1} onChange={handleChange} />
+            <input
+              type="radio"
+              name="selectDescription"
+              value={1}
+              onChange={handleChange}
+            />
             <label>
-              <Player src={aiImg} name="AI" explanation={data.AI} />
+              <Icon src={aiImg} />
+              <Name text="AI" />
+              <OtherDescription text={data.AI} />
             </label>
           </div>
           <div className="selection">
-            <input type="radio" value={2} onChange={handleChange} />
+            <input
+              type="radio"
+              name="selectDescription"
+              value={2}
+              onChange={handleChange}
+            />
             <label>
-              <Player
-                src={data.picture[1].icon}
-                name={data.picture[1].name}
-                explanation={data.picture[1].explanation}
-              />
+              <Icon src={data.picture[0].icon} />
+              <Name text={data.picture[0].name} />
+              <OtherDescription text={data.picture[0].explanation} />
             </label>
           </div>
           <div className="selection">
-            <input type="radio" value={3} onChange={handleChange} />
+            <input
+              type="radio"
+              name="selectDescription"
+              value={3}
+              onChange={handleChange}
+            />
             <label>
-              <Player
-                src={data.picture[2].icon}
-                name={data.picture[2].name}
-                explanation={data.picture[2].explanation}
-              />
+              <Icon src={data.picture[1].icon} />
+              <Name text={data.picture[1].name} />
+              <OtherDescription text={data.picture[1].explanation} />
             </label>
           </div>
           <div className="selection">
-            <input type="radio" value={4} onChange={handleChange} />
+            <input
+              type="radio"
+              name="selectDescription"
+              value={4}
+              onChange={handleChange}
+            />
             <label>
-              <Player
-                src={data.picture[3].icon}
-                name={data.picture[3].name}
-                explanation={data.picture[3].explanation}
-              />
+              <Icon src={data.picture[2].icon} />
+              <Name text={data.picture[2].name} />
+              <OtherDescription text={data.picture[2].explanation} />
             </label>
           </div>
           <div className="selection">
-            <input type="radio" value={5} onChange={handleChange} />
+            <input
+              type="radio"
+              name="selectDescription"
+              value={5}
+              onChange={handleChange}
+            />
             <label>
-              <Player
-                src={data.picture[0].icon}
-                name={data.picture[0].name}
-                explanation={data.picture[0].explanation}
-              />
+              <Icon src={data.picture[3].icon} />
+              <Name text={data.picture[3].name} />
+              <OtherDescription text={data.picture[3].explanation} />
             </label>
           </div>
         </div>

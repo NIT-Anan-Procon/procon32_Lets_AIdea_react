@@ -5,58 +5,87 @@ body {
 #learnVoting {
   display: grid;
   grid-template:
-    "... .......... .......... .......... ..." 3vh
-    "... title      title      title      ..." 10vh
+    "... .......... .......... .......... ..." 1vh
+    "... title      title      title      ..." 8vh
     "... .......... .......    .......... ..." 2vh
-    "... .......... image      .......... ..." 40vh
-    "... .......... .......... .......... ..." 5vh
+    "... .......... image      .......... ..." 30vh
+    "... .......... .......... .......... ..." 1vh
     "... votingForm votingForm votingForm ..." auto
-    "... .......... .......... .......... ..." 2vh
-    /20vh auto 60vh auto 20vh;
+    "... .......... .......... .......... ..." 1vh
+    /40vh auto 45vh auto 40vh;
   height: 100%;
   position: fixed;
   width: 100%;
 }
 
-.votingForm {
+#learnVoting .votingForm {
   display: grid;
   grid-area: votingForm;
   grid-template:
-    "selections       selections       selections      " 20vh
-    "................ ................ ................" 2vh
-    "attentionMessage attentionMessage attentionMessage" 4vh
-    "................ ................ ................" 2vh
-    "................ inputSubmit      ................" 10vh
+    "selections       selections       selections      " 44vh
+    "................ ................ ................" 1vh
+    "attentionMessage attentionMessage attentionMessage" 3vh
+    "................ ................ ................" 1vh
+    "................ inputSubmit      ................" 6vh
     / auto 50% auto;
 }
 
-.selections {
+#learnVoting .selections {
   border: solid 0.5vh black;
   grid-area: selections;
-  overflow-y: scroll;
 }
 
-.selection {
+#learnVoting .selection {
   display: grid;
   grid-template:
     "myChoice ... player" 100%
     /5% 2% 93%;
-  height: 20vh;
-  margin: 5vh;
+  height: 8vh;
+  margin: 0.5vh;
   position: relative;
 }
 
-input[type="radio"] {
+#learnVoting label {
+  display: grid;
+  grid-area: player;
+  grid-template:
+    "icon otherDescription" 80%
+    "name otherDescription" 20%
+    /15% 85%;
+}
+
+#learnVoting input[type="radio"] {
   display: block;
   grid-area: myChoice;
   height: 5vh;
-  left: 50%;
+  left: 100%;
   position: absolute;
-  top: 50%;
+  top: 35%;
   transform: translate(-50%, -50%);
   width: 5vh;
 }
 
-label {
-  grid-area: player;
+#learnVoting .title {
+  font-size: 6vh;
+}
+
+#learnVoting .icon {
+  height: 6vh;
+  width: 6vh;
+}
+
+#learnVoting .name {
+  font-size: 2vh;
+}
+
+#learnVoting .otherDescription p {
+  font-size: 3vh;
+}
+
+#learnVoting .attentionMessage {
+  font-size: 3vh;
+}
+
+#learnVoting input[type="submit"] {
+  font-size: 3vh;
 }
