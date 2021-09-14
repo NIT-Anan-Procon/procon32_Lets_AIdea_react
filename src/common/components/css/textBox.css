@@ -5,3 +5,8 @@
   font-size: 4vh;
   padding: 2vh;
 }
+
+.textBox p {
+  font-size: 5vh;
+  margin: 2vh 0 0 4vh;
+}

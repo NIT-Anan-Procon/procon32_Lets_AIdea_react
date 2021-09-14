@@ -12,11 +12,6 @@
   width: 100%;
 }
 
-.quiz p {
-  font-size: 5vh;
-  margin: 2vh 0 0 4vh;
-}
-
 .quiz input[type="submit"] {
   align-items: center;
   background-color: #ff6347;
