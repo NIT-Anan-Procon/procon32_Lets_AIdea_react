@@ -9,10 +9,10 @@ body {
     "... title title      ..." 10vh
     "... ..... .......... ..." 3vh
     "... ..... votingForm ..." 5vh
-    "... image votingForm ..." 60vh
+    "... image votingForm ..." 52vh
     "... ..... votingForm ..." auto
     "... ..... .......... ..." 3vh
-    /20vh 90vh auto 20vh;
+    /10vh 78vh auto 10vh;
   height: 100%;
   position: fixed;
   width: 100%;
@@ -57,7 +57,7 @@ body {
   display: block;
   grid-area: myChoice;
   height: 3vh;
-  left: 50%;
+  left: 40%;
   position: absolute;
   top: 35%;
   transform: translate(-50%, -50%);
