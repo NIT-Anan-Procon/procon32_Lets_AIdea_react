@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./css/waiting.css";
 import axios from "axios";
 
-export default function waiting() {
+export default function Waiting() {
   // const [roomId, setRoomId] = useState("123456789");
 
   const copyText = () => {

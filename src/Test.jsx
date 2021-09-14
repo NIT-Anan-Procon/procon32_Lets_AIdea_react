@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Test() {
   return (
     <>
-      <Link to="/Waiting">
+      <Link to="/waiting">
         <p>home/Waiting</p>
       </Link>
       <Link to="/Explanation">
