@@ -34,6 +34,7 @@
   font-size: 4vh;
   grid-area: rank;
   justify-content: center;
+  min-width: 10vh;
 }
 
 #firstPlayer .rank {
