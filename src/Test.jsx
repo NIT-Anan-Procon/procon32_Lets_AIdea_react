@@ -28,6 +28,9 @@ export default function Test() {
       <Link to="/selection">
         <p>/election</p>
       </Link>
+      <Link to="/waiting">
+        <p>/waiting</p>
+      </Link>
     </>
   );
 }
