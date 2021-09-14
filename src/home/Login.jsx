@@ -14,25 +14,25 @@ export default function Login() {
 
   const userNameChange = (event) => {
     setUserName(event.target.value);
-    params.append("name", userName);
+    console.log(userName);
   };
 
   const passwordChange = (event) => {
     setPassword(event.target.value);
-    params.append("password", password);
+    console.log(password);
   };
 
   const registerHandleSubmit = (event) => {
     if (userName.length === 0) {
       event.preventDefault();
       setAttentionMessageToUserName("新規登録ユーザー名を入力してください");
-      return 0;
     } else if (password.length === 0) {
       event.preventDefault();
       setAttentionMessageToPassword("新規登録パスワードを入力してください");
-      return 0;
     } else {
       event.preventDefault();
+      params.append("name", userName);
+      params.append("password", password);
       axios
         .post("http://localhost/API/User/CreateUser.php", params, {
           headers: {
@@ -41,6 +41,8 @@ export default function Login() {
         })
         .then((result) => {
           console.log(result.status);
+          params.delete("name");
+          params.delete("password");
         })
         .catch((error) => {
           console.log(error.request.status);
@@ -52,13 +54,13 @@ export default function Login() {
     if (userName.length === 0) {
       event.preventDefault();
       setAttentionMessageToUserName("ログインユーザー名を入力してください");
-      return 0;
     } else if (password.length === 0) {
       event.preventDefault();
       setAttentionMessageToPassword("ログインパスワードを入力してください");
-      return 0;
     } else {
       event.preventDefault();
+      params.append("name", userName);
+      params.append("password", password);
       axios
         .post("http://localhost/API/User/Login.php", params, {
           headers: {
@@ -67,6 +69,8 @@ export default function Login() {
         })
         .then((result) => {
           console.log(result.status);
+          params.delete("name");
+          params.delete("password");
         })
         .catch((error) => {
           console.log(error.request.status);
@@ -87,7 +91,7 @@ export default function Login() {
           id="inputUserName"
         />
         <input
-          type="text"
+          type="password"
           value={password}
           placeholder="パスワード"
           onChange={passwordChange}
