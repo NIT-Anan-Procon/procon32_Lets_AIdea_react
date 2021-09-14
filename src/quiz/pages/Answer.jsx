@@ -17,8 +17,8 @@ export default function Answer() {
   const [mark, setMark] = useState([]);
   const history = useHistory();
   const [time, setTime] = useState(20);
-  const [timeCount, setTimeCount] = useState(1);
   let timeCopy = time;
+  const [timeCount, setTimeCount] = useState(1);
   let timeCountCopy = timeCount;
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
