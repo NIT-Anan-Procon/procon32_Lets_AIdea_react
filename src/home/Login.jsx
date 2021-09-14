@@ -13,13 +13,13 @@ export default function Login() {
   const params = new FormData();
 
   const userNameChange = (event) => {
-    setUserName(event.target.value);
     console.log(userName);
+    setUserName(event.target.value);
   };
 
   const passwordChange = (event) => {
-    setPassword(event.target.value);
     console.log(password);
+    setPassword(event.target.value);
   };
 
   const registerHandleSubmit = (event) => {
