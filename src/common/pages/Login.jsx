@@ -43,8 +43,9 @@ export default function Login() {
       setAttentionMessageToPassword("新規登録パスワードを入力してください");
     } else {
       event.preventDefault();
-      console.log(userName);
-      console.log(password);
+      console.log("--- 新規登録 ---");
+      console.log("ユーザーネーム: " + userName);
+      console.log("パスワード: " + password);
       params.append("name", userName);
       params.append("password", password);
       axios
@@ -54,12 +55,12 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log(result.status);
+          console.log("レスポンス: " + result.status);
           params.delete("name");
           params.delete("password");
         })
         .catch((error) => {
-          console.log(error.request.status);
+          console.log("レスポンス: " + error.request.status);
         });
     }
   };
@@ -73,8 +74,9 @@ export default function Login() {
       setAttentionMessageToPassword("ログインパスワードを入力してください");
     } else {
       event.preventDefault();
-      console.log(userName);
-      console.log(password);
+      console.log("--- Login ---");
+      console.log("ユーザーネーム: " + userName);
+      console.log("パスワード: " + password);
       params.append("name", userName);
       params.append("password", password);
       axios
@@ -85,17 +87,17 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log(result.status);
+          console.log("レスポンス: " + result.status);
           params.delete("name");
           params.delete("password");
         })
         .catch((error) => {
-          console.log(error.request.status);
+          console.log("レスポンス: " + error.request.status);
         });
       axios
         .get("http://localhost/API/User/GetUserInfo.php")
         .then((res) => {
-          console.log("get user info");
+          console.log("--- GetUserInfo ---");
           console.log(res);
           // history.push("/");
         })
