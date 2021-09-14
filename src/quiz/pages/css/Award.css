@@ -32,11 +32,20 @@
 }
 
 #quizAward .buttonForm {
-  display: flex;
+  display: grid;
+  grid-template:
+    "... again ... leave ..." 100%
+    / 10% 30% auto 30% 10%;
+}
+
+#quizAward .again {
+  grid-area: again;
+  min-width: 47vh;
 }
 
 #quizAward .leave {
-  margin-left: 20vh;
+  grid-area: leave;
+  min-width: 47vh;
 }
 
 #quizAward input[type="submit"].leave {
