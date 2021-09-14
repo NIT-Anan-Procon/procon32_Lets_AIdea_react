@@ -1,0 +1,39 @@
+.balloon {
+  border: solid 0.5vh black;
+  border-radius: 2vh;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 4vh;
+  grid-area: ballon;
+  position: relative;
+  white-space: nowrap;
+}
+
+.balloon::before {
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid white;
+  content: "";
+  left: -6.5vh;
+  margin-top: -3vh;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+.balloon::after {
+  border: 3vh solid transparent;
+  border-right: 4.5vh solid black;
+  content: "";
+  left: -7.5vh;
+  margin-top: -3vh;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+.scroll {
+  overflow-x: scroll;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+#quizResult {
+  grid-template:
+    "... .......... .......... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .......... .......... .......... ..." 3vh
+    "... pointTable pointTable pointTable ..." 66vh
+    "... .......... .......... .......... ..." 3vh
+    "... .......... buttonForm .......... ..." 10vh
+    "... .......... .......... .......... ..." 5vh
+    /30vh auto 80vh auto 30vh;
+  position: fixed;
+}
+
+#quizResult #pointTable {
+  display: grid;
+  grid-area: pointTable;
+  grid-template:
+    "firstPlayer " 36%
+    "............" 6%
+    "secondPlayer" 26%
+    "............" 6%
+    "thirdPlayer" 26%
+    /100%;
+}

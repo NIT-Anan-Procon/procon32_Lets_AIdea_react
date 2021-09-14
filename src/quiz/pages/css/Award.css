@@ -1,0 +1,53 @@
+#quizAward {
+  grid-template:
+    "... ......... ........... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .........  .......... .......... ..." 7vh
+    "... image      .......... winner     ..." 46vh
+    "... .......... .......... .......... ..." 10vh
+    "... buttonForm buttonForm buttonForm ..." 15vh
+    "... .......... .......... .......... ..." 3vh
+    / 15vh 69vh 3vh auto 15vh;
+  position: fixed;
+}
+
+#quizAward .winner {
+  display: grid;
+  grid-area: winner;
+  grid-template:
+    "icon             ................ ngWord          " 38%
+    "name             ................ ngWord          " 10%
+    "................ ................ ................" 2vh
+    "otherDescription otherDescription otherDescription" auto
+    / 20vh 2vh auto;
+}
+
+#quizAward .icon {
+  height: 15vh;
+  width: 15vh;
+}
+
+#quizAward .name {
+  font-size: 4vh;
+}
+
+#quizAward .buttonForm {
+  display: grid;
+  grid-template:
+    "... again ... leave ..." 100%
+    / 10% 30% auto 30% 10%;
+}
+
+#quizAward .again {
+  grid-area: again;
+  min-width: 47vh;
+}
+
+#quizAward .leave {
+  grid-area: leave;
+  min-width: 47vh;
+}
+
+#quizAward input[type="submit"].leave {
+  background-color: #4f64d3;
+}
