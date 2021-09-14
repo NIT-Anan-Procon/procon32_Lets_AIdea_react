@@ -14,14 +14,6 @@
   width: 100%;
 }
 
-#learnAward .ngWord {
-  border: solid 0.5vh #f22424;
-}
-
-#learnAward .otherDescription {
-  border: solid 0.5vh #4f84d3;
-}
-
 #learnAward .winner {
   display: grid;
   grid-area: winner;

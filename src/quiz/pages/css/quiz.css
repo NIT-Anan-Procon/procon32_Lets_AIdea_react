@@ -12,14 +12,6 @@
   width: 100%;
 }
 
-.textBox {
-  border: solid 0.5vh black;
-  box-sizing: border-box;
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
-  font-size: 4vh;
-  padding: 2vh;
-}
-
 .quiz p {
   font-size: 5vh;
   margin: 2vh 0 0 4vh;

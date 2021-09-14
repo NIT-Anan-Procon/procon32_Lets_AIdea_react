@@ -1,0 +1,7 @@
+.textBox {
+  border: solid 0.5vh black;
+  box-sizing: border-box;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 4vh;
+  padding: 2vh;
+}
