@@ -10,48 +10,22 @@ import Icon from "../../common/components/Icon";
 import Name from "../../common/components/Name";
 import OtherDescription from "../../common/components/OtherDescription";
 
-function Voting() {
-  const [data, setData] = useState({
-    playerId: 1,
-    AI: "草原でライオンが座っています",
-    pictureURL: "https://source.unsplash.com/featured/?lion",
-    picture: [
-      {
-        name: "Togo",
-        icon: "https://source.unsplash.com/featured/?lion",
-        explanation: "百獣の王は静かに微笑みを湛えている",
-      },
-      {
-        name: "Togo",
-        icon: "https://source.unsplash.com/featured/?lion",
-        explanation: "百獣の王は静かに微笑みを湛えている",
-      },
-      {
-        name: "Togo",
-        icon: "https://source.unsplash.com/featured/?lion",
-        explanation: "百獣の王は静かに微笑みを湛えている",
-      },
-      {
-        name: "Togo",
-        icon: "https://source.unsplash.com/featured/?lion",
-        explanation: "百獣の王は静かに微笑みを湛えている",
-      },
-    ],
-  });
+export default function Voting() {
+  const [data, setData] = useState();
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
   let myChoice = 0;
 
   useEffect(() => {
-    // axios
-    //     .get("http://localhost/API/Quiz/GetVoteInfo.php")
-    //     .then((res) => {
-    //         console.log(res.data);
-    //         setData(res.data);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error.request.status);
-    //     });
+    axios
+      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
   }, []);
 
   const handleChange = (event) => {
@@ -67,83 +41,84 @@ function Voting() {
     history.push("/learn/award");
   };
 
-  return (
-    <div id="learnVoting">
-      <Title text="優秀な作品を決めよう" />
-      <Image src={data.pictureURL} alt="explanationImg" />
-      <form onSubmit={handleSubmit} className="votingForm">
-        <div className="selections">
-          <div className="selection">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={1}
-              onChange={handleChange}
-            />
-            <label>
-              <Icon src={aiImg} />
-              <Name text="AI" />
-              <OtherDescription text={data.AI} />
-            </label>
+  if (!data) return <div>読み込み中</div>;
+  else {
+    return (
+      <div id="learnVoting">
+        <Title text="優秀な作品を決めよう" />
+        <Image src={data.pictureURL} alt="explanationImg" />
+        <form onSubmit={handleSubmit} className="votingForm">
+          <div className="selections">
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={1}
+                onChange={handleChange}
+              />
+              <label>
+                <Icon src={aiImg} />
+                <Name text="AI" />
+                <OtherDescription text={data.AI} />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={2}
+                onChange={handleChange}
+              />
+              <label>
+                <Icon src={data.player[1].icon} />
+                <Name text={data.player[1].name} />
+                <OtherDescription text={data.player[1].explanation} />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={3}
+                onChange={handleChange}
+              />
+              <label>
+                <Icon src={data.player[2].icon} />
+                <Name text={data.player[2].name} />
+                <OtherDescription text={data.player[2].explanation} />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={4}
+                onChange={handleChange}
+              />
+              <label>
+                <Icon src={data.player[3].icon} />
+                <Name text={data.player[3].name} />
+                <OtherDescription text={data.player[3].explanation} />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={5}
+                onChange={handleChange}
+              />
+              <label>
+                <Icon src={data.player[4].icon} />
+                <Name text={data.player[4].name} />
+                <OtherDescription text={data.player[4].explanation} />
+              </label>
+            </div>
           </div>
-          <div className="selection">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={2}
-              onChange={handleChange}
-            />
-            <label>
-              <Icon src={data.picture[0].icon} />
-              <Name text={data.picture[0].name} />
-              <OtherDescription text={data.picture[0].explanation} />
-            </label>
-          </div>
-          <div className="selection">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={3}
-              onChange={handleChange}
-            />
-            <label>
-              <Icon src={data.picture[1].icon} />
-              <Name text={data.picture[1].name} />
-              <OtherDescription text={data.picture[1].explanation} />
-            </label>
-          </div>
-          <div className="selection">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={4}
-              onChange={handleChange}
-            />
-            <label>
-              <Icon src={data.picture[2].icon} />
-              <Name text={data.picture[2].name} />
-              <OtherDescription text={data.picture[2].explanation} />
-            </label>
-          </div>
-          <div className="selection">
-            <input
-              type="radio"
-              name="selectDescription"
-              value={5}
-              onChange={handleChange}
-            />
-            <label>
-              <Icon src={data.picture[3].icon} />
-              <Name text={data.picture[3].name} />
-              <OtherDescription text={data.picture[3].explanation} />
-            </label>
-          </div>
-        </div>
-        <AttentionMessage text={attentionMessage} />
-        <input type="submit" value="投票する" />
-      </form>
-    </div>
-  );
+          <AttentionMessage text={attentionMessage} />
+          <input type="submit" value="投票する" />
+        </form>
+      </div>
+    );
+  }
 }
-
-export default Voting;
