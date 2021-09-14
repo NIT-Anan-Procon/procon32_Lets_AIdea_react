@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
+import Selection from "./home/Selection";
 import Explanation from "./learn/Explanation";
 import LearnResult from "./learn/Result";
 import QuizDescription from "./quiz/pages/Description";
@@ -33,6 +34,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
+      <Route path="/selection" exact component={Selection} />
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
       <Route path="/quiz/description" exact component={QuizDescription} />

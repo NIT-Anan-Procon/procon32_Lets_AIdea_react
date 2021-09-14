@@ -25,6 +25,9 @@ export default function Test() {
       <Link to="/quiz/award">
         <p>quiz/award</p>
       </Link>
+      <Link to="/selection">
+        <p>/election</p>
+      </Link>
     </>
   );
 }
