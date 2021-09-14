@@ -14,10 +14,11 @@ export default function Login() {
 
   // useEffect(() => {
   //   axios
-  //     .get("http://localhost/API/CheckLogin.php")
+  //     .get("http://localhost/API/User/CheckLogin.php")
   //     .then((res) => {
+  //       console.log("Cokkieチェック");
   //       console.log(res);
-  //       history.push("/");
+  //       // history.push("/");
   //     })
   //     .catch((error) => {
   //       console.log(error.request.status);
@@ -83,6 +84,16 @@ export default function Login() {
           console.log(result.status);
           params.delete("name");
           params.delete("password");
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
+      axios
+        .get("http://localhost/API/User/GetUserInfo.php")
+        .then((res) => {
+          console.log("get user info");
+          console.log(res);
+          // history.push("/");
         })
         .catch((error) => {
           console.log(error.request.status);
