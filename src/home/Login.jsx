@@ -82,9 +82,9 @@ export default function Login() {
           "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/Login.php",
           params,
           {
+            withCredentials: true,
             headers: {
               "content-type": "multipart/form-data",
-              withCredentials: true,
             },
           }
         )
