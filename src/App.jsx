@@ -4,7 +4,7 @@ import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Explanation from "./learn/pages/Explanation";
 import LearnResult from "./learn/pages/Result";
-import LearnVoting from "./learn/pages/Result";
+import LearnVoting from "./learn/pages/Voting";
 import QuizDescription from "./quiz/pages/Description";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
