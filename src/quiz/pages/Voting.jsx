@@ -14,6 +14,7 @@ export default function Voting() {
   let myChoice = 0;
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
     axios
@@ -24,7 +25,7 @@ export default function Voting() {
       })
       .catch((error) => {
         console.log(error.request.status);
-        return <div>エラーが発生しました</div>;
+        setErrorMessage("エラーが発生しました");
       });
   }, []);
 
@@ -60,7 +61,7 @@ export default function Voting() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div className="quiz" id="quizVoting">

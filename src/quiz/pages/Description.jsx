@@ -19,6 +19,7 @@ export default function Description() {
   const history = useHistory();
   const [time, setTime] = useState(30);
   const timer = useRef(null);
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
     axios
@@ -30,7 +31,7 @@ export default function Description() {
       })
       .catch((error) => {
         console.log(error.request.status);
-        return <div>エラーが発生しました</div>;
+        setErrorMessage("エラーが発生しました");
       });
   }, []);
 
@@ -71,7 +72,7 @@ export default function Description() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div className="quiz" id="quizDescription">
