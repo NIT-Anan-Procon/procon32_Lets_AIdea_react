@@ -9,7 +9,7 @@ import OtherDescription from "../../common/components/OtherDescription";
 import NgWord from "../../common/components/NgWord";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
-import TimeUp from "../../common/TimeUp";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Description() {
   const [data, setData] = useState();
