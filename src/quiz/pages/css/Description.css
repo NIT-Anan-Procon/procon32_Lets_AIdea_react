@@ -1,4 +1,4 @@
-#description {
+#quizDescription {
   grid-template:
     "... ............... ............... ................ ..." 3vh
     "... title           title           title            ..." 10vh
@@ -13,17 +13,17 @@
   position: fixed;
 }
 
-#descriptionForm {
+#quizDescription #descriptionForm {
   display: grid;
   grid-area: descriptionForm;
   grid-template:
-    "attentionMessage ... ..........." 20%
-    "................ ... ..........." 1vh
-    "inputText        ... inputSubmit" auto
-    / 83% 4vh auto;
+    "attentionMessage" 20%
+    "................" 1vh
+    "inputText       " auto
+    / 100%;
 }
 
-input[type="text"] {
+#quizDescription input[type="text"] {
   font-size: 6vh;
   grid-area: inputText;
   line-height: 8vh;

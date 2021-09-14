@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 export default function Test() {
   return (
     <>
-      <Link to="/waiting">
-        <p>home/Waiting</p>
-      </Link>
-      <Link to="/Explanation">
+      <Link to="/learn/Explanation">
         <p>learn/Explanation</p>
+      </Link>
+      <Link to="/learn/result">
+        <p>learn/result</p>
+      </Link>
+      <Link to="/learn/award">
+        <p>learn/award</p>
       </Link>
       <Link to="/quiz/description">
         <p>quiz/description</p>
@@ -24,6 +27,9 @@ export default function Test() {
       </Link>
       <Link to="/quiz/award">
         <p>quiz/award</p>
+      </Link>
+      <Link to="/waiting">
+        <p>home/Waiting</p>
       </Link>
     </>
   );

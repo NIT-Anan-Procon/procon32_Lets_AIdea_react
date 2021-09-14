@@ -1,0 +1,61 @@
+#firstPlayer {
+  grid-area: firstPlayer;
+}
+
+#secondPlayer {
+  grid-area: secondPlayer;
+}
+
+#thirdPlayer {
+  grid-area: thirdPlayer;
+}
+
+#firstPlayer,
+#secondPlayer,
+#thirdPlayer {
+  display: grid;
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox" 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox" 20%
+    /12% 1% 18% 1% 22% 1% 22% 1% 22%;
+}
+
+#secondPlayer,
+#thirdPlayer {
+  grid-template:
+    "rank ... icon ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 80%
+    "rank ... name ... descriptionPointBox ... answerPointBox ... totalPointBox ..." 20%
+    /12% 1% 18% 1% 18% 1% 18% 1% 18% 12%;
+}
+
+.rank {
+  align-items: center;
+  display: flex;
+  font-size: 4vh;
+  grid-area: rank;
+  justify-content: center;
+}
+
+#firstPlayer .rank {
+  font-size: 7vh;
+}
+
+#firstPlayer .icon {
+  height: 19vh;
+  width: 19vh;
+}
+
+#secondPlayer .icon,
+#thirdPlayer .icon {
+  height: 13vh;
+  width: 13vh;
+}
+
+#firstPlayer .name {
+  font-size: 4vh;
+}
+
+#secondPlayer .name,
+#thirdPlayer .name {
+  font-size: 3vh;
+}
