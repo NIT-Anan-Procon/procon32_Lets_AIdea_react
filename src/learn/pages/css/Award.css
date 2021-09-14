@@ -1,0 +1,69 @@
+#learnAward {
+  display: grid;
+  grid-template:
+    "... ......... ........... .......... ..." 3vh
+    "... title      title      title      ..." 10vh
+    "... .........  .......... .......... ..." 5vh
+    "... image      .......... winner     ..." 48vh
+    "... .......... .......... .......... ..." 10vh
+    "... buttonForm buttonForm buttonForm ..." 15vh
+    "... .......... .......... .......... ..." 3vh
+    / 10vh 72vh 4vh auto 10vh;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+#learnAward .ngWord {
+  border: solid 0.5vh #f22424;
+}
+
+#learnAward .otherDescription {
+  border: solid 0.5vh #4f84d3;
+}
+
+#learnAward .winner {
+  display: grid;
+  grid-area: winner;
+  grid-template:
+    "................ ................" 2%
+    "icon             ................" 36%
+    "................ ................" 3%
+    "name             ................" 14%
+    "................ ................" 1%
+    "otherDescription otherDescription" auto
+    / 20vh auto;
+}
+
+#learnAward .icon {
+  height: 19vh;
+  width: 19vh;
+}
+
+#learnAward .name {
+  font-size: 4vh;
+}
+
+#learnAward .buttonForm {
+  display: grid;
+  grid-area: buttonForm;
+  grid-template:
+    "again ... leave" 100%
+    /47% auto 47%;
+}
+
+#learnAward .again {
+  grid-area: again;
+}
+
+#learnAward .leave {
+  grid-area: leave;
+}
+
+#learnAward input[type="submit"].leave {
+  background-color: #4f64d3;
+}
+
+#learnAward input[type="submit"] {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+}
