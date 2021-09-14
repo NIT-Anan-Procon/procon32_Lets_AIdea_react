@@ -39,6 +39,7 @@ body {
   grid-template:
     "myChoice ... player" 100%
     /5% 2% 93%;
+  height: 13vh;
   margin: 1vh 0;
   position: relative;
 }
@@ -47,16 +48,16 @@ body {
   display: grid;
   grid-area: player;
   grid-template:
-    "icon otherDescription" 80%
-    "name otherDescription" 20%
-    /15% 85%;
+    "icon ... otherDescription" 80%
+    "name ... otherDescription" 20%
+    /15% 5% 80%;
 }
 
 #learnVoting input[type="radio"] {
   display: block;
   grid-area: myChoice;
   height: 3vh;
-  left: 80%;
+  left: 50%;
   position: absolute;
   top: 35%;
   transform: translate(-50%, -50%);
@@ -69,7 +70,7 @@ body {
 }
 
 #learnVoting .name {
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #learnVoting .textBox {
