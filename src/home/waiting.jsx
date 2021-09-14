@@ -11,6 +11,10 @@ export default function waiting() {
     console.log("Copied!");
   };
 
+  const startHandle = () => {
+    console.log("Game Start !!");
+  };
+
   return (
     <div id="waiting">
       <div id="room">部屋ID</div>
@@ -22,7 +26,9 @@ export default function waiting() {
         <div id="icon">アイコン</div>
         <div id="message">888が入室しました</div>
       </div>
-      <button id="startButton">ゲームを始める</button>
+      <button id="startButton" onClick={startHandle}>
+        ゲームを始める
+      </button>
     </div>
   );
 }
