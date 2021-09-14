@@ -6,8 +6,8 @@ import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
 import Name from "../../common/components/Name";
-import OtherDescription from "../../common/components/OtherDescription";
 import NgWord from "../../common/components/NgWord";
+import OtherDescription from "../../common/components/OtherDescription";
 
 export default function Award() {
   const [data, setData] = useState();

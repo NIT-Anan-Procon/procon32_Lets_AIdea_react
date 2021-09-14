@@ -3,11 +3,11 @@
     "... ......... ........... .......... ..." 3vh
     "... title      title      title      ..." 10vh
     "... .........  .......... .......... ..." 5vh
-    "... image      .......... winner     ..." 48vh
-    "... .......... .......... .......... ..." 15vh
+    "... image      .......... winner     ..." 40vh
+    "... .......... .......... .......... ..." 12vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
-    / auto 72vh 4vh 96vh auto;
+    / 15vh 60vh 4vh auto 15vh;
   position: fixed;
 }
 
@@ -15,11 +15,11 @@
   display: grid;
   grid-area: winner;
   grid-template:
-    "icon             ................ ngWord          " 33%
-    "name             ................ ngWord          " 12%
-    "................ ................ ................" 10%
-    "otherDescription otherDescription otherDescription" 45%
-    /25% 5% 70%;
+    "icon             ................ ngWord          " 38%
+    "name             ................ ngWord          " 10%
+    "................ ................ ................" 5%
+    "otherDescription otherDescription otherDescription" auto
+    / 20vh 5vh auto;
 }
 
 #quizAward .icon {
@@ -28,7 +28,7 @@
 }
 
 #quizAward .name {
-  font-size: 5vh;
+  font-size: 4vh;
 }
 
 #quizAward .buttonForm {
