@@ -16,7 +16,7 @@ export default function Login() {
   //   axios
   //     .get("http://localhost/API/User/CheckLogin.php")
   //     .then((res) => {
-  //       console.log("Cokkieチェック");
+  //       console.log("クッキーチェック");
   //       console.log(res);
   //       // history.push("/");
   //     })
@@ -26,12 +26,10 @@ export default function Login() {
   // }, []);
 
   const userNameChange = (event) => {
-    console.log(userName);
     setUserName(event.target.value);
   };
 
   const passwordChange = (event) => {
-    console.log(password);
     setPassword(event.target.value);
   };
 
@@ -44,6 +42,8 @@ export default function Login() {
       setAttentionMessageToPassword("新規登録パスワードを入力してください");
     } else {
       event.preventDefault();
+      console.log(userName);
+      console.log(password);
       params.append("name", userName);
       params.append("password", password);
       axios
@@ -72,12 +72,15 @@ export default function Login() {
       setAttentionMessageToPassword("ログインパスワードを入力してください");
     } else {
       event.preventDefault();
+      console.log(userName);
+      console.log(password);
       params.append("name", userName);
       params.append("password", password);
       axios
         .post("http://localhost/API/User/Login.php", params, {
           headers: {
             "content-type": "multipart/form-data",
+            withCredentials: true,
           },
         })
         .then((result) => {
