@@ -2,12 +2,12 @@
   grid-template:
     "... ......... ........... .......... ..." 3vh
     "... title      title      title      ..." 10vh
-    "... .........  .......... .......... ..." 5vh
-    "... image      .......... winner     ..." 48vh
-    "... .......... .......... .......... ..." 15vh
+    "... .........  .......... .......... ..." 7vh
+    "... image      .......... winner     ..." 46vh
+    "... .......... .......... .......... ..." 10vh
     "... buttonForm buttonForm buttonForm ..." 15vh
     "... .......... .......... .......... ..." 3vh
-    / auto 72vh 4vh 96vh auto;
+    / 15vh 69vh 3vh auto 15vh;
   position: fixed;
 }
 
@@ -15,11 +15,11 @@
   display: grid;
   grid-area: winner;
   grid-template:
-    "icon             ................ ngWord          " 33%
-    "name             ................ ngWord          " 12%
-    "................ ................ ................" 10%
-    "otherDescription otherDescription otherDescription" 45%
-    /25% 5% 70%;
+    "icon             ................ ngWord          " 38%
+    "name             ................ ngWord          " 10%
+    "................ ................ ................" 2vh
+    "otherDescription otherDescription otherDescription" auto
+    / 20vh 2vh auto;
 }
 
 #quizAward .icon {
@@ -28,15 +28,24 @@
 }
 
 #quizAward .name {
-  font-size: 5vh;
+  font-size: 4vh;
 }
 
 #quizAward .buttonForm {
-  display: flex;
+  display: grid;
+  grid-template:
+    "... again ... leave ..." 100%
+    / 10% 30% auto 30% 10%;
+}
+
+#quizAward .again {
+  grid-area: again;
+  min-width: 47vh;
 }
 
 #quizAward .leave {
-  margin-left: 20vh;
+  grid-area: leave;
+  min-width: 47vh;
 }
 
 #quizAward input[type="submit"].leave {

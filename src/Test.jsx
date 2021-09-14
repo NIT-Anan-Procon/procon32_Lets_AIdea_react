@@ -13,6 +13,9 @@ export default function Test() {
       <Link to="/learn/voting">
         <p>learn/voting</p>
       </Link>
+      <Link to="/learn/award">
+        <p>learn/award</p>
+      </Link>
       <Link to="/quiz/description">
         <p>quiz/description</p>
       </Link>

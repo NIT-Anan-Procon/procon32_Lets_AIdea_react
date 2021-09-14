@@ -8,12 +8,19 @@ import PointRow from "../components/PointRow";
 export default function Result() {
   const [data, setData] = useState();
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
-    axios.get("http://localhost/API/Quiz/GetQuizResult.php").then((result) => {
-      console.log(result.data);
-      setData(result.data);
-    });
+    axios
+      .get("http://localhost/API/Quiz/GetQuizResult.php")
+      .then((result) => {
+        console.log(result.data);
+        setData(result.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
   }, []);
 
   const handleSubmit = () => {
@@ -25,7 +32,7 @@ export default function Result() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中...</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else
     return (
       <div className="quiz" id="quizResult">
