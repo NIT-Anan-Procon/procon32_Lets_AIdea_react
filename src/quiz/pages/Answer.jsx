@@ -20,10 +20,16 @@ export default function Answer() {
   let timeCopy = time;
 
   useEffect(() => {
-    axios.get("http://localhost/API/Quiz/GetPicture.php").then((result) => {
-      console.log(result.data);
-      setData(result.data);
-    });
+    axios
+      .get("http://localhost/API/Quiz/GetPicture.php")
+      .then((result) => {
+        console.log(result.data);
+        setData(result.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        return <div>エラーが発生しました</div>;
+      });
   }, []);
 
   const handleChange = (event) => {

@@ -24,12 +24,12 @@ export default function Voting() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        return <div>エラーが発生しました</div>;
       });
   }, []);
 
   useEffect(() => {
     if (!data) return 0;
-    console.log(data.playerID);
     document.getElementById("myChoice" + data.playerID).disabled = true;
   }, [data]);
 

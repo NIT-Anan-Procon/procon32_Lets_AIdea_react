@@ -10,10 +10,16 @@ export default function Result() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get("http://localhost/API/Quiz/GetQuizResult.php").then((result) => {
-      console.log(result.data);
-      setData(result.data);
-    });
+    axios
+      .get("http://localhost/API/Quiz/GetQuizResult.php")
+      .then((result) => {
+        console.log(result.data);
+        setData(result.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        return <div>エラーが発生しました</div>;
+      });
   }, []);
 
   const handleSubmit = () => {

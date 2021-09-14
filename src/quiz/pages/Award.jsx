@@ -24,6 +24,7 @@ export default function Award() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        return <div>エラーが発生しました</div>;
       });
   }, []);
 

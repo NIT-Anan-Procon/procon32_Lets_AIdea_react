@@ -30,6 +30,7 @@ export default function Description() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        return <div>エラーが発生しました</div>;
       });
   }, []);
 
