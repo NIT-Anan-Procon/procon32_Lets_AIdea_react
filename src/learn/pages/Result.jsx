@@ -82,7 +82,7 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      //history.push("/learn/vote");
+      history.push("/learn/voting");
     }
   }, [time]);
 

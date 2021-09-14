@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+}
+
+#learnVoting {
+  display: grid;
+  grid-template:
+    "... ..... .......... ..." 3vh
+    "... title title      ..." 10vh
+    "... ..... .......... ..." 3vh
+    "... ..... votingForm ..." 5vh
+    "... image votingForm ..." 52vh
+    "... ..... votingForm ..." auto
+    "... ..... .......... ..." 3vh
+    /10vh 78vh auto 10vh;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+#learnVoting .votingForm {
+  display: grid;
+  grid-area: votingForm;
+  grid-template:
+    "selections       selections       selections      " 70vh
+    "................ ................ ................" 1vh
+    "attentionMessage attentionMessage attentionMessage" 3vh
+    "................ ................ ................" 1vh
+    "................ inputSubmit      ................" 6vh
+    / auto 50% auto;
+}
+
+#learnVoting .selections {
+  grid-area: selections;
+}
+
+#learnVoting .selection {
+  display: grid;
+  grid-template:
+    "choice ... label" 100%
+    /5% 2% 93%;
+  height: 13vh;
+  margin: 1vh 0;
+  position: relative;
+}
+
+#learnVoting input[type="radio"] {
+  display: block;
+  grid-area: choice;
+  height: 3.5vh;
+  left: 60%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.5vh;
+}
+
+#learnVoting label {
+  grid-area: label;
+}
+
+#learnVoting .attentionMessage {
+  font-size: 3vh;
+}
+
+#learnVoting input[type="submit"] {
+  font-size: 3vh;
+}

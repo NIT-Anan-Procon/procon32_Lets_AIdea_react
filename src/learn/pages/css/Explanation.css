@@ -27,33 +27,33 @@ p {
   width: 100%;
 }
 
-.title {
+#explanation .title {
   font-size: 8vh;
   grid-area: title;
   text-align: center;
 }
 
-img {
+#explanation img {
   grid-area: image;
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.learn {
+#explanation .learn {
   font-size: 5vh;
   grid-area: learn;
   text-align: center;
 }
 
-.textBox {
+#explanation .textBox {
   border: solid 0.5vh black;
   box-sizing: border-box;
   font-size: 4vh;
   padding: 2vh;
 }
 
-.ai {
+#explanation .ai {
   display: flex;
   flex-direction: row;
   grid-area: ai;
@@ -61,12 +61,12 @@ img {
   margin-right: auto;
 }
 
-.aiImg {
+#explanation .aiImg {
   height: 15vh;
   width: 15vh;
 }
 
-.word {
+#explanation .word {
   border: solid 0.5vh black;
   border-radius: 2vh;
   box-sizing: border-box;
@@ -100,7 +100,7 @@ img {
   z-index: 1;
 }
 
-.aiExplanation {
+#explanation .aiExplanation {
   border-color: #4f84d3;
   grid-area: aiExplanation;
   overflow-y: scroll;
@@ -110,7 +110,7 @@ img {
   font-size: 4vh;
 }
 
-.attentionMessage {
+#explanation .attentionMessage {
   align-items: center;
   color: #f22424;
   display: flex;
@@ -131,7 +131,7 @@ img {
     / 83% 4vh auto;
 }
 
-input[type="text"] {
+#explanation input[type="text"] {
   font-size: 6vh;
   grid-area: inputText;
   line-height: 8vh;
