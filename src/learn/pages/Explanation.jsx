@@ -10,36 +10,10 @@ import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/components/TimeUp";
 import aiImg from "../../image/aiImg.svg";
 import aiImgSmile from "../../image/aiImgSmile.svg";
+import axios from "axios";
 
 function Explanation() {
-  const data = {
-    playerId: [
-      {
-        explanation: "百獣の王は静かに微笑みを湛えている",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-    ],
-  };
+  const [data, setData] = useState();
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
@@ -48,6 +22,18 @@ function Explanation() {
   const history = useHistory();
   const [time, setTime] = useState(60);
   const timer = useRef(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/API/Start.php")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
+  }, []);
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
@@ -62,18 +48,10 @@ function Explanation() {
   useEffect(() => {
     if (time % 5 === 0 && time < 60) {
       setWord2(word1);
-      if (data.playerId[0].ngWord[(60 - time - 5) / 5] != null) {
-        setWord1(data.playerId[0].ngWord[(60 - time - 5) / 5]);
-      } else if (
-        data.playerId[0].synonyms[
-          (60 - time - 5) / 5 - data.playerId[0].ngWord.length
-        ] != null
-      ) {
-        setWord1(
-          data.playerId[0].synonyms[
-            (60 - time - 5) / 5 - data.playerId[0].ngWord.length
-          ]
-        );
+      if (data.ng[(60 - time - 5) / 5] != null) {
+        setWord1(data.ng[(60 - time - 5) / 5]);
+      } else if (data.synonyms[(60 - time - 5) / 5 - data.ng.length] != null) {
+        setWord1(data.synonyms[(60 - time - 5) / 5 - data.ng.length]);
       } else {
         setWord1("...");
       }
@@ -83,7 +61,7 @@ function Explanation() {
         setAiFace(aiImgSmile);
         break;
       case 60 / 2:
-        setAiExplanation(data.playerId[0].ai);
+        setAiExplanation(data.AI);
         break;
       case 0:
         clearInterval(timer.current);
@@ -100,36 +78,36 @@ function Explanation() {
     history.go(1);
   });
 
-  return (
-    <div id="explanation">
-      <Title text="この画像を説明しよう" />
-      <Image
-        src="https://source.unsplash.com/featured/?lion"
-        alt="explanationImg"
-      />
-      <div className="learn">AIのアイディアを盗もう</div>
-      <div className="ai">
-        <Icon src={aiFace} />
-        <div className="balloon">
-          <p>{word1}</p>
-          <p>{word2}</p>
+  if (!data) return <div>読み込み中</div>;
+  else {
+    return (
+      <div id="explanation">
+        <Title text="この画像を説明しよう" />
+        <Image src={data.pictureURL} alt="explanationImg" />
+        <div className="learn">AIのアイディアを盗もう</div>
+        <div className="ai">
+          <Icon src={aiFace} />
+          <div className="balloon">
+            <p>{word1}</p>
+            <p>{word2}</p>
+          </div>
         </div>
+        <OtherDescription title="AIの説明文" text={aiExplanation} />
+        <form id="explanationForm">
+          <input
+            type="text"
+            value={myExplanation}
+            onChange={handleChange}
+            placeholder="説明文を記入してね"
+            className="textBox"
+            id="myExplanation"
+          />
+        </form>
+        <Timer time={time} />
+        {/*<TimeUp time={time}/>*/}
       </div>
-      <OtherDescription title="AIの説明文" text={aiExplanation} />
-      <form id="explanationForm">
-        <input
-          type="text"
-          value={myExplanation}
-          onChange={handleChange}
-          placeholder="説明文を記入してね"
-          className="textBox"
-          id="myExplanation"
-        />
-      </form>
-      <Timer time={time} />
-      {/*<TimeUp time={time}/>*/}
-    </div>
-  );
+    );
+  }
 }
 
 export default Explanation;

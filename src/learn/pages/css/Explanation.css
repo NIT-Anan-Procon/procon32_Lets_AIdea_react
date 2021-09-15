@@ -13,7 +13,7 @@ p {
     "... ............... ............... ................ ..." 3vh
     "... title           title           title            ..." 10vh
     "... ............... ............... ................ ..." 2vh
-    "... image           ............... learn            ..." 5vh
+    "... image           ............... learn            ..." 4vh
     "... image           ............... ................ ..." 5vh
     "... image           ............... ai               ..." 23vh
     "... image           ............... ................ ..." 3vh
@@ -28,7 +28,7 @@ p {
 }
 
 #explanation .learn {
-  font-size: 5vh;
+  font-size: 4vh;
   grid-area: learn;
   text-align: center;
 }
@@ -37,8 +37,13 @@ p {
   display: grid;
   grid-area: ai;
   grid-template:
-    "... icon ballon ..." 100%
-    /10% 30% 50% 10%;
+    "... icon ... ballon ..." 100%
+    /10% 20% 10% 50% 10%;
+}
+
+#explanation .icon {
+  height: 10vh;
+  width: 10vh;
 }
 
 #explanationForm {
