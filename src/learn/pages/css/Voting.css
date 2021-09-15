@@ -61,11 +61,11 @@ body {
 }
 
 #learnVoting .attentionMessage {
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   margin: 0;
 }
 
 #learnVoting input[type="submit"] {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
 }
