@@ -26,7 +26,7 @@ function Explanation() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Start.php")
+      .get("http://localhost/API/Learn/Start.php")
       .then((res) => {
         console.log(res.data);
         setData(res.data);
