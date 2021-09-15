@@ -13,24 +13,24 @@ export default function Login() {
   const history = useHistory();
   const params = new FormData();
 
-  useEffect(() => {
-    axios
-      .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/CheckLogin.php",
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log("Cookieがあるよ");
-        console.log(res);
-        history.push("/selection");
-      })
-      .catch((error) => {
-        console.log("Cookieがないよ");
-        console.log(error.request.status);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/CheckLogin.php",
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     )
+  //     .then((res) => {
+  //       console.log("Cookieがあるよ");
+  //       console.log(res);
+  //       history.push("/selection");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Cookieがないよ");
+  //       console.log(error.request.status);
+  //     });
+  // }, []);
 
   const userNameChange = (event) => {
     setUserName(event.target.value);
