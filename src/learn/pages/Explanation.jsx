@@ -20,6 +20,7 @@ function Explanation() {
   const [aiFace, setAiFace] = useState(aiImg);
   const [myExplanation, setMyExplanation] = useState("");
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(60);
   const timer = useRef(null);
 
@@ -32,6 +33,7 @@ function Explanation() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
       });
   }, []);
 
@@ -78,7 +80,7 @@ function Explanation() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div id="explanation">
