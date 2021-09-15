@@ -43,7 +43,7 @@ p {
   grid-template:
     "icon ... ballon" 100%
     /20% 10% 60%;
-  min-width: 250px;
+  min-width: 45vh;
 }
 
 #explanation .icon {
