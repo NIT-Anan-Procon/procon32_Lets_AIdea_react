@@ -10,9 +10,9 @@ import SelectionLabel from "../components/SelectionLabel";
 
 export default function Voting() {
   const [data, setData] = useState();
+  const [myChoice, setMyChoice] = useState(0);
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
-  let myChoice = 0;
 
   useEffect(() => {
     axios
@@ -26,8 +26,13 @@ export default function Voting() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!data) return 0;
+    document.getElementById("choice" + data.playerID).disabled = true;
+  }, [data]);
+
   const handleChange = (event) => {
-    myChoice = event.target.value;
+    setMyChoice(event.target.value);
   };
 
   const handleSubmit = (event) => {
