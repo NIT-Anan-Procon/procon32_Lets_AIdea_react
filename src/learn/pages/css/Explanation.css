@@ -15,9 +15,9 @@ p {
     "... ............... ............... ................ ..." 2vh
     "... image           ............... learn            ..." 5vh
     "... image           ............... ................ ..." 5vh
-    "... image           ............... ai               ..." 26vh
-    "... image           ............... ................ ..." 1vh
-    "... image           ............... aiExplanation    ..." 20vh
+    "... image           ............... ai               ..." 23vh
+    "... image           ............... ................ ..." 3vh
+    "... image           ............... otherDescription ..." 20vh
     "... ............... ............... ................ ..." 1vh
     "... explanationForm explanationForm explanationForm  ..." auto
     "... ............... ............... ................ ..." 3vh
@@ -27,98 +27,18 @@ p {
   width: 100%;
 }
 
-#explanation .title {
-  font-size: 8vh;
-  grid-area: title;
-  text-align: center;
-}
-
-#explanation img {
-  grid-area: image;
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
 #explanation .learn {
   font-size: 5vh;
   grid-area: learn;
   text-align: center;
 }
 
-#explanation .textBox {
-  border: solid 0.5vh black;
-  box-sizing: border-box;
-  font-size: 4vh;
-  padding: 2vh;
-}
-
 #explanation .ai {
-  display: flex;
-  flex-direction: row;
+  display: grid;
   grid-area: ai;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#explanation .aiImg {
-  height: 15vh;
-  width: 15vh;
-}
-
-#explanation .word {
-  border: solid 0.5vh black;
-  border-radius: 2vh;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 4vh;
-  height: 22vh;
-  margin-left: 5vh;
-  position: relative;
-  width: 40vh;
-}
-
-.word::before {
-  border: 3vh solid transparent;
-  border-right: 4.5vh solid white;
-  content: "";
-  left: -6.5vh;
-  margin-top: -3vh;
-  position: absolute;
-  top: 25%;
-  z-index: 2;
-}
-
-.word::after {
-  border: 3vh solid transparent;
-  border-right: 4.5vh solid black;
-  content: "";
-  left: -7.5vh;
-  margin-top: -3vh;
-  position: absolute;
-  top: 25%;
-  z-index: 1;
-}
-
-#explanation .aiExplanation {
-  border-color: #4f84d3;
-  grid-area: aiExplanation;
-  overflow-y: scroll;
-}
-
-.aiExplanation p {
-  font-size: 4vh;
-}
-
-#explanation .attentionMessage {
-  align-items: center;
-  color: #f22424;
-  display: flex;
-  font-size: 4vh;
-  grid-area: attentionMessage;
-  justify-content: center;
-  line-height: 4vh;
-  margin: 0;
+  grid-template:
+    "... icon ballon ..." 100%
+    /10% 30% 50% 10%;
 }
 
 #explanationForm {

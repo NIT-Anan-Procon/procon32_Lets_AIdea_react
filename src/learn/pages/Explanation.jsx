@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
+import "../components/css/Balloon.css";
+import Title from "../../common/components/Title";
+import Image from "../../common/components/Image";
+import Icon from "../../common/components/Icon";
+import OtherDescription from "../../common/components/OtherDescription";
+import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/components/TimeUp";
 import aiImg from "../../image/aiImg.svg";
@@ -92,36 +98,31 @@ function Explanation() {
         break;
       case 0:
         clearInterval(timer.current);
-        setTimeout(() => {
-          history.push("/learn/result");
-        }, 5000);
+        // setTimeout(() => {
+        //     history.push("/learn/result");
+        // }, 5000);
         break;
     }
   }, [time]);
 
   return (
     <div id="explanation">
-      <div className="title">この画像を説明しよう</div>
-      <img
+      <Title text="この画像を説明しよう" />
+      <Image
         src="https://source.unsplash.com/featured/?lion"
         alt="explanationImg"
       />
       <div className="learn">AIのアイディアを盗もう</div>
       <div className="ai">
-        <div className="aiImg">
-          <img src={aiFace} alt="aiImg" />
-        </div>
-        <div className="word">
+        <Icon src={aiFace} />
+        <div className="balloon">
           <p>{word1}</p>
           <p>{word2}</p>
         </div>
       </div>
-      <div className="textBox aiExplanation">
-        AIの説明文
-        <p>{aiExplanation}</p>
-      </div>
+      <OtherDescription title="AIの説明文" text="ライオンがこちらを見ている" />
       <form onSubmit={handleSubmit} id="explanationForm">
-        <p className="attentionMessage">{attentionMessage}</p>
+        <AttentionMessage text={attentionMessage} />
         <input
           type="text"
           value={myExplanation}
@@ -131,7 +132,7 @@ function Explanation() {
         <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
-      <TimeUp time={time} />
+      {/*<TimeUp time={time}/>*/}
     </div>
   );
 }
