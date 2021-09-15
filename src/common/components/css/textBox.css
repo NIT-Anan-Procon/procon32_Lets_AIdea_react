@@ -1,12 +1,13 @@
 .textBox {
-  border: solid 0.5vh black;
   box-sizing: border-box;
   font-family: "Roboto", "Noto Sans JP", sans-serif;
-  font-size: 4vh;
-  padding: 2vh;
+  font-size: 3.5vh;
+  font-weight: bold;
+  padding: 1vh 2vh;
 }
 
 .textBox p {
   font-size: 5vh;
+  font-weight: normal;
   margin: 2vh 0 0 4vh;
 }
