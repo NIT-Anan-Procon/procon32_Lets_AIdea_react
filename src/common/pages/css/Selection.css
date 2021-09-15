@@ -1,3 +1,42 @@
 #selection {
-  /*  grid */
+  display: grid;
+  grid-template:
+    "... ............ ............ ........... ........... ..." auto
+    "... textMakeRoom textMakeRoom ........... ........... ..." 7vh
+    "... ............ learnButton  ........... quizButton  ..." 7vh
+    "... ............ ............ ........... ........... ..." 5vh
+    "... textJoinRoom textJoinRoom ........... ........... ..." 10vh
+    "... ............ roomId       roomId      joinButton  ..." 3vh
+    "... ............ ...........  ........... ........... ..." 7vh
+    "... ............ library      library     ........... ..." auto
+    "... ............ ...........  ........... ........... ..." auto
+    / auto 40vh 40vh 5vh 20vh auto;
+}
+
+#textMakeRoom {
+  grid-area: textMakeRoom;
+}
+
+#textJoinRoom {
+  grid-area: textJoinRoom;
+}
+
+#learnButton {
+  grid-area: learnButton;
+}
+
+#quizButton {
+  grid-area: quizButton;
+}
+
+#roomId {
+  grid-area: roomId;
+}
+
+#joinButton {
+  grid-area: joinButton;
+}
+
+#library {
+  grid-area: library;
 }
