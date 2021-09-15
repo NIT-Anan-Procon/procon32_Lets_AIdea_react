@@ -1,24 +1,35 @@
 #selection {
   display: grid;
   grid-template:
-    "... ............ ............ ........... ........... ..." auto
-    "... textMakeRoom textMakeRoom ........... ........... ..." 7vh
-    "... ............ learnButton  ........... quizButton  ..." 7vh
-    "... ............ ............ ........... ........... ..." 5vh
+    "... ............ ............ ........... ........... ..." 7vh
+    "... textMakeRoom textMakeRoom ........... ........... ..." 10vh
+    "... ............ learnButton  ........... quizButton  ..." 15vh
+    "... ............ ............ ........... ........... ..." 10vh
     "... textJoinRoom textJoinRoom ........... ........... ..." 10vh
-    "... ............ roomId       roomId      joinButton  ..." 3vh
-    "... ............ ...........  ........... ........... ..." 7vh
-    "... ............ library      library     ........... ..." auto
+    "... ............ roomId       roomId      joinButton  ..." 10vh
+    "... ............ ...........  ........... ........... ..." 10vh
+    "... library      library      library     library     ..." 15vh
     "... ............ ...........  ........... ........... ..." auto
-    / auto 40vh 40vh 5vh 20vh auto;
+    / auto 10vh 50vh 30vh 50vh auto;
 }
 
 #textMakeRoom {
+  font-size: 5vh;
   grid-area: textMakeRoom;
 }
 
 #textJoinRoom {
+  font-size: 5vh;
   grid-area: textJoinRoom;
+}
+
+button {
+  background-color: #ff6347;
+  border: none;
+  color: #fff;
+  font-size: 5vh;
+  font-weight: bold;
+  text-align: center;
 }
 
 #learnButton {
@@ -39,4 +50,6 @@
 
 #library {
   grid-area: library;
+  margin: 0 auto;
+  width: 60vh;
 }
