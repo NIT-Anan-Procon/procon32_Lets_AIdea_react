@@ -46,8 +46,7 @@ function Explanation() {
   const [aiFace, setAiFace] = useState(aiImg);
   const [myExplanation, setMyExplanation] = useState("");
   const history = useHistory();
-  const timeFirst = 30;
-  const [time, setTime] = useState(timeFirst);
+  const [time, setTime] = useState(60);
   const timer = useRef(null);
 
   const handleChange = (event) => {
@@ -61,18 +60,18 @@ function Explanation() {
   }, []);
 
   useEffect(() => {
-    if (time % 3 === 0 && time < 30) {
+    if (time % 5 === 0 && time < 60) {
       setWord2(word1);
-      if (data.playerId[0].ngWord[(30 - time - 3) / 3] != null) {
-        setWord1(data.playerId[0].ngWord[(30 - time - 3) / 3]);
+      if (data.playerId[0].ngWord[(60 - time - 5) / 5] != null) {
+        setWord1(data.playerId[0].ngWord[(60 - time - 5) / 5]);
       } else if (
         data.playerId[0].synonyms[
-          (30 - time - 3) / 3 - data.playerId[0].ngWord.length
+          (60 - time - 5) / 5 - data.playerId[0].ngWord.length
         ] != null
       ) {
         setWord1(
           data.playerId[0].synonyms[
-            (30 - time - 3) / 3 - data.playerId[0].ngWord.length
+            (60 - time - 5) / 5 - data.playerId[0].ngWord.length
           ]
         );
       } else {
@@ -80,10 +79,10 @@ function Explanation() {
       }
     }
     switch (time) {
-      case timeFirst / 2 + 1:
+      case 60 / 2 + 1:
         setAiFace(aiImgSmile);
         break;
-      case timeFirst / 2:
+      case 60 / 2:
         setAiExplanation(data.playerId[0].ai);
         break;
       case 0:
