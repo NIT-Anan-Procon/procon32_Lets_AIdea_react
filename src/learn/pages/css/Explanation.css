@@ -37,8 +37,8 @@ p {
   display: grid;
   grid-area: ai;
   grid-template:
-    "... icon ... ballon ..." 100%
-    /10% 20% 10% 50% 10%;
+    "icon ... ballon" 100%
+    /20% 10% 60%;
 }
 
 #explanation .icon {

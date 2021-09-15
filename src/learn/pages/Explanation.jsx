@@ -50,10 +50,8 @@ function Explanation() {
   useEffect(() => {
     if (time % 5 === 0 && time < 60) {
       setWord2(word1);
-      if (data.ng[(60 - time - 5) / 5] != null) {
-        setWord1(data.ng[(60 - time - 5) / 5]);
-      } else if (data.synonyms[(60 - time - 5) / 5 - data.ng.length] != null) {
-        setWord1(data.synonyms[(60 - time - 5) / 5 - data.ng.length]);
+      if (data.synonyms[(60 - time - 5) / 5] != null) {
+        setWord1(data.synonyms[(60 - time - 5) / 5]);
       } else {
         setWord1("...");
       }
