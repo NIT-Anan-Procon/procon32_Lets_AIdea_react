@@ -5,14 +5,14 @@ body {
 #learnVoting {
   display: grid;
   grid-template:
-    "... ..... .......... ..." 3vh
-    "... title title      ..." 10vh
-    "... ..... .......... ..." 3vh
-    "... ..... votingForm ..." 5vh
-    "... image votingForm ..." 52vh
-    "... ..... votingForm ..." auto
-    "... ..... .......... ..." 3vh
-    /10vh 78vh auto 10vh;
+    "... ..... ..... .......... ..." 3vh
+    "... title title title      ..." 10vh
+    "... ..... ..... .......... ..." 3vh
+    "... ..... ..... votingForm ..." 5vh
+    "... image ..... votingForm ..." 52vh
+    "... ..... ..... votingForm ..." auto
+    "... ..... ..... .......... ..." 3vh
+    /10vh 78vh 4vh auto 10vh;
   height: 100%;
   position: fixed;
   width: 100%;
