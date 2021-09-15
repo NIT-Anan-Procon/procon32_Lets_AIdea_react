@@ -3,15 +3,12 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
 import Title from "../../common/components/Title";
-import Icon from "../../common/components/Icon";
-import Name from "../../common/components/Name";
-import Image from "../../common/components/Image";
-import OtherDescription from "../../common/components/OtherDescription";
+import DescriptionRow from "../components/DescriptionRow";
 import AttentionMessage from "../../common/components/AttentionMessage";
 
 export default function Voting() {
   const [data, setData] = useState();
-  let myChoice = 0;
+  const [myChoice, setMyChoice] = useState(0);
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
@@ -43,10 +40,6 @@ export default function Voting() {
     return ngWord;
   };
 
-  const handleChange = (event) => {
-    myChoice = event.target.value;
-  };
-
   const handleSubmit = (event) => {
     if (myChoice === 0) {
       event.preventDefault();
@@ -68,94 +61,42 @@ export default function Voting() {
         <Title text="優秀な作品を決めよう" />
         <form onSubmit={handleSubmit} id="votingForm">
           <div id="descriptionTable">
-            <div className="descriptionRow">
-              <input
-                type="radio"
-                name="selectDescription"
-                value={1}
-                onChange={handleChange}
-                id="myChoice1"
-              />
-              <label htmlFor="myChoice1" id="description1">
-                <Icon src={data.player[1].icon} />
-                <Name text={data.player[1].name} />
-                <Image
-                  src={data.player[1].pictureURL}
-                  alt="各プレイヤーのお題画像"
-                  class="image"
-                />
-                <OtherDescription
-                  title={"NGワード：" + getNgWord(1)}
-                  text={data.player[1].explanation}
-                />
-              </label>
-            </div>
-            <div className="descriptionRow">
-              <input
-                type="radio"
-                name="selectDescription"
-                value={2}
-                onChange={handleChange}
-                id="myChoice2"
-              />
-              <label htmlFor="myChoice2" id="description2">
-                <Icon src={data.player[2].icon} />
-                <Name text={data.player[2].name} />
-                <Image
-                  src={data.player[2].pictureURL}
-                  alt="各プレイヤーのお題画像"
-                  class="image"
-                />
-                <OtherDescription
-                  title={"NGワード：" + getNgWord(2)}
-                  text={data.player[2].explanation}
-                />
-              </label>
-            </div>
-            <div className="descriptionRow">
-              <input
-                type="radio"
-                name="selectDescription"
-                value={3}
-                onChange={handleChange}
-                id="myChoice3"
-              />
-              <label htmlFor="myChoice3" id="description3">
-                <Icon src={data.player[3].icon} />
-                <Name text={data.player[3].name} />
-                <Image
-                  src={data.player[3].pictureURL}
-                  alt="各プレイヤーのお題画像"
-                  class="image"
-                />
-                <OtherDescription
-                  title={"NGワード：" + getNgWord(3)}
-                  text={data.player[3].explanation}
-                />
-              </label>
-            </div>
-            <div className="descriptionRow">
-              <input
-                type="radio"
-                name="selectDescription"
-                value={4}
-                onChange={handleChange}
-                id="myChoice4"
-              />
-              <label htmlFor="myChoice4" id="description4">
-                <Icon src={data.player[4].icon} />
-                <Name text={data.player[4].name} />
-                <Image
-                  src={data.player[4].pictureURL}
-                  alt="各プレイヤーのお題画像"
-                  class="image"
-                />
-                <OtherDescription
-                  title={"NGワード：" + getNgWord(4)}
-                  text={data.player[4].explanation}
-                />
-              </label>
-            </div>
+            <DescriptionRow
+              number={1}
+              icon={data.player[1].icon}
+              name={data.player[1].name}
+              image={data.player[1].pictureURL}
+              ngWord={getNgWord(1)}
+              description={data.player[1].explanation}
+              setMyChoice={setMyChoice}
+            />
+            <DescriptionRow
+              number={2}
+              icon={data.player[2].icon}
+              name={data.player[2].name}
+              image={data.player[2].pictureURL}
+              ngWord={getNgWord(2)}
+              description={data.player[2].explanation}
+              setMyChoice={setMyChoice}
+            />
+            <DescriptionRow
+              number={3}
+              icon={data.player[3].icon}
+              name={data.player[3].name}
+              image={data.player[3].pictureURL}
+              ngWord={getNgWord(3)}
+              description={data.player[3].explanation}
+              setMyChoice={setMyChoice}
+            />
+            <DescriptionRow
+              number={4}
+              icon={data.player[4].icon}
+              name={data.player[4].name}
+              image={data.player[4].pictureURL}
+              ngWord={getNgWord(4)}
+              description={data.player[4].explanation}
+              setMyChoice={setMyChoice}
+            />
           </div>
           <AttentionMessage text={attentionMessage} />
           <input type="submit" value="投票する" />
