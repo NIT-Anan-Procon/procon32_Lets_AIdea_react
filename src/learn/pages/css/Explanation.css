@@ -45,14 +45,16 @@ p {
   display: grid;
   grid-area: explanationForm;
   grid-template:
-    "attentionMessage ... ..........." 20%
-    "................ ... ..........." 1vh
-    "inputText        ... inputSubmit" auto
-    / 83% 4vh auto;
+    "attentionMessage" 20%
+    "................" 1vh
+    "inputText       " auto
+    / 100%;
 }
 
 #explanation input[type="text"] {
+  border: solid 0.5vh black;
   font-size: 6vh;
+  font-weight: normal;
   grid-area: inputText;
   line-height: 8vh;
 }

@@ -6,7 +6,6 @@ import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
 import OtherDescription from "../../common/components/OtherDescription";
-import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/components/TimeUp";
 import aiImg from "../../image/aiImg.svg";
@@ -45,7 +44,6 @@ function Explanation() {
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
   const [aiFace, setAiFace] = useState(aiImg);
-  const [attentionMessage, setAttentionMessage] = useState("");
   const [myExplanation, setMyExplanation] = useState("");
   const history = useHistory();
   const timeFirst = 30;
@@ -54,14 +52,6 @@ function Explanation() {
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    if (myExplanation.length === 0) {
-      event.preventDefault();
-      setAttentionMessage("説明文を記入して下さい");
-      return 0;
-    }
   };
 
   useEffect(() => {
@@ -120,16 +110,16 @@ function Explanation() {
           <p>{word2}</p>
         </div>
       </div>
-      <OtherDescription title="AIの説明文" text="ライオンがこちらを見ている" />
-      <form onSubmit={handleSubmit} id="explanationForm">
-        <AttentionMessage text={attentionMessage} />
+      <OtherDescription title="AIの説明文" text={aiExplanation} />
+      <form id="explanationForm">
         <input
           type="text"
           value={myExplanation}
           onChange={handleChange}
+          placeholder="説明文を記入してね"
           className="textBox"
+          id="myExplanation"
         />
-        <input type="submit" value="送信" />
       </form>
       <Timer time={time} />
       {/*<TimeUp time={time}/>*/}
