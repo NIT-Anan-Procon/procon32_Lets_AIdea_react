@@ -13,18 +13,24 @@ export default function Login() {
   const history = useHistory();
   const params = new FormData();
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost/API/User/CheckLogin.php")
-  //     .then((res) => {
-  //       console.log("クッキーチェック");
-  //       console.log(res);
-  //       // history.push("/");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.request.status);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/CheckLogin.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("Cookieがあるよ");
+        console.log(res);
+        history.push("/selection");
+      })
+      .catch((error) => {
+        console.log("Cookieがないよ");
+        console.log(error.request.status);
+      });
+  }, []);
 
   const userNameChange = (event) => {
     setUserName(event.target.value);
@@ -80,12 +86,16 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post("http://localhost/API/User/Login.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/Login.php",
+          params,
+          {
+            withCredentials: true,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then((result) => {
           console.log("レスポンス: " + result.status);
           params.delete("name");
@@ -94,18 +104,25 @@ export default function Login() {
         .catch((error) => {
           console.log("レスポンス: " + error.request.status);
         });
-      axios
-        .get("http://localhost/API/User/GetUserInfo.php")
-        .then((res) => {
-          console.log("--- GetUserInfo ---");
-          console.log(res);
-          // history.push("/");
-        })
-        .catch((error) => {
-          console.log(error.request.status);
-        });
     }
-    history.push("/selection");
+    // history.push("/selection");
+  };
+
+  const GetUserInfoHandle = () => {
+    axios
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/GetUserInfo.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("--- GetUserInfo ---");
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
   };
 
   return (
@@ -141,6 +158,7 @@ export default function Login() {
       </form>
       <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
       <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
+      <button onClick={GetUserInfoHandle}>GetUserInfo</button>
     </div>
   );
 }

@@ -29,10 +29,10 @@ export default function Test() {
         <p>quiz/award</p>
       </Link>
       <Link to="/login">
-        <p>home/login</p>
+        <p>common/login</p>
       </Link>
       <Link to="/selection">
-        <p>home/selection</p>
+        <p>common/selection</p>
       </Link>
     </>
   );
