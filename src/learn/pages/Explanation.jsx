@@ -1,61 +1,44 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
+import "../components/css/Balloon.css";
+import Title from "../../common/components/Title";
+import Image from "../../common/components/Image";
+import Icon from "../../common/components/Icon";
+import OtherDescription from "../../common/components/OtherDescription";
 import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/components/TimeUp";
 import aiImg from "../../image/aiImg.svg";
 import aiImgSmile from "../../image/aiImgSmile.svg";
+import axios from "axios";
 
 function Explanation() {
-  const data = {
-    playerId: [
-      {
-        explanation: "百獣の王は静かに微笑みを湛えている",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-    ],
-  };
+  const [data, setData] = useState();
   const [word1, setWord1] = useState("...");
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
   const [aiFace, setAiFace] = useState(aiImg);
-  const [attentionMessage, setAttentionMessage] = useState("");
   const [myExplanation, setMyExplanation] = useState("");
   const history = useHistory();
-  const timeFirst = 30;
-  const [time, setTime] = useState(timeFirst);
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const [time, setTime] = useState(60);
   const timer = useRef(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/API/Learn/Start.php")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
+  }, []);
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    if (myExplanation.length === 0) {
-      event.preventDefault();
-      setAttentionMessage("説明文を記入して下さい");
-      return 0;
-    }
   };
 
   useEffect(() => {
@@ -65,33 +48,24 @@ function Explanation() {
   }, []);
 
   useEffect(() => {
-    if (time % 3 === 0 && time < 30) {
+    if (time % 5 === 0 && time < 60) {
       setWord2(word1);
-      if (data.playerId[0].ngWord[(30 - time - 3) / 3] != null) {
-        setWord1(data.playerId[0].ngWord[(30 - time - 3) / 3]);
-      } else if (
-        data.playerId[0].synonyms[
-          (30 - time - 3) / 3 - data.playerId[0].ngWord.length
-        ] != null
-      ) {
-        setWord1(
-          data.playerId[0].synonyms[
-            (30 - time - 3) / 3 - data.playerId[0].ngWord.length
-          ]
-        );
+      if (data.synonyms[(60 - time - 5) / 5] != null) {
+        setWord1(data.synonyms[(60 - time - 5) / 5]);
       } else {
         setWord1("...");
       }
     }
     switch (time) {
-      case timeFirst / 2 + 1:
+      case 60 / 2 + 1:
         setAiFace(aiImgSmile);
         break;
-      case timeFirst / 2:
-        setAiExplanation(data.playerId[0].ai);
+      case 60 / 2:
+        setAiExplanation(data.AI);
         break;
       case 0:
         clearInterval(timer.current);
+        document.getElementById("myExplanation").disabled = true;
         setTimeout(() => {
           history.push("/learn/result");
         }, 5000);
@@ -99,41 +73,41 @@ function Explanation() {
     }
   }, [time]);
 
-  return (
-    <div id="explanation">
-      <div className="title">この画像を説明しよう</div>
-      <img
-        src="https://source.unsplash.com/featured/?lion"
-        alt="explanationImg"
-      />
-      <div className="learn">AIのアイディアを盗もう</div>
-      <div className="ai">
-        <div className="aiImg">
-          <img src={aiFace} alt="aiImg" />
+  window.history.pushState(null, null, location.href);
+  window.addEventListener("popstate", (e) => {
+    history.go(1);
+  });
+
+  if (!data) return <div>{errorMessage}</div>;
+  else {
+    return (
+      <div id="explanation">
+        <Title text="この画像を説明しよう" />
+        <Image src={data.pictureURL} alt="explanationImg" />
+        <div className="learn">AIのアイディアを盗もう</div>
+        <div className="ai">
+          <Icon src={aiFace} />
+          <div className="balloon">
+            <p>{word1}</p>
+            <p>{word2}</p>
+          </div>
         </div>
-        <div className="word">
-          <p>{word1}</p>
-          <p>{word2}</p>
-        </div>
+        <OtherDescription title="AIの説明文" text={aiExplanation} />
+        <form id="explanationForm">
+          <input
+            type="text"
+            value={myExplanation}
+            onChange={handleChange}
+            placeholder="説明文を記入してね"
+            className="textBox"
+            id="myExplanation"
+          />
+        </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
-      <div className="textBox aiExplanation">
-        AIの説明文
-        <p>{aiExplanation}</p>
-      </div>
-      <form onSubmit={handleSubmit} id="explanationForm">
-        <p className="attentionMessage">{attentionMessage}</p>
-        <input
-          type="text"
-          value={myExplanation}
-          onChange={handleChange}
-          className="textBox"
-        />
-        <input type="submit" value="送信" />
-      </form>
-      <Timer time={time} />
-      <TimeUp time={time} />
-    </div>
-  );
+    );
+  }
 }
 
 export default Explanation;
