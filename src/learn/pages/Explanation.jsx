@@ -88,12 +88,18 @@ function Explanation() {
         break;
       case 0:
         clearInterval(timer.current);
+        document.getElementById("myExplanation").disabled = true;
         // setTimeout(() => {
         //     history.push("/learn/result");
         // }, 5000);
         break;
     }
   }, [time]);
+
+  window.history.pushState(null, null, location.href);
+  window.addEventListener("popstate", (e) => {
+    history.go(1);
+  });
 
   return (
     <div id="explanation">
