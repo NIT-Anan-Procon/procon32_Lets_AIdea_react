@@ -7,6 +7,10 @@ p {
   margin: 2vh 0 0 4vh;
 }
 
+#explanation p {
+  font-size: 4.5vh;
+}
+
 #explanation {
   display: grid;
   grid-template:
@@ -74,4 +78,10 @@ input[type="submit"] {
   grid-area: inputSubmit;
   justify-content: center;
   padding: 0;
+}
+
+#explanation .balloon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
