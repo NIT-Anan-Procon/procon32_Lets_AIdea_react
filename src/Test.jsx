@@ -34,6 +34,9 @@ export default function Test() {
       <Link to="/waiting">
         <p>common/waiting</p>
       </Link>
+      <Link to="/library">
+        <p>/library</p>
+      </Link>
     </>
   );
 }
