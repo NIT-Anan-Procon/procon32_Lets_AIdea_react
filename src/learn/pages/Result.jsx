@@ -11,6 +11,7 @@ import axios from "axios";
 function Result() {
   const [data, setData] = useState();
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(10);
   const timer = useRef(null);
 
@@ -23,6 +24,7 @@ function Result() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
       });
   }, []);
 
@@ -39,7 +41,12 @@ function Result() {
     }
   }, [time]);
 
-  if (!data) return <div>読み込み中</div>;
+  window.history.pushState(null, null, location.href);
+  window.addEventListener("popstate", (e) => {
+    history.go(1);
+  });
+
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div id="learnResult">
