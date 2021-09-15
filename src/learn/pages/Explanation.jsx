@@ -66,9 +66,9 @@ function Explanation() {
       case 0:
         clearInterval(timer.current);
         document.getElementById("myExplanation").disabled = true;
-        // setTimeout(() => {
-        //     history.push("/learn/result");
-        // }, 5000);
+        setTimeout(() => {
+          history.push("/learn/result");
+        }, 5000);
         break;
     }
   }, [time]);
@@ -104,7 +104,7 @@ function Explanation() {
           />
         </form>
         <Timer time={time} />
-        {/*<TimeUp time={time}/>*/}
+        <TimeUp time={time} />
       </div>
     );
   }
