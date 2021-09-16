@@ -26,15 +26,13 @@ export default function Selection() {
   }, []);
 
   const makeLearnRoom = () => {
-    // setGameMode("0000");
-    // console.log(gameMode);
-    // params.append("gamemode", gameMode);
+    setGameMode("0000");
+    console.log(gameMode);
+    params.append("gamemode", gameMode);
     axios
       .post(
         "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/CreateRoom.php",
-        {
-          gamemode: "0000",
-        },
+        params,
         {
           withCredentials: true,
           headers: {
