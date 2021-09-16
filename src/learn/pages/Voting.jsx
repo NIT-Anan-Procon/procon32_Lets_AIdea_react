@@ -52,7 +52,7 @@ export default function Voting() {
   if (!data) return <div>読み込み中</div>;
   else {
     return (
-      <div id="learnVoting">
+      <div className="learn" id="learnVoting">
         <Title text="優秀な作品を決めよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
         <form onSubmit={handleSubmit} className="votingForm">
