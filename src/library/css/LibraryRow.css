@@ -3,5 +3,7 @@
   grid-template:
     "icon ... image ... otherDescription" 80%
     "name ... image ... otherDescription" 20%
-    /20vh 3vh 37.5vh 3vh auto;
+    /20vh 3vh 39vh 3vh auto;
+  height: 26vh;
+  margin: 4vh 3vh 4vh 4vh;
 }
