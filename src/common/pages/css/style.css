@@ -1,3 +1,17 @@
 body {
   font-family: "Roboto", "Noto Sans JP", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 2vh;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 1vh;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: solid 0.5vh white;
+  border-radius: 1vh;
+}
