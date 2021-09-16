@@ -5,14 +5,14 @@ body {
 #learnVoting {
   display: grid;
   grid-template:
-    "... ..... .......... ..." 3vh
-    "... title title      ..." 10vh
-    "... ..... .......... ..." 3vh
-    "... ..... votingForm ..." 5vh
-    "... image votingForm ..." 52vh
-    "... ..... votingForm ..." auto
-    "... ..... .......... ..." 3vh
-    /10vh 78vh auto 10vh;
+    "... ..... ..... .......... ..." 3vh
+    "... title title title      ..." 10vh
+    "... ..... ..... .......... ..." 3vh
+    "... ..... ..... votingForm ..." 5vh
+    "... image ..... votingForm ..." 52vh
+    "... ..... ..... votingForm ..." auto
+    "... ..... ..... .......... ..." 3vh
+    /10vh 78vh 4vh auto 10vh;
   height: 100%;
   position: fixed;
   width: 100%;
@@ -22,12 +22,13 @@ body {
   display: grid;
   grid-area: votingForm;
   grid-template:
-    "selections       selections       selections      " 70vh
+    "selections       selections       selections      " auto
     "................ ................ ................" 1vh
     "attentionMessage attentionMessage attentionMessage" 3vh
     "................ ................ ................" 1vh
     "................ inputSubmit      ................" 6vh
     / auto 50% auto;
+  min-width: 70vh;
 }
 
 #learnVoting .selections {
@@ -48,7 +49,7 @@ body {
   display: block;
   grid-area: choice;
   height: 3.5vh;
-  left: 60%;
+  left: 50%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -61,8 +62,10 @@ body {
 
 #learnVoting .attentionMessage {
   font-size: 3vh;
+  margin: 0;
 }
 
 #learnVoting input[type="submit"] {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
 }
