@@ -49,7 +49,7 @@ function Result() {
   if (!data) return <div>{errorMessage}</div>;
   else {
     return (
-      <div id="learnResult">
+      <div className="learn" id="learnResult">
         <Title text="リザルト" />
         <Image src={data.pictureURL} alt="explanationImg" />
         <div className="players">

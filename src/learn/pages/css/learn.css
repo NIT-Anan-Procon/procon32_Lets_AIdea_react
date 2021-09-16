@@ -1,0 +1,30 @@
+.learn body {
+  margin: 0;
+}
+
+#explanation,
+#learnResult,
+#learnVoting,
+#learnAward {
+  display: grid;
+  height: 100%;
+  width: 100%;
+}
+
+.learn p {
+  font-size: 5vh;
+  margin: 2vh 0 0 4vh;
+}
+
+.learn input[type="submit"] {
+  align-items: center;
+  background-color: #ff6347;
+  border: none;
+  color: white;
+  display: flex;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 6vh;
+  grid-area: inputSubmit;
+  justify-content: center;
+  padding: 0;
+}

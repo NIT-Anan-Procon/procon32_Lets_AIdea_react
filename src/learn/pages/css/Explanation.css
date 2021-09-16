@@ -1,18 +1,4 @@
-body {
-  margin: 0;
-}
-
-p {
-  font-size: 5vh;
-  margin: 2vh 0 0 4vh;
-}
-
-#explanation p {
-  font-size: 4.5vh;
-}
-
 #explanation {
-  display: grid;
   grid-template:
     "... ............... ............... ................ ..." 3vh
     "... title           title           title            ..." 10vh
@@ -26,9 +12,11 @@ p {
     "... explanationForm explanationForm explanationForm  ..." auto
     "... ............... ............... ................ ..." 3vh
     /20vh 84vh 4vh auto 20vh;
-  height: 100%;
   position: fixed;
-  width: 100%;
+}
+
+#explanation p {
+  font-size: 4.5vh;
 }
 
 #explanation .learn {
@@ -69,20 +57,12 @@ p {
   line-height: 8vh;
 }
 
-input[type="submit"] {
-  align-items: center;
-  background-color: #ff6347;
-  border: none;
-  color: white;
-  display: flex;
-  font-size: 6vh;
-  grid-area: inputSubmit;
-  justify-content: center;
-  padding: 0;
-}
-
 #explanation .balloon {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+#explanation .balloon p {
+  margin: 0.5vh 0 0 3vh;
 }

@@ -7,19 +7,20 @@
     /20% 80%;
 }
 
-#learnVoting .icon {
+.selectionLabel .icon {
   height: 10vh;
   width: 10vh;
 }
 
-#learnVoting .name {
+.selectionLabel .name {
   font-size: 3vh;
 }
 
-#learnVoting .otherDescription {
+.selectionLabel .otherDescription {
   height: 13vh;
 }
 
-#learnVoting .otherDescription p {
-  font-size: 3vh;
+.selectionLabel .otherDescription p {
+  font-size: 3.4vh;
+  margin: 2.2vh -2vh 0 0;
 }

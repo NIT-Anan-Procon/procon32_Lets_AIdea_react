@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
+import "./css/learn.css";
 import "../components/css/Balloon.css";
 import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
@@ -81,7 +82,7 @@ function Explanation() {
   if (!data) return <div>{errorMessage}</div>;
   else {
     return (
-      <div id="explanation">
+      <div className="learn" id="explanation">
         <Title text="この画像を説明しよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
         <div className="learn">AIのアイディアを盗もう</div>
