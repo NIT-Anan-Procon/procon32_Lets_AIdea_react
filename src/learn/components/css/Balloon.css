@@ -30,7 +30,7 @@
   z-index: 1;
 }
 
-.scroll {
+.balloonText {
   height: 13vh;
   overflow-y: scroll;
   position: absolute;
