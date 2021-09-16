@@ -16,6 +16,10 @@
   font-size: 3vh;
 }
 
+#learnVoting .otherDescription {
+  height: 13vh;
+}
+
 #learnVoting .otherDescription p {
   font-size: 3vh;
 }
