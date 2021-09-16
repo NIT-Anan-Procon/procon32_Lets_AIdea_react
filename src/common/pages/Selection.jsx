@@ -4,6 +4,23 @@ import "./css/Selection.css";
 import axios from "axios";
 
 export default function Selection() {
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/GetUserInfo.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("--- GetUserInfo ---");
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
+  }, []);
+
   return (
     <div id="selection">
       <div id="textMakeRoom">部屋を作る</div>

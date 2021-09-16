@@ -108,23 +108,6 @@ export default function Login() {
     history.push("/selection");
   };
 
-  const GetUserInfoHandle = () => {
-    axios
-      .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/GetUserInfo.php",
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log("--- GetUserInfo ---");
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
-  };
-
   return (
     <div id="login">
       <div className="logo">Let&apos;s AIdea !</div>
@@ -158,7 +141,6 @@ export default function Login() {
       </form>
       <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
       <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
-      <button onClick={GetUserInfoHandle}>GetUserInfo</button>
     </div>
   );
 }
