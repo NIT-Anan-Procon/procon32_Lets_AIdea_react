@@ -4,6 +4,8 @@ import "./css/Selection.css";
 import axios from "axios";
 
 export default function Selection() {
+  const history = useHistory();
+
   useEffect(() => {
     axios
       .get(
@@ -21,6 +23,10 @@ export default function Selection() {
       });
   }, []);
 
+  const moveToLibrary = () => {
+    history.push("/library");
+  };
+
   return (
     <div id="selection">
       <div id="textMakeRoom">部屋を作る</div>
@@ -29,7 +35,9 @@ export default function Selection() {
       <input type="text" placeholder="部屋IDを入力してね" id="roomId" />
       <div id="textJoinRoom">部屋に入る</div>
       <button id="joinButton">参加</button>
-      <button id="library">ライブラリ</button>
+      <button id="library" onClick={moveToLibrary}>
+        ライブラリ
+      </button>
     </div>
   );
 }
