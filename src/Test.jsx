@@ -31,6 +31,9 @@ export default function Test() {
       <Link to="/quiz/award">
         <p>quiz/award</p>
       </Link>
+      <Link to="/library">
+        <p>library</p>
+      </Link>
     </>
   );
 }

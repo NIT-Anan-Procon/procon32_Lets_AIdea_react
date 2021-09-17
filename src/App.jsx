@@ -11,6 +11,7 @@ import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
 import QuizAward from "./quiz/pages/Award";
+import Library from "./library/Library";
 
 export default function App() {
   useEffect(() => {
@@ -44,6 +45,7 @@ export default function App() {
       <Route path="/quiz/result" exact component={QuizResult} />
       <Route path="/quiz/voting" exact component={QuizVoting} />
       <Route path="/quiz/award" exact component={QuizAward} />
+      <Route path="/library" exact component={Library} />
     </BrowserRouter>
   );
 }
