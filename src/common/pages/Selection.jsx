@@ -63,7 +63,7 @@ export default function Selection() {
         console.log("--- 学習モード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
         params.delete("gamemode");
-        // history.push("/waiting");
+        history.push("/waiting");
       })
       .catch((error) => {
         console.log("--- 学習モード部屋でエラーが発生 ---");
@@ -88,7 +88,7 @@ export default function Selection() {
         console.log("--- クイズモード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
         params.delete("gamemode");
-        // history.push("/waiting");
+        history.push("/waiting");
       })
       .catch((error) => {
         console.log("--- クイズモード部屋でエラーが発生 ---");
