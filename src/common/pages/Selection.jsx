@@ -26,6 +26,25 @@ export default function Selection() {
       });
   }, []);
 
+  const doLogout = () => {
+    axios
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/Logout.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("--- ログアウトしました ---");
+        console.log(res.request.status);
+        history.push("/login");
+      })
+      .catch((error) => {
+        console.log("--- ログアウトに失敗しました ---");
+        console.log(error.request.status);
+      });
+  };
+
   const makeLearnRoom = () => {
     params.append("gamemode", learnMode);
     axios
@@ -83,6 +102,9 @@ export default function Selection() {
 
   return (
     <div id="selection">
+      <button id="logoutButton" onClick={doLogout}>
+        ログアウト
+      </button>
       <div id="textMakeRoom">部屋を作る</div>
       <button id="learnButton" onClick={makeLearnRoom}>
         学習モード
