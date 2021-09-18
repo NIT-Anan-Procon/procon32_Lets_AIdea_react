@@ -3,5 +3,5 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function Library() {
-  return <div>ライブラリ</div>;
+  // テスト用なので消してよし
 }
