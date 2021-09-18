@@ -6,6 +6,7 @@ import axios from "axios";
 export default function Selection() {
   const [learnMode, setLearnMode] = useState("0000");
   const [quizMode, setQuizMode] = useState("1100");
+  const [roomId, setRoomId] = useState("");
   const history = useHistory();
   const params = new FormData();
 
@@ -71,7 +72,6 @@ export default function Selection() {
   };
 
   const makeQuizRoom = () => {
-    console.log(quizMode);
     params.append("gamemode", quizMode);
     axios
       .post(
@@ -96,6 +96,35 @@ export default function Selection() {
       });
   };
 
+  const roomIdChange = (event) => {
+    setRoomId(event.target.value);
+  };
+
+  const joinRoom = () => {
+    params.append("roomID", roomId);
+    axios
+      .post(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/JoinRoom.php",
+        params,
+        {
+          withCredentials: true,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      )
+      .then((result) => {
+        console.log("--- 部屋の参加に成功 ---");
+        console.log(result);
+        params.delete("roomID");
+        history.push("/waiting");
+      })
+      .catch((error) => {
+        console.log("--- 部屋の参加に失敗 ---");
+        console.log("レスポンス: " + error.request.status);
+      });
+  };
+
   const moveToLibrary = () => {
     history.push("/library");
   };
@@ -112,9 +141,16 @@ export default function Selection() {
       <button id="quizButton" onClick={makeQuizRoom}>
         クイズモード
       </button>
-      <input type="text" placeholder="部屋IDを入力してね" id="roomId" />
+      <input
+        type="text"
+        placeholder="部屋IDを入力してね"
+        onChange={roomIdChange}
+        id="roomId"
+      />
       <div id="textJoinRoom">部屋に入る</div>
-      <button id="joinButton">参加</button>
+      <button id="joinButton" onClick={joinRoom}>
+        参加
+      </button>
       <button id="library" onClick={moveToLibrary}>
         ライブラリ
       </button>
