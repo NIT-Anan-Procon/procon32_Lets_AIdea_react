@@ -13,24 +13,21 @@ export default function Login() {
   const history = useHistory();
   const params = new FormData();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "http://localhost/API/User/CheckLogin.php",
-  //       {
-  //         withCredentials: true,
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log("Cookieがあるよ");
-  //       console.log(res.status);
-  //       history.push("/selection");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Cookieがないよ");
-  //       console.log(error.request.status);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost/API/User/CheckLogin.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("Cookieがあるよ");
+        console.log(res.status);
+        history.push("/selection");
+      })
+      .catch((error) => {
+        console.log("Cookieがないよ");
+        console.log(error.request.status);
+      });
+  }, []);
 
   const userNameChange = (event) => {
     setUserName(event.target.value);
