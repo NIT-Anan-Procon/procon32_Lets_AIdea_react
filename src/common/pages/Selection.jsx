@@ -4,7 +4,8 @@ import "./css/Selection.css";
 import axios from "axios";
 
 export default function Selection() {
-  const [gameMode, setGameMode] = useState("");
+  const [learnMode, setLearnMode] = useState("0000");
+  const [quizMode, setQuizMode] = useState("1100");
   const history = useHistory();
   const params = new FormData();
 
@@ -26,9 +27,7 @@ export default function Selection() {
   }, []);
 
   const makeLearnRoom = () => {
-    setGameMode("0000");
-    console.log(gameMode);
-    params.append("gamemode", gameMode);
+    params.append("gamemode", learnMode);
     axios
       .post(
         "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/CreateRoom.php",
@@ -43,6 +42,7 @@ export default function Selection() {
       .then((result) => {
         console.log("--- 学習モード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
+        params.delete("gamemode");
         // history.push("/waiting");
       })
       .catch((error) => {
@@ -52,9 +52,8 @@ export default function Selection() {
   };
 
   const makeQuizRoom = () => {
-    setGameMode("1100");
-    console.log(gameMode);
-    params.append("gamemode", gameMode);
+    console.log(quizMode);
+    params.append("gamemode", quizMode);
     axios
       .post(
         "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/CreateRoom.php",
@@ -69,6 +68,7 @@ export default function Selection() {
       .then((result) => {
         console.log("--- クイズモード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
+        params.delete("gamemode");
         // history.push("/waiting");
       })
       .catch((error) => {
