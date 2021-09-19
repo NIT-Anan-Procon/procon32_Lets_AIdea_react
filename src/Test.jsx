@@ -28,8 +28,14 @@ export default function Test() {
       <Link to="/quiz/award">
         <p>quiz/award</p>
       </Link>
+      <Link to="/login">
+        <p>common/login</p>
+      </Link>
+      <Link to="/selection">
+        <p>common/selection</p>
+      </Link>
       <Link to="/waiting">
-        <p>home/Waiting</p>
+        <p>common/waiting</p>
       </Link>
     </>
   );
