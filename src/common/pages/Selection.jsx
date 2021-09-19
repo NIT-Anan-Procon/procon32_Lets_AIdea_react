@@ -12,12 +12,9 @@ export default function Selection() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/GetUserInfo.php",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost/API/User/GetUserInfo.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log("--- GetUserInfo ---");
         console.log(res);
@@ -29,12 +26,9 @@ export default function Selection() {
 
   const doLogout = () => {
     axios
-      .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/Logout.php",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost//API/User/Logout.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log("--- ログアウトしました ---");
         console.log(res.request.status);
@@ -49,16 +43,12 @@ export default function Selection() {
   const makeLearnRoom = () => {
     params.append("gamemode", learnMode);
     axios
-      .post(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/CreateRoom.php",
-        params,
-        {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost/API/Room/CreateRoom.php", params, {
+        withCredentials: true,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then((result) => {
         console.log("--- 学習モード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
@@ -74,16 +64,12 @@ export default function Selection() {
   const makeQuizRoom = () => {
     params.append("gamemode", quizMode);
     axios
-      .post(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/CreateRoom.php",
-        params,
-        {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost/API/Room/CreateRoom.php", params, {
+        withCredentials: true,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then((result) => {
         console.log("--- クイズモード部屋の作成に成功 ---");
         console.log("レスポンス: " + result.status);
@@ -103,16 +89,12 @@ export default function Selection() {
   const joinRoom = () => {
     params.append("roomID", roomId);
     axios
-      .post(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/JoinRoom.php",
-        params,
-        {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost/API/Room/JoinRoom.php", params, {
+        withCredentials: true,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then((result) => {
         console.log("--- 部屋の参加に成功 ---");
         console.log(result);

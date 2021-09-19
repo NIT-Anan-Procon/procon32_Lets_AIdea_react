@@ -16,7 +16,7 @@ export default function Login() {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/CheckLogin.php",
+  //       "http://localhost/API/User/CheckLogin.php",
   //       {
   //         withCredentials: true,
   //       }
@@ -86,16 +86,12 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post(
-          "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/Login.php",
-          params,
-          {
-            withCredentials: true,
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          }
-        )
+        .post("http://localhost//API/User/Login.php", params, {
+          withCredentials: true,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
         .then((result) => {
           console.log("レスポンス: " + result.status);
           params.delete("name");
