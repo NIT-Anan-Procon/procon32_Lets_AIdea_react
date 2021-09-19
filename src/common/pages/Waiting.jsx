@@ -21,6 +21,20 @@ export default function Waiting() {
       .catch((error) => {
         console.log(error.request.status);
       });
+
+    axios
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        console.log("--- PrepareGame.phpの実行に成功 ---");
+      })
+      .catch(() => {
+        console.log("--- PrepareGame.phpの実行に失敗 ---");
+      });
   }, []);
 
   const copyText = () => {
