@@ -24,21 +24,9 @@ function Explanation() {
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(60);
   const timer = useRef(null);
+  const params = new FormData();
 
   useEffect(() => {
-    axios
-      .get("http://localhost/API/Learn/Start.php")
-      .then((res) => {
-        console.log(res);
-        getData();
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-        setErrorMessage("エラーが発生しました");
-      });
-  }, []);
-
-  const getData = () => {
     axios
       .get("http://localhost/API/Learn/Start.php")
       .then((res) => {
@@ -49,7 +37,7 @@ function Explanation() {
         console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
-  };
+  }, []);
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
@@ -80,21 +68,19 @@ function Explanation() {
       case 0:
         clearInterval(timer.current);
         document.getElementById("myExplanation").disabled = true;
+        params.append("explanation", myExplanation);
         axios
-          .post("http://localhost/API/Game/AddExplanation.php", {
-            explanation: myExplanation,
-          })
+          .post("http://localhost/API/Game/AddExplanation.php", params)
           .then((res) => {
             console.log(res);
             console.log(res.data);
+            setTimeout(() => {
+              history.push("/learn/result");
+            }, 5000);
           })
           .catch((error) => {
             console.log(error.request.status);
-            setErrorMessage("エラーが発生しました");
           });
-        setTimeout(() => {
-          history.push("/learn/result");
-        }, 5000);
         break;
     }
   }, [time]);

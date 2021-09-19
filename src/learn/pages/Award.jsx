@@ -15,7 +15,7 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/End.php")
+      .get("http://localhost/API/Game/End.php")
       .then((res) => {
         console.log(res.data);
         setData(res.data);

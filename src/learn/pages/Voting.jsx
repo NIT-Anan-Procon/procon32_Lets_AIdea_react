@@ -13,6 +13,8 @@ export default function Voting() {
   const [myChoice, setMyChoice] = useState(0);
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const params = new FormData();
 
   useEffect(() => {
     axios
@@ -41,7 +43,18 @@ export default function Voting() {
       setAttentionMessage("投票する作品を選んでください");
       return 0;
     }
-    history.push("/learn/award");
+    params.append("playerID", myChoice);
+    axios
+      .post("http://localhost/API/Game/Vote.php", params)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        history.push("/learn/award");
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
   };
 
   window.history.pushState(null, null, location.href);
@@ -49,7 +62,7 @@ export default function Voting() {
     history.go(1);
   });
 
-  if (!data) return <div>読み込み中</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div className="learn" id="learnVoting">
