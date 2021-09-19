@@ -4,7 +4,24 @@ import "./css/Waiting.css";
 import axios from "axios";
 
 export default function Waiting() {
-  // const [roomId, setRoomId] = useState("123456789");
+  // const [roomId, setRoomId] = useState("");
+  const [data, setData] = useState("");
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/API/Room/GetRoomInfo.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("--- GetRoomInfo ---");
+        console.log(res);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+      });
+  }, []);
 
   const copyText = () => {
     navigator.clipboard.writeText("123456789").then((r) => "Copy failed.");
@@ -13,6 +30,11 @@ export default function Waiting() {
 
   const startHandle = () => {
     console.log("Game Start !!");
+    console.log("--- data ---");
+    console.log(data[1].name);
+    // data.map((output, index) => {
+    //   console.log(output + "  :  " + index);
+    // });
   };
 
   return (
@@ -24,7 +46,7 @@ export default function Waiting() {
       </button>
       <div id="user">
         <div id="icon">アイコン</div>
-        <div id="message">888が入室しました</div>
+        <div id="message">{userName}が入室しました</div>
       </div>
       <button id="startButton" onClick={startHandle}>
         ゲームを始める
