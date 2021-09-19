@@ -29,6 +29,19 @@ function Explanation() {
     axios
       .get("http://localhost/API/Learn/Start.php")
       .then((res) => {
+        console.log(res);
+        getData();
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
+  }, []);
+
+  const getData = () => {
+    axios
+      .get("http://localhost/API/Learn/Start.php")
+      .then((res) => {
         console.log(res.data);
         setData(res.data);
       })
@@ -36,7 +49,7 @@ function Explanation() {
         console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
-  }, []);
+  };
 
   const handleChange = (event) => {
     setMyExplanation(event.target.value);
