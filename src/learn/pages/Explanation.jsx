@@ -67,6 +67,18 @@ function Explanation() {
       case 0:
         clearInterval(timer.current);
         document.getElementById("myExplanation").disabled = true;
+        axios
+          .post("http://localhost/API/Game/AddExplanation.php", {
+            explanation: myExplanation,
+          })
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error.request.status);
+            setErrorMessage("エラーが発生しました");
+          });
         setTimeout(() => {
           history.push("/learn/result");
         }, 5000);
