@@ -25,6 +25,7 @@ export default function Voting() {
       })
       .catch((error) => {
         console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
       });
   }, []);
 
@@ -44,17 +45,17 @@ export default function Voting() {
       return 0;
     }
     params.append("playerID", myChoice);
+    console.log(myChoice);
     axios
       .post("http://localhost/API/Game/Vote.php", params)
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        history.push("/learn/award");
       })
       .catch((error) => {
         console.log(error.request.status);
-        setErrorMessage("エラーが発生しました");
       });
+    history.push("/learn/award");
   };
 
   window.history.pushState(null, null, location.href);

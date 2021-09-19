@@ -69,6 +69,7 @@ function Explanation() {
         clearInterval(timer.current);
         document.getElementById("myExplanation").disabled = true;
         params.append("explanation", myExplanation);
+        console.log(myExplanation);
         axios
           .post("http://localhost/API/Game/AddExplanation.php", params)
           .then((res) => {
