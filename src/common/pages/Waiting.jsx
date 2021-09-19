@@ -59,9 +59,6 @@ export default function Waiting() {
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
       });
-    // data.map((output, index) => {
-    //   console.log(output + "  :  " + index);
-    // });
   };
 
   return (
