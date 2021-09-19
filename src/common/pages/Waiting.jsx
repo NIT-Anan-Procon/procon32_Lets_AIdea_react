@@ -32,6 +32,19 @@ export default function Waiting() {
     console.log("Game Start !!");
     console.log("--- data ---");
     console.log(data[1].name);
+    axios
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/StartGame.php",
+        {
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        console.log("--- StartGame.phpの実行に成功 ---");
+      })
+      .catch(() => {
+        console.log("--- StartGame.phpの実行に失敗 ---");
+      });
     // data.map((output, index) => {
     //   console.log(output + "  :  " + index);
     // });
