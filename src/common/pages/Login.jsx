@@ -19,12 +19,10 @@ export default function Login() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("Cookieがあるよ");
         console.log(res.status);
         history.push("/selection");
       })
       .catch((error) => {
-        console.log("Cookieがないよ");
         console.log(error.request.status);
       });
   }, []);
@@ -46,9 +44,6 @@ export default function Login() {
       setAttentionMessageToPassword("新規登録パスワードを入力してください");
     } else {
       event.preventDefault();
-      console.log("--- 新規登録 ---");
-      console.log("ユーザーネーム: " + userName);
-      console.log("パスワード: " + password);
       params.append("name", userName);
       params.append("password", password);
       axios
@@ -58,12 +53,12 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log("レスポンス: " + result.status);
+          console.log(result.status);
           params.delete("name");
           params.delete("password");
         })
         .catch((error) => {
-          console.log("レスポンス: " + error.request.status);
+          console.log(error.request.status);
         });
     }
   };
@@ -77,9 +72,6 @@ export default function Login() {
       setAttentionMessageToPassword("ログインパスワードを入力してください");
     } else {
       event.preventDefault();
-      console.log("--- Login ---");
-      console.log("ユーザーネーム: " + userName);
-      console.log("パスワード: " + password);
       params.append("name", userName);
       params.append("password", password);
       axios
@@ -90,32 +82,15 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log("レスポンス: " + result.status);
+          console.log(result.status);
           params.delete("name");
           params.delete("password");
         })
         .catch((error) => {
-          console.log("レスポンス: " + error.request.status);
+          console.log(error.request.status);
         });
     }
     history.push("/selection");
-  };
-
-  const GetUserInfoHandle = () => {
-    axios
-      .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/User/GetUserInfo.php",
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log("--- GetUserInfo ---");
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
   };
 
   return (
@@ -151,7 +126,6 @@ export default function Login() {
       </form>
       <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
       <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
-      <button onClick={GetUserInfoHandle}>GetUserInfo</button>
     </div>
   );
 }
