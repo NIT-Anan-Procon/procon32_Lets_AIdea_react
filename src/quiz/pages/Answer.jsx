@@ -23,9 +23,7 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetPicture.php"
-      )
+      .get("http://localhost/API/Quiz/GetPicture.php")
       .then((result) => {
         console.log(result.data);
         setData(result.data);
