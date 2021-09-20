@@ -1,11 +1,11 @@
 #library {
   display: grid;
   grid-template:
-    "... ............ ............ ............ ..."4vh
-    "... title        ............ buttonForm   ..."10vh
-    "... ............ ............ ............ ..."3vh
-    "... libraryTable libraryTable libraryTable ..."77vh
-    "... ............ ............ ............ ..."3vh
+    "... ............ ............ ............ ..." 4vh
+    "... title        ............ buttonForm   ..." 10vh
+    "... ............ ............ ............ ..." 3vh
+    "... libraryTable libraryTable libraryTable ..." 77vh
+    "... ............ ............ ............ ..." 3vh
     /20vh 50vh auto 30vh 20vh;
   position: fixed;
 }
