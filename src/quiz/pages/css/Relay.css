@@ -5,7 +5,7 @@
     "... ......... ..... ..... ..... ......... ..." 3vh
     "... quizForm  ..... arrow ..... scoreForm ..." auto
     "... ......... ..... ..... ..... ......... ..." 3vh
-    /auto 70vh auto 10vh auto 70vh auto;
+    / auto 70vh auto 10vh auto 70vh auto;
   position: fixed;
 }
 

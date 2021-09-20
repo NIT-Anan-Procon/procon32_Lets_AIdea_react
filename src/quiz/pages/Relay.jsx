@@ -21,7 +21,7 @@ export default function Relay() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      //history.push("/quiz/answer");
+      history.push("/quiz/answer");
     }
   }, [time]);
 
