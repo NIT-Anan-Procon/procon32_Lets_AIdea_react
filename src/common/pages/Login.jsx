@@ -85,12 +85,12 @@ export default function Login() {
           console.log(result.status);
           params.delete("name");
           params.delete("password");
+          history.push("/selection");
         })
         .catch((error) => {
           console.log(error.request.status);
         });
     }
-    history.push("/selection");
   };
 
   return (
