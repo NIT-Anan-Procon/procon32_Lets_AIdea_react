@@ -1,0 +1,51 @@
+#library {
+  display: grid;
+  grid-template:
+    "... ............ ............ ............ ..." 4vh
+    "... title        ............ buttonForm   ..." 10vh
+    "... ............ ............ ............ ..." 3vh
+    "... libraryTable libraryTable libraryTable ..." 77vh
+    "... ............ ............ ............ ..." 3vh
+    /20vh 50vh auto 30vh 20vh;
+  position: fixed;
+}
+
+#library #libraryTable {
+  border: solid 0.5vh #4f84d3;
+  grid-area: libraryTable;
+  overflow-y: scroll;
+}
+
+#library .buttonForm {
+  align-items: center;
+  background-color: #4f64d3;
+  border: none;
+  color: white;
+  display: flex;
+  font-size: 6vh;
+  grid-area: buttonForm;
+  height: 100%;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+
+#library input[type="submit"] {
+  align-items: center;
+  background-color: #4f64d3;
+  border: none;
+  color: white;
+  display: flex;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 6vh;
+  grid-area: inputSubmit;
+  height: 100%;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+
+#library .icon {
+  height: 19vh;
+  width: 19vh;
+}

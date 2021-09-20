@@ -6,72 +6,27 @@ import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Timer from "../../common/components/Timer";
 import aiImg from "../../image/aiImg.svg";
+import axios from "axios";
 
 function Result() {
-  const wordData = {
-    playerId: [
-      {
-        explanation: "百獣の王は静かに微笑みを湛えている",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草原", "ライオン"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "狙った獲物は逃がさない",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草", "赤い", "光"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation: "プレイヤー説明文",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草", "赤い", "光"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-      {
-        explanation:
-          "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ",
-        ai: "草原でライオンが座っています",
-        ngWord: ["草", "赤い", "光"],
-        synonyms: ["黄色い", "ステップ", "草", "獅子", "黄土色"],
-      },
-    ],
-  };
-  const userData = {
-    playerId: [
-      {
-        userID: 1111,
-        flag: 1,
-        name: "Togo",
-        imageIcon: "https://source.unsplash.com/featured/?dog",
-        badge: null,
-      },
-      {
-        userID: 1112,
-        flag: 0,
-        name: "Taiki",
-        imageIcon: "https://source.unsplash.com/featured/?food",
-        badge: null,
-      },
-      {
-        userID: 1113,
-        flag: 0,
-        name: "Ibuki",
-        imageIcon: "https://source.unsplash.com/featured/?bard",
-        badge: null,
-      },
-      {
-        userID: 1114,
-        flag: 0,
-        name: "Maoki",
-        imageIcon: "https://source.unsplash.com/featured/?king",
-        badge: null,
-      },
-    ],
-  };
+  const [data, setData] = useState();
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(10);
   const timer = useRef(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
+      });
+  }, []);
 
   useEffect(() => {
     timer.current = setInterval(() => {
@@ -82,43 +37,48 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      //history.push("/learn/vote");
+      history.push("/learn/voting");
     }
   }, [time]);
 
-  return (
-    <div id="learnResult">
-      <Title text="リザルト" />
-      <Image
-        src="https://source.unsplash.com/featured/?lion"
-        alt="explanationImg"
-      />
-      <div className="players">
-        <Player src={aiImg} name="AI" explanation={wordData.playerId[0].ai} />
-        <Player
-          src={userData.playerId[0].imageIcon}
-          name={userData.playerId[0].name}
-          explanation={wordData.playerId[0].explanation}
-        />
-        <Player
-          src={userData.playerId[1].imageIcon}
-          name={userData.playerId[1].name}
-          explanation={wordData.playerId[1].explanation}
-        />
-        <Player
-          src={userData.playerId[2].imageIcon}
-          name={userData.playerId[2].name}
-          explanation={wordData.playerId[2].explanation}
-        />
-        <Player
-          src={userData.playerId[3].imageIcon}
-          name={userData.playerId[3].name}
-          explanation={wordData.playerId[3].explanation}
-        />
+  window.history.pushState(null, null, location.href);
+  window.addEventListener("popstate", (e) => {
+    history.go(1);
+  });
+
+  if (!data) return <div>{errorMessage}</div>;
+  else {
+    return (
+      <div className="learn" id="learnResult">
+        <Title text="リザルト" />
+        <Image src={data.pictureURL} alt="explanationImg" />
+        <div className="players">
+          <Player src={aiImg} name="AI" explanation={data.AI} />
+          <Player
+            src={data.player[1].icon}
+            name={data.player[1].name}
+            explanation={data.player[1].explanation}
+          />
+          <Player
+            src={data.player[2].icon}
+            name={data.player[2].name}
+            explanation={data.player[2].explanation}
+          />
+          <Player
+            src={data.player[3].icon}
+            name={data.player[3].name}
+            explanation={data.player[3].explanation}
+          />
+          <Player
+            src={data.player[4].icon}
+            name={data.player[4].name}
+            explanation={data.player[4].explanation}
+          />
+        </div>
+        <Timer time={time} />
       </div>
-      <Timer time={time} />
-    </div>
-  );
+    );
+  }
 }
 
 export default Result;
