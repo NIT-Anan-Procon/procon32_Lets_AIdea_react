@@ -6,6 +6,8 @@
     "... ........................ ..." 3vh
     "... loginForm                ..." auto
     "... ........................ ..." 3vh
+    "... errorMessage             ..." 3vh
+    "... ........................ ..." 3vh
     "... attentionMessageUserName ..." 3vh
     "... ........................ ..." 3vh
     "... attentionMessagePassword ..." 3vh
@@ -75,6 +77,12 @@
   grid-area: registerButton;
   margin: 0 auto;
   width: 20vh;
+}
+
+#errorMessage {
+  color: #f22424;
+  font-size: 2vh;
+  grid-area: errorMessage;
 }
 
 .attentionMessageUserName {
