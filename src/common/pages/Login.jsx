@@ -39,13 +39,10 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log(result.status);
           params.delete("name");
           params.delete("password");
         })
-        .catch((error) => {
-          console.log(error.request.status);
-        });
+        .catch((error) => {});
     }
   };
 
@@ -68,14 +65,11 @@ export default function Login() {
           },
         })
         .then((result) => {
-          console.log(result.status);
           params.delete("name");
           params.delete("password");
           history.push("/selection");
         })
-        .catch((error) => {
-          console.log(error.request.status);
-        });
+        .catch((error) => {});
     }
   };
 
