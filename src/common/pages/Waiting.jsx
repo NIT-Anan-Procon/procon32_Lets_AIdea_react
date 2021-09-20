@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Waiting.css";
 import axios from "axios";
@@ -6,18 +6,25 @@ import axios from "axios";
 export default function Waiting() {
   // const [roomId, setRoomId] = useState("");
   const [data, setData] = useState("");
-  // const [userName, setUserName] = useState("");
   const history = useHistory();
+  // const timer = useRef();
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Room/GetRoomInfo.php", {
-        withCredentials: true,
-      })
+      .get(
+        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
         setData(res.data);
+        console.log(data);
+        // setRoomId(res.roomID);
+        // setData(res.data.player);
+        // console.log(roomId);
       })
       .catch((error) => {
         console.log(error.request.status);
@@ -38,15 +45,33 @@ export default function Waiting() {
       });
   }, []);
 
+  // useEffect(() => {
+  //     timer.current = setInterval(() => {
+  //         axios
+  //             .get("http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php", {
+  //                 withCredentials: true,
+  //             })
+  //             .then((res) => {
+  //                 console.log("--- GetRoomInfo ---");
+  //                 console.log(res);
+  //                 setData(res.data.player);
+  //                 setData(res.data);
+  //                 console.log(data);
+  //             })
+  //             .catch((error) => {
+  //                 console.log(error.request.status);
+  //             });
+  //     }, 1000);
+  // }, []);
+
   const copyText = () => {
     navigator.clipboard.writeText("123456789").then((r) => "Copy failed.");
+    // navigator.clipboard.writeText(roomId).then((r) => "Copy failed.");
     console.log("Copied!");
   };
 
   const startHandle = () => {
     console.log("Game Start !!");
-    console.log("--- data ---");
-    console.log(data[1].name);
     axios
       .get(
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/StartGame.php",
@@ -71,15 +96,16 @@ export default function Waiting() {
         コピーする
       </button>
       <div id="user">
-        {data.map((testData) => {
-          return (
-            // eslint-disable-next-line react/jsx-key
-            <div>
-              <div id="icon">アイコン</div>
-              <div id="message">{testData.name}が入室しました</div>
-            </div>
-          );
-        })}
+        {/*{data.map((datas, index) => {*/}
+        {/*  return (*/}
+        {/*    <div key={index}>*/}
+        {/*      <div id="icon">アイコン</div>*/}
+        {/*      <div id="message">{datas.name}が入室しました</div>*/}
+        {/*    </div>*/}
+        {/*  );*/}
+        {/*})}*/}
+        <div id="icon">アイコン</div>
+        <div id="message">userが入室しました</div>
       </div>
       <button id="startButton" onClick={startHandle}>
         ゲームを始める
