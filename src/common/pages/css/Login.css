@@ -43,6 +43,7 @@
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: userName;
+  outline: none;
 }
 
 #inputPassword {
@@ -52,6 +53,7 @@
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: password;
+  outline: none;
 }
 
 #loginButton {
