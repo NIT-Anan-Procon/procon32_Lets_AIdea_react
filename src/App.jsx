@@ -7,6 +7,7 @@ import LearnResult from "./learn/pages/Result";
 import LearnVoting from "./learn/pages/Voting";
 import LearnAward from "./learn/pages/Award";
 import QuizDescription from "./quiz/pages/Description";
+import Relay from "./quiz/pages/Relay";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
@@ -41,6 +42,7 @@ export default function App() {
       <Route path="/learn/voting" exact component={LearnVoting} />
       <Route path="/learn/award" exact component={LearnAward} />
       <Route path="/quiz/description" exact component={QuizDescription} />
+      <Route path="/quiz/relay" exact component={Relay} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />
       <Route path="/quiz/voting" exact component={QuizVoting} />

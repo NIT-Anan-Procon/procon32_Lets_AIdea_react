@@ -1,0 +1,63 @@
+#quizRelay {
+  grid-template:
+    "... ......... ..." 3vh
+    "... title     ..." 10vh
+    "... ......... ..." 3vh
+    "... relayForm ..." auto
+    "... ......... ..." 1vh
+    "... scoreForm ..." auto
+    "... ......... ..." 3vh
+    /10vh auto 10vh;
+  position: fixed;
+}
+
+#relayForm {
+  display: grid;
+  grid-area: relayForm;
+  grid-template:
+    "textMassage      textMassage      textMassage      textMassage      textMassage     " 6vh
+    "................ ................ ................ ................ ................" 1vh
+    "attentionMessage attentionMessage attentionMessage attentionMessage attentionMessage" 4vh
+    "................ ................ ................ ................ ................" 4vh
+    "................ example          ................  image           ................" 40vh
+    /auto 4vh 4vh 60vh auto;
+}
+
+#textMassage {
+  font-size: 5vh;
+  grid-area: textMassage;
+  text-align: center;
+}
+
+#example {
+  font-size: 4vh;
+  grid-area: example;
+}
+
+#scoreForm {
+  display: grid;
+  grid-area: scoreForm;
+  grid-template:
+    "... scoreTitle       scoreTitle scoreTitle  ..." 6vh
+    "... ................ .......... ........... ..." 2vh
+    "... scoreExplanation .......... scoreAnswer ..." 6vh
+    /auto 45% 1vh 45% auto;
+}
+
+#scoreTitle {
+  font-size: 5vh;
+  grid-area: scoreTitle;
+  text-align: center;
+}
+
+#scoreExplanation {
+  font-size: 5vh;
+  grid-area: scoreExplanation;
+  text-align: center;
+}
+
+#scoreAnswer {
+  font-size: 5vh;
+  grid-area: scoreAnswer;
+  text-align: center;
+}

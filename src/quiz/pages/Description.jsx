@@ -62,7 +62,7 @@ export default function Description() {
     clearInterval(timer.current);
     document.getElementById("myDescription").disabled = true;
     setTimeout(() => {
-      history.push("/quiz/answer");
+      history.push("/quiz/relay");
     }, 5000);
   }
 
