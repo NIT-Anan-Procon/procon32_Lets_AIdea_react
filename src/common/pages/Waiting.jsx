@@ -4,15 +4,15 @@ import "./css/Waiting.css";
 import axios from "axios";
 
 export default function Waiting() {
-  // const [roomId, setRoomId] = useState("");
-  const [data, setData] = useState("");
+  const [roomId, setRoomId] = useState("");
+  // const [data, setData] = useState("");
   const history = useHistory();
   // const timer = useRef();
 
   useEffect(() => {
     axios
       .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
         {
           withCredentials: true,
         }
@@ -20,11 +20,8 @@ export default function Waiting() {
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
-        setData(res.data);
-        console.log(data);
-        // setRoomId(res.roomID);
         // setData(res.data.player);
-        // console.log(roomId);
+        setRoomId(res.data.roomID);
       })
       .catch((error) => {
         console.log(error.request.status);
@@ -32,7 +29,7 @@ export default function Waiting() {
 
     axios
       .get(
-        "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
         {
           withCredentials: true,
         }
@@ -65,8 +62,7 @@ export default function Waiting() {
   // }, []);
 
   const copyText = () => {
-    navigator.clipboard.writeText("123456789").then((r) => "Copy failed.");
-    // navigator.clipboard.writeText(roomId).then((r) => "Copy failed.");
+    navigator.clipboard.writeText(roomId).then((r) => "Copy failed.");
     console.log("Copied!");
   };
 
@@ -91,7 +87,7 @@ export default function Waiting() {
   return (
     <div id="waiting">
       <div id="room">部屋ID</div>
-      <div id="roomId">123456789</div>
+      <div id="roomId">{roomId}</div>
       <button id="copyButton" onClick={copyText}>
         コピーする
       </button>
