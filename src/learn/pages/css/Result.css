@@ -1,9 +1,4 @@
-body {
-  margin: 0;
-}
-
 #learnResult {
-  display: grid;
   grid-template:
     "... ....... ....... ....... ..." 3vh
     "... ....... title   ....... ..." 10vh
@@ -13,8 +8,6 @@ body {
     "... players players players ..." auto
     "... ....... ....... ....... ..." 3vh
     /20vh auto 90vh auto 20vh;
-  height: 100%;
-  width: 100%;
 }
 
 .players {

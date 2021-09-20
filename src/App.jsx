@@ -6,12 +6,14 @@ import Login from "./common/pages/Login";
 import Selection from "./common/pages/Selection";
 import Explanation from "./learn/pages/Explanation";
 import LearnResult from "./learn/pages/Result";
+import LearnVoting from "./learn/pages/Voting";
 import LearnAward from "./learn/pages/Award";
 import QuizDescription from "./quiz/pages/Description";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
 import QuizAward from "./quiz/pages/Award";
+import Library from "./library/Library";
 
 export default function App() {
   useEffect(() => {
@@ -40,12 +42,14 @@ export default function App() {
       <Route path="/selection" exact component={Selection} />
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
+      <Route path="/learn/voting" exact component={LearnVoting} />
       <Route path="/learn/award" exact component={LearnAward} />
       <Route path="/quiz/description" exact component={QuizDescription} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />
       <Route path="/quiz/voting" exact component={QuizVoting} />
       <Route path="/quiz/award" exact component={QuizAward} />
+      <Route path="/library" exact component={Library} />
     </BrowserRouter>
   );
 }

@@ -1,0 +1,26 @@
+.selectionLabel {
+  display: grid;
+  grid-area: player;
+  grid-template:
+    "icon otherDescription" 80%
+    "name otherDescription" 20%
+    /20% 80%;
+}
+
+.selectionLabel .icon {
+  height: 10vh;
+  width: 10vh;
+}
+
+.selectionLabel .name {
+  font-size: 3vh;
+}
+
+.selectionLabel .otherDescription {
+  height: 13vh;
+}
+
+.selectionLabel .otherDescription p {
+  font-size: 3.4vh;
+  margin: 2.2vh -2vh 0 0;
+}

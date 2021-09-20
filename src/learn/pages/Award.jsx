@@ -44,7 +44,7 @@ export default function Award() {
   if (!data) return <div>{errorMessage}</div>;
   else {
     return (
-      <div id="learnAward">
+      <div className="learn" id="learnAward">
         <Title text="優秀作品" />
         <Image src={data.pictureURL} alt="優秀作品の画像" />
         <div className="winner">

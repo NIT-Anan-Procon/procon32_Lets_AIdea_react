@@ -9,7 +9,7 @@ import OtherDescription from "../../common/components/OtherDescription";
 import NgWord from "../../common/components/NgWord";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
-import TimeUp from "../../common/TimeUp";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Description() {
   const [data, setData] = useState();
@@ -36,7 +36,6 @@ export default function Description() {
   }, []);
 
   const getNgWord = (data) => {
-    console.log(data.ng.length);
     for (let i = 0; i < data.ng.length; i++) {
       setNgWord((ngWord) => ngWord + data.ng[i]);
       if (i !== data.ng.length - 1) setNgWord((ngWord) => ngWord + ", ");
@@ -46,7 +45,7 @@ export default function Description() {
   const handleChange = (event) => {
     setMyDescription(event.target.value);
     for (let i = 0; i < data.ng.length; i++)
-      if (myDescription.indexOf(data.ng[i]) !== -1) {
+      if (event.target.value.indexOf(data.ng[i]) !== -1) {
         setAttentionMessage("NGワードが含まれています");
         return 0;
       }

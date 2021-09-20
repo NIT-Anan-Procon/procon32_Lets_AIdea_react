@@ -6,7 +6,6 @@
   font-size: 4vh;
   grid-area: ballon;
   position: relative;
-  white-space: nowrap;
 }
 
 .balloon::before {
@@ -31,8 +30,9 @@
   z-index: 1;
 }
 
-.scroll {
-  overflow-x: scroll;
+.balloonText {
+  height: 13vh;
+  overflow-y: scroll;
   position: absolute;
   top: 20%;
   width: 100%;

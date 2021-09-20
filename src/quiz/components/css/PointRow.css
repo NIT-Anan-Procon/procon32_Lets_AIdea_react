@@ -38,6 +38,7 @@
 
 #firstPlayer .rank {
   font-size: 7vh;
+  font-weight: bold;
 }
 
 #firstPlayer .icon {
