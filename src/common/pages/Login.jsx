@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Login.css";
 import axios from "axios";
@@ -39,12 +39,12 @@ export default function Login() {
             "content-type": "multipart/form-data",
           },
         })
-        .then((result) => {
+        .then(() => {
           setJudgementMessage("新規登録に成功しました");
           params.delete("name");
           params.delete("password");
         })
-        .catch((error) => {
+        .catch(() => {
           setJudgementMessage("新規登録エラーが発生しました");
         });
     }
@@ -68,12 +68,12 @@ export default function Login() {
             "content-type": "multipart/form-data",
           },
         })
-        .then((result) => {
+        .then(() => {
           params.delete("name");
           params.delete("password");
           history.push("/selection");
         })
-        .catch((error) => {
+        .catch(() => {
           setJudgementMessage("ログインエラーが発生しました");
         });
     }
