@@ -1,63 +1,125 @@
 #quizRelay {
   grid-template:
-    "... ......... ..." 3vh
-    "... title     ..." 10vh
-    "... ......... ..." 3vh
-    "... relayForm ..." auto
-    "... ......... ..." 1vh
-    "... scoreForm ..." auto
-    "... ......... ..." 3vh
-    /10vh auto 10vh;
+    "... ......... ..... ..... ..... ......... ..." 3vh
+    "... title     title title title title     ..." 10vh
+    "... ......... ..... ..... ..... ......... ..." 3vh
+    "... quizForm  ..... arrow ..... scoreForm ..." auto
+    "... ......... ..... ..... ..... ......... ..." 3vh
+    /auto 70vh auto 10vh auto 70vh auto;
   position: fixed;
 }
 
-#relayForm {
+#quizForm {
+  background-color: #f5f5f5;
+  border-radius: 4vh;
   display: grid;
-  grid-area: relayForm;
+  grid-area: quizForm;
   grid-template:
-    "textMassage      textMassage      textMassage      textMassage      textMassage     " 6vh
-    "................ ................ ................ ................ ................" 1vh
-    "attentionMessage attentionMessage attentionMessage attentionMessage attentionMessage" 4vh
-    "................ ................ ................ ................ ................" 4vh
-    "................ example          ................  image           ................" 40vh
-    / auto 4vh 4vh 60vh auto;
+    "... ......... .......... ......... ..." 5vh
+    "... ......... brockTitle ......... ..." 15vh
+    "... ......... .......... ......... ..." 5vh
+    "... image     image      image     ..." 40vh
+    "... ......... .......... ......... ..." 5vh
+    "... attention attention  attention ..." 4vh
+    "... ......... .......... ......... ..." 3vh
+    / 5vh 10vh 40vh 10vh 5vh;
 }
 
-#textMassage {
-  font-size: 5vh;
-  grid-area: textMassage;
+.brockTitle {
+  border-bottom: 0.5vh solid black;
+  color: #1e90ff;
+  font-size: 4vh;
+  grid-area: brockTitle;
   text-align: center;
 }
 
-#example {
-  font-size: 4vh;
-  grid-area: example;
+#attention {
+  font-size: 3vh;
+  grid-area: attention;
+  text-align: center;
+}
+
+#arrow {
+  background-color: #2f4f4f;
+  display: inline-block;
+  grid-area: arrow;
+  height: 1vh;
+  position: relative;
+  top: 50%;
+}
+
+#arrow::before {
+  border: 2vh solid transparent;
+  border-left: 2vh solid #2f4f4f;
+  content: "";
+  left: 10vh;
+  position: absolute;
+  top: -1.5vh;
 }
 
 #scoreForm {
+  background-color: #f5f5f5;
+  border-radius: 5vh;
   display: grid;
   grid-area: scoreForm;
   grid-template:
-    "... scoreTitle       scoreTitle scoreTitle  ..." 6vh
-    "... ................ .......... ........... ..." 2vh
-    "... scoreExplanation .......... scoreAnswer ..." 6vh
-    / auto 45% 1vh 45% auto;
-}
-
-#scoreTitle {
-  font-size: 5vh;
-  grid-area: scoreTitle;
-  text-align: center;
+    "... ................ ................ ................ ..." 5vh
+    "... ................ brockTitle       ................ ..." 15vh
+    "... ................ ................ ................ ..." 6vh
+    "... scoreExplanation scoreExplanation scoreExplanation ..." 12vh
+    "... ................ ................ ................ ..." 4vh
+    "... scoreAnswer      scoreAnswer      scoreAnswer      ..." 12vh
+    "... ................ ................ ................ ..." 6vh
+    "... total            total            total            ..." 15vh
+    "... ................ ................ ................ ..." 3vh
+    / 5vh 10vh 40vh 10vh 5vh;
 }
 
 #scoreExplanation {
-  font-size: 5vh;
+  display: grid;
   grid-area: scoreExplanation;
-  text-align: center;
+  grid-template:
+    "text1 text1 text1" 5vh
+    "..... ..... ....." 1vh
+    "..... text2 text2" 6vh
+    /10vh 30vh 20vh;
+}
+
+.text1 {
+  font-size: 4vh;
+  grid-area: text1;
+}
+
+.text2 {
+  font-size: 4vh;
+  grid-area: text2;
+}
+
+span#answered {
+  color: #32cd32;
+}
+
+span.point {
+  font-size: 5vh;
 }
 
 #scoreAnswer {
-  font-size: 5vh;
+  display: grid;
   grid-area: scoreAnswer;
+  grid-template:
+    "text1 text1 text1" 5vh
+    "..... ..... ....." 1vh
+    "..... text2 text2" 6vh
+    /10vh 30vh 20vh;
+}
+
+span#answer {
+  color: #fa8072;
+}
+
+#total {
+  font-size: 9vh;
+  font-weight: bold;
+  grid-area: total;
   text-align: center;
 }

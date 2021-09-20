@@ -33,18 +33,31 @@ export default function Relay() {
   return (
     <div className="quiz" id="quizRelay">
       <Title text="元画像当てクイズ" />
-      <div id="relayForm">
-        <div id="textMassage">
-          説明文のもとになった画像を4つの選択肢の中から選ぼう
-        </div>
-        <AttentionMessage text="※自分の説明文がクイズの時は選べないよ" />
-        <div id="example">例</div>
+      <div id="quizForm">
+        <div className="brockTitle">選択肢から正解と思う写真を選ぼう!</div>
         <Image src={quizImg} alt="クイズのイメージ" />
+        <div id="attention">※自分の説明文がクイズの時は選べないよ</div>
       </div>
+      <div id="arrow"> </div>
       <div id="scoreForm">
-        <div id="scoreTitle">スコア説明</div>
-        <div id="scoreExplanation">説明pt：当てられたポイント</div>
-        <div id="scoreAnswer">回答pt：当てたポイント</div>
+        <div className="brockTitle">友達より多く正解して優勝を目指そう!</div>
+        <div id="scoreExplanation">
+          <div className="text1">
+            クイズを<span id="answered">当ててもらう</span>と...
+          </div>
+          <div className="text2">
+            説明ポイント<span className="point">10pt</span>ゲット!
+          </div>
+        </div>
+        <div id="scoreAnswer">
+          <div className="text1">
+            クイズを<span id="answer">当てる</span>と...
+          </div>
+          <div className="text2">
+            回答ポイント<span className="point">10pt</span>ゲット!
+          </div>
+        </div>
+        <div id="total">合計で勝負!</div>
       </div>
       <Timer time={time} />
     </div>
