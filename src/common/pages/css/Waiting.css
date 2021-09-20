@@ -54,6 +54,10 @@ button {
     / auto 20vh 40vh auto;
 }
 
+#Container {
+  display: inline-block;
+}
+
 #icon {
   grid-area: icon;
 }

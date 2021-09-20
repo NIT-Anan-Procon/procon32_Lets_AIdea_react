@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Waiting.css";
+import "../components/Icon";
 import axios from "axios";
+import Icon from "../components/Icon";
 
 export default function Waiting() {
   const [roomId, setRoomId] = useState("");
-  // const [data, setData] = useState("");
+  const [data, setData] = useState("");
   const history = useHistory();
   // const timer = useRef();
 
@@ -20,7 +22,7 @@ export default function Waiting() {
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
-        // setData(res.data.player);
+        setData(res.data.player);
         setRoomId(res.data.roomID);
       })
       .catch((error) => {
@@ -92,16 +94,18 @@ export default function Waiting() {
         コピーする
       </button>
       <div id="user">
-        {/*{data.map((datas, index) => {*/}
-        {/*  return (*/}
-        {/*    <div key={index}>*/}
-        {/*      <div id="icon">アイコン</div>*/}
-        {/*      <div id="message">{datas.name}が入室しました</div>*/}
-        {/*    </div>*/}
-        {/*  );*/}
-        {/*})}*/}
-        <div id="icon">アイコン</div>
-        <div id="message">userが入室しました</div>
+        {data.map((userData, index) => {
+          return (
+            <div key={index}>
+              <div id="icon">アイコン</div>
+              <div id="message">userが入室しました</div>
+              {/*<Icon src="https://source.unsplash.com/bIhpiQA009k" />*/}
+              {/*<div id="message">{userData.name}が入室しました</div>*/}
+            </div>
+          );
+        })}
+        {/*<div id="icon">アイコン</div>*/}
+        {/*<div id="message">userが入室しました</div>*/}
       </div>
       <button id="startButton" onClick={startHandle}>
         ゲームを始める
