@@ -20,7 +20,7 @@
     "attentionMessage attentionMessage attentionMessage attentionMessage attentionMessage" 4vh
     "................ ................ ................ ................ ................" 4vh
     "................ example          ................  image           ................" 40vh
-    /auto 4vh 4vh 60vh auto;
+    / auto 4vh 4vh 60vh auto;
 }
 
 #textMassage {
@@ -41,7 +41,7 @@
     "... scoreTitle       scoreTitle scoreTitle  ..." 6vh
     "... ................ .......... ........... ..." 2vh
     "... scoreExplanation .......... scoreAnswer ..." 6vh
-    /auto 45% 1vh 45% auto;
+    / auto 45% 1vh 45% auto;
 }
 
 #scoreTitle {
