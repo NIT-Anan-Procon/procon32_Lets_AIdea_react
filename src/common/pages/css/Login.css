@@ -6,13 +6,13 @@
     "... ........................ ..." 3vh
     "... loginForm                ..." auto
     "... ........................ ..." 3vh
-    "... errorMessage             ..." 3vh
-    "... ........................ ..." 3vh
+    "... judgementMessage         ..." 5vh
+    "... ........................ ..." 2vh
     "... attentionMessageUserName ..." 3vh
-    "... ........................ ..." 3vh
+    "... ........................ ..." 2vh
     "... attentionMessagePassword ..." 3vh
     "... ........................ ..." 20vh
-    /20vh 40vh 20vh;
+    /20vh 60vh 20vh;
   justify-content: center;
   text-align: center;
 }
@@ -79,10 +79,10 @@
   width: 20vh;
 }
 
-#errorMessage {
-  color: #f22424;
-  font-size: 2vh;
-  grid-area: errorMessage;
+#judgementMessage {
+  color: #f00;
+  font-size: 3vh;
+  grid-area: judgementMessage;
 }
 
 .attentionMessageUserName {

@@ -6,7 +6,7 @@ import axios from "axios";
 export default function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [judgementMessage, setJudgementMessage] = useState("");
   const [attentionMessageToUserName, setAttentionMessageToUserName] =
     useState("");
   const [attentionMessageToPassword, setAttentionMessageToPassword] =
@@ -40,11 +40,12 @@ export default function Login() {
           },
         })
         .then((result) => {
+          setJudgementMessage("新規登録に成功しました");
           params.delete("name");
           params.delete("password");
         })
         .catch((error) => {
-          setErrorMessage("新規登録エラーが発生しました");
+          setJudgementMessage("新規登録エラーが発生しました");
         });
     }
   };
@@ -73,7 +74,7 @@ export default function Login() {
           history.push("/selection");
         })
         .catch((error) => {
-          setErrorMessage("ログインエラーが発生しました");
+          setJudgementMessage("ログインエラーが発生しました");
         });
     }
   };
@@ -109,7 +110,7 @@ export default function Login() {
           onClick={registerHandleSubmit}
         />
       </form>
-      <p id="errorMessage">{errorMessage}</p>
+      <p id="judgementMessage">{judgementMessage}</p>
       <p className="attentionMessageUserName">{attentionMessageToUserName}</p>
       <p className="attentionMessagePassword">{attentionMessageToPassword}</p>
     </div>
