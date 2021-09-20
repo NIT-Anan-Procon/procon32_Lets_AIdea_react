@@ -40,6 +40,7 @@
   background-color: #fff;
   border-color: #000;
   border-radius: 100vh;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: userName;
 }
@@ -48,6 +49,7 @@
   background-color: #fff;
   border-color: #000;
   border-radius: 100vh;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: password;
 }
