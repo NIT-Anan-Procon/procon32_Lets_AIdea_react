@@ -46,6 +46,7 @@
   font-size: 3vh;
   grid-area: userName;
   outline: none;
+  text-indent: 1em;
 }
 
 #inputPassword {
@@ -55,6 +56,7 @@
   font-size: 3vh;
   grid-area: password;
   outline: none;
+  text-indent: 1em;
 }
 
 #loginButton {
