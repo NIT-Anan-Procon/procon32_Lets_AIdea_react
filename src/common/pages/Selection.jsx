@@ -94,10 +94,10 @@ export default function Selection() {
         ログアウト
       </button>
       <div id="textMakeRoom">部屋を作る</div>
-      <button id="learnButton" onClick={makeRoom("1")}>
+      <button id="learnButton" onClick={() => makeRoom("1")}>
         学習モード
       </button>
-      <button id="quizButton" onClick={makeRoom("2")}>
+      <button id="quizButton" onClick={() => makeRoom("2")}>
         クイズモード
       </button>
       <input
@@ -110,7 +110,7 @@ export default function Selection() {
       <button id="joinButton" onClick={joinRoom}>
         参加
       </button>
-      <button id="library" onClick={moveToLibrary}>
+      <button id="libraryButton" onClick={moveToLibrary}>
         ライブラリ
       </button>
     </div>

@@ -2,16 +2,16 @@
   display: grid;
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   grid-template:
-    "... ............ ...........  ........... ............ ............ ..." auto
-    "... ............ ............ ........... ............ logoutButton ..." 10vh
-    "... textMakeRoom textMakeRoom ........... ............ ............ ..." 10vh
-    "... ............ learnButton  ........... quizButton   ............ ..." 10vh
-    "... ............ ............ ........... ............ ............ ..." 10vh
-    "... textJoinRoom textJoinRoom ........... ............ ............ ..." 10vh
-    "... ............ roomId       roomId      joinButton   ............ ..." 10vh
-    "... ............ ...........  ........... ............ ............ ..." 20vh
-    "... library      library      library     library      ............ ..." 10vh
-    "... ............ ...........  ........... ............ ............ ..." auto
+    "... ............. ..............  ............ ............. ............ ..." auto
+    "... ............. .............. ............. ............. logoutButton ..." 10vh
+    "... textMakeRoom  textMakeRoom   ............. ............. ............ ..." 10vh
+    "... ............. learnButton    ............. quizButton    ............ ..." 10vh
+    "... ............. .............. ............. ............. ............ ..." 10vh
+    "... textJoinRoom  textJoinRoom   ............. ............. ............ ..." 10vh
+    "... ............. roomId         roomId        joinButton    ............ ..." 10vh
+    "... ............. .............  ............. ............. ............ ..." 20vh
+    "... libraryButton libraryButton  libraryButton libraryButton ............ ..." 10vh
+    "... ............. .............  ............. ............. ............ ..." auto
     / auto 10vh 50vh 30vh 50vh 15vh auto;
 }
 
@@ -62,8 +62,8 @@ button {
   grid-area: joinButton;
 }
 
-#library {
-  grid-area: library;
+#libraryButton {
+  grid-area: libraryButton;
   margin: 0 auto;
   width: 60vh;
 }
