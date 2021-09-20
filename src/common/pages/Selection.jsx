@@ -4,8 +4,8 @@ import "./css/Selection.css";
 import axios from "axios";
 
 export default function Selection() {
-  const [learnMode, setLearnMode] = useState("0000");
-  const [quizMode, setQuizMode] = useState("1100");
+  const learnMode = "0000";
+  const quizMode = "1100";
   const [roomId, setRoomId] = useState("");
   const history = useHistory();
   const params = new FormData();
