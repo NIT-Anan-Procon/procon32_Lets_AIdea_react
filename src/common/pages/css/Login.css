@@ -1,5 +1,6 @@
 #login {
   display: grid;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   grid-template:
     "... ........................ ..." 20vh
     "... logo                     ..." 5vh
@@ -42,7 +43,6 @@
   background-color: #fff;
   border-color: #000;
   border-radius: 100vh;
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: userName;
   outline: none;
@@ -52,7 +52,6 @@
   background-color: #fff;
   border-color: #000;
   border-radius: 100vh;
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: password;
   outline: none;
