@@ -1,5 +1,6 @@
 #selection {
   display: grid;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   grid-template:
     "... ............ ...........  ........... ............ ............ ..." auto
     "... ............ ............ ........... ............ logoutButton ..." 10vh
