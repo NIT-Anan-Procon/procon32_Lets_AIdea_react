@@ -6,7 +6,8 @@ import axios from "axios";
 export default function Waiting() {
   // const [roomId, setRoomId] = useState("");
   const [data, setData] = useState("");
-  const [userName, setUserName] = useState("");
+  // const [userName, setUserName] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -55,6 +56,7 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
+        history.push("/");
       })
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
@@ -69,8 +71,15 @@ export default function Waiting() {
         コピーする
       </button>
       <div id="user">
-        <div id="icon">アイコン</div>
-        <div id="message">{userName}が入室しました</div>
+        {data.map((testData) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div>
+              <div id="icon">アイコン</div>
+              <div id="message">{testData.name}が入室しました</div>
+            </div>
+          );
+        })}
       </div>
       <button id="startButton" onClick={startHandle}>
         ゲームを始める
