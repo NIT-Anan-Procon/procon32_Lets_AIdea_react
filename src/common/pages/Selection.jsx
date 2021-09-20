@@ -133,7 +133,7 @@ export default function Selection() {
       <button id="joinButton" onClick={joinRoom}>
         参加
       </button>
-      <button id="library" onClick={moveToLibrary}>
+      <button id="libraryButton" onClick={moveToLibrary}>
         ライブラリ
       </button>
     </div>
