@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Selection.css";
 import axios from "axios";
@@ -10,31 +10,15 @@ export default function Selection() {
   const history = useHistory();
   const params = new FormData();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost/API/User/GetUserInfo.php", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
-  }, []);
-
   const doLogout = () => {
     axios
       .get("http://localhost/API/User/Logout.php", {
         withCredentials: true,
       })
-      .then((res) => {
-        console.log(res.request.status);
+      .then(() => {
         history.push("/login");
       })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
+      .catch(() => {});
   };
 
   const makeRoom = (mode) => {
@@ -50,13 +34,11 @@ export default function Selection() {
           "content-type": "multipart/form-data",
         },
       })
-      .then((result) => {
-        console.log(result.status);
+      .then(() => {
         params.delete("gamemode");
         history.push("/waiting");
       })
-      .catch((error) => {
-        console.log(error.request.status);
+      .catch(() => {
         params.delete("gamemode");
       });
   };
@@ -74,14 +56,11 @@ export default function Selection() {
           "content-type": "multipart/form-data",
         },
       })
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         params.delete("roomID");
         history.push("/waiting");
       })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
+      .catch(() => {});
   };
 
   const moveToLibrary = () => {
