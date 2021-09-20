@@ -37,8 +37,12 @@ export default function Selection() {
       });
   };
 
-  const makeLearnRoom = () => {
-    params.append("gamemode", learnMode);
+  const makeRoom = (mode) => {
+    if (mode === "1") {
+      params.append("gamemode", learnMode);
+    } else if (mode === "2") {
+      params.append("gamemode", quizMode);
+    }
     axios
       .post("http://localhost/API/Room/CreateRoom.php", params, {
         withCredentials: true,
@@ -53,25 +57,7 @@ export default function Selection() {
       })
       .catch((error) => {
         console.log(error.request.status);
-      });
-  };
-
-  const makeQuizRoom = () => {
-    params.append("gamemode", quizMode);
-    axios
-      .post("http://localhost/API/Room/CreateRoom.php", params, {
-        withCredentials: true,
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      })
-      .then((result) => {
-        console.log(result.status);
         params.delete("gamemode");
-        history.push("/waiting");
-      })
-      .catch((error) => {
-        console.log(error.request.status);
       });
   };
 
@@ -108,10 +94,10 @@ export default function Selection() {
         ログアウト
       </button>
       <div id="textMakeRoom">部屋を作る</div>
-      <button id="learnButton" onClick={makeLearnRoom}>
+      <button id="learnButton" onClick={makeRoom("1")}>
         学習モード
       </button>
-      <button id="quizButton" onClick={makeQuizRoom}>
+      <button id="quizButton" onClick={makeRoom("2")}>
         クイズモード
       </button>
       <input
