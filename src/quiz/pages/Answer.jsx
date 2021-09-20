@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Answer.css";
-import Title from "../../common/components/Title";
 import OtherDescription from "../../common/components/OtherDescription";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
@@ -24,7 +23,9 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetPicture.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetPicture.php"
+      )
       .then((result) => {
         console.log(result.data);
         setData(result.data);
@@ -116,7 +117,6 @@ export default function Answer() {
   else
     return (
       <div className="quiz" id="quizAnswer">
-        <Title text="元画像を当てよう" />
         <OtherDescription
           title={data.player[timeCount].name}
           text={data.player[timeCount].explanation}
