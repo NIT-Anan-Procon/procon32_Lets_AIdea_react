@@ -36,12 +36,13 @@ export default function Voting() {
   };
 
   const handleSubmit = (event) => {
-    if (myChoice === 0) {
-      event.preventDefault();
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
-    }
-    history.push("/learn/award");
+    // if (myChoice === 0) {
+    console.log(myChoice);
+    event.preventDefault();
+    setAttentionMessage("投票する作品を選んでください");
+    return 0;
+    // }
+    // history.push("/learn/award");
   };
 
   window.history.pushState(null, null, location.href);

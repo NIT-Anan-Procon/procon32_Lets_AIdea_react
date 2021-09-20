@@ -7,7 +7,6 @@ import LibraryRow from "./LibraryRow";
 
 export default function Library() {
   const [data, setData] = useState();
-  const params = new FormData();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 

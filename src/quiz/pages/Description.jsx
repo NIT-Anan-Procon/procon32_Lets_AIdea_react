@@ -17,13 +17,16 @@ export default function Description() {
   const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
-  const [time, setTime] = useState(60);
+  const params = new FormData();
+  const [time, setTime] = useState(5);
   const timer = useRef(null);
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Start.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/StartQuiz.php"
+      )
       .then((res) => {
         console.log(res);
         setData(res.data);
@@ -58,13 +61,32 @@ export default function Description() {
     }, 1000);
   }, []);
 
-  if (time === 0) {
-    clearInterval(timer.current);
-    document.getElementById("myDescription").disabled = true;
-    setTimeout(() => {
-      history.push("/quiz/answer");
-    }, 5000);
-  }
+  useEffect(() => {
+    if (time === 0) {
+      clearInterval(timer.current);
+      document.getElementById("myDescription").disabled = true;
+      params.append("explanation", myDescription);
+      axios
+        .post(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
+          {
+            params,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
+        .then((result) => {
+          console.log(result.data);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
+      setTimeout(() => {
+        history.push("/quiz/answer");
+      }, 5000);
+    }
+  }, [time]);
 
   window.history.pushState(null, null, location.href);
   window.addEventListener("popstate", (e) => {

@@ -6,6 +6,7 @@
     "... otherDescription ..." 20vh
     "... ................ ..." 1vh
     "... attentionMessage ..." 4vh
+    "... ................ ..." 1vh
     "... answerForm       ..." 90vh
     / auto 135vh auto;
 }
@@ -14,7 +15,6 @@
   display: grid;
   grid-area: answerForm;
   grid-template:
-    "......... ...... ......... ......" 2%
     "myChoice1 image1 myChoice2 image2" 43%
     "......... ...... ......... ......" 6%
     "myChoice3 image3 myChoice4 image4" 43%
@@ -24,9 +24,7 @@
 
 #quizAnswer input[type="radio"] {
   height: 5vh;
-  left: 2vh;
   position: relative;
-  top: 16vh;
   width: 5vh;
 }
 

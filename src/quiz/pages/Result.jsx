@@ -12,7 +12,9 @@ export default function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetQuizResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetQuizResult.php"
+      )
       .then((result) => {
         console.log(result.data);
         setData(result.data);
