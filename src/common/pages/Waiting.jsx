@@ -18,26 +18,16 @@ export default function Waiting() {
         }
       )
       .then((res) => {
-        console.log("--- GetRoomInfo ---");
         setData(res.data);
       })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
+      .catch(() => {});
 
-    axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
-        {
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-        console.log("--- PrepareGame.phpの実行に成功 ---");
-      })
-      .catch(() => {
-        console.log("--- PrepareGame.phpの実行に失敗 ---");
-      });
+    axios.get(
+      "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
+      {
+        withCredentials: true,
+      }
+    );
   }, []);
 
   useEffect(() => {
@@ -50,16 +40,11 @@ export default function Waiting() {
           }
         )
         .then((res) => {
-          console.log("--- GetRoomInfo ---");
           setData(res.data);
-          console.log(data);
           if (res.data.status === "1") {
             clearInterval(timer.current);
             moveToGame();
           }
-        })
-        .catch((error) => {
-          console.log(error.request.status);
         });
     }, 2000);
   }, []);
@@ -77,21 +62,15 @@ export default function Waiting() {
 
   const copyText = () => {
     navigator.clipboard.writeText(data.roomID).then((r) => "Copy failed.");
-    console.log("Copied!");
   };
 
   const startHandle = () => {
-    console.log("Game Start !!");
     axios
       .get("http://localhost/API/Room/StartGame.php", {
         withCredentials: true,
       })
       .then(() => {
-        console.log("--- StartGame.phpの実行に成功 ---");
         moveToGame();
-      })
-      .catch(() => {
-        console.log("--- StartGame.phpの実行に失敗 ---");
       });
   };
 
