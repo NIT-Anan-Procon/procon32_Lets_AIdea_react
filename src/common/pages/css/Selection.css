@@ -64,6 +64,7 @@ button {
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 4vh;
   grid-area: roomId;
+  text-indent: 0.5em;
 }
 
 #joinButton {

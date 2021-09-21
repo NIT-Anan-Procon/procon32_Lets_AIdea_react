@@ -19,8 +19,7 @@ export default function Selection() {
       })
       .then(() => {
         history.push("/login");
-      })
-      .catch(() => {});
+      });
   };
 
   const makeRoom = (mode) => {
@@ -67,7 +66,7 @@ export default function Selection() {
         history.push("/waiting");
       })
       .catch(() => {
-        setJoinErrorMessage("roomIDが間違っています");
+        setJoinErrorMessage("部屋IDが間違っています");
       });
   };
 
