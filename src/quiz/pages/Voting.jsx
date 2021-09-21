@@ -12,6 +12,8 @@ export default function Voting() {
   const [data, setData] = useState();
   const [myChoice, setMyChoice] = useState(0);
   const history = useHistory();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(90);
   const timer = useRef(null);

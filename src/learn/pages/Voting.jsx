@@ -14,9 +14,11 @@ export default function Voting() {
   const [data, setData] = useState();
   const [myChoice, setMyChoice] = useState();
   const history = useHistory();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(90);
   const timer = useRef(null);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export default function Voting() {
 
   const handleChange = (event) => {
     setMyChoice(event.target.value);
+    setAttentionMessage("");
   };
 
   if (time === 0) {
@@ -81,7 +84,7 @@ export default function Voting() {
         <Title text="優秀な作品を決めよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
         <form className="votingForm">
-          <AttentionMessage text="投票する作品を選んでください" />
+          <AttentionMessage text={attentionMessage} />
           <div className="selections">
             <div className="selection">
               <input
