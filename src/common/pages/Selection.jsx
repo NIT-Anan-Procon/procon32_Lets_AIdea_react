@@ -66,6 +66,7 @@ export default function Selection() {
         history.push("/waiting");
       })
       .catch(() => {
+        params.delete("roomID");
         setJoinErrorMessage("部屋IDが間違っています");
       });
   };
