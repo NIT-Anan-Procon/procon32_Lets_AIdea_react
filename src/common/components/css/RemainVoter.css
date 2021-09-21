@@ -1,0 +1,9 @@
+.remainVoter {
+  align-items: center;
+  display: flex;
+  font-size: 5vh;
+  justify-content: center;
+  position: absolute;
+  right: 10%;
+  top: 5%;
+}

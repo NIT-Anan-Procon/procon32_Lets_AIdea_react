@@ -7,6 +7,7 @@ import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import SelectionLabel from "../components/SelectionLabel";
+import RemainVoter from "../../common/components/RemainVoter";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -156,6 +157,7 @@ export default function Voting() {
           <AttentionMessage text={attentionMessage} />
           <input type="submit" value="投票する" />
         </form>
+        <RemainVoter people={2} />
       </div>
     );
   }
