@@ -7,7 +7,6 @@ import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import SelectionLabel from "../components/SelectionLabel";
-import RemainVoter from "../../common/components/RemainVoter";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -17,7 +16,6 @@ export default function Voting() {
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
   const timer = useRef(null);
-  let people = 0;
 
   useEffect(() => {
     axios
@@ -35,21 +33,7 @@ export default function Voting() {
   }, []);
 
   useEffect(() => {
-    timer.current = setInterval(() => {
-      axios
-        .get(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/GetVoter.php"
-        )
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-          people = res.data.playerNum;
-        })
-        .catch((error) => {
-          console.log(error.request.status);
-          setErrorMessage("エラーが発生しました");
-        });
-    }, 1000);
+    timer.current = setInterval(() => {}, 1000);
   }, []);
 
   useEffect(() => {
@@ -76,12 +60,16 @@ export default function Voting() {
       )
       .then((res) => {
         console.log(res);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
       });
-    history.push("/learn/award");
+    event.preventDefault();
+    setAttentionMessage("投票が完了するまでお待ちください");
+    if (people <= 0) {
+      clearInterval(timer.current);
+      history.push("/learn/award");
+    }
   };
 
   window.history.pushState(null, null, location.href);
@@ -177,7 +165,6 @@ export default function Voting() {
           <AttentionMessage text={attentionMessage} />
           <input type="submit" value="投票する" />
         </form>
-        <RemainVoter people={people} />
       </div>
     );
   }
