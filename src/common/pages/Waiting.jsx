@@ -65,7 +65,7 @@ export default function Waiting() {
   }, []);
 
   const copyText = () => {
-    navigator.clipboard.writeText(roomId).then((r) => "Copy failed.");
+    navigator.clipboard.writeText(data.roomID).then((r) => "Copy failed.");
     console.log("Copied!");
   };
 
