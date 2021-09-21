@@ -3,7 +3,7 @@
   grid-template:
     "... ..... ..... .......... ..." 3vh
     "... title title title      ..." 10vh
-    "... ..... ..... .......... ..." 3vh
+    "... ..... ..... .......... ..." 5vh
     "... ..... ..... votingForm ..." 5vh
     "... image ..... votingForm ..." 52vh
     "... ..... ..... votingForm ..." auto
@@ -16,11 +16,10 @@
   display: grid;
   grid-area: votingForm;
   grid-template:
+    "attentionMessage attentionMessage attentionMessage" 4vh
+    "................ ................ ................" 1vh
     "selections       selections       selections      " auto
     "................ ................ ................" 1vh
-    "attentionMessage attentionMessage attentionMessage" 3vh
-    "................ ................ ................" 1vh
-    "................ inputSubmit      ................" 6vh
     / auto 50% auto;
   min-width: 70vh;
 }
@@ -55,8 +54,7 @@
 }
 
 #learnVoting .attentionMessage {
-  font-size: 3vh;
-  margin: 0;
+  font-size: 4vh;
 }
 
 #learnVoting input[type="submit"] {

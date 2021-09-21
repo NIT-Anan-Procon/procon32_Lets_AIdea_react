@@ -7,14 +7,18 @@ import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import SelectionLabel from "../components/SelectionLabel";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState(-1);
-  const [attentionMessage, setAttentionMessage] = useState("");
+  const [myChoice, setMyChoice] = useState();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
+  const [time, setTime] = useState(90);
   const timer = useRef(null);
 
   useEffect(() => {
@@ -33,7 +37,9 @@ export default function Voting() {
   }, []);
 
   useEffect(() => {
-    timer.current = setInterval(() => {}, 1000);
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -45,12 +51,8 @@ export default function Voting() {
     setMyChoice(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    if (myChoice === -1) {
-      event.preventDefault();
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
-    }
+  if (time === 0) {
+    clearInterval(timer.current);
     params.append("playerID", myChoice);
     console.log(myChoice);
     axios
@@ -60,17 +62,14 @@ export default function Voting() {
       )
       .then((res) => {
         console.log(res);
+        setTimeout(() => {
+          history.push("/learn/award");
+        }, 5000);
       })
       .catch((error) => {
         console.log(error.request.status);
       });
-    event.preventDefault();
-    setAttentionMessage("投票が完了するまでお待ちください");
-    if (people <= 0) {
-      clearInterval(timer.current);
-      history.push("/learn/award");
-    }
-  };
+  }
 
   window.history.pushState(null, null, location.href);
   window.addEventListener("popstate", (e) => {
@@ -83,7 +82,7 @@ export default function Voting() {
       <div className="learn" id="learnVoting">
         <Title text="優秀な作品を決めよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
-        <form onSubmit={handleSubmit} className="votingForm">
+        <form className="votingForm">
           <div className="selections">
             <div className="selection">
               <input
@@ -163,8 +162,9 @@ export default function Voting() {
             </div>
           </div>
           <AttentionMessage text={attentionMessage} />
-          <input type="submit" value="投票する" />
         </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
     );
   }
