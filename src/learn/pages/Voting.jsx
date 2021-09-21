@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
@@ -16,6 +16,8 @@ export default function Voting() {
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
+  const timer = useRef(null);
+  let people = 0;
 
   useEffect(() => {
     axios
@@ -30,6 +32,24 @@ export default function Voting() {
         console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
+  }, []);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      axios
+        .get(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/GetVoter.php"
+        )
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+          people = res.data.playerNum;
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+          setErrorMessage("エラーが発生しました");
+        });
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -157,7 +177,7 @@ export default function Voting() {
           <AttentionMessage text={attentionMessage} />
           <input type="submit" value="投票する" />
         </form>
-        <RemainVoter people={2} />
+        <RemainVoter people={people} />
       </div>
     );
   }
