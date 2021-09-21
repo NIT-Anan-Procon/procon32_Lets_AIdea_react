@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import "./css/Relay.css";
 import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
-import AttentionMessage from "../../common/components/AttentionMessage";
 import Timer from "../../common/components/Timer";
 import quizImg from "../../image/quizImg.svg";
 
@@ -21,7 +20,7 @@ export default function Relay() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/quiz/answer");
+      //history.push("/quiz/answer");
     }
   }, [time]);
 
@@ -32,9 +31,9 @@ export default function Relay() {
 
   return (
     <div className="quiz" id="quizRelay">
-      <Title text="元画像当てクイズ" />
+      <Title text="元の画像を当てよう！4択クイズ" />
       <div id="quizForm">
-        <div className="brockTitle">選択肢から正解と思う写真を選ぼう!</div>
+        <div className="brockTitle">選択肢から説明文に合う写真を選ぼう!</div>
         <Image src={quizImg} alt="クイズのイメージ" />
         <div id="attention">※自分の説明文がクイズの時は選べないよ</div>
       </div>

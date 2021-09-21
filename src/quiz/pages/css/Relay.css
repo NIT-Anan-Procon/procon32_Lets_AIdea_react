@@ -4,8 +4,8 @@
     "... title     title title title title     ..." 10vh
     "... ......... ..... ..... ..... ......... ..." 3vh
     "... quizForm  ..... arrow ..... scoreForm ..." auto
-    "... ......... ..... ..... ..... ......... ..." 3vh
-    / auto 70vh auto 10vh auto 70vh auto;
+    "... ......... ..... ..... ..... ......... ..." 10vh
+    / auto 70vh 2vh 8vh 4vh 70vh auto;
   position: fixed;
 }
 
@@ -19,7 +19,7 @@
     "... ......... brockTitle ......... ..." 15vh
     "... ......... .......... ......... ..." 5vh
     "... image     image      image     ..." 40vh
-    "... ......... .......... ......... ..." 5vh
+    "... ......... .......... ......... ..." 3vh
     "... attention attention  attention ..." 4vh
     "... ......... .......... ......... ..." 3vh
     / 5vh 10vh 40vh 10vh 5vh;
@@ -27,20 +27,21 @@
 
 .brockTitle {
   border-bottom: 0.5vh solid black;
-  color: #1e90ff;
+  color: black;
   font-size: 4vh;
   grid-area: brockTitle;
   text-align: center;
 }
 
 #attention {
+  color: #ff6347;
   font-size: 3vh;
   grid-area: attention;
   text-align: center;
 }
 
 #arrow {
-  background-color: #2f4f4f;
+  background-color: black;
   display: inline-block;
   grid-area: arrow;
   height: 1vh;
@@ -50,9 +51,9 @@
 
 #arrow::before {
   border: 2vh solid transparent;
-  border-left: 2vh solid #2f4f4f;
+  border-left: 2vh solid black;
   content: "";
-  left: 10vh;
+  left: 8vh;
   position: absolute;
   top: -1.5vh;
 }
@@ -96,7 +97,7 @@
 }
 
 span#answered {
-  color: #32cd32;
+  color: #ff6347;
 }
 
 span.point {
@@ -114,7 +115,7 @@ span.point {
 }
 
 span#answer {
-  color: #fa8072;
+  color: #ff6347;
 }
 
 #total {
