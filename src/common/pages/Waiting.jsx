@@ -19,7 +19,6 @@ export default function Waiting() {
       )
       .then((res) => {
         console.log("--- GetRoomInfo ---");
-        console.log(res);
         setData(res.data);
       })
       .catch((error) => {
@@ -35,8 +34,6 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- PrepareGame.phpの実行に成功 ---");
-        console.log("--- data ---");
-        console.log(data);
       })
       .catch(() => {
         console.log("--- PrepareGame.phpの実行に失敗 ---");
@@ -54,15 +51,28 @@ export default function Waiting() {
         )
         .then((res) => {
           console.log("--- GetRoomInfo ---");
-          console.log(res);
           setData(res.data);
           console.log(data);
+          if (res.data.status === "1") {
+            moveToGame();
+          }
         })
         .catch((error) => {
           console.log(error.request.status);
         });
     }, 6000);
   }, []);
+
+  const moveToGame = () => {
+    switch (data.gamemode) {
+      case "0000":
+        history.push("/learn/explanation");
+        break;
+      case "1100":
+        history.push("/quiz/description");
+        break;
+    }
+  };
 
   const copyText = () => {
     navigator.clipboard.writeText(data.roomID).then((r) => "Copy failed.");
@@ -77,7 +87,7 @@ export default function Waiting() {
       })
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
-        // history.push("/");
+        moveToGame();
       })
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
