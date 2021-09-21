@@ -44,17 +44,17 @@ export default function Voting() {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (myChoice === 0) {
-      event.preventDefault();
       setAttentionMessage("投票する作品を選んでください");
       return 0;
     }
-    params.append("playerID", myChoice + "");
+    params.append("playerID", myChoice);
     axios
       .post(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddVote.php",
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
+        params,
         {
-          params,
           headers: {
             "content-type": "multipart/form-data",
           },

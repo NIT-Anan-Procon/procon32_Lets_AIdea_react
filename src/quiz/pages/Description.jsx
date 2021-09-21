@@ -69,8 +69,8 @@ export default function Description() {
       axios
         .post(
           "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
+          params,
           {
-            params,
             headers: {
               "content-type": "multipart/form-data",
             },

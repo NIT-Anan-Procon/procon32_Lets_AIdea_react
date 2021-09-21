@@ -123,12 +123,12 @@ export default function Answer() {
     console.log(myChoice + " " + correct[timeCountCopy - 1]);
     if (myChoice == correct[timeCountCopy - 1]) {
       console.log(timeCountCopy);
-      params.append("playerID", timeCountCopy + "");
+      params.append("playerID", timeCountCopy);
       axios
         .post(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddPoint.php",
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/AddPoint.php",
+          params,
           {
-            params,
             headers: {
               "content-type": "multipart/form-data",
             },
