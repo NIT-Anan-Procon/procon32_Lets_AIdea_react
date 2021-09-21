@@ -5,6 +5,7 @@ import "./css/Voting.css";
 import Title from "../../common/components/Title";
 import DescriptionRow from "../components/DescriptionRow";
 import AttentionMessage from "../../common/components/AttentionMessage";
+import RemainVoter from "../../common/components/RemainVoter";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -101,6 +102,7 @@ export default function Voting() {
           <AttentionMessage text={attentionMessage} />
           <input type="submit" value="投票する" />
         </form>
+        <RemainVoter people={2} />
       </div>
     );
   }
