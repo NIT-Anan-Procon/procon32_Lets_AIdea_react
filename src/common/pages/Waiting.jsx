@@ -3,13 +3,12 @@ import { useHistory } from "react-router-dom";
 import "./css/Waiting.css";
 import "../components/Icon";
 import axios from "axios";
-import Icon from "../components/Icon";
 
 export default function Waiting() {
   const [roomId, setRoomId] = useState("");
   const [data, setData] = useState("");
   const history = useHistory();
-  // const timer = useRef();
+  const timer = useRef();
 
   useEffect(() => {
     axios
@@ -38,30 +37,34 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- PrepareGame.phpの実行に成功 ---");
+        console.log("--- data ---");
+        console.log(data);
       })
       .catch(() => {
         console.log("--- PrepareGame.phpの実行に失敗 ---");
       });
   }, []);
 
-  // useEffect(() => {
-  //     timer.current = setInterval(() => {
-  //         axios
-  //             .get("http://localhost/~kubota/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php", {
-  //                 withCredentials: true,
-  //             })
-  //             .then((res) => {
-  //                 console.log("--- GetRoomInfo ---");
-  //                 console.log(res);
-  //                 setData(res.data.player);
-  //                 setData(res.data);
-  //                 console.log(data);
-  //             })
-  //             .catch((error) => {
-  //                 console.log(error.request.status);
-  //             });
-  //     }, 1000);
-  // }, []);
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      axios
+        .get(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          console.log("--- GetRoomInfo ---");
+          console.log(res);
+          setData(res.data.player);
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
+    }, 6000);
+  }, []);
 
   const copyText = () => {
     navigator.clipboard.writeText(roomId).then((r) => "Copy failed.");
@@ -79,7 +82,8 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
-        history.push("/");
+        console.log(data[1][2].name);
+        // history.push("/");
       })
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
@@ -97,15 +101,34 @@ export default function Waiting() {
           コピーする
         </button>
         <div id="user">
-          {data.map((userData, index) => {
-            return (
-              <div id="container" key={index}>
-                <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
-                <div id="message">dasfkldsajgdaskljgsdajhgaが入室しました</div>
-                <div id="message">{data.name}が入室しました</div>
-              </div>
-            );
-          })}
+          {/*{data.map((userData, index) => {*/}
+          {/*  return (*/}
+          {/*    <div id="container" key={index}>*/}
+          {/*      <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />*/}
+          {/*      <div id="message">{userData[0][1].name}が入室しました</div>*/}
+          {/*    </div>*/}
+          {/*  );*/}
+          {/*})}*/}
+
+          {/*{(() => {*/}
+          {/*  for (let i = 0; i < 3; i++) {*/}
+          {/*    return (*/}
+          {/*      <div id="container">*/}
+          {/*        <img*/}
+          {/*          src="https://source.unsplash.com/bIhpiQA009k"*/}
+          {/*          id="icon"*/}
+          {/*        />*/}
+          {/*        <div id="message">*/}
+          {/*          {data[0][1].name}が入室しました*/}
+          {/*        </div>*/}
+          {/*      </div>*/}
+          {/*    );*/}
+          {/*  }*/}
+          {/*})()}*/}
+          <div id={"container"}>
+            <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
+            <div id="message">{data[0][1].name}が入室しました</div>
+          </div>
         </div>
         <button id="startButton" onClick={startHandle}>
           ゲームを始める
