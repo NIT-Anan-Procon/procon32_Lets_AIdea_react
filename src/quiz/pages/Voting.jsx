@@ -11,8 +11,6 @@ import TimeUp from "../../common/components/TimeUp";
 export default function Voting() {
   const [data, setData] = useState();
   const [myChoice, setMyChoice] = useState(0);
-  const [attentionMessage, setAttentionMessage] =
-    useState("投票する作品を選んでください");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(90);
