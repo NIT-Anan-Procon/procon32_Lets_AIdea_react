@@ -22,10 +22,13 @@ export default function Selection() {
   };
 
   const makeRoom = (mode) => {
-    if (mode === "1") {
-      params.append("gamemode", learnMode);
-    } else if (mode === "2") {
-      params.append("gamemode", quizMode);
+    switch (mode) {
+      case "1":
+        params.append("gamemode", learnMode);
+        break;
+      case "2":
+        params.append("gamemode", quizMode);
+        break;
     }
     axios
       .post("http://localhost/API/Room/CreateRoom.php", params, {
