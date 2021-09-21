@@ -5,21 +5,22 @@ import "../components/Icon";
 import axios from "axios";
 
 export default function Waiting() {
-  const [roomId, setRoomId] = useState("");
   const [data, setData] = useState("");
   const history = useHistory();
-  const timer = useRef();
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Room/GetRoomInfo.php", {
-        withCredentials: true,
-      })
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
         setData(res.data);
-        setRoomId(res.data.roomID);
       })
       .catch((error) => {
         console.log(error.request.status);
@@ -45,9 +46,12 @@ export default function Waiting() {
   useEffect(() => {
     timer.current = setInterval(() => {
       axios
-        .get("http://localhost/API/Room/GetRoomInfo.php", {
-          withCredentials: true,
-        })
+        .get(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           console.log("--- GetRoomInfo ---");
           console.log(res);
@@ -86,7 +90,7 @@ export default function Waiting() {
     return (
       <div id="waiting">
         <div id="room">部屋ID</div>
-        <div id="roomId">{roomId}</div>
+        <div id="roomId">{data.roomID}</div>
         <button id="copyButton" onClick={copyText}>
           コピーする
         </button>
