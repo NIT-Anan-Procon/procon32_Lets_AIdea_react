@@ -69,7 +69,7 @@ export default function Voting() {
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
         <form id="votingForm">
-          <AttentionMessage text="投票する作品を選んでください" />
+          <AttentionMessage text={attentionMessage} />
           <div id="descriptionTable">
             <DescriptionRow
               number={1}
@@ -79,6 +79,7 @@ export default function Voting() {
               ngWord={getNgWord(1)}
               description={data.player[1].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={2}
@@ -88,6 +89,7 @@ export default function Voting() {
               ngWord={getNgWord(2)}
               description={data.player[2].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={3}
@@ -97,6 +99,7 @@ export default function Voting() {
               ngWord={getNgWord(3)}
               description={data.player[3].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={4}
@@ -106,6 +109,7 @@ export default function Voting() {
               ngWord={getNgWord(4)}
               description={data.player[4].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
           </div>
         </form>
