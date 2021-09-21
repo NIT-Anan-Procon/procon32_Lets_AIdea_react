@@ -12,12 +12,9 @@ export default function Waiting() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost/API/Room/GetRoomInfo.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
@@ -48,12 +45,9 @@ export default function Waiting() {
   useEffect(() => {
     timer.current = setInterval(() => {
       axios
-        .get(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
-          {
-            withCredentials: true,
-          }
-        )
+        .get("http://localhost/API/Room/GetRoomInfo.php", {
+          withCredentials: true,
+        })
         .then((res) => {
           console.log("--- GetRoomInfo ---");
           console.log(res);
@@ -74,15 +68,12 @@ export default function Waiting() {
   const startHandle = () => {
     console.log("Game Start !!");
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/StartGame.php",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost/API/Room/StartGame.php", {
+        withCredentials: true,
+      })
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
-        history.push("/");
+        // history.push("/");
       })
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
@@ -103,7 +94,7 @@ export default function Waiting() {
           {data.player.map((userData, index) => {
             return (
               <div id="container" key={index}>
-                <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
+                <img src={userData.icon} id="icon" />
                 <div id="message">{userData.name}が入室しました</div>
               </div>
             );
