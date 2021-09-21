@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
 import Title from "../../common/components/Title";
 import DescriptionRow from "../components/DescriptionRow";
 import AttentionMessage from "../../common/components/AttentionMessage";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
   const [myChoice, setMyChoice] = useState(0);
-  const [attentionMessage, setAttentionMessage] = useState("");
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const [time, setTime] = useState(90);
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
@@ -24,6 +29,12 @@ export default function Voting() {
         console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
+  }, []);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -40,14 +51,12 @@ export default function Voting() {
     return ngWord;
   };
 
-  const handleSubmit = (event) => {
-    if (myChoice === 0) {
-      event.preventDefault();
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
-    }
-    history.push("/quiz/award");
-  };
+  if (time === 0) {
+    clearInterval(timer.current);
+    setTimeout(() => {
+      history.push("/quiz/award");
+    }, 5000);
+  }
 
   window.history.pushState(null, null, location.href);
   window.addEventListener("popstate", (e) => {
@@ -59,7 +68,8 @@ export default function Voting() {
     return (
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
-        <form onSubmit={handleSubmit} id="votingForm">
+        <form id="votingForm">
+          <AttentionMessage text="投票する作品を選んでください" />
           <div id="descriptionTable">
             <DescriptionRow
               number={1}
@@ -98,9 +108,9 @@ export default function Voting() {
               setMyChoice={setMyChoice}
             />
           </div>
-          <AttentionMessage text={attentionMessage} />
-          <input type="submit" value="投票する" />
         </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
     );
   }
