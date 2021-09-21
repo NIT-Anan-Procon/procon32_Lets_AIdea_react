@@ -4,6 +4,7 @@ import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
 import Login from "./common/pages/Login";
 import Selection from "./common/pages/Selection";
+import Waiting from "./common/pages/Waiting";
 import Explanation from "./learn/pages/Explanation";
 import LearnResult from "./learn/pages/Result";
 import LearnVoting from "./learn/pages/Voting";
@@ -40,6 +41,7 @@ export default function App() {
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
       <Route path="/login" exact component={Login} />
       <Route path="/selection" exact component={Selection} />
+      <Route path="/waiting" exact component={Waiting} />
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
       <Route path="/learn/voting" exact component={LearnVoting} />

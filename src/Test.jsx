@@ -10,6 +10,9 @@ export default function Test() {
       <Link to="/selection">
         <p>common/selection</p>
       </Link>
+      <Link to="/waiting">
+        <p>common/waiting</p>
+      </Link>
       <Link to="/learn/Explanation">
         <p>learn/Explanation</p>
       </Link>
