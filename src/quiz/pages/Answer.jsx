@@ -120,9 +120,7 @@ export default function Answer() {
       }
       myChoice = 0;
     }
-    console.log(myChoice + " " + correct[timeCountCopy - 1]);
     if (myChoice == correct[timeCountCopy - 1]) {
-      console.log(timeCountCopy);
       params.append("playerID", timeCountCopy);
       axios
         .post(

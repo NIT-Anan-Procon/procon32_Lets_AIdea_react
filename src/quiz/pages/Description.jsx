@@ -18,7 +18,7 @@ export default function Description() {
   const [myDescription, setMyDescription] = useState("");
   const history = useHistory();
   const params = new FormData();
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(60);
   const timer = useRef(null);
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
