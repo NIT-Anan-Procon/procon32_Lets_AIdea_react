@@ -86,30 +86,30 @@ export default function Waiting() {
       });
   };
 
-  return (
-    <div id="waiting">
-      <div id="room">部屋ID</div>
-      <div id="roomId">{roomId}</div>
-      <button id="copyButton" onClick={copyText}>
-        コピーする
-      </button>
-      <div id="user">
-        {data.map((userData, index) => {
-          return (
-            <div key={index}>
-              <div id="icon">アイコン</div>
-              <div id="message">userが入室しました</div>
-              {/*<Icon src="https://source.unsplash.com/bIhpiQA009k" />*/}
-              {/*<div id="message">{userData.name}が入室しました</div>*/}
-            </div>
-          );
-        })}
-        {/*<div id="icon">アイコン</div>*/}
-        {/*<div id="message">userが入室しました</div>*/}
+  if (!data) {
+    return <div>読み込み中</div>;
+  } else {
+    return (
+      <div id="waiting">
+        <div id="room">部屋ID</div>
+        <div id="roomId">{roomId}</div>
+        <button id="copyButton" onClick={copyText}>
+          コピーする
+        </button>
+        <div id="user">
+          {data.map((userData, index) => {
+            return (
+              <div id="container" key={index}>
+                <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
+                <div id="message">dasfkldsajgdaskljgsdajhgaが入室しました</div>
+              </div>
+            );
+          })}
+        </div>
+        <button id="startButton" onClick={startHandle}>
+          ゲームを始める
+        </button>
       </div>
-      <button id="startButton" onClick={startHandle}>
-        ゲームを始める
-      </button>
-    </div>
-  );
+    );
+  }
 }
