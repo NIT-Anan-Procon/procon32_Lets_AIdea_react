@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
-import Login from "./common/pages/Login";
 import Selection from "./common/pages/Selection";
 import Waiting from "./common/pages/Waiting";
 import Explanation from "./learn/pages/Explanation";
@@ -39,7 +38,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
-      <Route path="/login" exact component={Login} />
       <Route path="/selection" exact component={Selection} />
       <Route path="/waiting" exact component={Waiting} />
       <Route path="/library" exact component={Library} />
