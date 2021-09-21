@@ -10,7 +10,7 @@ import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState(0);
+  const [myChoice, setMyChoice] = useState(-1);
   const history = useHistory();
   const [attentionMessage, setAttentionMessage] =
     useState("投票する作品を選んでください");

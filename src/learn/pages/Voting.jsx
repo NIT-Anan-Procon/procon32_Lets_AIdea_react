@@ -12,7 +12,7 @@ import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState();
+  const [myChoice, setMyChoice] = useState(-1);
   const history = useHistory();
   const [attentionMessage, setAttentionMessage] =
     useState("投票する作品を選んでください");
@@ -55,21 +55,22 @@ export default function Voting() {
   if (time === 0) {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
-    console.log(myChoice);
-    axios
-      .post(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
-        params
-      )
-      .then((res) => {
-        console.log(res);
-        setTimeout(() => {
-          history.push("/learn/award");
-        }, 5000);
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
+    if (myChoice >= 0) {
+      axios
+        .post(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
+          params
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
+    }
+    setTimeout(() => {
+      history.push("/learn/award");
+    }, 5000);
   }
 
   window.history.pushState(null, null, location.href);
