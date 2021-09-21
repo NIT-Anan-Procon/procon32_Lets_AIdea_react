@@ -102,6 +102,7 @@ export default function Waiting() {
               <div id="container" key={index}>
                 <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
                 <div id="message">dasfkldsajgdaskljgsdajhgaが入室しました</div>
+                <div id="message">{data.name}が入室しました</div>
               </div>
             );
           })}
