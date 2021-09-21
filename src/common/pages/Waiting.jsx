@@ -54,13 +54,14 @@ export default function Waiting() {
           setData(res.data);
           console.log(data);
           if (res.data.status === "1") {
+            clearInterval(timer.current);
             moveToGame();
           }
         })
         .catch((error) => {
           console.log(error.request.status);
         });
-    }, 6000);
+    }, 2000);
   }, []);
 
   const moveToGame = () => {
