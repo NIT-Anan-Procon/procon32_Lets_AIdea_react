@@ -24,7 +24,9 @@
 }
 
 #quizDescription input[type="text"] {
+  border: solid 0.5vh black;
   font-size: 6vh;
+  font-weight: normal;
   grid-area: inputText;
   line-height: 8vh;
 }

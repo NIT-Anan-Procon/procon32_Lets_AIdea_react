@@ -1,8 +1,9 @@
 .descriptionPointBox,
 .answerPointBox,
 .totalPointBox {
-  font-size: 2vh;
-  padding: 1vh;
+  font-size: 2.5vh;
+  font-weight: bold;
+  padding: 1vh 2vh;
   position: relative;
 }
 
@@ -25,8 +26,8 @@
 #firstPlayer .descriptionPointBox,
 #firstPlayer .answerPointBox,
 #firstPlayer .totalPointBox {
-  font-size: 3vh;
-  padding: 2vh;
+  font-size: 3.5vh;
+  padding: 1vh 2vh;
   position: relative;
 }
 
@@ -34,6 +35,7 @@
 .answerPointBox p,
 .totalPointBox p {
   font-size: 5vh;
+  font-weight: normal;
   left: 50%;
   margin: 0;
   position: absolute;
