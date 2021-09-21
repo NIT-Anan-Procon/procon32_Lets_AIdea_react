@@ -7,6 +7,7 @@ export default function Selection() {
   const learnMode = "0000";
   const quizMode = "1100";
   const [roomId, setRoomId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
   const params = new FormData();
 
@@ -63,7 +64,9 @@ export default function Selection() {
         params.delete("roomID");
         history.push("/waiting");
       })
-      .catch(() => {});
+      .catch(() => {
+        setErrorMessage("roomIDが間違っています");
+      });
   };
 
   const moveToLibrary = () => {
@@ -92,6 +95,7 @@ export default function Selection() {
       <button id="joinButton" onClick={joinRoom}>
         参加
       </button>
+      <p id="errorMessage">{errorMessage}</p>
       <button id="libraryButton" onClick={moveToLibrary}>
         ライブラリ
       </button>

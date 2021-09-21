@@ -9,6 +9,7 @@
     "... ............. .............. ............. ............. ............ ..." 10vh
     "... textJoinRoom  textJoinRoom   ............. ............. ............ ..." 10vh
     "... ............. roomId         roomId        joinButton    ............ ..." 10vh
+    "... ............. errorMessage   errorMessage  ............. ............ ..." 5vh
     "... ............. .............  ............. ............. ............ ..." 20vh
     "... libraryButton libraryButton  libraryButton libraryButton ............ ..." 10vh
     "... ............. .............  ............. ............. ............ ..." auto
@@ -60,6 +61,12 @@ button {
 
 #joinButton {
   grid-area: joinButton;
+}
+
+#errorMessage {
+  color: #f00;
+  font-size: 3vh;
+  grid-area: errorMessage;
 }
 
 #libraryButton {
