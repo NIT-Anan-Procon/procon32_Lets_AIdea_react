@@ -7,7 +7,8 @@ export default function Selection() {
   const learnMode = "0000";
   const quizMode = "1100";
   const [roomId, setRoomId] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [makeErrorMessage, setMakeErrorMessage] = useState("");
+  const [joinErrorMessage, setJoinErrorMessage] = useState("");
   const history = useHistory();
   const params = new FormData();
 
@@ -43,6 +44,7 @@ export default function Selection() {
         history.push("/waiting");
       })
       .catch(() => {
+        setMakeErrorMessage("ルームを作成できませんでした");
         params.delete("gamemode");
       });
   };
@@ -65,7 +67,7 @@ export default function Selection() {
         history.push("/waiting");
       })
       .catch(() => {
-        setErrorMessage("roomIDが間違っています");
+        setJoinErrorMessage("roomIDが間違っています");
       });
   };
 
@@ -85,6 +87,7 @@ export default function Selection() {
       <button id="quizButton" onClick={() => makeRoom("2")}>
         クイズモード
       </button>
+      <p id="makeErrorMessage">{makeErrorMessage}</p>
       <input
         type="text"
         placeholder="部屋IDを入力してね"
@@ -95,7 +98,7 @@ export default function Selection() {
       <button id="joinButton" onClick={joinRoom}>
         参加
       </button>
-      <p id="errorMessage">{errorMessage}</p>
+      <p id="joinErrorMessage">{joinErrorMessage}</p>
       <button id="libraryButton" onClick={moveToLibrary}>
         ライブラリ
       </button>
