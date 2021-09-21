@@ -7,6 +7,7 @@ import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
 import Name from "../../common/components/Name";
 import OtherDescription from "../../common/components/OtherDescription";
+import aiImg from "../../image/aiImg.svg";
 
 export default function Award() {
   const [data, setData] = useState();
@@ -15,7 +16,9 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Game/End.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/End.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -25,6 +28,14 @@ export default function Award() {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
+
+  const setIcon = () => {
+    if (data.icon == null) {
+      return aiImg;
+    } else {
+      return data.icon;
+    }
+  };
 
   const againHandleSubmit = () => {
     // TODO 待機画面に戻るパスを追加
@@ -48,7 +59,7 @@ export default function Award() {
         <Title text="優秀作品" />
         <Image src={data.pictureURL} alt="優秀作品の画像" />
         <div className="winner">
-          <Icon src={data.icon} />
+          <Icon src={setIcon()} />
           <Name text={data.name} />
           <OtherDescription title="説明文" text={data.explanation} />
         </div>

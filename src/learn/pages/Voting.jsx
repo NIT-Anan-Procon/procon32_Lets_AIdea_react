@@ -10,7 +10,7 @@ import SelectionLabel from "../components/SelectionLabel";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState(0);
+  const [myChoice, setMyChoice] = useState(-1);
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
@@ -18,7 +18,9 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -39,7 +41,7 @@ export default function Voting() {
   };
 
   const handleSubmit = (event) => {
-    if (myChoice === 0) {
+    if (myChoice === -1) {
       event.preventDefault();
       setAttentionMessage("投票する作品を選んでください");
       return 0;
@@ -47,7 +49,10 @@ export default function Voting() {
     params.append("playerID", myChoice);
     console.log(myChoice);
     axios
-      .post("http://localhost/API/Game/Vote.php", params)
+      .post(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
+        params
+      )
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -75,7 +80,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={1}
+                value={0}
                 onChange={handleChange}
                 id="choiceAI"
               />
@@ -87,7 +92,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={2}
+                value={1}
                 onChange={handleChange}
                 id="choice1"
               />
@@ -103,7 +108,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={3}
+                value={2}
                 onChange={handleChange}
                 id="choice2"
               />
@@ -119,7 +124,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={4}
+                value={3}
                 onChange={handleChange}
                 id="choice3"
               />
@@ -135,7 +140,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={5}
+                value={4}
                 onChange={handleChange}
                 id="choice4"
               />
