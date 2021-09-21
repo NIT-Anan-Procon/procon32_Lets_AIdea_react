@@ -82,7 +82,6 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
-        console.log(data[1][2].name);
         // history.push("/");
       })
       .catch(() => {

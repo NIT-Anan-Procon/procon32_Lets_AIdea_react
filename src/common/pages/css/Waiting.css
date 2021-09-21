@@ -52,14 +52,15 @@ button {
 #icon {
   border-radius: 50%;
   grid-area: icon;
-  height: 8vh;
+  height: 9vh;
   object-fit: cover;
-  width: 8vh;
+  width: 9vh;
 }
 
 #message {
+  bottom: 3.5vh;
   display: inline-block;
-  grid-area: message;
+  position: relative;
   text-indent: 1em;
 }
 
