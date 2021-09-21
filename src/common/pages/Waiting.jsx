@@ -82,7 +82,7 @@ export default function Waiting() {
       )
       .then(() => {
         console.log("--- StartGame.phpの実行に成功 ---");
-        // history.push("/");
+        history.push("/");
       })
       .catch(() => {
         console.log("--- StartGame.phpの実行に失敗 ---");
