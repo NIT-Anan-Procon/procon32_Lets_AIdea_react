@@ -40,27 +40,12 @@ button {
 }
 
 #user {
-  /* display: grid; */
   font-size: 3vh;
   grid-area: user;
   margin: 0 auto;
-  text-align: center;
-
-  /* width: 60vh; */
-
-  /* grid-template: */
-
-  /*  "... .... ....... ..." 3vh */
-
-  /*  "... icon message ..." 10vh */
-
-  /*  "... .... ....... ..." 3vh */
-
-  /*  / auto 20vh 40vh auto; */
 }
 
 #container {
-  margin: 0 auto;
   padding: 1vh;
 }
 

@@ -21,7 +21,7 @@ export default function Waiting() {
       .then((res) => {
         console.log("--- GetRoomInfo ---");
         console.log(res);
-        setData(res.data.player);
+        setData(res.data);
         setRoomId(res.data.roomID);
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ export default function Waiting() {
         .then((res) => {
           console.log("--- GetRoomInfo ---");
           console.log(res);
-          setData(res.data.player);
+          setData(res.data);
           console.log(data);
         })
         .catch((error) => {
@@ -101,38 +101,24 @@ export default function Waiting() {
           コピーする
         </button>
         <div id="user">
-          {/*{data.map((userData, index) => {*/}
-          {/*  return (*/}
-          {/*    <div id="container" key={index}>*/}
-          {/*      <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />*/}
-          {/*      <div id="message">{userData[0][1].name}が入室しました</div>*/}
-          {/*    </div>*/}
-          {/*  );*/}
-          {/*})}*/}
-
-          {/*{(() => {*/}
-          {/*  for (let i = 0; i < 3; i++) {*/}
-          {/*    return (*/}
-          {/*      <div id="container">*/}
-          {/*        <img*/}
-          {/*          src="https://source.unsplash.com/bIhpiQA009k"*/}
-          {/*          id="icon"*/}
-          {/*        />*/}
-          {/*        <div id="message">*/}
-          {/*          {data[0][1].name}が入室しました*/}
-          {/*        </div>*/}
-          {/*      </div>*/}
-          {/*    );*/}
-          {/*  }*/}
-          {/*})()}*/}
-          <div id={"container"}>
-            <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
-            <div id="message">{data[0][1].name}が入室しました</div>
-          </div>
+          {data.player.map((userData, index) => {
+            return (
+              <div id="container" key={index}>
+                <img src="https://source.unsplash.com/bIhpiQA009k" id="icon" />
+                <div id="message">{userData.name}が入室しました</div>
+              </div>
+            );
+          })}
         </div>
-        <button id="startButton" onClick={startHandle}>
-          ゲームを始める
-        </button>
+        {(() => {
+          if (data.playerID === "1") {
+            return (
+              <button id="startButton" onClick={startHandle}>
+                ゲームを始める
+              </button>
+            );
+          }
+        })()}
       </div>
     );
   }
