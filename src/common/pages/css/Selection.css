@@ -1,6 +1,5 @@
 #selection {
   display: grid;
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
   grid-template:
     "... ............. ..............  ............ ............. ............ ..." auto
     "... ............. .............. ............. ............. logoutButton ..." 10vh
@@ -19,6 +18,7 @@
 #logoutButton {
   background-color: #fff;
   color: #000;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   font-weight: bold;
   grid-area: logoutButton;
@@ -26,12 +26,14 @@
 }
 
 #textMakeRoom {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 5vh;
   font-weight: bold;
   grid-area: textMakeRoom;
 }
 
 #textJoinRoom {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 5vh;
   font-weight: bold;
   grid-area: textJoinRoom;
@@ -41,6 +43,7 @@ button {
   background-color: #ff6347;
   border: none;
   color: #fff;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 5vh;
   font-weight: bold;
   text-align: center;
@@ -55,6 +58,7 @@ button {
 }
 
 #roomId {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 4vh;
   grid-area: roomId;
 }
@@ -65,6 +69,7 @@ button {
 
 #errorMessage {
   color: #f00;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 3vh;
   grid-area: errorMessage;
 }
