@@ -34,7 +34,7 @@ export default function Result() {
     };
     window.addEventListener("beforeunload", onUnload);
     window.history.pushState(null, null, location.href);
-    window.addEventListener("popstate", (e) => {
+    window.addEventListener("popstate", () => {
       history.go(1);
     });
   });
