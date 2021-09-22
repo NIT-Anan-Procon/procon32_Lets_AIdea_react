@@ -11,34 +11,24 @@ export default function Waiting() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost/API/Room/GetRoomInfo.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
-      })
-      .catch(() => {});
+      });
 
-    axios.get(
-      "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/PrepareGame.php",
-      {
-        withCredentials: true,
-      }
-    );
+    axios.get("http://localhost/API/Room/PrepareGame.php", {
+      withCredentials: true,
+    });
   }, []);
 
   useEffect(() => {
     timer.current = setInterval(() => {
       axios
-        .get(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/GetRoomInfo.php",
-          {
-            withCredentials: true,
-          }
-        )
+        .get("http://localhost/API/Room/GetRoomInfo.php", {
+          withCredentials: true,
+        })
         .then((res) => {
           setData(res.data);
           if (res.data.status === "1") {
