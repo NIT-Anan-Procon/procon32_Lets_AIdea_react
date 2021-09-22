@@ -24,11 +24,9 @@ export default function Library() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
