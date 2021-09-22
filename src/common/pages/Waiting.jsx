@@ -66,9 +66,8 @@ export default function Waiting() {
       });
   };
 
-  if (!data) {
-    return <div>読み込み中</div>;
-  } else {
+  if (!data) return <div>読み込み中</div>;
+  else {
     return (
       <div id="waiting">
         <div id="room">部屋ID</div>
