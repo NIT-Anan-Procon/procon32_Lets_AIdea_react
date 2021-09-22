@@ -123,7 +123,7 @@ export default function Answer() {
             "content-type": "multipart/form-data",
           },
         })
-        .then((result) => {
+        .then(() => {
           params.delete("playerID");
         });
     }
