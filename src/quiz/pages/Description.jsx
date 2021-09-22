@@ -70,7 +70,7 @@ export default function Description() {
         })
         .then(() => {
           setTimeout(() => {
-            history.push("/quiz/answer");
+            history.push("/quiz/relay");
           }, 5000);
         });
     }
