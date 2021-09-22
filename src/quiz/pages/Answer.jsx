@@ -28,7 +28,7 @@ export default function Answer() {
       .then((result) => {
         setData(result.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);

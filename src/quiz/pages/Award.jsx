@@ -22,7 +22,7 @@ export default function Award() {
         setData(res.data);
         getNgWord(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);

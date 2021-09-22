@@ -16,7 +16,7 @@ export default function Result() {
       .then((result) => {
         setData(result.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);

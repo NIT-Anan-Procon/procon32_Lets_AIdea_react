@@ -26,7 +26,7 @@ export default function Library() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
