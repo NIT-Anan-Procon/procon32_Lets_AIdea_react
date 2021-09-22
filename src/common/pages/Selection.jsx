@@ -30,6 +30,8 @@ export default function Selection() {
       case "2":
         params.append("gamemode", quizMode);
         break;
+      default:
+        break;
     }
     axios
       .post("http://localhost/API/Room/CreateRoom.php", params, {
