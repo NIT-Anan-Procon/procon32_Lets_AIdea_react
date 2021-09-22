@@ -1,0 +1,108 @@
+#login {
+  display: grid;
+  grid-template:
+    "... ........................ ..." 20vh
+    "... logo                     ..." 5vh
+    "... ........................ ..." 3vh
+    "... loginForm                ..." auto
+    "... ........................ ..." 3vh
+    "... judgementMessage         ..." 5vh
+    "... ........................ ..." 2vh
+    "... attentionMessageUserName ..." 3vh
+    "... ........................ ..." 2vh
+    "... attentionMessagePassword ..." 3vh
+    "... ........................ ..." 20vh
+    /20vh 60vh 20vh;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 5vh;
+  font-weight: bold;
+  grid-area: logo;
+}
+
+#loginForm {
+  display: grid;
+  grid-area: loginForm;
+  grid-template:
+    "userName      " 8vh
+    ".............." 3vh
+    "password      " 8vh
+    ".............." 3vh
+    "loginButton   " 8vh
+    ".............." 3vh
+    "registerButton" 8vh
+    / auto;
+  justify-content: center;
+}
+
+#inputUserName {
+  background-color: #fff;
+  border-color: #000;
+  border-radius: 100vh;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  grid-area: userName;
+  outline: none;
+  text-indent: 1em;
+}
+
+#inputPassword {
+  background-color: #fff;
+  border-color: #000;
+  border-radius: 100vh;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  grid-area: password;
+  outline: none;
+  text-indent: 1em;
+}
+
+#loginButton {
+  background-color: #ff6347;
+  border: none;
+  border-radius: 100vh;
+  color: #fff;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  font-weight: bold;
+  grid-area: loginButton;
+  margin: 0 auto;
+  width: 20vh;
+}
+
+#registerButton {
+  background-color: #fff;
+  border: none;
+  color: #000;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  font-weight: bold;
+  grid-area: registerButton;
+  margin: 0 auto;
+  width: 20vh;
+}
+
+#judgementMessage {
+  color: #f00;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  grid-area: judgementMessage;
+}
+
+.attentionMessageUserName {
+  color: #ffa500;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 2vh;
+  grid-area: attentionMessageUserName;
+}
+
+.attentionMessagePassword {
+  color: #ffa500;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 2vh;
+  grid-area: attentionMessagePassword;
+}

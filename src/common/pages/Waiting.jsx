@@ -30,14 +30,15 @@ export default function Waiting() {
           withCredentials: true,
         })
         .then((res) => {
+          console.log(res.data);
           setData(res.data);
           if (res.data.status === "1") {
-            clearInterval(timer.current);
             moveToGame();
+            clearInterval(timer.current);
           }
         });
-    }, 2000);
-  });
+    }, 3000);
+  }, []);
 
   const moveToGame = () => {
     switch (data.gamemode) {
@@ -85,7 +86,7 @@ export default function Waiting() {
             );
           })}
         </div>
-        {() => {
+        {(() => {
           if (data.playerID === "1") {
             return (
               <button id="startButton" onClick={startHandle}>
@@ -93,7 +94,7 @@ export default function Waiting() {
               </button>
             );
           }
-        }}
+        })()}
       </div>
     );
   }
