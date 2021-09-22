@@ -17,9 +17,7 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/End.php"
-      )
+      .get("http://localhost/API/Game/End.php")
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);

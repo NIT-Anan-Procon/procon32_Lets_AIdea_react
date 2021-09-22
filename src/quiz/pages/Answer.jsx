@@ -24,9 +24,7 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetPicture.php"
-      )
+      .get("http://localhost/API/Quiz/GetPicture.php")
       .then((result) => {
         setData(result.data);
       })
@@ -120,15 +118,11 @@ export default function Answer() {
     if (myChoice == correct[timeCountCopy - 1]) {
       params.append("playerID", timeCountCopy);
       axios
-        .post(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/AddPoint.php",
-          params,
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          }
-        )
+        .post("http://localhost/API/Quiz/AddPoint.php", params, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
         .then((result) => {
           params.delete("playerID");
         });
