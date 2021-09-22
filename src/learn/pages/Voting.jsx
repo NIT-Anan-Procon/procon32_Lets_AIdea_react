@@ -23,15 +23,13 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
-      )
+      .get("http://localhost/API/Learn/GetLearnResult.php", {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
-      .catch((error) => {
-        console.log(error.request.status);
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -57,16 +55,10 @@ export default function Voting() {
     params.append("playerID", myChoice);
     if (myChoice >= 0) {
       axios
-        .post(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
-          params
-        )
-        .then((res) => {
-          console.log(res);
+        .post("http://localhost/API/Game/Vote.php", params, {
+          withCredentials: true,
         })
-        .catch((error) => {
-          console.log(error.request.status);
-        });
+        .then(() => {});
     }
     setTimeout(() => {
       history.push("/learn/award");

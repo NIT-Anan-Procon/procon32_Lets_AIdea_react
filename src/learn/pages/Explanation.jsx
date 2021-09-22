@@ -28,15 +28,13 @@ function Explanation() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/StartLearn.php"
-      )
+      .get("http://localhost/API/Learn/StartLearn.php", {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
-      .catch((error) => {
-        console.log(error.request.status);
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -73,21 +71,14 @@ function Explanation() {
           clearInterval(timer.current);
           document.getElementById("myExplanation").disabled = true;
           params.append("explanation", myExplanation);
-          console.log(myExplanation);
           axios
-            .post(
-              "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
-              params
-            )
-            .then((res) => {
-              console.log(res);
-              console.log(res.data);
+            .post("http://localhost/API/Game/AddExplanation.php", params, {
+              withCredentials: true,
+            })
+            .then(() => {
               setTimeout(() => {
                 history.push("/learn/result");
               }, 5000);
-            })
-            .catch((error) => {
-              console.log(error.request.status);
             });
           break;
       }

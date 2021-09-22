@@ -16,15 +16,13 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/End.php"
-      )
+      .get("http://localhost/API/Game/End.php", {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
-      .catch((error) => {
-        console.log(error.request.status);
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
