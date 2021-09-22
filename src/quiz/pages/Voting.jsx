@@ -16,7 +16,7 @@ export default function Voting() {
     useState("投票する作品を選んでください");
   const params = new FormData();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(90);
   const timer = useRef(null);
 
   useEffect(() => {
@@ -65,8 +65,7 @@ export default function Voting() {
           },
         }
       )
-      .then(() => {})
-      .catch(() => {});
+      .then(() => {});
     setTimeout(() => {
       history.push("/quiz/award");
     }, 5000);
