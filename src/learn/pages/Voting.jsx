@@ -18,7 +18,7 @@ export default function Voting() {
     useState("投票する作品を選んでください");
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
-  const [time, setTime] = useState(90);
+  const [time, setTime] = useState(10);
   const timer = useRef(null);
 
   useEffect(() => {
