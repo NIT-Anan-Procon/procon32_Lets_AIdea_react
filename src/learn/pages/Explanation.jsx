@@ -28,7 +28,9 @@ function Explanation() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/StartLearn.php")
+      .get("http://localhost/API/Learn/StartLearn.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
       })
@@ -70,7 +72,9 @@ function Explanation() {
           document.getElementById("myExplanation").disabled = true;
           params.append("explanation", myExplanation);
           axios
-            .post("http://localhost/API/Game/AddExplanation.php", params)
+            .post("http://localhost/API/Game/AddExplanation.php", params, {
+              withCredentials: true,
+            })
             .then(() => {
               setTimeout(() => {
                 history.push("/learn/result");

@@ -17,7 +17,9 @@ function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get("http://localhost/API/Learn/GetLearnResult.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
       })

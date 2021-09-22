@@ -23,7 +23,9 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get("http://localhost/API/Learn/GetLearnResult.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
       })
@@ -52,7 +54,11 @@ export default function Voting() {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
     if (myChoice >= 0) {
-      axios.post("http://localhost/API/Game/Vote.php", params).then(() => {});
+      axios
+        .post("http://localhost/API/Game/Vote.php", params, {
+          withCredentials: true,
+        })
+        .then(() => {});
     }
     setTimeout(() => {
       history.push("/learn/award");
