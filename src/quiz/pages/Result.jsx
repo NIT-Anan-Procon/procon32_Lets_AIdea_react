@@ -12,13 +12,13 @@ export default function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetQuizResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetQuizResult.php"
+      )
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -27,9 +27,16 @@ export default function Result() {
     history.push("/quiz/voting");
   };
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
   });
 
   if (!data) return <div>{errorMessage}</div>;

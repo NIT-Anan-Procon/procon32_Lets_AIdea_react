@@ -1,0 +1,126 @@
+#quizRelay {
+  grid-template:
+    "... ......... ..... ..... ..... ......... ..." 3vh
+    "... title     title title title title     ..." 10vh
+    "... ......... ..... ..... ..... ......... ..." 3vh
+    "... quizForm  ..... arrow ..... scoreForm ..." auto
+    "... ......... ..... ..... ..... ......... ..." 10vh
+    / auto 70vh 2vh 8vh 4vh 70vh auto;
+  position: fixed;
+}
+
+#quizForm {
+  background-color: #f5f5f5;
+  border-radius: 4vh;
+  display: grid;
+  grid-area: quizForm;
+  grid-template:
+    "... ......... .......... ......... ..." 5vh
+    "... ......... brockTitle ......... ..." 15vh
+    "... ......... .......... ......... ..." 5vh
+    "... image     image      image     ..." 40vh
+    "... ......... .......... ......... ..." 3vh
+    "... attention attention  attention ..." 4vh
+    "... ......... .......... ......... ..." 3vh
+    / 5vh 10vh 40vh 10vh 5vh;
+}
+
+.brockTitle {
+  border-bottom: 0.5vh solid black;
+  color: black;
+  font-size: 4vh;
+  grid-area: brockTitle;
+  text-align: center;
+}
+
+#attention {
+  color: #ff6347;
+  font-size: 3vh;
+  grid-area: attention;
+  text-align: center;
+}
+
+#arrow {
+  background-color: black;
+  display: inline-block;
+  grid-area: arrow;
+  height: 1vh;
+  position: relative;
+  top: 50%;
+}
+
+#arrow::before {
+  border: 2vh solid transparent;
+  border-left: 2vh solid black;
+  content: "";
+  left: 8vh;
+  position: absolute;
+  top: -1.5vh;
+}
+
+#scoreForm {
+  background-color: #f5f5f5;
+  border-radius: 5vh;
+  display: grid;
+  grid-area: scoreForm;
+  grid-template:
+    "... ................ ................ ................ ..." 5vh
+    "... ................ brockTitle       ................ ..." 15vh
+    "... ................ ................ ................ ..." 6vh
+    "... scoreExplanation scoreExplanation scoreExplanation ..." 12vh
+    "... ................ ................ ................ ..." 4vh
+    "... scoreAnswer      scoreAnswer      scoreAnswer      ..." 12vh
+    "... ................ ................ ................ ..." 6vh
+    "... total            total            total            ..." 15vh
+    "... ................ ................ ................ ..." 3vh
+    / 5vh 10vh 40vh 10vh 5vh;
+}
+
+#scoreExplanation {
+  display: grid;
+  grid-area: scoreExplanation;
+  grid-template:
+    "text1 text1 text1" 5vh
+    "..... ..... ....." 1vh
+    "..... text2 text2" 6vh
+    /10vh 30vh 20vh;
+}
+
+.text1 {
+  font-size: 4vh;
+  grid-area: text1;
+}
+
+.text2 {
+  font-size: 4vh;
+  grid-area: text2;
+}
+
+span#answered {
+  color: #ff6347;
+}
+
+span.point {
+  font-size: 5vh;
+}
+
+#scoreAnswer {
+  display: grid;
+  grid-area: scoreAnswer;
+  grid-template:
+    "text1 text1 text1" 5vh
+    "..... ..... ....." 1vh
+    "..... text2 text2" 6vh
+    /10vh 30vh 20vh;
+}
+
+span#answer {
+  color: #ff6347;
+}
+
+#total {
+  font-size: 9vh;
+  font-weight: bold;
+  grid-area: total;
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
@@ -7,14 +7,19 @@ import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import SelectionLabel from "../components/SelectionLabel";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
   const [myChoice, setMyChoice] = useState(-1);
-  const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const params = new FormData();
+  const [time, setTime] = useState(90);
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
@@ -29,32 +34,42 @@ export default function Voting() {
   }, []);
 
   useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
     if (!data) return 0;
     document.getElementById("choice" + data.playerID).disabled = true;
   }, [data]);
 
   const handleChange = (event) => {
     setMyChoice(event.target.value);
+    setAttentionMessage("");
   };
 
-  const handleSubmit = (event) => {
-    if (myChoice === -1) {
-      event.preventDefault();
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
-    }
+  if (time === 0) {
+    clearInterval(timer.current);
     params.append("playerID", myChoice);
-    console.log(myChoice);
-    axios
-      .post("http://localhost/API/Game/Vote.php", params)
-      .then((res) => {})
-      .catch((error) => {});
-    history.push("/learn/award");
-  };
+    if (myChoice >= 0) {
+      axios.post("http://localhost/API/Game/Vote.php", params).then(() => {});
+    }
+    setTimeout(() => {
+      history.push("/learn/award");
+    }, 5000);
+  }
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
   });
 
   if (!data) return <div>{errorMessage}</div>;
@@ -63,7 +78,8 @@ export default function Voting() {
       <div className="learn" id="learnVoting">
         <Title text="優秀な作品を決めよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
-        <form onSubmit={handleSubmit} className="votingForm">
+        <form className="votingForm">
+          <AttentionMessage text={attentionMessage} />
           <div className="selections">
             <div className="selection">
               <input
@@ -142,9 +158,9 @@ export default function Voting() {
               </label>
             </div>
           </div>
-          <AttentionMessage text={attentionMessage} />
-          <input type="submit" value="投票する" />
         </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
     );
   }

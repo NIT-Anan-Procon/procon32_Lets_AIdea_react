@@ -1,9 +1,10 @@
-.quiz body {
+body {
   margin: 0;
 }
 
 #quizDescription,
 #quizAnswer,
+#quizRelay,
 #quizResult,
 #quizVoting,
 #quizAward {
