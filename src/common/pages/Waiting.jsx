@@ -86,7 +86,7 @@ export default function Waiting() {
             );
           })}
         </div>
-        {(() => {
+        {() => {
           if (data.playerID === "1") {
             return (
               <button id="startButton" onClick={startHandle}>
@@ -94,7 +94,7 @@ export default function Waiting() {
               </button>
             );
           }
-        })()}
+        }}
       </div>
     );
   }
