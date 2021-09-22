@@ -1,0 +1,75 @@
+#waiting {
+  display: grid;
+  grid-template:
+    "... ........... ........... ........... ........... ..." 10vh
+    "... room        ........... ........... ........... ..." 7vh
+    "... roomId      roomId      ........... copyButton  ..." 7vh
+    "... ........... ........... ........... ........... ..." 5vh
+    "... user        user        user        user        ..." auto
+    "... ........... ........... ........... ........... ..." 3vh
+    "... startButton startButton startButton startButton ..." 7vh
+    "... ........... ........... ........... ........... ..." auto
+    / auto 40vh 40vh 5vh 20vh auto;
+}
+
+#room {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 4vh;
+  grid-area: room;
+}
+
+#roomId {
+  border: solid 2px #000;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 5vh;
+  grid-area: roomId;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+button {
+  background-color: #ff6347;
+  border: none;
+  color: #fff;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-size: 3vh;
+  font-weight: bold;
+  text-align: center;
+}
+
+#copyButton {
+  grid-area: copyButton;
+}
+
+#user {
+  font-size: 3vh;
+  grid-area: user;
+  margin: 0 auto;
+}
+
+#container {
+  padding: 1vh;
+}
+
+#icon {
+  border-radius: 50%;
+  grid-area: icon;
+  height: 9vh;
+  object-fit: cover;
+  width: 9vh;
+}
+
+#message {
+  bottom: 3.5vh;
+  display: inline-block;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  position: relative;
+  text-indent: 1em;
+}
+
+#startButton {
+  display: block;
+  grid-area: startButton;
+  margin: 0 auto;
+  width: 60vh;
+}
