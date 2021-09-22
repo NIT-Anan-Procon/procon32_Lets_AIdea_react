@@ -17,7 +17,9 @@ function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -41,9 +43,16 @@ function Result() {
     }
   }, [time]);
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
   });
 
   if (!data) return <div>{errorMessage}</div>;

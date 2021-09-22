@@ -17,14 +17,14 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/End.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/End.php"
+      )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
         getNgWord(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -46,9 +46,16 @@ export default function Award() {
     history.push("");
   };
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
   });
 
   if (!data) return <div>{errorMessage}</div>;

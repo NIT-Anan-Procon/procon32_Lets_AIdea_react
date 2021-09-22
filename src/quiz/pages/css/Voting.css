@@ -2,7 +2,7 @@
   grid-template:
     "... .......... ..." 3vh
     "... title      ..." 10vh
-    "... .......... ..." 3vh
+    "... .......... ..." 5vh
     "... votingForm ..." auto
     "... .......... ..." 3vh
     /15vh auto 15vh;
@@ -13,11 +13,10 @@
   display: grid;
   grid-area: votingForm;
   grid-template:
+    "attentionMessage attentionMessage attentionMessage" 4vh
+    "................ ................ ................" 4vh
     "descriptionTable descriptionTable descriptionTable" 62vh
     "................ ................ ................" 2vh
-    "attentionMessage attentionMessage attentionMessage" 4vh
-    "................ ................ ................" 2vh
-    "................ inputSubmit      ................" 10vh
     / auto 50% auto;
 }
 

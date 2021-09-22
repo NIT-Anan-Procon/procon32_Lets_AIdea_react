@@ -7,7 +7,6 @@ import LibraryRow from "./LibraryRow";
 
 export default function Library() {
   const [data, setData] = useState();
-  const params = new FormData();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
@@ -25,11 +24,9 @@ export default function Library() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -37,6 +34,18 @@ export default function Library() {
   const handleSubmit = () => {
     history.push("/");
   };
+
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
+  });
 
   if (!data) return <div>{errorMessage}</div>;
   else {

@@ -19,15 +19,18 @@ function Explanation() {
   const [word2, setWord2] = useState("...");
   const [aiExplanation, setAiExplanation] = useState("AI考え中...");
   const [aiFace, setAiFace] = useState(aiImg);
-  const [myExplanation, setMyExplanation] = useState("");
+  const [myExplanation, setMyExplanation] = useState(" ");
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(60);
   const timer = useRef(null);
+  const params = new FormData();
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/Start.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/StartLearn.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -49,34 +52,58 @@ function Explanation() {
   }, []);
 
   useEffect(() => {
-    if (time % 5 === 0 && time < 60) {
-      setWord2(word1);
-      if (data.synonyms[(60 - time - 5) / 5] != null) {
-        setWord1(data.synonyms[(60 - time - 5) / 5]);
-      } else {
-        setWord1("...");
+    if (!data) {
+    } else {
+      if (time % 5 === 0 && time < 60) {
+        setWord2(word1);
+        if (data.synonyms[(60 - time - 5) / 5] != null) {
+          setWord1(data.synonyms[(60 - time - 5) / 5]);
+        } else {
+          setWord1("...");
+        }
       }
-    }
-    switch (time) {
-      case 60 / 2 + 1:
-        setAiFace(aiImgSmile);
-        break;
-      case 60 / 2:
-        setAiExplanation(data.AI);
-        break;
-      case 0:
-        clearInterval(timer.current);
-        document.getElementById("myExplanation").disabled = true;
-        setTimeout(() => {
-          history.push("/learn/result");
-        }, 5000);
-        break;
+      switch (time) {
+        case 60 / 2 + 1:
+          setAiFace(aiImgSmile);
+          break;
+        case 60 / 2:
+          setAiExplanation(data.AI);
+          break;
+        case 0:
+          clearInterval(timer.current);
+          document.getElementById("myExplanation").disabled = true;
+          params.append("explanation", myExplanation);
+          console.log(myExplanation);
+          axios
+            .post(
+              "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
+              params
+            )
+            .then((res) => {
+              console.log(res);
+              console.log(res.data);
+              setTimeout(() => {
+                history.push("/learn/result");
+              }, 5000);
+            })
+            .catch((error) => {
+              console.log(error.request.status);
+            });
+          break;
+      }
     }
   }, [time]);
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
+    });
   });
 
   if (!data) return <div>{errorMessage}</div>;
