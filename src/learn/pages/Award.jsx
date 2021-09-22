@@ -42,7 +42,7 @@ export default function Award() {
       e.returnValue = "";
     };
     window.addEventListener("beforeunload", onUnload);
-    window.history.pushState(null, null, location.href);
+    window.history.pushState(null, null, window.location.href);
     window.addEventListener("popstate", () => {
       history.go(1);
     });
