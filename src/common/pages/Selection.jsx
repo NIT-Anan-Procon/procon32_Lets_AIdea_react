@@ -57,16 +57,12 @@ export default function Selection() {
   const joinRoom = () => {
     params.append("roomID", roomId);
     axios
-      .post(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Room/JoinRoom.php",
-        params,
-        {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost//API/Room/JoinRoom.php", params, {
+        withCredentials: true,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then(() => {
         params.delete("roomID");
         history.push("/waiting");
