@@ -20,8 +20,7 @@ export default function Award() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {
-        console.log(error.request.status);
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);

@@ -32,7 +32,7 @@ function Explanation() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -71,13 +71,10 @@ function Explanation() {
           params.append("explanation", myExplanation);
           axios
             .post("http://localhost/API/Game/AddExplanation.php", params)
-            .then((res) => {
+            .then(() => {
               setTimeout(() => {
                 history.push("/learn/result");
               }, 5000);
-            })
-            .catch((error) => {
-              console.log(error.request.status);
             });
           break;
       }

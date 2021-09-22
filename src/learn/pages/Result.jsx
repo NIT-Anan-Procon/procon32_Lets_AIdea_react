@@ -22,7 +22,6 @@ function Result() {
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
