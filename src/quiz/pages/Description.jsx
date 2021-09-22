@@ -24,14 +24,12 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/StartQuiz.php"
-      )
+      .get("http://localhost/API/Quiz/StartQuiz.php")
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -65,16 +63,12 @@ export default function Description() {
       document.getElementById("myDescription").disabled = true;
       params.append("explanation", myDescription);
       axios
-        .post(
-          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
-          params,
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          }
-        )
-        .then((result) => {
+        .post("http://localhost/API/Game/AddExplanation.php", params, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then(() => {
           setTimeout(() => {
             history.push("/quiz/answer");
           }, 5000);

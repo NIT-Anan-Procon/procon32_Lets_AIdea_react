@@ -21,9 +21,7 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetVoteInfo.php"
-      )
+      .get("http://localhost/API/Quiz/GetVoteInfo.php")
       .then((res) => {
         setData(res.data);
       })
@@ -56,15 +54,11 @@ export default function Voting() {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
     axios
-      .post(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
-        params,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost/API/Game/Vote.php", params, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then(() => {});
     setTimeout(() => {
       history.push("/quiz/award");
