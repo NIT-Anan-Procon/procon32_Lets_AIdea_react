@@ -46,6 +46,8 @@ export default function Login() {
         })
         .catch(() => {
           setJudgementMessage("新規登録エラーが発生しました");
+          params.delete("name");
+          params.delete("password");
         });
     }
   };
@@ -75,6 +77,8 @@ export default function Login() {
         })
         .catch(() => {
           setJudgementMessage("ログインエラーが発生しました");
+          params.delete("name");
+          params.delete("password");
         });
     }
   };
