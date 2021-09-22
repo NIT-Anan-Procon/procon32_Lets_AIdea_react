@@ -11,17 +11,18 @@ export default function Voting() {
   const [myChoice, setMyChoice] = useState(0);
   const [attentionMessage, setAttentionMessage] = useState("");
   const history = useHistory();
+  const params = new FormData();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetVoteInfo.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetVoteInfo.php"
+      )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -41,12 +42,25 @@ export default function Voting() {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (myChoice === 0) {
-      event.preventDefault();
       setAttentionMessage("投票する作品を選んでください");
       return 0;
     }
-    history.push("/quiz/award");
+    params.append("playerID", myChoice);
+    axios
+      .post(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
+        params,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      )
+      .then((result) => {
+        history.push("/quiz/award");
+      });
   };
 
   useEffect(() => {
