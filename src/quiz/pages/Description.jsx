@@ -72,17 +72,6 @@ export default function Description() {
       e.returnValue = "";
     };
     window.addEventListener("beforeunload", onUnload);
-    let key = false;
-    document.addEventListener("keydown", function (e) {
-      if (e.ctrlKey) key = true;
-      if (
-        ((e.which || e.keyCode) === 82 && key) ||
-        (e.which || e.keyCode) === 13 ||
-        (e.which || e.keyCode) === 116
-      ) {
-        e.preventDefault();
-      }
-    });
     window.history.pushState(null, null, location.href);
     window.addEventListener("popstate", (e) => {
       history.go(1);
