@@ -32,11 +32,9 @@ function Explanation() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/StartLearn.php"
       )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -73,21 +71,17 @@ function Explanation() {
           clearInterval(timer.current);
           document.getElementById("myExplanation").disabled = true;
           params.append("explanation", myExplanation);
-          console.log(myExplanation);
           axios
             .post(
               "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/AddExplanation.php",
               params
             )
             .then((res) => {
-              console.log(res);
               setTimeout(() => {
                 history.push("/learn/result");
               }, 5000);
             })
-            .catch((error) => {
-              console.log(error.request.status);
-            });
+            .catch((error) => {});
           break;
       }
     }

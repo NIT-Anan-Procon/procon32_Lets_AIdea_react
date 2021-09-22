@@ -22,11 +22,9 @@ export default function Voting() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
       )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -53,13 +51,8 @@ export default function Voting() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
         params
       )
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error.request.status);
-      });
+      .then((res) => {})
+      .catch((error) => {});
     history.push("/learn/award");
   };
 
