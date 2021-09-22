@@ -18,13 +18,12 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
-      )
+      .get("http://localhost/API/Learn/GetLearnResult.php")
       .then((res) => {
         setData(res.data);
       })
       .catch((error) => {
+        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -47,10 +46,7 @@ export default function Voting() {
     params.append("playerID", myChoice);
     console.log(myChoice);
     axios
-      .post(
-        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
-        params
-      )
+      .post("http://localhost/API/Game/Vote.php", params)
       .then((res) => {})
       .catch((error) => {});
     history.push("/learn/award");
