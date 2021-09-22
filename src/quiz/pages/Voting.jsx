@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
 import Title from "../../common/components/Title";
 import DescriptionRow from "../components/DescriptionRow";
 import AttentionMessage from "../../common/components/AttentionMessage";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState(0);
-  const [attentionMessage, setAttentionMessage] = useState("");
+  const [myChoice, setMyChoice] = useState(-1);
   const history = useHistory();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
   const params = new FormData();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const [time, setTime] = useState(90);
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
@@ -22,9 +27,15 @@ export default function Voting() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
+  }, []);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -41,12 +52,8 @@ export default function Voting() {
     return ngWord;
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (myChoice === 0) {
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
-    }
+  if (time === 0) {
+    clearInterval(timer.current);
     params.append("playerID", myChoice);
     axios
       .post(
@@ -58,10 +65,11 @@ export default function Voting() {
           },
         }
       )
-      .then((result) => {
-        history.push("/quiz/award");
-      });
-  };
+      .then(() => {});
+    setTimeout(() => {
+      history.push("/quiz/award");
+    }, 5000);
+  }
 
   useEffect(() => {
     const onUnload = (e) => {
@@ -80,7 +88,8 @@ export default function Voting() {
     return (
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
-        <form onSubmit={handleSubmit} id="votingForm">
+        <form id="votingForm">
+          <AttentionMessage text={attentionMessage} />
           <div id="descriptionTable">
             <DescriptionRow
               number={1}
@@ -90,6 +99,7 @@ export default function Voting() {
               ngWord={getNgWord(1)}
               description={data.player[1].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={2}
@@ -99,6 +109,7 @@ export default function Voting() {
               ngWord={getNgWord(2)}
               description={data.player[2].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={3}
@@ -108,6 +119,7 @@ export default function Voting() {
               ngWord={getNgWord(3)}
               description={data.player[3].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
             <DescriptionRow
               number={4}
@@ -117,11 +129,12 @@ export default function Voting() {
               ngWord={getNgWord(4)}
               description={data.player[4].explanation}
               setMyChoice={setMyChoice}
+              setAttentionMessage={setAttentionMessage}
             />
           </div>
-          <AttentionMessage text={attentionMessage} />
-          <input type="submit" value="投票する" />
         </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
     );
   }

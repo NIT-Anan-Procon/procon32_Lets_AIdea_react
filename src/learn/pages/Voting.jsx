@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Voting.css";
@@ -7,23 +7,39 @@ import Image from "../../common/components/Image";
 import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import SelectionLabel from "../components/SelectionLabel";
+import Timer from "../../common/components/Timer";
+import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
-  const [myChoice, setMyChoice] = useState(0);
-  const [attentionMessage, setAttentionMessage] = useState("");
+  const [myChoice, setMyChoice] = useState(-1);
   const history = useHistory();
+  const [attentionMessage, setAttentionMessage] =
+    useState("投票する作品を選んでください");
+  const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const params = new FormData();
+  const [time, setTime] = useState(90);
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
         console.log(error.request.status);
+        setErrorMessage("エラーが発生しました");
       });
+  }, []);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -33,16 +49,29 @@ export default function Voting() {
 
   const handleChange = (event) => {
     setMyChoice(event.target.value);
+    setAttentionMessage("");
   };
 
-  const handleSubmit = (event) => {
-    if (myChoice === 0) {
-      event.preventDefault();
-      setAttentionMessage("投票する作品を選んでください");
-      return 0;
+  if (time === 0) {
+    clearInterval(timer.current);
+    params.append("playerID", myChoice);
+    if (myChoice >= 0) {
+      axios
+        .post(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Game/Vote.php",
+          params
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error.request.status);
+        });
     }
-    history.push("/learn/award");
-  };
+    setTimeout(() => {
+      history.push("/learn/award");
+    }, 5000);
+  }
 
   useEffect(() => {
     const onUnload = (e) => {
@@ -56,19 +85,20 @@ export default function Voting() {
     });
   });
 
-  if (!data) return <div>読み込み中</div>;
+  if (!data) return <div>{errorMessage}</div>;
   else {
     return (
       <div className="learn" id="learnVoting">
         <Title text="優秀な作品を決めよう" />
         <Image src={data.pictureURL} alt="explanationImg" />
-        <form onSubmit={handleSubmit} className="votingForm">
+        <form className="votingForm">
+          <AttentionMessage text={attentionMessage} />
           <div className="selections">
             <div className="selection">
               <input
                 type="radio"
                 name="selectDescription"
-                value={1}
+                value={0}
                 onChange={handleChange}
                 id="choiceAI"
               />
@@ -80,7 +110,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={2}
+                value={1}
                 onChange={handleChange}
                 id="choice1"
               />
@@ -96,7 +126,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={3}
+                value={2}
                 onChange={handleChange}
                 id="choice2"
               />
@@ -112,7 +142,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={4}
+                value={3}
                 onChange={handleChange}
                 id="choice3"
               />
@@ -128,7 +158,7 @@ export default function Voting() {
               <input
                 type="radio"
                 name="selectDescription"
-                value={5}
+                value={4}
                 onChange={handleChange}
                 id="choice4"
               />
@@ -141,9 +171,9 @@ export default function Voting() {
               </label>
             </div>
           </div>
-          <AttentionMessage text={attentionMessage} />
-          <input type="submit" value="投票する" />
         </form>
+        <Timer time={time} />
+        <TimeUp time={time} />
       </div>
     );
   }

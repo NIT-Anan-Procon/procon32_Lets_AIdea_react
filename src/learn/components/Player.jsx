@@ -5,7 +5,8 @@ import Name from "../../common/components/Name";
 import Balloon from "./Balloon";
 
 export default function Player(props) {
-  if (props.src == null) return null;
+  if (props.src == null && props.name == null && props.explanation == null)
+    return null;
   else {
     return (
       <div className="player">

@@ -8,6 +8,7 @@ import OtherDescription from "../../common/components/OtherDescription";
 export default function DescriptionRow(props) {
   const handleChange = (event) => {
     props.setMyChoice(event.target.value);
+    props.setAttentionMessage("");
   };
 
   return (

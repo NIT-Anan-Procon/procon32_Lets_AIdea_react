@@ -17,7 +17,9 @@ function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Learn/GetLearnResult.php"
+      )
       .then((res) => {
         console.log(res.data);
         setData(res.data);
