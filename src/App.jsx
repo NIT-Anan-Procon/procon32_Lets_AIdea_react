@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
 import Test from "./Test"; // TODO: 完成後消去
+import Login from "./common/pages/Login";
+import Selection from "./common/pages/Selection";
+import Waiting from "./common/pages/Waiting";
 import Explanation from "./learn/pages/Explanation";
 import LearnResult from "./learn/pages/Result";
 import LearnVoting from "./learn/pages/Voting";
 import LearnAward from "./learn/pages/Award";
 import QuizDescription from "./quiz/pages/Description";
+import Relay from "./quiz/pages/Relay";
 import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
@@ -36,11 +40,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Test} /> {/* TODO: 完成後消去 */}
+      <Route path="/login" exact component={Login} />
+      <Route path="/selection" exact component={Selection} />
+      <Route path="/waiting" exact component={Waiting} />
       <Route path="/learn/explanation" exact component={Explanation} />
       <Route path="/learn/result" exact component={LearnResult} />
       <Route path="/learn/voting" exact component={LearnVoting} />
       <Route path="/learn/award" exact component={LearnAward} />
       <Route path="/quiz/description" exact component={QuizDescription} />
+      <Route path="/quiz/relay" exact component={Relay} />
       <Route path="/quiz/answer" exact component={QuizAnswer} />
       <Route path="/quiz/result" exact component={QuizResult} />
       <Route path="/quiz/voting" exact component={QuizVoting} />

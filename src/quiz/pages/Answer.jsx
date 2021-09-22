@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Answer.css";
-import Title from "../../common/components/Title";
 import OtherDescription from "../../common/components/OtherDescription";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
@@ -16,6 +15,7 @@ export default function Answer() {
   let correct = [0, 0, 0, 0];
   const [mark, setMark] = useState([]);
   const history = useHistory();
+  const params = new FormData();
   const [time, setTime] = useState(20);
   let timeCopy = time;
   const [timeCount, setTimeCount] = useState(1);
@@ -24,13 +24,13 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetPicture.php")
+      .get(
+        "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetPicture.php"
+      )
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -59,6 +59,7 @@ export default function Answer() {
         setTime((time) => time - 1);
         timeCopy--;
         if (timeCopy === 0) {
+          addPoint();
           addMark();
           clearInterval(timer);
           setTimeout(() => {
@@ -87,7 +88,7 @@ export default function Answer() {
     document.getElementById("myChoice3").disabled = true;
     document.getElementById("myChoice4").disabled = true;
     let markArray = [cross, cross, cross, cross];
-    markArray[correct[timeCount - 1] - 1] = circle;
+    markArray[correct[timeCountCopy - 1] - 1] = circle;
     setMark(markArray.slice());
   }
 
@@ -107,6 +108,33 @@ export default function Answer() {
     document.getElementById("myChoice4").disabled = false;
   }
 
+  const addPoint = () => {
+    let elements = document.getElementsByName("selectImage");
+    for (let i = 0; i < elements.length; i++) {
+      if (elements.item(i).checked) {
+        myChoice = elements.item(i).value;
+        break;
+      }
+      myChoice = 0;
+    }
+    if (myChoice == correct[timeCountCopy - 1]) {
+      params.append("playerID", timeCountCopy);
+      axios
+        .post(
+          "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/AddPoint.php",
+          params,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
+        .then((result) => {
+          params.delete("playerID");
+        });
+    }
+  };
+
   window.history.pushState(null, null, location.href);
   window.addEventListener("popstate", (e) => {
     history.go(1);
@@ -116,7 +144,6 @@ export default function Answer() {
   else
     return (
       <div className="quiz" id="quizAnswer">
-        <Title text="元画像を当てよう" />
         <OtherDescription
           title={data.player[timeCount].name}
           text={data.player[timeCount].explanation}
