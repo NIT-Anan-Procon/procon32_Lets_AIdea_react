@@ -37,7 +37,7 @@ export default function Waiting() {
           }
         });
     }, 2000);
-  }, []);
+  });
 
   const moveToGame = () => {
     switch (data.gamemode) {
@@ -47,11 +47,13 @@ export default function Waiting() {
       case "1100":
         history.push("/quiz/description");
         break;
+      default:
+        break;
     }
   };
 
   const copyText = () => {
-    navigator.clipboard.writeText(data.roomID).then((r) => "Copy failed.");
+    navigator.clipboard.writeText(data.roomID);
   };
 
   const startHandle = () => {
@@ -78,7 +80,7 @@ export default function Waiting() {
           {data.player.map((userData, index) => {
             return (
               <div id="container" key={index}>
-                <img src={userData.icon} id="icon" />
+                <img alt="ユーザーアイコン" src={userData.icon} id="icon" />
                 <div id="message">{userData.name}が入室しました</div>
               </div>
             );
