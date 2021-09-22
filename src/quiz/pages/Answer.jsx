@@ -107,7 +107,7 @@ export default function Answer() {
     document.getElementById("myChoice3").disabled = false;
     document.getElementById("myChoice4").disabled = false;
   }
-
+  
   const addPoint = () => {
     let elements = document.getElementsByName("selectImage");
     for (let i = 0; i < elements.length; i++) {
@@ -135,9 +135,15 @@ export default function Answer() {
     }
   };
 
-  window.history.pushState(null, null, location.href);
-  window.addEventListener("popstate", (e) => {
-    history.go(1);
+  useEffect(() => {
+    const onUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onUnload);
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      history.go(1);
   });
 
   if (!data) return <div>{errorMessage}</div>;
