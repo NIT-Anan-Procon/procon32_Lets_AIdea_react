@@ -81,7 +81,6 @@ function Explanation() {
             )
             .then((res) => {
               console.log(res);
-              console.log(res.data);
               setTimeout(() => {
                 history.push("/learn/result");
               }, 5000);
