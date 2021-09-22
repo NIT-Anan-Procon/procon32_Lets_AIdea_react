@@ -20,11 +20,9 @@ export default function Voting() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetVoteInfo.php"
       )
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -61,11 +59,7 @@ export default function Voting() {
         }
       )
       .then((result) => {
-        console.log(result.data);
         history.push("/quiz/award");
-      })
-      .catch((error) => {
-        console.log(error.request.status);
       });
   };
 

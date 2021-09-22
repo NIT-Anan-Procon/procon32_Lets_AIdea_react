@@ -16,11 +16,9 @@ export default function Result() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetQuizResult.php"
       )
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);

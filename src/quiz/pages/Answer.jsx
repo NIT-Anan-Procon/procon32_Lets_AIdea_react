@@ -29,11 +29,9 @@ export default function Answer() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/GetPicture.php"
       )
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -133,11 +131,7 @@ export default function Answer() {
           }
         )
         .then((result) => {
-          console.log(result.data);
           params.delete("playerID");
-        })
-        .catch((error) => {
-          console.log(error.request.status);
         });
     }
   };

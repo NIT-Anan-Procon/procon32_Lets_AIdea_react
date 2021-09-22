@@ -28,12 +28,10 @@ export default function Description() {
         "http://localhost/~kinoshita/procon32_Lets_AIdea_php/API/Quiz/StartQuiz.php"
       )
       .then((res) => {
-        console.log(res);
         setData(res.data);
         getNgWord(res.data);
       })
       .catch((error) => {
-        console.log(error.request.status);
         setErrorMessage("エラーが発生しました");
       });
   }, []);
@@ -77,14 +75,10 @@ export default function Description() {
           }
         )
         .then((result) => {
-          console.log(result.data);
-        })
-        .catch((error) => {
-          console.log(error.request.status);
+          setTimeout(() => {
+            history.push("/quiz/answer");
+          }, 5000);
         });
-      setTimeout(() => {
-        history.push("/quiz/answer");
-      }, 5000);
     }
   }, [time]);
 
