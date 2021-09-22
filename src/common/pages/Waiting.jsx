@@ -37,7 +37,7 @@ export default function Waiting() {
             clearInterval(timer.current);
           }
         });
-    }, 6000);
+    }, 3000);
   }, []);
 
   const moveToGame = () => {
