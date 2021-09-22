@@ -1,13 +1,12 @@
 #quizAnswer {
   grid-template:
     "... ................ ..." 3vh
-    "... title            ..." 10vh
-    "... ................ ..." 2vh
-    "... otherDescription ..." 20vh
-    "... ................ ..." 1vh
+    "... otherDescription ..." 18vh
     "... attentionMessage ..." 4vh
-    "... answerForm       ..." 90vh
-    / auto 135vh auto;
+    "... ................ ..." 1vh
+    "... answerForm       ..." 74vh
+    / auto 111vh auto;
+  position: fixed;
 }
 
 #quizAnswer #answerForm {
