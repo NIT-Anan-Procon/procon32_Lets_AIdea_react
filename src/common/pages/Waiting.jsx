@@ -33,11 +33,10 @@ export default function Waiting() {
           setData(res.data);
           if (res.data.status === "1") {
             moveToGame();
-            clearInterval(timer.current);
           }
-          console.log(res.data);
         });
-    }, 3000);
+    }, 1000);
+    return () => clearInterval(timer.current);
   });
 
   const moveToGame = () => {
