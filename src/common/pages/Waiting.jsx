@@ -30,15 +30,15 @@ export default function Waiting() {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res.data);
           setData(res.data);
           if (res.data.status === "1") {
             moveToGame();
             clearInterval(timer.current);
           }
+          console.log(res.data);
         });
     }, 3000);
-  }, []);
+  });
 
   const moveToGame = () => {
     switch (data.gamemode) {
