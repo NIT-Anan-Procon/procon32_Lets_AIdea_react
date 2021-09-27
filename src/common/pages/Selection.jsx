@@ -18,7 +18,7 @@ export default function Selection() {
         withCredentials: true,
       })
       .then(() => {
-        history.push("/login");
+        history.push("");
       });
   };
 
