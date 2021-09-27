@@ -12,7 +12,9 @@ export default function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetQuizResult.php")
+      .get("http://localhost/API/Quiz/GetQuizResult.php", {
+        withCredentials: true,
+      })
       .then((result) => {
         setData(result.data);
       })

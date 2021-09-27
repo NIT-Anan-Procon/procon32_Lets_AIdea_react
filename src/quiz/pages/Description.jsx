@@ -24,7 +24,7 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/StartQuiz.php")
+      .get("http://localhost/API/Quiz/StartQuiz.php", { withCredentials: true })
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);
@@ -64,6 +64,7 @@ export default function Description() {
       params.append("explanation", myDescription);
       axios
         .post("http://localhost/API/Game/AddExplanation.php", params, {
+          withCredentials: true,
           headers: {
             "content-type": "multipart/form-data",
           },

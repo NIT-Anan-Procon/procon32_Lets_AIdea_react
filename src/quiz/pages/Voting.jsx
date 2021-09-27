@@ -21,7 +21,9 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetVoteInfo.php")
+      .get("http://localhost/API/Quiz/GetVoteInfo.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
       })
@@ -55,6 +57,7 @@ export default function Voting() {
     params.append("playerID", myChoice);
     axios
       .post("http://localhost/API/Game/Vote.php", params, {
+        withCredentials: true,
         headers: {
           "content-type": "multipart/form-data",
         },
