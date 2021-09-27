@@ -32,7 +32,7 @@ export default function Library() {
   }, []);
 
   const handleSubmit = () => {
-    history.push("/");
+    history.push("/selection");
   };
 
   useEffect(() => {
