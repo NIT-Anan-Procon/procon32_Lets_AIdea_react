@@ -17,7 +17,7 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Game/End.php")
+      .get("http://localhost/API/Game/End.php", { withCredentials: true })
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);
