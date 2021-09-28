@@ -28,6 +28,10 @@ jobs:
         with:
           node-version: "14"
       - run: npm install
+      - name: Create .env file
+          run: |
+            touch .env
+            echo "API_KEY=${{ secrets.API_MAIN_HOST }}" >> .env
       - run: npm run build
       #
       - name: copy file via ssh password 1
