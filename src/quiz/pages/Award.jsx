@@ -17,7 +17,9 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Game/End.php", { withCredentials: true })
+      .get(import.meta.env.VITE_API + "/API/Game/End.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);

@@ -24,7 +24,7 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/StartQuiz.php", {
+      .get(import.meta.env.VITE_API + "/API/Quiz/StartQuiz.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -65,12 +65,16 @@ export default function Description() {
       document.getElementById("myDescription").disabled = true;
       params.append("explanation", myDescription);
       axios
-        .post("http://localhost/API/Game/AddExplanation.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          import.meta.env.VITE_API + "/API/Game/AddExplanation.php",
+          params,
+          {
+            withCredentials: true,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           setTimeout(() => {
             history.push("/quiz/relay");

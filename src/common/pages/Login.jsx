@@ -34,7 +34,7 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post("http://localhost/API/User/CreateUser.php", params, {
+        .post(import.meta.env.VITE_API + "/API/User/CreateUser.php", params, {
           headers: {
             "content-type": "multipart/form-data",
           },
@@ -64,7 +64,7 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post("http://localhost/API/User/Login.php", params, {
+        .post(import.meta.env.VITE_API + "/API/User/Login.php", params, {
           withCredentials: true,
           headers: {
             "content-type": "multipart/form-data",

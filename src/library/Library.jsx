@@ -12,7 +12,7 @@ export default function Library() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Library/GetLibrary.php", {
+      .get(import.meta.env.VITE_API + "/API/Library/GetLibrary.php", {
         params: {
           search: 0,
           sort: 0,
