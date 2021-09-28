@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/Result.css";
 import Title from "../../common/components/Title";
 import PointRow from "../components/PointRow";
+import Timer from "../../common/components/Timer";
 
 export default function Result() {
   const [data, setData] = useState();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("読み込み中");
+  const [time, setTime] = useState(20);
+  const timer = useRef(null);
 
   useEffect(() => {
     axios
@@ -23,9 +26,18 @@ export default function Result() {
       });
   }, []);
 
-  const handleSubmit = () => {
-    history.push("/quiz/voting");
-  };
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime((time) => time - 1);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    if (time === 0) {
+      clearInterval(timer.current);
+      history.push("/quiz/voting");
+    }
+  }, [time]);
 
   useEffect(() => {
     const onUnload = (e) => {
@@ -70,9 +82,7 @@ export default function Result() {
             answerPoint={data[2].ans}
           />
         </div>
-        <form onSubmit={handleSubmit} className="buttonForm">
-          <input type="submit" value="投票へ" />
-        </form>
+        <Timer time={time} />
       </div>
     );
 }
