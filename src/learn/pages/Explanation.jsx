@@ -28,7 +28,7 @@ function Explanation() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Learn/StartLearn.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Learn/StartLearn.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -73,7 +73,7 @@ function Explanation() {
           params.append("explanation", myExplanation);
           axios
             .post(
-              import.meta.env.VITE_API + "/API/Game/AddExplanation.php",
+              import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
               params,
               {
                 withCredentials: true,

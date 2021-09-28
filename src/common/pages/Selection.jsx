@@ -14,7 +14,7 @@ export default function Selection() {
 
   const doLogout = () => {
     axios
-      .get(import.meta.env.VITE_API + "/API/User/Logout.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/User/Logout.php", {
         withCredentials: true,
       })
       .then(() => {
@@ -34,12 +34,16 @@ export default function Selection() {
         break;
     }
     axios
-      .post(import.meta.env.VITE_API + "/API/Room/CreateRoom.php", params, {
-        withCredentials: true,
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      })
+      .post(
+        import.meta.env.VITE_API_HOST + "/API/Room/CreateRoom.php",
+        params,
+        {
+          withCredentials: true,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      )
       .then(() => {
         params.delete("gamemode");
         history.push("/waiting");
@@ -57,7 +61,7 @@ export default function Selection() {
   const joinRoom = () => {
     params.append("roomID", roomId);
     axios
-      .post(import.meta.env.VITE_API + "//API/Room/JoinRoom.php", params, {
+      .post(import.meta.env.VITE_API_HOST + "//API/Room/JoinRoom.php", params, {
         withCredentials: true,
         headers: {
           "content-type": "multipart/form-data",

@@ -34,11 +34,15 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post(import.meta.env.VITE_API + "/API/User/CreateUser.php", params, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          import.meta.env.VITE_API_HOST + "/API/User/CreateUser.php",
+          params,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           setJudgementMessage("新規登録に成功しました");
           params.delete("name");
@@ -64,7 +68,7 @@ export default function Login() {
       params.append("name", userName);
       params.append("password", password);
       axios
-        .post(import.meta.env.VITE_API + "/API/User/Login.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/User/Login.php", params, {
           withCredentials: true,
           headers: {
             "content-type": "multipart/form-data",

@@ -11,14 +11,14 @@ export default function Waiting() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Room/GetRoomInfo.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/GetRoomInfo.php", {
         withCredentials: true,
       })
       .then((res) => {
         setData(res.data);
       });
 
-    axios.get(import.meta.env.VITE_API + "/API/Room/PrepareGame.php", {
+    axios.get(import.meta.env.VITE_API_HOST + "/API/Room/PrepareGame.php", {
       withCredentials: true,
     });
   }, []);
@@ -26,7 +26,7 @@ export default function Waiting() {
   useEffect(() => {
     timer.current = setInterval(() => {
       axios
-        .get(import.meta.env.VITE_API + "/API/Room/GetRoomInfo.php", {
+        .get(import.meta.env.VITE_API_HOST + "/API/Room/GetRoomInfo.php", {
           withCredentials: true,
         })
         .then((res) => {
@@ -58,7 +58,7 @@ export default function Waiting() {
 
   const startHandle = () => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Room/StartGame.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/StartGame.php", {
         withCredentials: true,
       })
       .then(() => {

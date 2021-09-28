@@ -24,7 +24,7 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Quiz/StartQuiz.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/StartQuiz.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -66,7 +66,7 @@ export default function Description() {
       params.append("explanation", myDescription);
       axios
         .post(
-          import.meta.env.VITE_API + "/API/Game/AddExplanation.php",
+          import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
           params,
           {
             withCredentials: true,

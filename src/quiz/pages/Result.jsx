@@ -15,7 +15,7 @@ export default function Result() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Quiz/GetQuizResult.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/GetQuizResult.php", {
         withCredentials: true,
       })
       .then((result) => {

@@ -21,7 +21,7 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Quiz/GetVoteInfo.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/GetVoteInfo.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -56,7 +56,7 @@ export default function Voting() {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
     axios
-      .post(import.meta.env.VITE_API + "/API/Game/Vote.php", params, {
+      .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
         withCredentials: true,
         headers: {
           "content-type": "multipart/form-data",

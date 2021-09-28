@@ -24,7 +24,7 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_API + "/API/Quiz/GetPicture.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/GetPicture.php", {
         withCredentials: true,
       })
       .then((result) => {
@@ -120,12 +120,16 @@ export default function Answer() {
     if (myChoice == correct[timeCountCopy - 1]) {
       params.append("playerID", timeCountCopy);
       axios
-        .post(import.meta.env.VITE_API + "/API/Quiz/AddPoint.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          import.meta.env.VITE_API_HOST + "/API/Quiz/AddPoint.php",
+          params,
+          {
+            withCredentials: true,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           params.delete("playerID");
         });
