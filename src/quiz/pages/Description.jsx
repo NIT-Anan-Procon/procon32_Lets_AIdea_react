@@ -15,7 +15,7 @@ export default function Description() {
   const [data, setData] = useState();
   const [ngWord, setNgWord] = useState("");
   const [attentionMessage, setAttentionMessage] = useState("");
-  const [myDescription, setMyDescription] = useState("");
+  const [myDescription, setMyDescription] = useState(" ");
   const history = useHistory();
   const params = new FormData();
   const [time, setTime] = useState(60);
@@ -24,7 +24,9 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/StartQuiz.php", { withCredentials: true })
+      .get("http://localhost/API/Quiz/StartQuiz.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);
