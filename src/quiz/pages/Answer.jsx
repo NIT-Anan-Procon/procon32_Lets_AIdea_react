@@ -24,7 +24,9 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetPicture.php")
+      .get("http://localhost/API/Quiz/GetPicture.php", {
+        withCredentials: true,
+      })
       .then((result) => {
         setData(result.data);
       })
@@ -119,6 +121,7 @@ export default function Answer() {
       params.append("playerID", timeCountCopy);
       axios
         .post("http://localhost/API/Quiz/AddPoint.php", params, {
+          withCredentials: true,
           headers: {
             "content-type": "multipart/form-data",
           },
