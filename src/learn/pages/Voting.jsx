@@ -23,7 +23,7 @@ export default function Voting() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Learn/GetLearnResult.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -55,7 +55,7 @@ export default function Voting() {
     params.append("playerID", myChoice);
     if (myChoice >= 0) {
       axios
-        .post("http://localhost/API/Game/Vote.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
           withCredentials: true,
         })
         .then(() => {});

@@ -16,7 +16,7 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Game/End.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Game/End.php", {
         withCredentials: true,
       })
       .then((res) => {

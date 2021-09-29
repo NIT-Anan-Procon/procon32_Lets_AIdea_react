@@ -8,6 +8,14 @@ npm install
 npm run dev
 ```
 
+## .env ファイルについて
+
+このプロジェクトでの API URL は`.env`ファイルに記述します
+
+```dotenv:.env
+VITE_API_HOST=API URL
+```
+
 ## コマンドについて
 
 - `npm run dev`

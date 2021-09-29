@@ -17,7 +17,7 @@ function Result() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Learn/GetLearnResult.php", {
         withCredentials: true,
       })
       .then((res) => {
