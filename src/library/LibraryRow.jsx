@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./css/LibraryRow.css";
 import Icon from "../common/components/Icon";
-import Name from "../common/components/Name";
 import Image from "../common/components/Image";
+import Name from "../common/components/Name";
 import OtherDescription from "../common/components/OtherDescription";
 
 export default function LibraryRow(props) {

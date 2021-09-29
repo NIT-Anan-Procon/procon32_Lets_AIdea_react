@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Result.css";
-import Player from "../components/Player";
-import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
 import aiImg from "../../image/aiImg.svg";
-import axios from "axios";
+import Player from "../components/Player";
 
 function Result() {
   const [data, setData] = useState();
@@ -23,7 +23,7 @@ function Result() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setErrorMessage("エラーが発生しました");
       });
   }, []);

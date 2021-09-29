@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Relay.css";
-import Title from "../../common/components/Title";
 import Image from "../../common/components/Image";
 import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
 import quizImg from "../../image/quizImg.svg";
 
 export default function Relay() {

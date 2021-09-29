@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Result.css";
+import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 import PointRow from "../components/PointRow";
-import Timer from "../../common/components/Timer";
 
 export default function Result() {
   const [data, setData] = useState();

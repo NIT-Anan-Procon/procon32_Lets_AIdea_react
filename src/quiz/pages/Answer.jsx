@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Answer.css";
-import OtherDescription from "../../common/components/OtherDescription";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
+import OtherDescription from "../../common/components/OtherDescription";
 import Timer from "../../common/components/Timer";
 import circle from "../../image/circle.svg";
 import cross from "../../image/cross.svg";
