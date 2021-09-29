@@ -5,17 +5,17 @@ import Test from "./Test";
 import Login from "./common/pages/Login";
 import Selection from "./common/pages/Selection";
 import Waiting from "./common/pages/Waiting";
+import LearnAward from "./learn/pages/Award";
 import Explanation from "./learn/pages/Explanation";
 import LearnResult from "./learn/pages/Result";
 import LearnVoting from "./learn/pages/Voting";
-import LearnAward from "./learn/pages/Award";
+import Library from "./library/Library";
+import QuizAnswer from "./quiz/pages/Answer";
+import QuizAward from "./quiz/pages/Award";
 import QuizDescription from "./quiz/pages/Description";
 import Relay from "./quiz/pages/Relay";
-import QuizAnswer from "./quiz/pages/Answer";
 import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
-import QuizAward from "./quiz/pages/Award";
-import Library from "./library/Library";
 
 export default function App() {
   return (

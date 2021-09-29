@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
-import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
-import SelectionLabel from "../components/SelectionLabel";
-import Timer from "../../common/components/Timer";
+import Image from "../../common/components/Image";
 import TimeUp from "../../common/components/TimeUp";
+import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
+import aiImg from "../../image/aiImg.svg";
+import SelectionLabel from "../components/SelectionLabel";
 
 export default function Voting() {
   const [data, setData] = useState();

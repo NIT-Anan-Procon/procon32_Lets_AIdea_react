@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Waiting.css";
 import "../components/Icon";
-import axios from "axios";
 
 export default function Waiting() {
   const [data, setData] = useState("");

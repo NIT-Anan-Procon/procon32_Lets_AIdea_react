@@ -6,8 +6,8 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:import/recommended",
     "plugin:react/recommended",
-    "react-app",
     "plugin:react-hooks/recommended",
     "prettier"
   ],
@@ -21,10 +21,26 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
     }
   },
   "plugins": ["react"],
   "rules": {
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "sort-imports": 0,
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
   }
 }

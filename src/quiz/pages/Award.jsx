@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Award.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
+import Image from "../../common/components/Image";
 import Name from "../../common/components/Name";
 import NgWord from "../../common/components/NgWord";
 import OtherDescription from "../../common/components/OtherDescription";
+import Title from "../../common/components/Title";
 
 export default function Award() {
   const [data, setData] = useState();

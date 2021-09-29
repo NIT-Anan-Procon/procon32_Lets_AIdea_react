@@ -1,7 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Selection.css";
-import axios from "axios";
 
 export default function Selection() {
   const learnMode = "0000";
