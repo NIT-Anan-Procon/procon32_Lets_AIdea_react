@@ -55,10 +55,14 @@ export default function Voting() {
     event.preventDefault();
     if (myChoice >= 0) {
       document.getElementById("skip").disabled = true;
-      console.log(myChoice);
+      document.getElementById("choiceAI").disabled = true;
+      document.getElementById("choice1").disabled = true;
+      document.getElementById("choice2").disabled = true;
+      document.getElementById("choice3").disabled = true;
+      document.getElementById("choice4").disabled = true;
       params.append("playerID", myChoice);
       axios
-        .post("http://localhost/API/Game/Vote.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
           withCredentials: true,
         })
         .then(() => {});
@@ -77,13 +81,9 @@ export default function Voting() {
               clearInterval(skipTimer.current);
               history.push("/learn/award");
             }
-          })
-          .catch((error) => {
-            console.log(error);
           });
       }, 1000);
     } else {
-      console.log(myChoice);
       return 0;
     }
   };
