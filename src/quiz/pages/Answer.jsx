@@ -66,14 +66,14 @@ export default function Answer() {
             if (timeCountCopy === 4) history.push("/quiz/result");
             startTimer();
             deleteMark();
-            if (data.playerID == timeCount) {
+            setTimeCount((timeCount) => timeCount + 1);
+            timeCountCopy++;
+            if (data.playerID == timeCountCopy) {
               document.getElementById("myChoice1").disabled = true;
               document.getElementById("myChoice2").disabled = true;
               document.getElementById("myChoice3").disabled = true;
               document.getElementById("myChoice4").disabled = true;
             }
-            setTimeCount((timeCount) => timeCount + 1);
-            timeCountCopy++;
             setTime(20);
             timeCopy = time;
           }, 4000);
