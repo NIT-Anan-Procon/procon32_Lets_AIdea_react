@@ -56,28 +56,31 @@ export default function Voting() {
     if (myChoice >= 0) {
       document.getElementById("skip").disabled = true;
       console.log(myChoice);
-      // params.append("playerID", myChoice);
-      // axios
-      //     .post("http://localhost/API/Game/Vote.php", params, {
-      //         withCredentials: true,
-      //     })
-      //     .then(() => {});
+      params.append("playerID", myChoice);
+      axios
+        .post("http://localhost/API/Game/Vote.php", params, {
+          withCredentials: true,
+        })
+        .then(() => {});
       skipTimer.current = setInterval(() => {
         console.log("通信");
-        // axios
-        //     .get("http://localhost/API/Game/GetVoter.php", {
-        //         withCredentials: true,
-        //     })
-        //     .then((res) => {
-        //         if (res.data.playerNum === 0) {
-        //             clearInterval(timer.current);
-        //             clearInterval(skipTimer.current);
-        //             history.push("/learn/award");
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+        axios
+          .get(
+            "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Game/GetVoter.php",
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            if (res.data.playerNum === 0) {
+              clearInterval(timer.current);
+              clearInterval(skipTimer.current);
+              history.push("/learn/award");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }, 1000);
     } else {
       console.log(myChoice);
@@ -95,9 +98,9 @@ export default function Voting() {
         })
         .then(() => {});
     }
-    // setTimeout(() => {
-    //     history.push("/learn/award");
-    // }, 5000);
+    setTimeout(() => {
+      history.push("/learn/award");
+    }, 5000);
   }
 
   useEffect(() => {
@@ -149,61 +152,61 @@ export default function Voting() {
                 />
               </label>
             </div>
-            {/*<div className="selection">*/}
-            {/*    <input*/}
-            {/*        type="radio"*/}
-            {/*        name="selectDescription"*/}
-            {/*        value={2}*/}
-            {/*        onChange={handleChange}*/}
-            {/*        id="choice2"*/}
-            {/*    />*/}
-            {/*    <label htmlFor="choice2">*/}
-            {/*        <SelectionLabel*/}
-            {/*            icon={data.player[2].icon}*/}
-            {/*            name={data.player[2].name}*/}
-            {/*            explanation={data.player[2].explanation}*/}
-            {/*        />*/}
-            {/*    </label>*/}
-            {/*</div>*/}
-            {/*<div className="selection">*/}
-            {/*    <input*/}
-            {/*        type="radio"*/}
-            {/*        name="selectDescription"*/}
-            {/*        value={3}*/}
-            {/*        onChange={handleChange}*/}
-            {/*        id="choice3"*/}
-            {/*    />*/}
-            {/*    <label htmlFor="choice3">*/}
-            {/*        <SelectionLabel*/}
-            {/*            icon={data.player[3].icon}*/}
-            {/*            name={data.player[3].name}*/}
-            {/*            explanation={data.player[3].explanation}*/}
-            {/*        />*/}
-            {/*    </label>*/}
-            {/*</div>*/}
-            {/*<div className="selection">*/}
-            {/*    <input*/}
-            {/*        type="radio"*/}
-            {/*        name="selectDescription"*/}
-            {/*        value={4}*/}
-            {/*        onChange={handleChange}*/}
-            {/*        id="choice4"*/}
-            {/*    />*/}
-            {/*    <label htmlFor="choice4">*/}
-            {/*        <SelectionLabel*/}
-            {/*            icon={data.player[4].icon}*/}
-            {/*            name={data.player[4].name}*/}
-            {/*            explanation={data.player[4].explanation}*/}
-            {/*        />*/}
-            {/*    </label>*/}
-            {/*</div>*/}
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={2}
+                onChange={handleChange}
+                id="choice2"
+              />
+              <label htmlFor="choice2">
+                <SelectionLabel
+                  icon={data.player[2].icon}
+                  name={data.player[2].name}
+                  explanation={data.player[2].explanation}
+                />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={3}
+                onChange={handleChange}
+                id="choice3"
+              />
+              <label htmlFor="choice3">
+                <SelectionLabel
+                  icon={data.player[3].icon}
+                  name={data.player[3].name}
+                  explanation={data.player[3].explanation}
+                />
+              </label>
+            </div>
+            <div className="selection">
+              <input
+                type="radio"
+                name="selectDescription"
+                value={4}
+                onChange={handleChange}
+                id="choice4"
+              />
+              <label htmlFor="choice4">
+                <SelectionLabel
+                  icon={data.player[4].icon}
+                  name={data.player[4].name}
+                  explanation={data.player[4].explanation}
+                />
+              </label>
+            </div>
           </div>
         </form>
         <form onClick={handleSubmit} className="submitForm">
           <input type="submit" id="skip" value="確定する" />
         </form>
         <Timer time={time} />
-        {/*<TimeUp time={time}/>*/}
+        <TimeUp time={time} />
       </div>
     );
   }
