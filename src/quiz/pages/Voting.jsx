@@ -18,6 +18,7 @@ export default function Voting() {
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(90);
   const timer = useRef(null);
+  const skipTimer = useRef(null);
 
   useEffect(() => {
     axios
@@ -52,9 +53,53 @@ export default function Voting() {
     return ngWord;
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (myChoice >= 0) {
+      document.getElementById("skip").disabled = true;
+      console.log(myChoice);
+      // params.append("playerID", myChoice);
+      // axios
+      //     .post("http://localhost/API/Game/Vote.php", params, {
+      //         withCredentials: true,
+      //     })
+      //     .then(() => {});
+      skipTimer.current = setInterval(() => {
+        console.log("通信");
+        // axios
+        //     .get("http://localhost/API/Game/GetVoter.php", {
+        //         withCredentials: true,
+        //     })
+        //     .then((res) => {
+        //         if (res.data.playerNum === 0) {
+        //             clearInterval(timer.current);
+        //             clearInterval(skipTimer.current);
+        //             history.push("/quiz/award");
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+      }, 1000);
+    } else {
+      console.log(myChoice);
+      return 0;
+    }
+  };
+
   if (time === 0) {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
+    if (myChoice >= 0) {
+      axios
+        .post("http://localhost/API/Game/Vote.php", params, {
+          withCredentials: true,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then(() => {});
+    }
     axios
       .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
         withCredentials: true,
@@ -63,9 +108,9 @@ export default function Voting() {
         },
       })
       .then(() => {});
-    setTimeout(() => {
-      history.push("/quiz/award");
-    }, 5000);
+    // setTimeout(() => {
+    //   history.push("/quiz/award");
+    // }, 5000);
   }
 
   useEffect(() => {
@@ -85,7 +130,7 @@ export default function Voting() {
     return (
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
-        <form id="votingForm">
+        <form onClick={handleSubmit} id="votingForm">
           <AttentionMessage text={attentionMessage} />
           <div id="descriptionTable">
             <DescriptionRow
@@ -98,40 +143,41 @@ export default function Voting() {
               setMyChoice={setMyChoice}
               setAttentionMessage={setAttentionMessage}
             />
-            <DescriptionRow
-              number={2}
-              icon={data.player[2].icon}
-              name={data.player[2].name}
-              image={data.player[2].pictureURL}
-              ngWord={getNgWord(2)}
-              description={data.player[2].explanation}
-              setMyChoice={setMyChoice}
-              setAttentionMessage={setAttentionMessage}
-            />
-            <DescriptionRow
-              number={3}
-              icon={data.player[3].icon}
-              name={data.player[3].name}
-              image={data.player[3].pictureURL}
-              ngWord={getNgWord(3)}
-              description={data.player[3].explanation}
-              setMyChoice={setMyChoice}
-              setAttentionMessage={setAttentionMessage}
-            />
-            <DescriptionRow
-              number={4}
-              icon={data.player[4].icon}
-              name={data.player[4].name}
-              image={data.player[4].pictureURL}
-              ngWord={getNgWord(4)}
-              description={data.player[4].explanation}
-              setMyChoice={setMyChoice}
-              setAttentionMessage={setAttentionMessage}
-            />
+            {/*<DescriptionRow*/}
+            {/*    number={2}*/}
+            {/*    icon={data.player[2].icon}*/}
+            {/*    name={data.player[2].name}*/}
+            {/*    image={data.player[2].pictureURL}*/}
+            {/*    ngWord={getNgWord(2)}*/}
+            {/*    description={data.player[2].explanation}*/}
+            {/*    setMyChoice={setMyChoice}*/}
+            {/*    setAttentionMessage={setAttentionMessage}*/}
+            {/*/>*/}
+            {/*<DescriptionRow*/}
+            {/*    number={3}*/}
+            {/*    icon={data.player[3].icon}*/}
+            {/*    name={data.player[3].name}*/}
+            {/*    image={data.player[3].pictureURL}*/}
+            {/*    ngWord={getNgWord(3)}*/}
+            {/*    description={data.player[3].explanation}*/}
+            {/*    setMyChoice={setMyChoice}*/}
+            {/*    setAttentionMessage={setAttentionMessage}*/}
+            {/*/>*/}
+            {/*<DescriptionRow*/}
+            {/*    number={4}*/}
+            {/*    icon={data.player[4].icon}*/}
+            {/*    name={data.player[4].name}*/}
+            {/*    image={data.player[4].pictureURL}*/}
+            {/*    ngWord={getNgWord(4)}*/}
+            {/*    description={data.player[4].explanation}*/}
+            {/*    setMyChoice={setMyChoice}*/}
+            {/*    setAttentionMessage={setAttentionMessage}*/}
+            {/*/>*/}
           </div>
+          <input type="submit" id="skip" value="確定する" />
         </form>
         <Timer time={time} />
-        <TimeUp time={time} />
+        {/*<TimeUp time={time} />*/}
       </div>
     );
   }

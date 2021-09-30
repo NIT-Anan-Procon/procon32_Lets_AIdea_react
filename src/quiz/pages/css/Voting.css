@@ -2,7 +2,7 @@
   grid-template:
     "... .......... ..." 3vh
     "... title      ..." 10vh
-    "... .......... ..." 5vh
+    "... .......... ..." 4vh
     "... votingForm ..." auto
     "... .......... ..." 3vh
     /15vh auto 15vh;
@@ -14,14 +14,20 @@
   grid-area: votingForm;
   grid-template:
     "attentionMessage attentionMessage attentionMessage" 4vh
-    "................ ................ ................" 4vh
+    "................ ................ ................" 2vh
     "descriptionTable descriptionTable descriptionTable" 62vh
     "................ ................ ................" 2vh
-    / auto 50% auto;
+    "................ submit           ................" 8vh
+    / auto 30% auto;
 }
 
 #quizVoting #descriptionTable {
   border: solid 0.5vh black;
   grid-area: descriptionTable;
   overflow-y: scroll;
+}
+
+#quizVoting input[type="submit"] {
+  font-size: 4vh;
+  grid-area: submit;
 }
