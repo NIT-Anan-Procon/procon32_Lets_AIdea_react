@@ -66,21 +66,21 @@ function Result() {
             name={data.player[1].name}
             explanation={data.player[1].explanation}
           />
-          <Player
-            src={data.player[2].icon}
-            name={data.player[2].name}
-            explanation={data.player[2].explanation}
-          />
-          <Player
-            src={data.player[3].icon}
-            name={data.player[3].name}
-            explanation={data.player[3].explanation}
-          />
-          <Player
-            src={data.player[4].icon}
-            name={data.player[4].name}
-            explanation={data.player[4].explanation}
-          />
+          {/*<Player*/}
+          {/*  src={data.player[2].icon}*/}
+          {/*  name={data.player[2].name}*/}
+          {/*  explanation={data.player[2].explanation}*/}
+          {/*/>*/}
+          {/*<Player*/}
+          {/*  src={data.player[3].icon}*/}
+          {/*  name={data.player[3].name}*/}
+          {/*  explanation={data.player[3].explanation}*/}
+          {/*/>*/}
+          {/*<Player*/}
+          {/*  src={data.player[4].icon}*/}
+          {/*  name={data.player[4].name}*/}
+          {/*  explanation={data.player[4].explanation}*/}
+          {/*/>*/}
         </div>
         <Timer time={time} />
       </div>
