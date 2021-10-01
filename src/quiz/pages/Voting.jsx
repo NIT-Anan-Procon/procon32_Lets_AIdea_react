@@ -69,7 +69,6 @@ export default function Voting() {
         })
         .then(() => {});
       skipTimer.current = setInterval(() => {
-        console.log("通信");
         axios
           .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
             withCredentials: true,
@@ -80,13 +79,9 @@ export default function Voting() {
               clearInterval(skipTimer.current);
               history.push("/quiz/award");
             }
-          })
-          .catch((error) => {
-            console.log(error);
           });
       }, 1000);
     } else {
-      console.log(myChoice);
       return 0;
     }
   };
@@ -126,7 +121,7 @@ export default function Voting() {
     return (
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
-        <form onClick={handleSubmit} id="votingForm">
+        <form onSubmit={handleSubmit} id="votingForm">
           <AttentionMessage text={attentionMessage} />
           <div id="descriptionTable">
             <DescriptionRow
