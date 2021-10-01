@@ -57,11 +57,10 @@ export default function Voting() {
     event.preventDefault();
     if (myChoice >= 0) {
       document.getElementById("skip").disabled = true;
-      document.getElementById("choiceAI").disabled = true;
-      document.getElementById("choice1").disabled = true;
-      document.getElementById("choice2").disabled = true;
-      document.getElementById("choice3").disabled = true;
-      document.getElementById("choice4").disabled = true;
+      document.getElementById("MyChoice1").disabled = true;
+      document.getElementById("MyChoice2").disabled = true;
+      document.getElementById("MyChoice3").disabled = true;
+      document.getElementById("MyChoice4").disabled = true;
       console.log(myChoice);
       params.append("playerID", myChoice);
       axios
