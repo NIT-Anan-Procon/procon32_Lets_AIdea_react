@@ -49,6 +49,10 @@ function Explanation() {
     }, 1000);
   }, []);
 
+  const checkExplanation = () => {
+    if (myExplanation === " ") setMyExplanation("※文章が入力されていません");
+  };
+
   useEffect(() => {
     // eslint-disable-next-line no-empty
     if (!data) {
@@ -71,8 +75,7 @@ function Explanation() {
         case 0:
           clearInterval(timer.current);
           document.getElementById("myExplanation").disabled = true;
-          if (myExplanation === " ")
-            setMyExplanation("※文章が入力されていません");
+          checkExplanation();
           params.append("explanation", myExplanation);
           axios
             .post(

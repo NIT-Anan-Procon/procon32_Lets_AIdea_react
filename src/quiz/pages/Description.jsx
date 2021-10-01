@@ -59,14 +59,18 @@ export default function Description() {
     }, 1000);
   }, []);
 
+  const checkDescription = () => {
+    if (attentionMessage === "NGワードが含まれています")
+      setMyDescription("※NGワードが含まれているため表示できません");
+    else if (myDescription === " ")
+      setMyDescription("※文章が入力されていません");
+  };
+
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
       document.getElementById("myDescription").disabled = true;
-      if (attentionMessage === "NGワードが含まれています")
-        setMyDescription("※NGワードが含まれているため表示できません");
-      else if (myDescription === " ")
-        setMyDescription("※文章が入力されていません");
+      checkDescription();
       params.append("explanation", myDescription);
       axios
         .post(
