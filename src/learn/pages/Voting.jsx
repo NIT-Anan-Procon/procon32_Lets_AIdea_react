@@ -53,7 +53,7 @@ export default function Voting() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (myChoice >= 0) {
+    if (myChoice != 0) {
       document.getElementById("skip").disabled = true;
       document.getElementById("choiceAI").disabled = true;
       document.getElementById("choice1").disabled = true;
