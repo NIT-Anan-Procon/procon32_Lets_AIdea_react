@@ -61,7 +61,6 @@ export default function Voting() {
       document.getElementById("myChoice2").disabled = true;
       document.getElementById("myChoice3").disabled = true;
       document.getElementById("myChoice4").disabled = true;
-      console.log(myChoice);
       params.append("playerID", myChoice);
       axios
         .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
