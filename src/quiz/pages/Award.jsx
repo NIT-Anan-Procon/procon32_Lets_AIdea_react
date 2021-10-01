@@ -36,7 +36,8 @@ export default function Award() {
     }
   };
 
-  const againHandleSubmit = () => {
+  const againHandleSubmit = (event) => {
+    event.preventDefault();
     axios
       .get(import.meta.env.VITE_API_HOST + "/API/Room/JoinAgain.php", {
         withCredentials: true,
@@ -46,7 +47,8 @@ export default function Award() {
       });
   };
 
-  const leaveHandleSubmit = () => {
+  const leaveHandleSubmit = (event) => {
+    event.preventDefault();
     axios
       .get(import.meta.env.VITE_API_HOST + "/API/Room/LeaveRoom.php", {
         withCredentials: true,
