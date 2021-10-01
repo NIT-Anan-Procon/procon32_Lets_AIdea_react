@@ -71,6 +71,8 @@ function Explanation() {
         case 0:
           clearInterval(timer.current);
           document.getElementById("myExplanation").disabled = true;
+          if (myExplanation === " ")
+            setMyExplanation("※文章が入力されていません");
           params.append("explanation", myExplanation);
           axios
             .post(
