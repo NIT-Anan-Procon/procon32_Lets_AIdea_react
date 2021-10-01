@@ -37,8 +37,13 @@ export default function Award() {
   };
 
   const againHandleSubmit = () => {
-    // TODO 待機画面に戻るAPI処理とパスの追加
-    history.push("");
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/JoinAgain.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/waiting");
+      });
   };
 
   const leaveHandleSubmit = () => {
@@ -48,7 +53,7 @@ export default function Award() {
       })
       .then((res) => {
         history.push("/selection");
-      })
+      });
   };
 
   useEffect(() => {
