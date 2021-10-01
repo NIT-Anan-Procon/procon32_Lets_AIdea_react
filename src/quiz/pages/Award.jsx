@@ -42,7 +42,16 @@ export default function Award() {
   };
 
   const leaveHandleSubmit = () => {
-    history.push("/selection");
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/LeaveRoom.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/selection");
+      })
+      .catch(() => {
+        setErrorMessage("エラーが発生しました");
+      });
   };
 
   useEffect(() => {
