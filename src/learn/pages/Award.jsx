@@ -36,13 +36,18 @@ export default function Award() {
   };
 
   const againHandleSubmit = () => {
-    // TODO 待機画面に戻るパスを追加
+    // TODO 待機画面に戻るAPI処理とパスの追加
     history.push("");
   };
 
   const leaveHandleSubmit = () => {
-    // TODO モード選択画面に戻るパスを追加
-    history.push("");
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/LeaveRoom.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/selection");
+      })
   };
 
   useEffect(() => {
