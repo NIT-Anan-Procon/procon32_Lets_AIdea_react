@@ -2,11 +2,9 @@
   grid-template:
     "... .......... .......... .......... ..." 3vh
     "... title      title      title      ..." 10vh
+    "... .......... .......... .......... ..." 6vh
+    "... pointTable pointTable pointTable ..." 75vh
     "... .......... .......... .......... ..." 3vh
-    "... pointTable pointTable pointTable ..." 66vh
-    "... .......... .......... .......... ..." 3vh
-    "... .......... buttonForm .......... ..." 10vh
-    "... .......... .......... .......... ..." 5vh
     /30vh auto 80vh auto 30vh;
   position: fixed;
 }

@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
-import aiImg from "../../image/aiImg.svg";
 import AttentionMessage from "../../common/components/AttentionMessage";
-import SelectionLabel from "../components/SelectionLabel";
-import Timer from "../../common/components/Timer";
+import Image from "../../common/components/Image";
 import TimeUp from "../../common/components/TimeUp";
+import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
+import aiImg from "../../image/aiImg.svg";
+import SelectionLabel from "../components/SelectionLabel";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -20,10 +20,11 @@ export default function Voting() {
   const params = new FormData();
   const [time, setTime] = useState(90);
   const timer = useRef(null);
+  const skipTimer = useRef(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/GetLearnResult.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Learn/GetLearnResult.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -50,12 +51,45 @@ export default function Voting() {
     setAttentionMessage("");
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (myChoice >= 0) {
+      document.getElementById("skip").disabled = true;
+      document.getElementById("choiceAI").disabled = true;
+      document.getElementById("choice1").disabled = true;
+      document.getElementById("choice2").disabled = true;
+      document.getElementById("choice3").disabled = true;
+      document.getElementById("choice4").disabled = true;
+      params.append("playerID", myChoice);
+      axios
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
+          withCredentials: true,
+        })
+        .then(() => {});
+      skipTimer.current = setInterval(() => {
+        axios
+          .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
+            withCredentials: true,
+          })
+          .then((res) => {
+            if (res.data.playerNum === 0) {
+              clearInterval(timer.current);
+              clearInterval(skipTimer.current);
+              history.push("/learn/award");
+            }
+          });
+      }, 1000);
+    } else {
+      return 0;
+    }
+  };
+
   if (time === 0) {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
     if (myChoice >= 0) {
       axios
-        .post("http://localhost/API/Game/Vote.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
           withCredentials: true,
         })
         .then(() => {});
@@ -163,6 +197,9 @@ export default function Voting() {
               </label>
             </div>
           </div>
+        </form>
+        <form onClick={handleSubmit} className="submitForm">
+          <input type="submit" id="skip" value="確定する" />
         </form>
         <Timer time={time} />
         <TimeUp time={time} />

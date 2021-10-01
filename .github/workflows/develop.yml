@@ -6,7 +6,7 @@ name: Deploy development server
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
+    branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo "VITE_API_HOST=${{ secrets.API_MAIN_HOST }}" >> .env
+          echo "VITE_API_HOST=${{ secrets.API_DEVELOP_HOST }}" >> .env
       - run: npm run build
       #
       - name: copy file via ssh password 1
@@ -45,7 +45,7 @@ jobs:
           proxy_password: ${{ secrets.PASSWORD }}
           strip_components: 2
           source: "dist/assets"
-          target: "/var/www/html/assets/"
+          target: "/var/www/php-dev/assets/"
           rm: true
 
       - name: copy file via ssh password 2
@@ -59,4 +59,4 @@ jobs:
           proxy_password: ${{ secrets.PASSWORD }}
           strip_components: 1
           source: "dist/index.html"
-          target: "/var/www/html/"
+          target: "/var/www/php-dev/"

@@ -1,13 +1,13 @@
 #learnVoting {
-  display: grid;
   grid-template:
-    "... ..... ..... .......... ..." 3vh
-    "... title title title      ..." 10vh
-    "... ..... ..... .......... ..." 5vh
-    "... ..... ..... votingForm ..." 10vh
-    "... image ..... votingForm ..." 52vh
-    "... ..... ..... votingForm ..." 10vh
-    "... ..... ..... .......... ..." 10vh
+    "... .......... ..... .......... ..." 3vh
+    "... title      title title      ..." 10vh
+    "... .......... ..... .......... ..." 5vh
+    "... .......... ..... votingForm ..." 5vh
+    "... image      ..... votingForm ..." 52vh
+    "... .......... ..... votingForm ..." 5vh
+    "... submitForm ..... votingForm ..." 10vh
+    "... .......... ..... .......... ..." 10vh
     /10vh 78vh 4vh auto 10vh;
   position: fixed;
 }
@@ -22,6 +22,19 @@
     "................ ................ ................" 1vh
     / auto 50% auto;
   min-width: 70vh;
+}
+
+#learnVoting .submitForm {
+  display: grid;
+  grid-area: submitForm;
+  grid-template:
+    "... submit ..." 8vh
+    / auto 30vh auto;
+}
+
+#learnVoting input[type="submit"] {
+  font-size: 4vh;
+  grid-area: submit;
 }
 
 #learnVoting .selections {
@@ -54,9 +67,5 @@
 }
 
 #learnVoting .attentionMessage {
-  font-size: 3vh;
-}
-
-#learnVoting input[type="submit"] {
   font-size: 3vh;
 }

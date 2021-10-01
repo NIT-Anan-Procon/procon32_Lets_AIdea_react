@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Explanation.css";
 import "./css/learn.css";
 import "../components/css/Balloon.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
+import Image from "../../common/components/Image";
 import OtherDescription from "../../common/components/OtherDescription";
-import Timer from "../../common/components/Timer";
 import TimeUp from "../../common/components/TimeUp";
+import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
 import aiImg from "../../image/aiImg.svg";
 import aiImgSmile from "../../image/aiImgSmile.svg";
-import axios from "axios";
 
 function Explanation() {
   const [data, setData] = useState();
@@ -28,7 +28,7 @@ function Explanation() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Learn/StartLearn.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Learn/StartLearn.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -50,6 +50,7 @@ function Explanation() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line no-empty
     if (!data) {
     } else {
       if (time % 5 === 0 && time < 60) {
@@ -72,9 +73,13 @@ function Explanation() {
           document.getElementById("myExplanation").disabled = true;
           params.append("explanation", myExplanation);
           axios
-            .post("http://localhost/API/Game/AddExplanation.php", params, {
-              withCredentials: true,
-            })
+            .post(
+              import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
+              params,
+              {
+                withCredentials: true,
+              }
+            )
             .then(() => {
               setTimeout(() => {
                 history.push("/learn/result");

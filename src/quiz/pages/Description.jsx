@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/quiz.css";
 import "./css/Description.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
-import OtherDescription from "../../common/components/OtherDescription";
-import NgWord from "../../common/components/NgWord";
 import AttentionMessage from "../../common/components/AttentionMessage";
-import Timer from "../../common/components/Timer";
+import Image from "../../common/components/Image";
+import NgWord from "../../common/components/NgWord";
+import OtherDescription from "../../common/components/OtherDescription";
 import TimeUp from "../../common/components/TimeUp";
+import Timer from "../../common/components/Timer";
+import Title from "../../common/components/Title";
 
 export default function Description() {
   const [data, setData] = useState();
@@ -24,7 +24,7 @@ export default function Description() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/StartQuiz.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/StartQuiz.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -65,12 +65,16 @@ export default function Description() {
       document.getElementById("myDescription").disabled = true;
       params.append("explanation", myDescription);
       axios
-        .post("http://localhost/API/Game/AddExplanation.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
+          params,
+          {
+            withCredentials: true,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           setTimeout(() => {
             history.push("/quiz/relay");

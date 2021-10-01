@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Library.css";
 import Title from "../common/components/Title";
 import LibraryRow from "./LibraryRow";
@@ -12,7 +12,7 @@ export default function Library() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Library/GetLibrary.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Library/GetLibrary.php", {
         params: {
           search: 0,
           sort: 0,

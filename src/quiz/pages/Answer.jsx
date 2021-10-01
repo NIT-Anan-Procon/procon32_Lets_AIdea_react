@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Answer.css";
-import OtherDescription from "../../common/components/OtherDescription";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
+import OtherDescription from "../../common/components/OtherDescription";
 import Timer from "../../common/components/Timer";
 import circle from "../../image/circle.svg";
 import cross from "../../image/cross.svg";
@@ -24,7 +24,7 @@ export default function Answer() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetPicture.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/GetPicture.php", {
         withCredentials: true,
       })
       .then((result) => {
@@ -68,6 +68,12 @@ export default function Answer() {
             deleteMark();
             setTimeCount((timeCount) => timeCount + 1);
             timeCountCopy++;
+            if (data.playerID == timeCountCopy) {
+              document.getElementById("myChoice1").disabled = true;
+              document.getElementById("myChoice2").disabled = true;
+              document.getElementById("myChoice3").disabled = true;
+              document.getElementById("myChoice4").disabled = true;
+            }
             setTime(20);
             timeCopy = time;
           }, 4000);
@@ -120,12 +126,16 @@ export default function Answer() {
     if (myChoice == correct[timeCountCopy - 1]) {
       params.append("playerID", timeCountCopy);
       axios
-        .post("http://localhost/API/Quiz/AddPoint.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post(
+          import.meta.env.VITE_API_HOST + "/API/Quiz/AddPoint.php",
+          params,
+          {
+            withCredentials: true,
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           params.delete("playerID");
         });

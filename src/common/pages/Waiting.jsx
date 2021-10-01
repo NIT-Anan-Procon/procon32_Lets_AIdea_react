@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Waiting.css";
 import "../components/Icon";
-import axios from "axios";
 
 export default function Waiting() {
   const [data, setData] = useState("");
@@ -11,14 +11,14 @@ export default function Waiting() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Room/GetRoomInfo.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/GetRoomInfo.php", {
         withCredentials: true,
       })
       .then((res) => {
         setData(res.data);
       });
 
-    axios.get("http://localhost/API/Room/PrepareGame.php", {
+    axios.get(import.meta.env.VITE_API_HOST + "/API/Room/PrepareGame.php", {
       withCredentials: true,
     });
   }, []);
@@ -26,7 +26,7 @@ export default function Waiting() {
   useEffect(() => {
     timer.current = setInterval(() => {
       axios
-        .get("http://localhost/API/Room/GetRoomInfo.php", {
+        .get(import.meta.env.VITE_API_HOST + "/API/Room/GetRoomInfo.php", {
           withCredentials: true,
         })
         .then((res) => {
@@ -58,7 +58,7 @@ export default function Waiting() {
 
   const startHandle = () => {
     axios
-      .get("http://localhost/API/Room/StartGame.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/StartGame.php", {
         withCredentials: true,
       })
       .then(() => {

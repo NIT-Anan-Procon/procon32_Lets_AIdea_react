@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Award.css";
-import Title from "../../common/components/Title";
-import Image from "../../common/components/Image";
 import Icon from "../../common/components/Icon";
+import Image from "../../common/components/Image";
 import Name from "../../common/components/Name";
 import NgWord from "../../common/components/NgWord";
 import OtherDescription from "../../common/components/OtherDescription";
+import Title from "../../common/components/Title";
 
 export default function Award() {
   const [data, setData] = useState();
@@ -17,7 +17,9 @@ export default function Award() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Game/End.php", { withCredentials: true })
+      .get(import.meta.env.VITE_API_HOST + "/API/Game/End.php", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
         getNgWord(res.data);
@@ -34,14 +36,26 @@ export default function Award() {
     }
   };
 
-  const againHandleSubmit = () => {
-    // TODO 待機画面に戻るパスを追加
-    history.push("");
+  const againHandleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/JoinAgain.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/waiting");
+      });
   };
 
-  const leaveHandleSubmit = () => {
-    // TODO モード選択画面に戻るパスを追加
-    history.push("");
+  const leaveHandleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/LeaveRoom.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/selection");
+      });
   };
 
   useEffect(() => {

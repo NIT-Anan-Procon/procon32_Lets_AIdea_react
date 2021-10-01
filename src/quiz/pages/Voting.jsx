@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
+import AttentionMessage from "../../common/components/AttentionMessage";
+import TimeUp from "../../common/components/TimeUp";
+import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 import DescriptionRow from "../components/DescriptionRow";
-import AttentionMessage from "../../common/components/AttentionMessage";
-import Timer from "../../common/components/Timer";
-import TimeUp from "../../common/components/TimeUp";
 
 export default function Voting() {
   const [data, setData] = useState();
@@ -18,10 +18,11 @@ export default function Voting() {
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(90);
   const timer = useRef(null);
+  const skipTimer = useRef(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost/API/Quiz/GetVoteInfo.php", {
+      .get(import.meta.env.VITE_API_HOST + "/API/Quiz/GetVoteInfo.php", {
         withCredentials: true,
       })
       .then((res) => {
@@ -52,17 +53,51 @@ export default function Voting() {
     return ngWord;
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (myChoice >= 0) {
+      document.getElementById("skip").disabled = true;
+      document.getElementById("myChoice1").disabled = true;
+      document.getElementById("myChoice2").disabled = true;
+      document.getElementById("myChoice3").disabled = true;
+      document.getElementById("myChoice4").disabled = true;
+      params.append("playerID", myChoice);
+      axios
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
+          withCredentials: true,
+        })
+        .then(() => {});
+      skipTimer.current = setInterval(() => {
+        axios
+          .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
+            withCredentials: true,
+          })
+          .then((res) => {
+            if (res.data.playerNum === 0) {
+              clearInterval(timer.current);
+              clearInterval(skipTimer.current);
+              history.push("/quiz/award");
+            }
+          });
+      }, 1000);
+    } else {
+      return 0;
+    }
+  };
+
   if (time === 0) {
     clearInterval(timer.current);
     params.append("playerID", myChoice);
-    axios
-      .post("http://localhost/API/Game/Vote.php", params, {
-        withCredentials: true,
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      })
-      .then(() => {});
+    if (myChoice >= 0) {
+      axios
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
+          withCredentials: true,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then(() => {});
+    }
     setTimeout(() => {
       history.push("/quiz/award");
     }, 5000);
@@ -85,7 +120,7 @@ export default function Voting() {
     return (
       <div className="quiz" id="quizVoting">
         <Title text="優秀な作品を決めよう" />
-        <form id="votingForm">
+        <form onSubmit={handleSubmit} id="votingForm">
           <AttentionMessage text={attentionMessage} />
           <div id="descriptionTable">
             <DescriptionRow
@@ -129,6 +164,7 @@ export default function Voting() {
               setAttentionMessage={setAttentionMessage}
             />
           </div>
+          <input type="submit" id="skip" value="確定する" />
         </form>
         <Timer time={time} />
         <TimeUp time={time} />
