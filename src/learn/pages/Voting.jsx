@@ -69,12 +69,9 @@ export default function Voting() {
       skipTimer.current = setInterval(() => {
         console.log("通信");
         axios
-          .get(
-            "http://localhost/~kubota/procon32_Lets_AIdea_php/API/Game/GetVoter.php",
-            {
-              withCredentials: true,
-            }
-          )
+          .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
+            withCredentials: true,
+          })
           .then((res) => {
             if (res.data.playerNum === 0) {
               clearInterval(timer.current);

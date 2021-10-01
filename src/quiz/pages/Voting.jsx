@@ -65,14 +65,14 @@ export default function Voting() {
       console.log(myChoice);
       params.append("playerID", myChoice);
       axios
-        .post("http://localhost/API/Game/Vote.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
           withCredentials: true,
         })
         .then(() => {});
       skipTimer.current = setInterval(() => {
         console.log("通信");
         axios
-          .get("http://localhost/API/Game/GetVoter.php", {
+          .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
             withCredentials: true,
           })
           .then((res) => {
@@ -97,7 +97,7 @@ export default function Voting() {
     params.append("playerID", myChoice);
     if (myChoice >= 0) {
       axios
-        .post("http://localhost/API/Game/Vote.php", params, {
+        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
           withCredentials: true,
           headers: {
             "content-type": "multipart/form-data",
@@ -105,14 +105,6 @@ export default function Voting() {
         })
         .then(() => {});
     }
-    axios
-      .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
-        withCredentials: true,
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      })
-      .then(() => {});
     // setTimeout(() => {
     //   history.push("/quiz/award");
     // }, 5000);
