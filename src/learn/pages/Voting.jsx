@@ -67,7 +67,6 @@ export default function Voting() {
         })
         .then(() => {});
       skipTimer.current = setInterval(() => {
-        console.log("通信");
         axios
           .get(import.meta.env.VITE_API_HOST + "/API/Game/GetVoter.php", {
             withCredentials: true,
