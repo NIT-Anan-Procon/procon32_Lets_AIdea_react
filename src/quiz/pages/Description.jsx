@@ -63,12 +63,10 @@ export default function Description() {
     if (time === 0) {
       clearInterval(timer.current);
       document.getElementById("myDescription").disabled = true;
-      for (let i = 0; i < data.ng.length; i++)
-        if (event.target.value.indexOf(data.ng[i]) !== -1) {
-          setMyDescription("※NGワードが含まれているため表示できません");
-          break;
-        }
-      if (myDescription === " ") setMyDescription("※文章が入力されていません");
+      if (attentionMessage === "NGワードが含まれています")
+        setMyDescription("※NGワードが含まれているため表示できません");
+      else if (myDescription === " ")
+        setMyDescription("※文章が入力されていません");
       params.append("explanation", myDescription);
       axios
         .post(
