@@ -35,19 +35,26 @@ export default function Award() {
     }
   };
 
-  const againHandleSubmit = () => {
-    // TODO 待機画面に戻るAPI処理とパスの追加
-    history.push("");
+  const againHandleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .get(import.meta.env.VITE_API_HOST + "/API/Room/JoinAgain.php", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        history.push("/waiting");
+      });
   };
 
-  const leaveHandleSubmit = () => {
+  const leaveHandleSubmit = (event) => {
+    event.preventDefault();
     axios
       .get(import.meta.env.VITE_API_HOST + "/API/Room/LeaveRoom.php", {
         withCredentials: true,
       })
       .then((res) => {
         history.push("/selection");
-      })
+      });
   };
 
   useEffect(() => {
