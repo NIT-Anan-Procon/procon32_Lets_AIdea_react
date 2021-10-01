@@ -105,9 +105,9 @@ export default function Voting() {
         })
         .then(() => {});
     }
-    // setTimeout(() => {
-    //   history.push("/quiz/award");
-    // }, 5000);
+    setTimeout(() => {
+      history.push("/quiz/award");
+    }, 5000);
   }
 
   useEffect(() => {
