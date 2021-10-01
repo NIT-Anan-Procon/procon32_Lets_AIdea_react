@@ -48,9 +48,6 @@ export default function Award() {
       .then((res) => {
         history.push("/selection");
       })
-      .catch(() => {
-        setErrorMessage("エラーが発生しました");
-      });
   };
 
   useEffect(() => {
