@@ -1,4 +1,5 @@
 .otherDescription {
   border: solid 0.5vh #4f84d3;
   grid-area: otherDescription;
+  overflow-y: scroll;
 }
