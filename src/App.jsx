@@ -1,3 +1,4 @@
+import { createBrowserHistory } from "history";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./common/pages/css/style.css";
@@ -18,8 +19,9 @@ import QuizResult from "./quiz/pages/Result";
 import QuizVoting from "./quiz/pages/Voting";
 
 export default function App() {
+  const customization = createBrowserHistory({ basename: "/" });
   return (
-    <BrowserRouter>
+    <BrowserRouter history={customization}>
       <Route path="/" exact component={Login} />
       <Route path="/test" exact component={Test} />
       <Route path="/selection" exact component={Selection} />
