@@ -20,7 +20,6 @@ export default function Relay() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/quiz/answer");
     }
   }, [time]);
 
@@ -58,7 +57,7 @@ export default function Relay() {
         </div>
         <div id="total">合計で勝負!</div>
       </div>
-      <Timer time={time} />
+      <Timer time={time} history={history} link="/quiz/answer" />
     </div>
   );
 }

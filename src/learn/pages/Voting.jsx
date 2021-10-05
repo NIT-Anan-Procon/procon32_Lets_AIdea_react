@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
 import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
-import TimeUp from "../../common/components/TimeUp";
 import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 import aiImg from "../../image/aiImg.svg";
@@ -201,8 +200,7 @@ export default function Voting() {
         <form onClick={handleSubmit} className="submitForm">
           <input type="submit" id="skip" value="確定する" />
         </form>
-        <Timer time={time} />
-        <TimeUp time={time} />
+        <Timer time={time} history={history} link="/learn/award" />
       </div>
     );
   }

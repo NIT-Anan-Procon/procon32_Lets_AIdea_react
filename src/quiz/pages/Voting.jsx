@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./css/Voting.css";
 import AttentionMessage from "../../common/components/AttentionMessage";
-import TimeUp from "../../common/components/TimeUp";
 import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 import DescriptionRow from "../components/DescriptionRow";
@@ -87,20 +86,6 @@ export default function Voting() {
 
   if (time === 0) {
     clearInterval(timer.current);
-    params.append("playerID", myChoice);
-    if (myChoice >= 0) {
-      axios
-        .post(import.meta.env.VITE_API_HOST + "/API/Game/Vote.php", params, {
-          withCredentials: true,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then(() => {});
-    }
-    setTimeout(() => {
-      history.push("/quiz/award");
-    }, 5000);
   }
 
   useEffect(() => {
@@ -166,8 +151,7 @@ export default function Voting() {
           </div>
           <input type="submit" id="skip" value="確定する" />
         </form>
-        <Timer time={time} />
-        <TimeUp time={time} />
+        <Timer time={time} history={history} link="/learn/award" />
       </div>
     );
   }
