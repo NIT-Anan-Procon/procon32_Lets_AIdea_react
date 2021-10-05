@@ -15,7 +15,6 @@ export default function Answer() {
   let correct = [0, 0, 0, 0];
   const [mark, setMark] = useState([]);
   const history = useHistory();
-  const params = new FormData();
   const [time, setTime] = useState(20);
   let timeCopy = time;
   const [timeCount, setTimeCount] = useState(1);
@@ -59,11 +58,13 @@ export default function Answer() {
         setTime((time) => time - 1);
         timeCopy--;
         if (timeCopy === 0) {
-          addPoint();
           addMark();
           clearInterval(timer);
           setTimeout(() => {
-            if (timeCountCopy === 4) history.push("/quiz/result");
+            if (timeCountCopy === 4) {
+              clearInterval(timer);
+              return;
+            }
             startTimer();
             deleteMark();
             setTimeCount((timeCount) => timeCount + 1);
@@ -113,34 +114,6 @@ export default function Answer() {
     document.getElementById("myChoice3").disabled = false;
     document.getElementById("myChoice4").disabled = false;
   }
-
-  const addPoint = () => {
-    let elements = document.getElementsByName("selectImage");
-    for (let i = 0; i < elements.length; i++) {
-      if (elements.item(i).checked) {
-        myChoice = elements.item(i).value;
-        break;
-      }
-      myChoice = 0;
-    }
-    if (myChoice == correct[timeCountCopy - 1]) {
-      params.append("playerID", timeCountCopy);
-      axios
-        .post(
-          import.meta.env.VITE_API_HOST + "/API/Quiz/AddPoint.php",
-          params,
-          {
-            withCredentials: true,
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          }
-        )
-        .then(() => {
-          params.delete("playerID");
-        });
-    }
-  };
 
   useEffect(() => {
     const onUnload = (e) => {
@@ -221,7 +194,7 @@ export default function Answer() {
             <Image src={mark[3]} alt="マーク" class="mark" id="mark4" />
           </label>
         </form>
-        <Timer time={time} />
+        <Timer time={time} history={history} link="/quiz/result" />
       </div>
     );
 }
