@@ -37,7 +37,6 @@ function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/learn/voting");
     }
   }, [time]);
 
@@ -82,7 +81,7 @@ function Result() {
             explanation={data.player[4].explanation}
           />
         </div>
-        <Timer time={time} />
+        <Timer time={time} history={history} link="/learn/voting" />
       </div>
     );
   }

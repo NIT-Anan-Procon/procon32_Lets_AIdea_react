@@ -7,7 +7,6 @@ import AttentionMessage from "../../common/components/AttentionMessage";
 import Image from "../../common/components/Image";
 import NgWord from "../../common/components/NgWord";
 import OtherDescription from "../../common/components/OtherDescription";
-import TimeUp from "../../common/components/TimeUp";
 import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 
@@ -17,7 +16,6 @@ export default function Description() {
   const [attentionMessage, setAttentionMessage] = useState("");
   const [myDescription, setMyDescription] = useState(" ");
   const history = useHistory();
-  const params = new FormData();
   const [time, setTime] = useState(60);
   const timer = useRef(null);
   const [errorMessage, setErrorMessage] = useState("読み込み中");
@@ -62,24 +60,6 @@ export default function Description() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      document.getElementById("myDescription").disabled = true;
-      params.append("explanation", myDescription);
-      axios
-        .post(
-          import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
-          params,
-          {
-            withCredentials: true,
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          }
-        )
-        .then(() => {
-          setTimeout(() => {
-            history.push("/quiz/relay");
-          }, 5000);
-        });
     }
   }, [time]);
 
@@ -114,8 +94,7 @@ export default function Description() {
             id="myDescription"
           />
         </form>
-        <Timer time={time} />
-        <TimeUp time={time} />
+        <Timer time={time} history={history} link="/quiz/relay" />
       </div>
     );
   }

@@ -35,7 +35,6 @@ export default function Result() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(timer.current);
-      history.push("/quiz/voting");
     }
   }, [time]);
 
@@ -82,7 +81,7 @@ export default function Result() {
             answerPoint={data[2].ans}
           />
         </div>
-        <Timer time={time} />
+        <Timer time={time} history={history} link="/quiz/voting" />
       </div>
     );
 }

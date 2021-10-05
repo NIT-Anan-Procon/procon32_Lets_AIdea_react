@@ -7,7 +7,6 @@ import "../components/css/Balloon.css";
 import Icon from "../../common/components/Icon";
 import Image from "../../common/components/Image";
 import OtherDescription from "../../common/components/OtherDescription";
-import TimeUp from "../../common/components/TimeUp";
 import Timer from "../../common/components/Timer";
 import Title from "../../common/components/Title";
 import aiImg from "../../image/aiImg.svg";
@@ -24,7 +23,6 @@ function Explanation() {
   const [errorMessage, setErrorMessage] = useState("読み込み中");
   const [time, setTime] = useState(60);
   const timer = useRef(null);
-  const params = new FormData();
 
   useEffect(() => {
     axios
@@ -70,22 +68,6 @@ function Explanation() {
           break;
         case 0:
           clearInterval(timer.current);
-          document.getElementById("myExplanation").disabled = true;
-          params.append("explanation", myExplanation);
-          axios
-            .post(
-              import.meta.env.VITE_API_HOST + "/API/Game/AddExplanation.php",
-              params,
-              {
-                withCredentials: true,
-              }
-            )
-            .then(() => {
-              setTimeout(() => {
-                history.push("/learn/result");
-              }, 5000);
-            });
-          break;
       }
     }
   }, [time]);
@@ -127,8 +109,7 @@ function Explanation() {
             id="myExplanation"
           />
         </form>
-        <Timer time={time} />
-        <TimeUp time={time} />
+        <Timer time={time} history={history} link="/learn/result" />
       </div>
     );
   }
