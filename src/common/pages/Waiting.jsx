@@ -85,15 +85,9 @@ export default function Waiting() {
             );
           })}
         </div>
-        {(() => {
-          if (data.playerID === "1") {
-            return (
-              <button id="startButton" onClick={startHandle}>
-                ゲームを始める
-              </button>
-            );
-          }
-        })()}
+        <button id="startButton" onClick={startHandle}>
+          ゲームを始める
+        </button>
       </div>
     );
   }
